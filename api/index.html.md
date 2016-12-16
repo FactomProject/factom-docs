@@ -6,7 +6,9 @@ language_tabs:
 
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
+  - <a href='https://docs.factom.com'>Factom Wallet Documentation</a>
+  - <a href='https://docs.factom.com'>Factom CLI Documentation</a>
+  - <a href='https://docs.factom.com'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
@@ -146,6 +148,7 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"KeyMR":"7d7f991a08178f88b4b48ec7d45e7a58c9eab5a404724136f14c0f0d741ba2aa"}, "method": "directory-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 
+```json
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -155,7 +158,8 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 "36c360817761e0d92af464f7c2e94a7495104d6b0a6051218cc53e52d3d519b6"
 }
 }
-
+```
+```json
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -188,16 +192,19 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 ]
 }
 }
+```
 
 ##directory-block-head
 curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 
+```json
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "directory-block-head"
 }
+```
 
 {
 "jsonrpc": "2.0",
