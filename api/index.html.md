@@ -2,7 +2,7 @@
 title: API Documentation - factomd RPC API V2
 
 language_tabs:
-  - shell
+  - json
 
 
 toc_footers:
@@ -24,129 +24,12 @@ RPC compiled method list for Factom Federation. Useful for factom-cli to ensure 
 
 # RPC Methods
 
-
-Description
-
-RPC Method
-
-Directory Block
-
-directory-block
-
-Directory Block Head
-
-directory-block-head
-
-Directory Block Height
-
-directory-block-height
-
-Get Entry Raw Data
-
-raw-data
-
-Receipt
-
-receipt
-
-Get Entry Block
-
-entry-block
-
-Get Entry
-
-entry
-
-Get Pending Entries
-
-pending-entries
-
-Get Transaction
-
-transaction
-
-Get Pending Transactions
-
-pending-transactions
-
-Chainhead
-
-chain-head
-
-Entry Credit Balance
-
-entry-credit-balance
-
-Factoid Balance
-
-factoid-balance
-
-Factoid Fee
-
-factoid-fee
-
-Factoid Submit
-Commit Chain
-
-commit-chain
-
-Reveal Chain
-
-reveal-chain
-
-Commit Entry
-
-commit-entry
-
-Reveal Entry
-
-reveal-entry
-
-Send Raw Message
-
-send-raw-message
-
-Add Server
-
-add-server
-
-Fetch DBlock by height
-
-dblock-by-height
-
-Fetch ABlock by height
-
-ablock-by-height
-
-Fetch ECBlock by height
-
-ecblock-by-height
-
-Fetch FBlock by height
-
-fblock-by-height
-
-errors
-
-{
-"jsonrpc":"2.0",
-"id": 0,
-"method":"junk"
-}
-
-{
-"jsonrpc":"2.0",
-"id":0,
-"error":{
-"code":-32601,
-"message":"Method not found"
-}
-}
-
 ##directory-block
+
 curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"KeyMR":"7d7f991a08178f88b4b48ec7d45e7a58c9eab5a404724136f14c0f0d741ba2aa"}, "method": "directory-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
+
 
 ```json
 {
@@ -158,9 +41,8 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 "36c360817761e0d92af464f7c2e94a7495104d6b0a6051218cc53e52d3d519b6"
 }
 }
-```
-```json
-{
+
+{
 "jsonrpc": "2.0",
 "id": 0,
 "result": {
@@ -204,9 +86,8 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-bloc
 "id": 0,
 "method": "directory-block-head"
 }
-```
 
-{
+{
 "jsonrpc": "2.0",
 "id": 0,
 "result": {
@@ -214,11 +95,13 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-bloc
 "36c360817761e0d92af464f7c2e94a7495104d6b0a6051218cc53e52d3d519b6"
 }
 }
+```
 
 heights
 curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "heights"}' -H 'content-type:text/plain;'
 http://localhost:8088/v2
 
+```json
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -238,13 +121,15 @@ http://localhost:8088/v2
 "entryblockdbheightcomplete": 14460
 }
 }
+```
 
 raw-data
 curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"1f2931558c0ef6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"}, "method": "raw-data"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 
-{
+```json
+{
 "jsonrpc": "2.0",
 "id": 0,
 "method":"raw-data",
@@ -262,11 +147,13 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 f6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"
 }
 }
+```
 
 ##dblock-by-height
 curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-height",
 "params":{"height":14460}}' -H 'content-type:text/plain;' http://localhost:8088/v2
 
+```json
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -286,7 +173,7 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-heig
 "networkid": 4203931043,
 "bodymr":
 
-"7716df6083612597d4ef18a8076c40676cd8e0df8110825c07942ca5d30073b4",
+"7716df6083612597d4ef18a8076c40676cd8e0df8110825c07942ca5d30073b4",
 "prevkeymr":
 "fa7e6e2d37b012d71111bc4e649f1cb9d6f0321964717d35636e4637699d8da2",
 "prevfullhash":
@@ -331,15 +218,16 @@ d6178e04c92879601f0cb84a619f984eb2617ff9e76ee830a9f614cc9a0000000000000000
 000000000000000000000000000000000000000000000000c2a10f1678b9736f213ef3ac76
 e4f8aa910e5fed66733aa30dafdc91245157b3b00000000000000000000000000000000000
 0000000000000000000000000000fcbadd7e280377ad8360a4b309df9d14f56552582c0510
-
-0145ca3367e50adc497"
+0145ca3367e50adc497"
 }
 }
+```
 
 ##ablock-by-height
 curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
 "ablock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 
+```json
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -380,7 +268,7 @@ f60870e2cb8523fd122ef54bb95ac94b3676b81e07c921ed2196508"
 }
 },
 
-{
+{
 "identityadminchainid":
 "888888fc37fa418395eeccb95ab0a4c64d528b2aeefa0d1632c8a116a0e4f5b1",
 "prevdbsig": {
@@ -434,13 +322,13 @@ a3d060188888815ac8a1ab6b8f57cee67ba15aad23ab7d8e70ffdca064200738c201f74f18
 3e1f764bb96e5e661053da381ebd708c8ac137da2a1b6847eac07e83472d4fa6096768c790
 4760c821e45b5ebe23a691cc5bad1b61937f9e30301888888271203752870ae5e6fa0cf96f
 
-93cf14bd052455ad476ab26de1ad2c0774f2d34f0417297e2e985e0cc6e4cf3d0814416d09
+93cf14bd052455ad476ab26de1ad2c0774f2d34f0417297e2e985e0cc6e4cf3d0814416d09
 f37af7375517ea236786ed301206ff2963af7df29bb6749a4c29bc1eb65a48bd7b3ec6590c
 723e11c3a3c5342e72f9b079a58d77a2562c25289d799fadfc5205f1e99c4f1d5c3ce85432
-
-906"
+906"
 }
 }
+```
 
 ##ecblock-by-height
 
@@ -480,7 +368,7 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "
 "body": {
 "entries": [
 
-{
+{
 "number": 1
 },
 {
@@ -519,7 +407,7 @@ f868e34aff4edce479f6ee412161e1faa3596a112cd5ef75e96f59cadd44ed20133c7b8c95
 00ab5819d3aee665fffcce7acb6baa098fa8210b43a8b2f1dd9e5f1ab34102f65dea55c159
 8e2344568d68c0511640b7f4362956157460000387c00000000000000000a0000000000000
 
-014010101020103010401050106010701080109010a"
+014010101020103010401050106010701080109010a"
 }
 }
 
@@ -558,7 +446,7 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "
 "outputs": [
 ],
 
-"outecs": [
+"outecs": [
 ],
 "rcds": [
 ],
@@ -657,7 +545,7 @@ f42f72da96d74acd64d2935d75971ac68fd6905eeb276739b2541398db3b1b06d73f99a508
 ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d7
 4acd64d2935d75971ac7e503a078b7f5bac25333c54a724530b97d25b8c2a83f82fdde2499
 
-87b8bf4a4ba3da41643b7723102c3506bae86f6347ae94b72e8ca4c14617d8d3ca57df7050
+87b8bf4a4ba3da41643b7723102c3506bae86f6347ae94b72e8ca4c14617d8d3ca57df7050
 0020158a7da9f9f010100818fccb26cdfda7feae639018161018676f141c5744397278c902
 1e1e9d36e89656c7abe8f818f86c600031cce24bcc43b596af105167de2c03603c20ada331
 4a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64
@@ -697,8 +585,7 @@ b9f3d616b414005730300020158a7dbe85201010081bfa3f46cdfda7feae63901816101867
 67de2c03603c20ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9
 acf42f72da96d74acd64d2935d75971ac363c20508bddf5a9d4762e2496a861a1f03ec0dc5
 0389b836dec898a3b37c33a6f831edf057f48a961b2d336231a78137e7402a0ca3a1d5c186
-
-ce2bb79e449070000"
+ce2bb79e449070000"
 }
 }
 
@@ -737,7 +624,7 @@ dddddddddd"
 
 ##entry-block
 
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
+curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
 "params":{"KeyMR":"f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"},"method":"entry-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 
@@ -773,7 +660,7 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params"
 {"Hash":"be5216cc7a5a3ad44b49245aec298f47cbdfca9862dee13b0093e5880012b771"}}' -H 'content-type:text/plain;'
 http://localhost:8088/v2
 
-{
+{
 "jsonrpc": "2.0",
 "id": 0,
 "method":"entry",
@@ -811,7 +698,7 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": "", "method": "
 
 transaction
 
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}, "method": "transaction"}' -H 'content-type:text/plain;' http:/
 /localhost:8088/v2
 
@@ -891,7 +778,7 @@ c"
 }
 }
 
-{
+{
 "jsonrpc":"2.0",
 "id":0,
 "result":{
@@ -928,7 +815,7 @@ This call returns the number of Factoshis (Factoids *10^-8) that are currently a
 $ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
 }, "method": "factoid-balance"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 
-{
+{
 "jsonrpc": "2.0",
 "id": 0,
 "method": "factoid-balance",
@@ -967,7 +854,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "entry-credit-
 properties
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 
-{
+{
 "jsonrpc": "2.0",
 "id": 0,
 "method": "properties"
@@ -1011,7 +898,7 @@ c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c95
 "method": "commit-chain"
 }
 
-{
+{
 "jsonrpc":"2.0",
 "id":0,
 "result":
@@ -1052,7 +939,7 @@ A8D02A6F0D73653215771DE243A63AC048A18B59DA29F4CBD953E6EBE684D693FDCA270CE231783E
 3F84D1F54C8E8D8665D493F7B4A4C1864751E3CDEC885A64C2144E0938BF648A00"}, "method": "commit-entry"}' -H 'content-type:text/plain;'
 http://localhost:8088/v2
 
-{
+{
 "jsonrpc": "2.0",
 "id": 0,
 "params": {
@@ -1089,7 +976,7 @@ F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"
 "method": "reveal-entry"
 }
 
-{
+{
 "jsonrpc":"2.0",
 "id":0,
 "result": {
@@ -1136,7 +1023,7 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 {"message":"0c01554b8e5881007e18ccc911f057fb111c7570778f6fdc51e189f35a6e6da683ec2a264443531f000e0005746573745a0005746573
 745a48656c6c6f20466163746f6d21"}, "method": "send-raw-message"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 
-{
+{
 "jsonrpc":"2.0",
 "id":0,
 "params": {
@@ -1178,9 +1065,24 @@ curl -X POST -u userHere:securePassHere --cacert ~/.factom/m2/factomdAPIpub.cert
 Normally, when started the program creates a new certificate if one is not found. The certificates are bound to a set of specific IP addresses.
 Normally it finds the IP address by asking the OS. When using cloud services that use a different public IP than the server sees (AWS, Azure) the
 
-certificate needs to be told what the external IP address is manually. There are two options for this.
+certificate needs to be told what the external IP address is manually. There are two options for this.
 Edit the config file to show the external IP address instead of localhost for FactomdLocation
 start factomd with the selfaddr flag and pass a comma separated list of authorized domains and IP addresses
 factomd -tls=true -selfaddr=domain.net,123.23.111.444
 
-
+##errors
+
+{
+"jsonrpc":"2.0",
+"id": 0,
+"method":"junk"
+}
+
+{
+"jsonrpc":"2.0",
+"id":0,
+"error":{
+"code":-32601,
+"message":"Method not found"
+}
+}
