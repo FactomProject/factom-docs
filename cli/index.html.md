@@ -24,163 +24,131 @@ This example API documentation page was created with [Slate](https://github.com/
 
 # Authentication
 
-> To authorize, use this code:
+factom-cli ack TxID|FullTx
+Returns information about a factoid transaction, or an entry / entry credit transaction
 
-```ruby
-require 'kittn'
+factom-cli addchain [-e EXTID1 -e EXTID2 -E BINEXTID3 ...] ECADDRESS <STDIN>
+Create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+factom-cli addentry -c CHAINID [-e EXTID1 -e EXTID2 -E BEEF1D ...] ECADDRESS <STDIN>
+Create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
 
-```python
-import kittn
+factom-cli addtxecoutput [-r] TXNAME ADDRESS AMOUNT
+Add an Entry Credit output to a transaction in the wallet
 
-api = kittn.authorize('meowmeowmeow')
-```
+factom-cli addtxfee TXNAME ADDRESS
+Add the transaction fee to an input of a transaction in the wallet
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+factom-cli addtxinput TXNAME ADDRESS AMOUNT
+Add a Factoid input to a transaction in the wallet
 
-```javascript
-const kittn = require('kittn');
+factom-cli addtxoutput [-r] TXNAME ADDRESS AMOUNT
+Add a Factoid output to a transaction in the wallet
 
-let api = kittn.authorize('meowmeowmeow');
-```
+factom-cli backupwallet
+Backup the running wallet
 
-> Make sure to replace `meowmeowmeow` with your API key.
+factom-cli balance [-r] ADDRESS
+If this is an EC Address, returns number of Entry Credits. If this is a Factoid Address, returns the Factoid balance.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+factom-cli buyec FCTADDRESS ECADDRESS ECAMOUNT
+Buy entry credits
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+factom-cli composechain [-e EXTID1 -e EXTID2 -E BINEXTID3 ...] ECADDRESS <STDIN>
+Create API calls to create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
 
-`Authorization: meowmeowmeow`
+factom-cli composeentry -c CHAINID [-e EXTID1 -e EXTID2 -E BEEF1D ...] ECADDRESS <STDIN>
+Create API calls to create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
 
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
+factom-cli composetx TXNAME
+Compose a wallet transaction into a json rpc object
 
-# Kittens
+factom-cli ecrate
+It takes this many Factoids to buy an Entry Credit. Displays the larger between current and future rates. Also used to set Factoid fees.
 
-## Get All Kittens
+factom-cli exportaddresses
+List the private addresses stored in the wallet
 
-```ruby
-require 'kittn'
+factom-cli get allentries|chainhead|dblock|eblock|entry|firstentry|head|heights
+Get data about Factom Chains, Entries, and Blocks
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
+factom-cli get allentries [-n NAME1 -N HEXNAME2 ...] CHAINID
+Get all of the Entries in a Chain
 
-```python
-import kittn
+factom-cli get chainhead [-n NAME1 -N HEXNAME2 ...] CHAINID
+Get ebhead by chainid
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
+factom-cli get dblock KEYMR
+Get dblock contents by merkle root
 
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
+factom-cli get eblock KEYMR
+Get eblock by merkle root
 
-```javascript
-const kittn = require('kittn');
+factom-cli get entry HASH
+Get entry by hash
 
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
+factom-cli get firstentry [-n NAME1 -N HEXNAME2 ...] CHAINID
+Get the first entry from a chain
 
-> The above command returns JSON structured like this:
+factom-cli get head
+Get the latest completed directory block
 
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
+factom-cli get heights
+Get the current heights of various blocks in factomd
 
-This endpoint retrieves all kittens.
+factom-cli importaddress ADDRESS [ADDRESS...]
+Import one or more secret keys into the wallet
 
-### HTTP Request
+factom-cli importwords '12WORDS'
+Import 12 words from Koinify sale into the Wallet
 
-`GET http://example.com/api/kittens`
+factom-cli listaddresses
+List the addresses stored in the wallet
 
-### Query Parameters
+factom-cli listtxs [tmp|all|address|id|range]
+List transactions from the wallet or the Factoid Chain
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+factom-cli listtxs address ECADDRESS|FCTADDRESS
+List transaction from the Factoid Chain with a specific address
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+factom-cli listtxs [all]
+List all transactions from the Factoid Chain
 
-## Get a Specific Kitten
+factom-cli listtxs id TXID
+List transaction from the Factoid Chain
 
-```ruby
-require 'kittn'
+factom-cli listtxs range START END
+List the transactions from the Factoid Chain within the specified range
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+factom-cli listtxs tmp
+List current working transactions in the wallet
 
-```python
-import kittn
+factom-cli newecaddress
+Generate a new Entry Credit Address in the wallet
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
+factom-cli newfctaddress
+Generate a new Factoid Address in the wallet
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+factom-cli newtx TXNAME
+Create a new transaction in the wallet
 
-```javascript
-const kittn = require('kittn');
+factom-cli properties
+Get version information about facotmd and the factom wallet
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
+factom-cli receipt ENTRYHASH
+Returns a Receipt for a given Entry
 
-> The above command returns JSON structured like this:
+factom-cli rmtx TXNAME
+Remove a transaction in the wallet
 
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
+factom-cli sendfct FROMADDRESS TOADDRESS AMOUNT
+Send Factoids between 2 addresses
 
-This endpoint retrieves a specific kitten.
+factom-cli sendtx TXNAME
+Send a Transaction to Factom
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+factom-cli signtx TXNAME
+Sign a transaction in the wallet
 
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
+factom-cli subtxfee TXNAME ADDRESS
+Subtract the transaction fee from an output of a transaction in the wallet
