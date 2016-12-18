@@ -69,7 +69,7 @@ Let's give it a try so you get familiar with another important function. Go to "
  
 ![Wallet 47](images/wallet_033.png)
 
-<aside class="success"><br>
+<aside class="notice"><br>
 Note, the settings page is where you can export your wallet seed to a file.
 </aside>
 

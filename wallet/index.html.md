@@ -5,8 +5,11 @@ language_tabs:
   - shell
 
 toc_footers:
-  - <a href='#'>Somefink else here!</a>
-  - <a href='https://factom.com'>Go back to FACTOM.COM</a>
+  - <a href='https://docs.factom.com'>Factom API Documentation</a>
+  - <a href='https://docs.factom.com'>Factom CLI Documentation</a>
+  - <a href='https://docs.factom.com'>Sign Up for a Developer Key</a>
+  - <a href='https://github.com/tripit/factomproject'>Factom on GitHub</a>
+  - <a href='https://factom.com'>Back to FACTOM.COM</a>
 
 includes:
   - before you begin
@@ -18,6 +21,8 @@ includes:
   - send and receive fct
   - convert fct to ec
   - redeem from koinify
+  - import private key
+  - verify balances
   
 
 search: true
