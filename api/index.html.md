@@ -12,7 +12,7 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
-  - errors
+  
 
 search: true
 ---
@@ -43,6 +43,8 @@ They can be invoked as
 `
 
 ```json
+//request
+
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -52,7 +54,10 @@ They can be invoked as
 "36c360817761e0d92af464f7c2e94a7495104d6b0a6051218cc53e52d3d519b6"
 }
 }
+```
 
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -88,16 +93,20 @@ They can be invoked as
 ```
 
 ##directory-block-head
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' -H
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
+`
 
 ```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "directory-block-head"
 }
 
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -108,17 +117,21 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-bloc
 }
 ```
 
-heights
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "heights"}' -H 'content-type:text/plain;'
-http://localhost:8088/v2
+##heights
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "heights"}' -H 'content-type:text/plain;'
+http://localhost:8088/v2`
 
 ```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "heights"
 }
+```
 
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -134,12 +147,13 @@ http://localhost:8088/v2
 }
 ```
 
-raw-data
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+##raw-data
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"1f2931558c0ef6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"}, "method": "raw-data"}' -H
-'content-type:text/plain;' http://localhost:8088/v2
+'content-type:text/plain;' http://localhost:8088/v2`
 
 ```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -148,7 +162,10 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 "hash":"1f2931558c0ef6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"
 }
 }
+```
 
+```json
+//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -161,10 +178,12 @@ f6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"
 ```
 
 ##dblock-by-height
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-height",
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-height",
 "params":{"height":14460}}' -H 'content-type:text/plain;' http://localhost:8088/v2
+`
 
 ```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -173,7 +192,10 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-heig
 "height": 1
 }
 }
+```
 
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -235,10 +257,11 @@ e4f8aa910e5fed66733aa30dafdc91245157b3b00000000000000000000000000000000000
 ```
 
 ##ablock-by-height
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
-"ablock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
+"ablock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 ```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -247,7 +270,10 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "
 "height": 14460
 }
 }
+```
 
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -343,9 +369,11 @@ f37af7375517ea236786ed301206ff2963af7df29bb6749a4c29bc1eb65a48bd7b3ec6590c
 
 ##ecblock-by-height
 
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
-"ecblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
+"ecblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -354,7 +382,9 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "
 "height": 14460
 }
 }
-
+```
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -421,12 +451,14 @@ f868e34aff4edce479f6ee412161e1faa3596a112cd5ef75e96f59cadd44ed20133c7b8c95
 014010101020103010401050106010701080109010a"
 }
 }
+```
 
 ##fblock-by-height
 
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method": "fblock-by-height"}' -H 'content-type:text/plain;' http://localhost
-:8088/v2
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method": "fblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -436,6 +468,8 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "
 }
 }
 
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -599,12 +633,15 @@ acf42f72da96d74acd64d2935d75971ac363c20508bddf5a9d4762e2496a861a1f03ec0dc5
 ce2bb79e449070000"
 }
 }
+```
 
-receipt
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+##receipt
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"0561491594de81214ebd918f29d1f9f59266ea63ec76341162dc4a252a0225b9"}, "method": "receipt"}' -H 'content-type:text/plain;' http://lo
-calhost:8088/v2
+calhost:8088/v2`
 
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -613,7 +650,9 @@ calhost:8088/v2
 "Hash":"0561491594de81214ebd918f29d1f9f59266ea63ec76341162dc4a252a0225b9"
 }
 }
-
+```
+```json
+//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -632,13 +671,17 @@ dddddddddd"
 }
 }
 }
+```
 
 ##entry-block
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
 "params":{"KeyMR":"f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"},"method":"entry-block"}' -H
-'content-type:text/plain;' http://localhost:8088/v2`
+'content-type:text/plain;' http://localhost:8088/v2
+`
 
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -647,7 +690,10 @@ dddddddddd"
 "KeyMR":"f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"
 }
 }
+```
 
+```json
+//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -664,13 +710,17 @@ c",
 "EntryList":[]
 }
 }
+```
 
 ##entry
 Get an Entry from factomd specified by the Entry Hash.
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params":
-{"Hash":"be5216cc7a5a3ad44b49245aec298f47cbdfca9862dee13b0093e5880012b771"}}' -H 'content-type:text/plain;'
-http://localhost:8088/v2
 
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params":
+{"Hash":"be5216cc7a5a3ad44b49245aec298f47cbdfca9862dee13b0093e5880012b771"}}' -H 'content-type:text/plain;'
+http://localhost:8088/v2`
+
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -680,7 +730,10 @@ http://localhost:8088/v2
 "be5216cc7a5a3ad44b49245aec298f47cbdfca9862dee13b0093e5880012b771"
 }
 }
+```
 
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -691,11 +744,15 @@ http://localhost:8088/v2
 "extids": ["33343533343537383334"]
 }
 }
+```
 
 ##pending-entries
 
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": "", "method": "pending-entries"}' -H 'content-type:text/plain;' http://localhost:8088/v2
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": "", "method": "pending-entries"}' -H 'content-type:text/plain;' http://localhost:8088/
+`
 
+```json
+//result
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -706,12 +763,13 @@ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": "", "method": "
 "6bd0ba63e1c6b34313b4050e82f9646cd551f2099cdd22119b5241fca15f32c1"
 }]
 }
+```
+##transaction
 
-transaction
-
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}, "method": "transaction"}' -H 'content-type:text/plain;' http:/
 /localhost:8088/v2
+`
 
 {
 "jsonrpc": "2.0",
