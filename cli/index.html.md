@@ -21,7 +21,9 @@ Welcome to the Kittn API! You can use our API to access Kittn API endpoints, whi
 
 # Authentication
 
+```
 factom-cli ack TxID|FullTx
+```
 Returns information about a factoid transaction, or an entry / entry credit transaction
 
 factom-cli addchain [-e EXTID1 -e EXTID2 -E BINEXTID3 ...] ECADDRESS <STDIN>
