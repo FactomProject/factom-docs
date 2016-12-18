@@ -16,6 +16,28 @@ search: true
 
 Welcome to the Factom CLI. <i>factom-cli</i> is a command line interface program for interacting with <i>factomd</i>  and <i>factom-walletd</i>.
 
+```factom-cli [OPTIONS] SUBCOMMAND [OPTIONS]
+```
+
+
+# Flags
+##-e -x
+<br>
+The addchain and addentry subcommands support the -e and -x flags for adding external ids to the Entries they create. Multiple -e and -x flags may be used, and -e and -x may be used in combination. -e string will encode the string as binary and set it as the next external id. -x hexstring will decode the hexstring into binary and set it as the next external id.<br><br>
+```$ echo hello factom | factom-cli addchain -e test -x 3031 $ecaddress
+```
+
+##-n -h
+<br>
+The get firstentry, get chainhead, and get allentries subcommands support the -n and -h flags for using Chain Names as an alternative for providing a ChainID. The Chain Name is the combination of External IDs on the first Entry in the Chain.<br><br>
+```$ factom-cli get chainhead -n test -h 3031
+```
+
+##-r
+<br>
+The r flag tells factom-cli to try and resolve a public Factoid or Entry Credit Address from a DNS name registered through Netki. <br><br>
+```$ factom-cli sendfct -r $my_factoid_address factom.michaeljbeam.me
+```
 
 # CLI Commands
 
