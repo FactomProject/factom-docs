@@ -20,16 +20,27 @@ search: true
 # Introduction
 This is the API reference for the factomd process. The API is designed for outside application to process transactions and interact with the
 Factom federated servers. It's listening port can be configured and runs on 8088 by default.
-RPC compiled method list for Factom Federation. Useful for factom-cli to ensure changed to new method names
+
+All these APIs use JSON-RPC, which is a remote procedure call protocol encoded in JSON. It is a very simple protocol (and very similar to XML-RPC), defining only a handful of data types and commands.
+
+They can be invoked as
+
+`curl -X GET –data-binary <JSON input> "method": "directory-block"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+ 
+ The output will also be JSON.
+
+ An example of a request and a response are given in the Right Panel for each of the RPC Methods
+
+
 
 # RPC Methods
 
 ##directory-block
 
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"KeyMR":"7d7f991a08178f88b4b48ec7d45e7a58c9eab5a404724136f14c0f0d741ba2aa"}, "method": "directory-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
-
+`
 
 ```json
 {
@@ -624,9 +635,9 @@ dddddddddd"
 
 ##entry-block
 
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
 "params":{"KeyMR":"f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"},"method":"entry-block"}' -H
-'content-type:text/plain;' http://localhost:8088/v2
+'content-type:text/plain;' http://localhost:8088/v2`
 
 {
 "jsonrpc": "2.0",
