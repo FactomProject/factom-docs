@@ -58,6 +58,7 @@ They can be invoked as
 
 ```json
 //response
+
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -93,6 +94,7 @@ They can be invoked as
 ```
 
 ##directory-block-head
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 `
@@ -104,6 +106,7 @@ They can be invoked as
 "id": 0,
 "method": "directory-block-head"
 }
+```
 
 ```json
 //response
@@ -118,6 +121,7 @@ They can be invoked as
 ```
 
 ##heights
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "heights"}' -H 'content-type:text/plain;'
 http://localhost:8088/v2`
 
@@ -532,7 +536,6 @@ e8070c85e861e21c39a56a5a422dd2d58dd65a7eeff849f6d02de04"
 ],
 "blockheight": 0
 },
-#...
 {
 "millitimestamp": 1480284956754,
 "inputs": [
@@ -700,8 +703,7 @@ dddddddddd"
 "result":{
 "Header:{
 "BlockSequenceNumber":0,
-"ChainID":"bb4e132bb2f8792c3174f5c1de108816c36cee86a383e1067926353e41f334b
-c",
+"ChainID":"bb4e132bb2f8792c3174f5c1de108816c36cee86a383e1067926353e41f334bc",
 "PrevKeyMR":"0000000000000000000000000000000000000000000000000000000000000
 000",
 "Timestamp":0,
@@ -770,7 +772,8 @@ http://localhost:8088/v2`
 {"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}, "method": "transaction"}' -H 'content-type:text/plain;' http:/
 /localhost:8088/v2
 `
-
+```json
+//result
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -813,11 +816,13 @@ http://localhost:8088/v2`
 "includedindirectoryblockheight": -1
 }
 }
+```
 
-pending-transactions
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+##pending-transactions
+
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"Address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "pending-transactions"}' -H
-'content-type:text/plain;' http://localhost:8088/v2
+'content-type:text/plain;' http://localhost:8088/v2`
 
 [
 {
@@ -833,20 +838,24 @@ a2256b1",
 ]
 
 ##chain-head
-curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
-"params":{"ChainID":"5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"}, "method": "chain-head"}' -H
-'content-type:text/plain;' http://localhost:8088/v2
 
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
+"params":{"ChainID":"5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"}, "method": "chain-head"}' -H
+'content-type:text/plain;' http://localhost:8088/v2`
+
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "chain-head",
 "params":{
-"ChainID":"bb4e132bb2f8792c3174f5c1de108816c36cee86a383e1067926353e41f334b
-c"
+"ChainID":"bb4e132bb2f8792c3174f5c1de108816c36cee86a383e1067926353e41f334bc"
 }
 }
-
+```
+```json
+//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -856,11 +865,14 @@ c"
 }
 }
 
-entry-credit-balance
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
-{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "entry-credit-balance"}' -H
-'content-type:text/plain;' http://localhost:8088/v2
+##entry-credit-balance
 
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "entry-credit-balance"}' -H
+'content-type:text/plain;' http://localhost:8088/v2`
+
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -869,7 +881,9 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 "address":"EC3MAHiZyfuEb5fZP2fSp2gXMv8WemhQEUFXyQ2f2HjSkYx7xY1S"
 }
 }
-
+```
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -877,13 +891,16 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 "balance": 2000
 }
 }
-
+```
 ##factoid-balance
 
 This call returns the number of Factoshis (Factoids *10^-8) that are currently available at the address specified.
-$ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
-}, "method": "factoid-balance"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 
+`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
+}, "method": "factoid-balance"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -892,7 +909,9 @@ $ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":{"address":"FA
 "address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
 }
 }
-
+```
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -900,17 +919,25 @@ $ curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":{"address":"FA
 "balance": 966582271
 }
 }
+```
 
-entry-credit-rate
+##entry-credit-rate
+
 This call returns the number of Factoshis (Factoids *10^-8) that purchase a single Entry Credit. The minimum factoid fees are also determined by
 this rate, along which how complex the factoid transaction is.
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "entry-credit-rate"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "entry-credit-rate"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "entry-credit-rate"
 }
+```
+```json
+//response
 
 {
 "jsonrpc": "2.0",
@@ -919,15 +946,22 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "entry-credit-
 "rate": 95369
 }
 }
+```
 
-properties
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}' -H 'content-type:text/plain;' http://localhost:8088/v2
+##properties
 
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "properties"
 }
+```
+```json
+//response
 
 {
 "jsonrpc": "2.0",
@@ -937,21 +971,26 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}'
 "factomdapiversion": "2.0"
 }
 }
+```
 
 ##factoid-submit
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "factoid-submit", "params":
+
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "factoid-submit", "params":
 {"transaction":"0201565d109233010100b0a0e100646f3e8750c550e4582eca5047546ffef89c13a175985e320232bacac81cc428afd7c200ce7b98b
 fdae90f942bc1fe88c3dd44d8f4c81f4eeb88a5602da05abc82ffdb5301718b5edd2914acc2e4677f336c1a32736e5e9bde13663e6413894f57ec272
 e28dc1908f98b79df30005a99df3c5caf362722e56eb0e394d20d61d34ff66c079afad1d09eee21dcd4ddaafbb65aacea4d5c1afcd086377d77172f15
-b3aa32250a"}}' -H 'content-type:text/plain;' http://localhost:8088/v2
+b3aa32250a"}}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 ##commit-chain
-curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
+
+`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 {"message":"00015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c03
 1b4124395c940e5e2c5ea496e8aaa2f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d606698547340b3b6a27bcceb6a42d62a3a8d0
 2a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac120237086112b5ef3
-4fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}, "method": "commit-chain"}' -H 'content-type:text/plain;' http://localhost:8088/v2
+4fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}, "method": "commit-chain"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -966,7 +1005,10 @@ c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c95
 },
 "method": "commit-chain"
 }
+```
 
+```json
+//result
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -976,12 +1018,16 @@ c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c95
 "txid":"1580788d133a9e21406e6406a4a85150fe450895117a4365f77affe0fe5899fd"
 }
 }
+```
 
 ##reveal-chain
-curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
-{"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
-C6C6F20466163746F6D21"}, "method": "reveal-chain"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 
+`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
+{"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
+C6C6F20466163746F6D21"}, "method": "reveal-chain"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -990,7 +1036,9 @@ C6C6F20466163746F6D21"}, "method": "reveal-chain"}' -H 'content-type:text/plain;
 F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"},
 "method": "reveal-chain"
 }
-
+```
+```json
+//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -1000,14 +1048,18 @@ F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"},
 "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734"
 }
 }
+```
 
 ##commit-entry
-curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
+
+`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 {"entry":"00015507C1024BF5C956749FC3EBA4ACC60FD485FB100E601070A44FCCE54FF358D60669854734013B6A27BCCEB6A42D62A3
 A8D02A6F0D73653215771DE243A63AC048A18B59DA29F4CBD953E6EBE684D693FDCA270CE231783E8ECC62D630F983CD59E559C625
 3F84D1F54C8E8D8665D493F7B4A4C1864751E3CDEC885A64C2144E0938BF648A00"}, "method": "commit-entry"}' -H 'content-type:text/plain;'
-http://localhost:8088/v2
+http://localhost:8088/v2`
 
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -1020,7 +1072,9 @@ BD953E6EBE684D693FDCA270CE231783E8ECC62D630F983CD59E559C6253F84D1F54C8E8D8
 },
 "method": "commit-entry"
 }
-
+```
+```json
+//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1029,12 +1083,16 @@ BD953E6EBE684D693FDCA270CE231783E8ECC62D630F983CD59E559C6253F84D1F54C8E8D8
 "txid":"bf12150038699f678ac2314e9fa2d4786dc8984d9b8c67dab8cd7c2f2e83372c"
 }
 }
+```
 
 ##reveal-entry
-curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
-{"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
-C6C6F20466163746F6D21"}, "method": "reveal-entry"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 
+`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
+{"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
+C6C6F20466163746F6D21"}, "method": "reveal-entry"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+
+```json
+//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -1044,7 +1102,10 @@ F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"
 },
 "method": "reveal-entry"
 }
+```
 
+```json
+//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1054,17 +1115,23 @@ F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"
 734"
 }
 }
+```
 
 ##send-raw-message
+
 Does the commit and reveal chain example as raw messages
+
 Commit Chain Example
-curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
+
+`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 {"message":"0401554b9c15b100015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c1
 11f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d606698547340b3b6a27bcce
 b6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac12
 0237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}, "method": "send-raw-message"}' -H 'content-type:text/plain;' htt
-p://localhost:8088/v2
+p://localhost:8088/v2`
 
+```json
+//request
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1078,6 +1145,9 @@ c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c9
 },
 "method":"send-raw-message"
 }
+```
+```json
+//response
 
 {
 "jsonrpc":"2.0",
@@ -1086,12 +1156,15 @@ c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c9
 "message":"Successfully sent the message"
 }
 }
+```
 
 Reveal Chain Example
-curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
+`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 {"message":"0c01554b8e5881007e18ccc911f057fb111c7570778f6fdc51e189f35a6e6da683ec2a264443531f000e0005746573745a0005746573
-745a48656c6c6f20466163746f6d21"}, "method": "send-raw-message"}' -H 'content-type:text/plain;' http://localhost:8088/v2
+745a48656c6c6f20466163746f6d21"}, "method": "send-raw-message"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+```json
+//request
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1101,6 +1174,9 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 },
 "method":"send-raw-message"
 }
+```
+```json
+//response
 
 {
 "jsonrpc":"2.0",
@@ -1109,26 +1185,30 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 "message":"Successfully sent the message"
 }
 }
+```
 
 To Check:
 ChainID : 7e18ccc911f057fb111c7570778f6fdc51e189f35a6e6da683ec2a264443531f
 Entry Hash : f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734
 
 ##Encrypted Connections:
+
 When factomd is run with TLS enabled, the calling program needs to specify the certificate file generated by factomd. This is how to use curl with
 TLS:
-curl -X POST --cacert ~/.factom/m2/factomdAPIpub.cert --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}' -H 'content-type:text/plain;' htt
-ps://localhost:8088/v2
+
+`curl -X POST --cacert ~/.factom/m2/factomdAPIpub.cert --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}' -H 'content-type:text/plain;' https://localhost:8088/v2`
 
 ##Password Protection:
+
 When factomd is run with a password, it uses HTTP Basic Authentication. It is recommended to encrypt the connection when using a password,
 because otherwise the password can be sniffed on the network. Here is how to run with just the password:
-curl -X POST -u userHere:securePassHere --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}' -H 'content-type:text/plain;' http://localhost:
-8088/v2
+
+`curl -X POST -u userHere:securePassHere --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 ##Combined Password and Encryption:
-curl -X POST -u userHere:securePassHere --cacert ~/.factom/m2/factomdAPIpub.cert --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}'
--H 'content-type:text/plain;' https://localhost:8088/v2
+
+`curl -X POST -u userHere:securePassHere --cacert ~/.factom/m2/factomdAPIpub.cert --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}'
+-H 'content-type:text/plain;' https://localhost:8088/v2`
 
 ##Creating Certificates:
 Normally, when started the program creates a new certificate if one is not found. The certificates are bound to a set of specific IP addresses.
@@ -1141,12 +1221,17 @@ factomd -tls=true -selfaddr=domain.net,123.23.111.444
 
 ##errors
 
+```json
+//response
 {
 "jsonrpc":"2.0",
 "id": 0,
 "method":"junk"
 }
+```
 
+```json
+//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1155,3 +1240,4 @@ factomd -tls=true -selfaddr=domain.net,123.23.111.444
 "message":"Method not found"
 }
 }
+```
