@@ -28,7 +28,7 @@ Make note of the FA address for your records. You will need it to verify that th
 
 Run the listaddresses command to list all the addresses in your wallet.
 
-`> factom-cli listaddresses`
+`factom-cli listaddresses`
 
 > Terminal output for:<br>
 > `factom-cli listaddresses`
