@@ -1065,7 +1065,7 @@ factomd -tls=true -selfaddr=domain.net,123.23.111.444
 
 ##errors
 
-> Example Response
+> Example Request
 
 ```json
 {
