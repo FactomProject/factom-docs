@@ -42,7 +42,6 @@ They can be invoked as
 {"KeyMR":"7d7f991a08178f88b4b48ec7d45e7a58c9eab5a404724136f14c0f0d741ba2aa"}, "method": "directory-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 `
-
 > Example Request
 
 ```json
@@ -55,7 +54,6 @@ They can be invoked as
     }
 }
 ```
-
 > Example Response
 
 ```json
@@ -81,24 +79,23 @@ They can be invoked as
     }
 }
 ```
-
 ##directory-block-head
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 `
+> Example Request
 
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "directory-block-head"
 }
 ```
+> Example Response
 
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -114,17 +111,18 @@ They can be invoked as
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "heights"}' -H 'content-type:text/plain;'
 http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "heights"
 }
 ```
+> Example Response
 
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -145,8 +143,9 @@ http://localhost:8088/v2`
 {"hash":"1f2931558c0ef6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"}, "method": "raw-data"}' -H
 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -156,9 +155,9 @@ http://localhost:8088/v2`
 }
 }
 ```
+> Example Response
 
 ```json
-//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -174,9 +173,9 @@ f6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-height",
 "params":{"height":14460}}' -H 'content-type:text/plain;' http://localhost:8088/v2
 `
+> Example Request
 
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -186,9 +185,9 @@ f6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"
 }
 }
 ```
+> Example Response
 
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -253,8 +252,9 @@ e4f8aa910e5fed66733aa30dafdc91245157b3b00000000000000000000000000000000000
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
 "ablock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -264,9 +264,9 @@ e4f8aa910e5fed66733aa30dafdc91245157b3b00000000000000000000000000000000000
 }
 }
 ```
+> Example Response
 
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -365,8 +365,9 @@ f37af7375517ea236786ed301206ff2963af7df29bb6749a4c29bc1eb65a48bd7b3ec6590c
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
 "ecblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -376,8 +377,9 @@ f37af7375517ea236786ed301206ff2963af7df29bb6749a4c29bc1eb65a48bd7b3ec6590c
 }
 }
 ```
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -450,8 +452,9 @@ f868e34aff4edce479f6ee412161e1faa3596a112cd5ef75e96f59cadd44ed20133c7b8c95
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method": "fblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -460,9 +463,10 @@ f868e34aff4edce479f6ee412161e1faa3596a112cd5ef75e96f59cadd44ed20133c7b8c95
 "height": 14460
 }
 }
+```
+> Example Response
 
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -632,8 +636,9 @@ ce2bb79e449070000"
 {"hash":"0561491594de81214ebd918f29d1f9f59266ea63ec76341162dc4a252a0225b9"}, "method": "receipt"}' -H 'content-type:text/plain;' http://lo
 calhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -643,8 +648,9 @@ calhost:8088/v2`
 }
 }
 ```
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -671,9 +677,9 @@ dddddddddd"
 "params":{"KeyMR":"f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"},"method":"entry-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 `
+> Example Request
 
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -684,8 +690,9 @@ dddddddddd"
 }
 ```
 
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -710,8 +717,9 @@ Get an Entry from factomd specified by the Entry Hash.
 {"Hash":"be5216cc7a5a3ad44b49245aec298f47cbdfca9862dee13b0093e5880012b771"}}' -H 'content-type:text/plain;'
 http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -722,9 +730,9 @@ http://localhost:8088/v2`
 }
 }
 ```
+> Example Response
 
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -829,8 +837,9 @@ http://localhost:8088/v2`
 "params":{"ChainID":"5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"}, "method": "chain-head"}' -H
 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -840,8 +849,9 @@ http://localhost:8088/v2`
 }
 }
 ```
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -858,8 +868,9 @@ http://localhost:8088/v2`
 {"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "entry-credit-balance"} -H
 content-type:text/plain; http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -870,8 +881,9 @@ content-type:text/plain; http://localhost:8088/v2`
 }
 ```
 
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -888,8 +900,9 @@ This call returns the number of Factoshis (Factoids *10^-8) that are currently a
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
 }, "method": "factoid-balance"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -899,8 +912,9 @@ This call returns the number of Factoshis (Factoids *10^-8) that are currently a
 }
 }
 ```
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -917,16 +931,18 @@ this rate, along which how complex the factoid transaction is.
 
 `curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "entry-credit-rate"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "entry-credit-rate"
 }
 ```
+> Example Response
+
 ```json
-//response
 
 {
 "jsonrpc": "2.0",
@@ -941,16 +957,18 @@ this rate, along which how complex the factoid transaction is.
 
 `curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
 "method": "properties"
 }
 ```
+> Example Response
+
 ```json
-//response
 
 {
 "jsonrpc": "2.0",
@@ -978,8 +996,9 @@ b3aa32250a"}} -H 'content-type:text/plain;' http://localhost:8088/v2`
 2a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac120237086112b5ef3
 4fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}, "method": "commit-chain"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -1015,8 +1034,9 @@ c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c95
 {"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
 C6C6F20466163746F6D21"}, "method": "reveal-chain"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -1026,8 +1046,9 @@ F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"},
 "method": "reveal-chain"
 }
 ```
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -1047,8 +1068,9 @@ A8D02A6F0D73653215771DE243A63AC048A18B59DA29F4CBD953E6EBE684D693FDCA270CE231783E
 3F84D1F54C8E8D8665D493F7B4A4C1864751E3CDEC885A64C2144E0938BF648A00"}, "method": "commit-entry"}' -H 'content-type:text/plain;'
 http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -1062,8 +1084,9 @@ BD953E6EBE684D693FDCA270CE231783E8ECC62D630F983CD59E559C6253F84D1F54C8E8D8
 "method": "commit-entry"
 }
 ```
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1080,8 +1103,9 @@ BD953E6EBE684D693FDCA270CE231783E8ECC62D630F983CD59E559C6253F84D1F54C8E8D8
 {"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
 C6C6F20466163746F6D21"}, "method": "reveal-entry"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc": "2.0",
 "id": 0,
@@ -1093,8 +1117,9 @@ F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"
 }
 ```
 
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1119,8 +1144,9 @@ b6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b2
 0237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}, "method": "send-raw-message"}' -H 'content-type:text/plain;' htt
 p://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1135,9 +1161,9 @@ c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c9
 "method":"send-raw-message"
 }
 ```
-```json
-//response
+> Example Response
 
+```json
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1152,8 +1178,9 @@ Reveal Chain Example
 {"message":"0c01554b8e5881007e18ccc911f057fb111c7570778f6fdc51e189f35a6e6da683ec2a264443531f000e0005746573745a0005746573
 745a48656c6c6f20466163746f6d21"}, "method": "send-raw-message"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
+> Example Request
+
 ```json
-//request
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1164,9 +1191,9 @@ Reveal Chain Example
 "method":"send-raw-message"
 }
 ```
-```json
-//response
+> Example Response
 
+```json
 {
 "jsonrpc":"2.0",
 "id":0,
@@ -1210,17 +1237,18 @@ factomd -tls=true -selfaddr=domain.net,123.23.111.444
 
 ##errors
 
+> Example Response
+
 ```json
-//response
 {
 "jsonrpc":"2.0",
 "id": 0,
 "method":"junk"
 }
 ```
+> Example Response
 
 ```json
-//response
 {
 "jsonrpc":"2.0",
 "id":0,
