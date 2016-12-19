@@ -43,54 +43,42 @@ They can be invoked as
 'content-type:text/plain;' http://localhost:8088/v2
 `
 
-```json
-//request
+> Example Request
 
+```json
 {
-"jsonrpc": "2.0",
-"id": 0,
-"method": "directory-block",
-"params": {
-"keymr":
-"36c360817761e0d92af464f7c2e94a7495104d6b0a6051218cc53e52d3d519b6"
-}
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "directory-block",
+    "params": {
+        "keymr": "36c360817761e0d92af464f7c2e94a7495104d6b0a6051218cc53e52d3d519b6"
+    }
 }
 ```
 
-```json
-//response
+> Example Response
 
+```json
 {
-"jsonrpc": "2.0",
-"id": 0,
-"result": {
-"header": {
-"prevblockkeymr":
-"59da2e17929da7d132e7f8d1c5c130195ae3960348d8b408563dc2b9dd2ce062",
-"sequencenumber": 22954,
-"timestamp": 1481304240
-},
-"entryblocklist": [
-{
-"chainid":
-"000000000000000000000000000000000000000000000000000000000000000a",
-"keymr":
-"5f6ba4e95cdce6cf3226a5b7e922885fc86dbfd38f4c842e9ab4d35f2fed08f7"
-},
-{
-"chainid":
-"000000000000000000000000000000000000000000000000000000000000000c",
-"keymr":
-"52ce82963f1a70a6c88ed151e396400b34026a67a6eecf6669e3c5f3e2e18436"
-},
-{
-"chainid":
-"000000000000000000000000000000000000000000000000000000000000000f",
-"keymr":
-"7a9b23445d01221830e50323e705262a89a67486a9dcdf966ef8c3f14d1411ff"
-}
-]
-}
+    "jsonrpc": "2.0",
+    "id": 0,
+    "result": {
+        "header": {
+            "prevblockkeymr": "59da2e17929da7d132e7f8d1c5c130195ae3960348d8b408563dc2b9dd2ce062",
+            "sequencenumber": 22954,
+            "timestamp": 1481304240
+        },
+        "entryblocklist": [{
+            "chainid": "000000000000000000000000000000000000000000000000000000000000000a",
+            "keymr": "5f6ba4e95cdce6cf3226a5b7e922885fc86dbfd38f4c842e9ab4d35f2fed08f7"
+        }, {
+            "chainid": "000000000000000000000000000000000000000000000000000000000000000c",
+            "keymr": "52ce82963f1a70a6c88ed151e396400b34026a67a6eecf6669e3c5f3e2e18436"
+        }, {
+            "chainid": "000000000000000000000000000000000000000000000000000000000000000f",
+            "keymr": "7a9b23445d01221830e50323e705262a89a67486a9dcdf966ef8c3f14d1411ff"
+        }]
+    }
 }
 ```
 
