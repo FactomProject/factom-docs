@@ -18,7 +18,7 @@ Before you start go to System Preferences/Security & Privacy, click on the lock 
 
 ![Security & Privacy](/images/wallet_005.png)
 
-<aside class="notice">
+<aside class="notice"><br>
 Note that after running the Factom installer it is recommended you revert back your Security & Privacy settings to their original state.
 </aside>
 
