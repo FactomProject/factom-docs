@@ -2,6 +2,7 @@
 title: CLI Reference
 
 language_tabs:
+  - shell
 
 toc_footers:
   - <a href='https://docs.factom.com'>Factom API Documentation</a>

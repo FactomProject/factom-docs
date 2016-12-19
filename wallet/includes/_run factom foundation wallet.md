@@ -57,14 +57,12 @@ This command will tell EnterpriseWallet to look for the file at the specified pa
 If by any chance the operation fails, quit EnterpriseWallet, delete the new wallet file located at ~/.factom/wallet/factoid_wallet.db and try again until you get all your addresses back.
 
 <aside class="success"><br>
-Remember, you only need to do this once the first time you run factom-walletd, thereafter you can run it normally. 
+Remember, you only need to do this once the first time you run EnterpriseWallet, thereafter you can run it normally. 
 </aside>
 
 Once you are happy continue by following the instructions to run the the wallet in your browser.
 
-**If you have never used FG**, run:
-
-On Mac, Windows and Linux, run the EnterpriseWallet app.
+**If you have never used FG**, on Mac, Windows and Linux, run the EnterpriseWallet app:
 
 `EnterpriseWallet` 
 

@@ -14,10 +14,9 @@ The seed comes to the rescue because if you ever lose your wallet file you can a
 <br>
 <i>So how to recover External Addresses?</i><br>
  
-<i>The simple way</i>: if you have any balances on addresses not generated from your wallet seed, you may want to transfer them to an address generated from your seed.
-<i>The easy way</i>: keep a backup of your wallet file, whatever addresses are in there will always be, no need to recover them. 
-<i>The alternative way</i>: make sure to keep your external addresses' Private Keys safe, write them down or copy/paste them to a file, you can always import them even if you create a new wallet.
-<br>
+<i>The simple way</i>: if you have any balances on addresses not generated from your wallet seed, you may want to transfer them to an address generated from your seed.<br>
+<i>The easy way</i>: keep a backup of your wallet file, whatever addresses are in there will always be, no need to recover them.<br>  
+<i>The alternative way</i>: make sure to keep your external addresses' Private Keys safe, write them down or copy/paste them to a file, you can always import them even if you create a new wallet.<br> 
 <br>
 Keep this in mind especially if you are migrating from our FG wallet to our FF wallet. If you are not careful you may lose access to your Factoids and Entry Credits!
 </aside>
@@ -39,7 +38,7 @@ Note that the .factom folder is a hidden folder on Mac and Linux so perform a Go
 <aside class="success"><br>
 By having a backup somewhere safe, if something goes wrong, you can always try again but most importantly, you'll be able to import all your FG addresses and their balances into your new wallet the first time you run it.
 
-We will explain you how to do that when "we cross that bridge" in the <a href="#run-the-factom-foundation-wallet">Run The Factom Foundation Wallet</a> guide.</a>
+We will explain you how to do that when "we cross that bridge" in the <a href="#run-the-factom-foundation-wallet">Run The Factom Foundation Wallet</a> guide.
 </aside>
 
 **Backup your Factom Federation (FF) wallet file**
@@ -54,11 +53,11 @@ The wallet file is called "factom_wallet.db" and is located in the .factom folde
 Note that the .factom folder is a hidden folder on Mac and Linux so perform a Google search for "how to show hidden files and folders on YOUR OS", replacing YOUR OS with Mac or Linux accordingly.
 </aside>
 
-**To backup** your FF wallet file, quit factomd and factom-walletd, locate the factom_wallet.db file, make a copy, and save it to a location outside the .factom folder such as your documents folder, an external drive, a USB stick, or cloud storage.
+**To backup** your FF wallet file, quit factomd and EnterpriseWallet, locate the factom_wallet.db file, make a copy, and save it to a location outside the .factom folder such as your documents folder, an external drive, a USB stick, or cloud storage.
 
-**To create a fresh** FF wallet file, quit factomd and factom-walletd then move your wallet file to a safe location out of the .factom folder. There should be no wallet file in the .factom folder. Restart factomd and factom-walletd and a new empty wallet will be generated.
+**To create a fresh** FF wallet file, quit factomd and EnterpriseWallet then move your wallet file to a safe location out of the .factom folder. There should be no wallet file in the .factom folder. Restart factomd and factom-walletd and a new empty wallet will be generated.
 
-**To restore** a previous FF wallet file backup, quit factomd and factom-walletd, make sure you have a backup of the current wallet first, then drag & drop the previous backup in the .factom folder, overwrite if needed. Restart factomd and factom-walletd and your previous wallet will now be used instead.
+**To restore** a previous FF wallet file backup, quit factomd and EnterpriseWallet, make sure you have a backup of the current wallet first, then drag & drop the previous backup in the .factom folder, overwrite if needed. Restart factomd and factom-walletd and your previous wallet will now be used instead.
 
 <aside class="warning"><br>
 Pay attention when performing backups and restores. Each wallet file has its unique seed and addresses. Overwriting a wallet may resulting in losing all your Factoids and Entry Credits. Not cool.
@@ -71,6 +70,7 @@ You can also backup the Factom Foundation Wallet seed, which is a 12 word passph
 ![Export Seed Notice](/images/wallet_003.png)
  
 Once exported you can backup the text file somewhere safe, open it and write the seed down, or add it to your favourite password manager.
+
 When you try to import it back you get another warning which you should also read carefully. 
 
 ![Confirm Import](/images/wallet_004.png)
