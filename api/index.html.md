@@ -766,12 +766,12 @@ http://localhost:8088/v2`
 }]
 }
 ```
+
 ##transaction
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
-{"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}, "method": "transaction"}' -H 'content-type:text/plain;' http:/
-/localhost:8088/v2
-`
+{"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}, "method": "transaction"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+
 ```json
 //result
 {
@@ -824,18 +824,15 @@ http://localhost:8088/v2`
 {"Address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "pending-transactions"}' -H
 'content-type:text/plain;' http://localhost:8088/v2`
 
-[
+```
 {
-"TransactionID":"337a32712f14c5df0b57a64bd6c321a043081688ecd4f33fd8319470d
-a2256b1",
-"Status":"AckStatusACK"
+"TransactionID":"337a32712f14c5df0b57a64bd6c321a043081688ecd4f33fd8319470da2256b1", "Status":"AckStatusACK"
 },
 {
-"TransactionID":"9f94b2c0e827ac4e09fa1a649d4f2296cf19654a8589700c395ace006
-6357b14",
-"Status":"AckStatusACK"
+"TransactionID":"9f94b2c0e827ac4e09fa1a649d4f2296cf19654a8589700c395ace0066357b14", "Status":"AckStatusACK"
 }
-]
+
+```
 
 ##chain-head
 
@@ -864,12 +861,13 @@ a2256b1",
 56c"
 }
 }
+```
 
 ##entry-credit-balance
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
-{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "entry-credit-balance"}' -H
-'content-type:text/plain;' http://localhost:8088/v2`
+`curl -X POST --data-binary {"jsonrpc": "2.0", "id": 0, "params":
+{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "entry-credit-balance"} -H
+content-type:text/plain; http://localhost:8088/v2`
 
 ```json
 //request
@@ -882,6 +880,7 @@ a2256b1",
 }
 }
 ```
+
 ```json
 //response
 {
@@ -892,6 +891,7 @@ a2256b1",
 }
 }
 ```
+
 ##factoid-balance
 
 This call returns the number of Factoshis (Factoids *10^-8) that are currently available at the address specified.
@@ -979,7 +979,7 @@ this rate, along which how complex the factoid transaction is.
 {"transaction":"0201565d109233010100b0a0e100646f3e8750c550e4582eca5047546ffef89c13a175985e320232bacac81cc428afd7c200ce7b98b
 fdae90f942bc1fe88c3dd44d8f4c81f4eeb88a5602da05abc82ffdb5301718b5edd2914acc2e4677f336c1a32736e5e9bde13663e6413894f57ec272
 e28dc1908f98b79df30005a99df3c5caf362722e56eb0e394d20d61d34ff66c079afad1d09eee21dcd4ddaafbb65aacea4d5c1afcd086377d77172f15
-b3aa32250a"}}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+b3aa32250a"}} -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 ##commit-chain
 
