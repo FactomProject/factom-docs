@@ -8,6 +8,22 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - cli guides
+  - before we begin
+  - backup wallet
+  - install ff
+  - run ff
+  - generate fa address
+  - generate ec address
+  - send and receive fct
+  - convert fct to ec
+  - redeem koinify fct
+  - import private key
+  - verify balances
+  - create chain
+  - make entry
+  - read entries
+  - papermill
 
 search: true
 ---
