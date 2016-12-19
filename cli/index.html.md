@@ -28,6 +28,7 @@ includes:
   - make entry
   - read entries
   - papermill
+  - useful tools
 
 search: true
 ---

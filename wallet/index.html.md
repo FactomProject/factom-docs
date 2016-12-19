@@ -23,6 +23,7 @@ includes:
   - redeem from koinify
   - import private key
   - verify balances
+  - useful tools
   
 
 search: true
