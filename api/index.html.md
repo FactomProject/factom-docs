@@ -912,7 +912,6 @@ http://localhost:8088/v2`
 
 ```json
 {
-{
   "jsonrpc": "2.0",
   "id": 0,
   "params": {
