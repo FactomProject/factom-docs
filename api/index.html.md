@@ -542,12 +542,11 @@ calhost:8088/v2`
 > Example Response
 
 ```json
-//validate
 {
     "jsonrpc":"2.0",
     "id":0,
     "result":{
-        "Header:{
+        "Header":{
             "BlockSequenceNumber":0,
             "ChainID":"bb4e132bb2f8792c3174f5c1de108816c36cee86a383e1067926353e41f334bc",
             "PrevKeyMR":"0000000000000000000000000000000000000000000000000000000000000000",
