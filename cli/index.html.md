@@ -78,7 +78,10 @@ $ factom-cli sendfct -r $my_factoid_address factom.michaeljbeam.me
 ```shell
 factom-cli ack TxID|FullTx
 ```
-
+Example:
+```shell
+factom-cli ack TxID|FullTx
+```
 Returns information about a factoid transaction, or an entry / entry credit transaction
 
 ##addchain
