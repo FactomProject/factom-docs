@@ -5,8 +5,9 @@ language_tabs:
   - shell
 
 toc_footers:
-  - <a href='https://docs.factom.com'>Factom API Documentation</a>
-  - <a href='https://docs.factom.com'>Factom Foundation Wallet Documentation</a>
+  - <a href='../api'>Factom API Documentation</a>
+  - <a href='../cli'>Factom CLI Documentation</a>
+  - <a href='../wallet'>Factom Foundation Wallet Documentation</a>
   - <a href='https://docs.factom.com'>Sign Up for a Developer Key</a>
   - <a href='https://github.com/tripit/factomproject'>Factom on GitHub</a>
   - <a href='https://factom.com'>Back to FACTOM.COM</a>
