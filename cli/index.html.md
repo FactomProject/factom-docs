@@ -38,242 +38,341 @@ search: true
 
 Welcome to the Factom CLI. <i>factom-cli</i> is a command line interface program for interacting with <i>factomd</i>  and <i>factom-walletd</i>.
 
-```factom-cli [OPTIONS] SUBCOMMAND [OPTIONS]
+```shell
+factom-cli [OPTIONS] SUBCOMMAND [OPTIONS]
 ```
 
 
 # Flags
+
 ##-e -x
-<br>
-The addchain and addentry subcommands support the -e and -x flags for adding external ids to the Entries they create. Multiple -e and -x flags may be used, and -e and -x may be used in combination. -e string will encode the string as binary and set it as the next external id. -x hexstring will decode the hexstring into binary and set it as the next external id.<br><br>
-```$ echo hello factom | factom-cli addchain -e test -x 3031 $ecaddress
+
+
+The addchain and addentry subcommands support the -e and -x flags for adding external ids to the Entries they create. Multiple -e and -x flags may be used, and -e and -x may be used in combination. -e string will encode the string as binary and set it as the next external id. -x hexstring will decode the hexstring into binary and set it as the next external id.
+
+```shell
+$ echo hello factom | factom-cli addchain -e test -x 3031 $ecaddress
 ```
 
 ##-n -h
-<br>
-The get firstentry, get chainhead, and get allentries subcommands support the -n and -h flags for using Chain Names as an alternative for providing a ChainID. The Chain Name is the combination of External IDs on the first Entry in the Chain.<br><br>
-```$ factom-cli get chainhead -n test -h 3031
+
+
+The get firstentry, get chainhead, and get allentries subcommands support the -n and -h flags for using Chain Names as an alternative for providing a ChainID. The Chain Name is the combination of External IDs on the first Entry in the Chain.
+
+```shell
+$ factom-cli get chainhead -n test -h 3031
 ```
 
 ##-r
-<br>
-The r flag tells factom-cli to try and resolve a public Factoid or Entry Credit Address from a DNS name registered through Netki. <br><br>
-```$ factom-cli sendfct -r $my_factoid_address factom.michaeljbeam.me
+
+The r flag tells factom-cli to try and resolve a public Factoid or Entry Credit Address from a DNS name registered through Netki.
+
+```shell
+$ factom-cli sendfct -r $my_factoid_address factom.michaeljbeam.me
 ```
 
 # CLI Commands
 
 ##ack
-```factom-cli ack TxID|FullTx
-``` <br><br>
+
+```shell
+factom-cli ack TxID|FullTx
+```
+
 Returns information about a factoid transaction, or an entry / entry credit transaction
 
 ##addchain
-```factom-cli addchain [-e EXTID1 -e EXTID2 -E BINEXTID3 ...] ECADDRESS <STDIN>
-``` <br><br>
+
+```shell 
+factom-cli addchain [-e EXTID1 -e EXTID2 -E BINEXTID3 ...] ECADDRESS <STDIN>
+``` 
+
 Create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
 
 ##addentry
-```factom-cli addentry -c CHAINID [-e EXTID1 -e EXTID2 -E BEEF1D ...] ECADDRESS <STDIN>
-``` <br><br>
+
+```shell 
+factom-cli addentry -c CHAINID [-e EXTID1 -e EXTID2 -E BEEF1D ...] ECADDRESS <STDIN>
+```
 Create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
 
 ##addtxecoutput
-```factom-cli addtxecoutput [-r] TXNAME ADDRESS AMOUNT
-```<br><br>
+
+```shell
+factom-cli addtxecoutput [-r] TXNAME ADDRESS AMOUNT
+```
 Add an Entry Credit output to a transaction in the wallet
 
 ##addtxfee
-```factom-cli addtxfee TXNAME ADDRESS
-```<br><br>
+
+```shell
+factom-cli addtxfee TXNAME ADDRESS
+```
 Add the transaction fee to an input of a transaction in the wallet
 
 ##addtxinput
-```factom-cli addtxinput TXNAME ADDRESS AMOUNT
-```<br><br>
+
+```shell
+factom-cli addtxinput TXNAME ADDRESS AMOUNT
+```
 Add a Factoid input to a transaction in the wallet
 
 ##addtxoutput
-```factom-cli addtxoutput [-r] TXNAME ADDRESS AMOUNT
-```<br><br>
+
+```shell
+factom-cli addtxoutput [-r] TXNAME ADDRESS AMOUNT
+```
 Add a Factoid output to a transaction in the wallet
 
 ##backupwallet
-```factom-cli backupwallet
-```<br><br>
+
+```shell
+factom-cli backupwallet
+```
 Backup the running wallet
 
 ##balance
-```factom-cli balance [-r] ADDRESS
-```<br><br>
+
+```shell
+factom-cli balance [-r] ADDRESS
+```
 If this is an EC Address, returns number of Entry Credits. If this is a Factoid Address, returns the Factoid balance.
 
 ##buyec
-```factom-cli buyec FCTADDRESS ECADDRESS ECAMOUNT
-```balance<br><br>
+
+```shell
+factom-cli buyec FCTADDRESS ECADDRESS ECAMOUNT
+```
+balance
 Buy entry credits
 
 ##composechain
-```factom-cli composechain [-e EXTID1 -e EXTID2 -E BINEXTID3 ...] ECADDRESS <STDIN>
-```<br><br>
+
+```shell
+factom-cli composechain [-e EXTID1 -e EXTID2 -E BINEXTID3 ...] ECADDRESS <STDIN>
+```
 Create API calls to create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
 
 ##composeentry
-```factom-cli composeentry -c CHAINID [-e EXTID1 -e EXTID2 -E BEEF1D ...] ECADDRESS <STDIN>
-```<br><br>
+
+```shell
+factom-cli composeentry -c CHAINID [-e EXTID1 -e EXTID2 -E BEEF1D ...] ECADDRESS <STDIN>
+```
 Create API calls to create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
 
 ##composetx
-```factom-cli composetx TXNAME
-```<br><br>
+
+```shell
+factom-cli composetx TXNAME
+```
 Compose a wallet transaction into a json rpc object
 
 ##ecrate
-```factom-cli ecrate
-```<br><br>
+
+```shell
+factom-cli ecrate
+```
 It takes this many Factoids to buy an Entry Credit. Displays the larger between current and future rates. Also used to set Factoid fees.
 
 ##exportaddresses
-```factom-cli exportaddresses
-```<br><br>
+
+```shell
+factom-cli exportaddresses
+```
 List the private addresses stored in the wallet
 
 ##get
-```factom-cli get allentries|chainhead|dblock|eblock|entry|firstentry|head|heights
-```<br><br>
+
+```shell
+factom-cli get allentries|chainhead|dblock|eblock|entry|firstentry|head|heights
+```
 Get data about Factom Chains, Entries, and Blocks
 
 ##get allentries
-```factom-cli get allentries [-n NAME1 -N HEXNAME2 ...] CHAINID
-```<br><br>
+
+```shell
+factom-cli get allentries [-n NAME1 -N HEXNAME2 ...] CHAINID
+```
 Get all of the Entries in a Chain
 
 ##get chainhead
-```factom-cli get chainhead [-n NAME1 -N HEXNAME2 ...] CHAINID
-```<br><br>
+
+```shell
+factom-cli get chainhead [-n NAME1 -N HEXNAME2 ...] CHAINID
+```
 Get ebhead by chainid
 
 ##get dblock
-```factom-cli get dblock KEYMR
-```<br><br>
+
+```shell
+factom-cli get dblock KEYMR
+```
 Get dblock contents by merkle root
 
 ##get eblock
-```factom-cli get eblock KEYMR
-```<br><br>
+
+```shell
+factom-cli get eblock KEYMR
+```
 Get eblock by merkle root
 
 ##get entry
-```factom-cli get entry HASH
-```<br><br>
+
+```shell
+factom-cli get entry HASH
+```
 Get entry by hash
 
 ##get firstentry
-```factom-cli get firstentry [-n NAME1 -N HEXNAME2 ...] CHAINID
-```<br><br>
+
+```shell
+factom-cli get firstentry [-n NAME1 -N HEXNAME2 ...] CHAINID
+```
 Get the first entry from a chain
 
 ##get head
-```factom-cli get head
-```<br><br>
+
+```shell
+factom-cli get head
+```
 Get the latest completed directory block
 
 ##get heights
-```factom-cli get heights
-```<br><br>
+
+```shell
+factom-cli get heights
+```
 Get the current heights of various blocks in factomd
 
 ##importaddress
-```factom-cli importaddress ADDRESS [ADDRESS...]
-```<br><br>
+
+```shell
+factom-cli importaddress ADDRESS [ADDRESS...]
+```
 Import one or more secret keys into the wallet
 
 ##importwords
-```factom-cli importwords '12WORDS'
-```<br><br>
+
+```shell
+factom-cli importwords '12WORDS'
+```
 Import 12 words from Koinify sale into the Wallet
 
 ##listaddresses
-```factom-cli listaddresses
-```<br><br>
+
+```shell
+factom-cli listaddresses
+```
 List the addresses stored in the wallet
 
 ##listtxs
-```factom-cli listtxs [tmp|all|address|id|range]
-```<br><br>
+
+```shell
+factom-cli listtxs [tmp|all|address|id|range]
+```
 List transactions from the wallet or the Factoid Chain
 
 ##listtxs address
-```factom-cli listtxs address ECADDRESS|FCTADDRESS
-```<br><br>
+
+```shell
+factom-cli listtxs address ECADDRESS|FCTADDRESS
+```
 List transaction from the Factoid Chain with a specific address
 
 ##listtxs [all]
-```factom-cli listtxs [all]
-```<br><br>
+
+```shell
+factom-cli listtxs [all]
+```
 List all transactions from the Factoid Chain
 
 ##listtxs id 
-```factom-cli listtxs id TXID
-```<br><br>
+
+```shell
+factom-cli listtxs id TXID
+```
 List transaction from the Factoid Chain
 
-##listtxs range 
-```factom-cli listtxs range START END
-```<br><br>
+##listtxs range
+
+```shell
+factom-cli listtxs range START END
+```
 List the transactions from the Factoid Chain within the specified range
 
 ##listtxs tmp
-```factom-cli listtxs tmp
-```<br><br>
+
+```shell
+factom-cli listtxs tmp
+```
 List current working transactions in the wallet
 
 ##newecaddress
-```factom-cli newecaddress
-```<br><br>
+
+```shell
+factom-cli newecaddress
+```
 Generate a new Entry Credit Address in the wallet
 
 ##newfctaddress
-```factom-cli newfctaddress
-```<br><br>
+
+```shell
+factom-cli newfctaddress
+```
 Generate a new Factoid Address in the wallet
 
 ##newtx
-```factom-cli newtx TXNAME
-```<br><br>
+
+```shell
+factom-cli newtx TXNAME
+```
 Create a new transaction in the wallet
 
 ##properties
-```factom-cli properties
-```<br><br>
+
+```shell
+factom-cli properties
+```
 Get version information about facotmd and the factom wallet
 
 ##receipt
-```factom-cli receipt ENTRYHASH
-```<br><br>
+
+```shell
+factom-cli receipt ENTRYHASH
+```
 Returns a Receipt for a given Entry
 
 ##rmtx
-```factom-cli rmtx TXNAME
-```<br><br>
+
+```shell
+factom-cli rmtx TXNAME
+```
 Remove a transaction in the wallet
 
 ##sendfct
-```factom-cli sendfct FROMADDRESS TOADDRESS AMOUNT
-```<br><br>
+
+```shell
+factom-cli sendfct FROMADDRESS TOADDRESS AMOUNT
+```
 Send Factoids between 2 addresses
 
 ##sendtx
-```factom-cli sendtx TXNAME
-```<br><br>
+
+```shell
+factom-cli sendtx TXNAME
+```
 Send a Transaction to Factom
 
 ##signtx
-```factom-cli signtx TXNAME
-```<br><br>
+
+```shell
+factom-cli signtx TXNAME
+```
 Sign a transaction in the wallet
 
 ##subtxfee
-```factom-cli subtxfee TXNAME ADDRESS
-```<br><br>
+
+```shell
+factom-cli subtxfee TXNAME ADDRESS
+```
 Subtract the transaction fee from an output of a transaction in the wallet
