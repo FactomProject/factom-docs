@@ -48,10 +48,10 @@ factom-cli [OPTIONS] SUBCOMMAND [OPTIONS]
 ##-e -x
 
 
-The addchain and addentry subcommands support the -e and -x flags for adding external ids to the Entries they create. Multiple -e and -x flags may be used, and -e and -x may be used in combination. -e string will encode the string as binary and set it as the next external id. -x hexstring will decode the hexstring into binary and set it as the next external id.
+The addentry subcommands support the -e and -x flags for adding external ids to the Entries they create. Multiple -e and -x flags may be used, and -e and -x may be used in combination. -e string will encode the string as binary and set it as the next external id. -x hexstring will decode the hexstring into binary and set it as the next external id.
 
 ```shell
-$ echo hello factom | factom-cli addchain -e test -x 3031 $ecaddress
+$
 ```
 
 ##-n -h
