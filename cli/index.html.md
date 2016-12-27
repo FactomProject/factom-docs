@@ -87,7 +87,7 @@ Returns information about a factoid transaction, or an entry / entry credit tran
 ##addchain
 
 ```shell 
-factom-cli addchain [-e EXTID1 -e EXTID2 -E BINEXTID3 ...] ECADDRESS <STDIN>
+factom-cli addchain [-fq] [-n NAME1 -n NAME2 -h HEXNAME3 ] [-CET] ECADDRESS <STDIN>
 ``` 
 
 Create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
@@ -95,7 +95,7 @@ Create a new Factom Chain. Read data for the First Entry from stdin. Use the Ent
 ##addentry
 
 ```shell 
-factom-cli addentry -c CHAINID [-e EXTID1 -e EXTID2 -E BEEF1D ...] ECADDRESS <STDIN>
+factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] [-e EXTID1 -e EXTID2 -x HEXEXTID ...] [-CET] ECADDRESS <STDIN>
 ```
 Create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
 
