@@ -51,7 +51,7 @@ factom-cli [OPTIONS] SUBCOMMAND [OPTIONS]
 The addentry subcommands support the -e and -x flags for adding external ids to the Entries they create. Multiple -e and -x flags may be used, and -e and -x may be used in combination. -e string will encode the string as binary and set it as the next external id. -x hexstring will decode the hexstring into binary and set it as the next external id.
 
 ```shell
-$
+$ factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] [-e EXTID1 -e EXTID2 -x HEXEXTID ...] [-CET] ECADDRESS <STDIN>
 ```
 
 ##-n -h
@@ -152,21 +152,21 @@ Buy entry credits
 ##composechain
 
 ```shell
-factom-cli composechain [-e EXTID1 -e EXTID2 -E BINEXTID3 ...] ECADDRESS <STDIN>
+$ factom-cli composechain [-f] [-n NAME1 -n NAME2 -h HEXNAME3 ] ECADDRESS <STDIN>
 ```
 Create API calls to create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
 
 ##composeentry
 
 ```shell
-factom-cli composeentry -c CHAINID [-e EXTID1 -e EXTID2 -E BEEF1D ...] ECADDRESS <STDIN>
+$ factom-cli composeentry [-f] [-n NAME1 -h HEXNAME2 ...|-c CHAINID]  [-e EXTID1 -e EXTID2 -x HEXEXTID ...] ECADDRESS <STDIN>
 ```
 Create API calls to create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
 
 ##composetx
 
 ```shell
-factom-cli composetx TXNAME
+$ factom-cli composetx TXNAME
 ```
 Compose a wallet transaction into a json rpc object
 
