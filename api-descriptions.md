@@ -49,37 +49,37 @@ Returns various heights that allows you to view the state of the blockchain.
 They are:
 directory block height:  the sequence number of highest local directory block
 leader height: the sequence number of the leaders highest directory block
-entry block height DUNNO
-entry height DUNNO
-missing entry count DUNNO
-entry block height processing DUNNO
-entry block height complete DUNNO
+entry block height
+entry height
+missing entry count
+entry block height processing
+entry block height complete
 
 ### raw-data
 <br>Parameters: hash
 <br>Request:
 <br>Response:
 
-Retrieve an entry (DUNNO?) in raw format, as an string encoded binary blob.
+Retrieve an entry or transaction in raw format, as an string encoded binary blob.
 
 ### dblock-by-height
 <br>Parameters: height
 <br>Request:
 <br>Response:
 
-find a directory block given only its height.  This is convenient when you know hte block should exist, but you do not know its merkle root (key).
+Retrieve a directory block given only its height.
 
 ### ablock-by-height
 <br>Parameters: height
 <br>Request:
 <br>Response:
 
-This allows you to retrieve administrative blocks for any given height.
+Retrieve administrative blocks for any given height.
 The admin block contains data related to the identities within the factom system and the decisions the system makes as it builds the block chain. 
 
 ### ecblock-by-height
 
-This allows you to retrieve the entry credit block for any given height. These blocks contain entry credit transaction information.
+Retrieve the entry credit block for any given height. These blocks contain entry credit transaction information.
 
 <br>Parameters: height
 <br>Request:
@@ -115,7 +115,7 @@ Retrieve a specified entry block given its merkle root key.
 
 ### entry
 
-Retrieve a specified entry using its key merkle root.  
+Retrieve a specified entry using its Entry Hash.  
 
 <br>Parameters: keymr
 <br>Request:
@@ -123,7 +123,7 @@ Retrieve a specified entry using its key merkle root.
 
 ### pending-entries
 
-Returns an array of the entries that have been submitted but have not been recoreded into the blockchain
+Returns an array of the entries that have been submitted but have not been recoreded into the blockchain.
 
 <br>Parameters: none
 <br>Request:
@@ -156,7 +156,7 @@ Return the keymr of the head of the chain for a chain ID ( the unique hash creat
 
 ### entry-credit-balance
 
-Return its current balance for a specific entry credit address
+Return its current balance for a specific entry credit address.
 
 <br>Parameters: address
 <br>Request:
@@ -180,14 +180,14 @@ Retrieve current properties of the Factom system, including the software and the
 <br>Response:
 
 ### factoid-submit
-Submit a factoid transaction in the specified format (describe the format)
+Submit a factoid transaction.
 
 <br>Parameters: transaction
 <br>Request:
 <br>Response:
 
 ### commit-chain
-When you have produced your chain commit message (How? DUNNO) you and submit it.
+Send a Chain Commit Message to factomd to create a new Chain.
 
 <br>Parameters: message
 <br>Request:
@@ -195,14 +195,14 @@ When you have produced your chain commit message (How? DUNNO) you and submit it.
 
 
 ### reveal-chain
-When you have produced your chain reveal message (How? DUNNO) you and submit it.
+Reveal the First Entry in a Chain to factomd after the Commit to compleate the Chain creation.
 
 <br>Parameters: message
 <br>Request:
 <br>Response:
 
 ### commit-entry
-When you have produced your entry commit message (How? DUNNO) you and submit it.
+Send an Entry Commit Message to factom to create a new Entry.
 
 <br>Parameters: message
 <br>Request:
@@ -210,7 +210,7 @@ When you have produced your entry commit message (How? DUNNO) you and submit it.
 
 ### reveal-entry
 
-When you have produced your entry reveal message (How? DUNNO) you and submit it.
+Reveal an Entry to factomd after the Commit to compleate the Entry creation.
 
 <br>Parameters: message
 <br>Request:
@@ -218,14 +218,8 @@ When you have produced your entry reveal message (How? DUNNO) you and submit it.
 
 ### send-raw-message
 
+Send a raw hex encoded binary message to the Factom network. This is mostly just for debugging and testing.
+
 <br>Parameters:
 <br>Request:
 <br>Response:
-
-DUNNO
-
-
-
-
-
-

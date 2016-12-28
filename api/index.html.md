@@ -39,6 +39,8 @@ They can be invoked as
 
 ##directory-block
 
+Retrieve the full directory block for a block using its key. 
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"KeyMR":"7d7f991a08178f88b4b48ec7d45e7a58c9eab5a404724136f14c0f0d741ba2aa"}, "method": "directory-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
@@ -86,6 +88,8 @@ They can be invoked as
 ```
 ##directory-block-head
 
+Returns the keymr of the latest directory block. 
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 `
@@ -111,6 +115,8 @@ They can be invoked as
 ```
 
 ##heights
+
+Returns various heights that allows you to view the state of the blockchain. 
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "heights"}' -H 'content-type:text/plain;'
 http://localhost:8088/v2`
@@ -143,6 +149,9 @@ http://localhost:8088/v2`
 ```
 
 ##raw-data
+
+Retrieve an entry or transaction in raw format, as an string encoded binary blob.
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"1f2931558c0ef6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"}, "method": "raw-data"}' -H
 'content-type:text/plain;' http://localhost:8088/v2`
@@ -173,6 +182,9 @@ http://localhost:8088/v2`
 ```
 
 ##dblock-by-height
+
+Retrieve a directory block given only its height.
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-height",
 "params":{"height":14460}}' -H 'content-type:text/plain;' http://localhost:8088/v2
 `
@@ -230,6 +242,10 @@ http://localhost:8088/v2`
 ```
 
 ##ablock-by-height
+
+Retrieve administrative blocks for any given height.
+The admin block contains data related to the identities within the factom system and the decisions the system makes as it builds the block chain. 
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
 "ablock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
@@ -302,6 +318,8 @@ http://localhost:8088/v2`
 ```
 
 ##ecblock-by-height
+
+Retrieve the entry credit block for any given height. These blocks contain entry credit transaction information.
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
 "ecblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
@@ -378,6 +396,8 @@ http://localhost:8088/v2`
 ```
 
 ##fblock-by-height
+
+Retrieve the factoid block for any given height. These blocks contain factoid transaction information.
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method": "fblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
@@ -485,6 +505,9 @@ http://localhost:8088/v2`
 ```
 
 ##receipt
+
+Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"0561491594de81214ebd918f29d1f9f59266ea63ec76341162dc4a252a0225b9"}, "method": "receipt"}' -H 'content-type:text/plain;' http://lo
 calhost:8088/v2`
@@ -523,6 +546,8 @@ calhost:8088/v2`
 
 ##entry-block
 
+Retrieve a specified entry block given its merkle root key. 
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
 "params":{"KeyMR":"f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"},"method":"entry-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
@@ -560,6 +585,7 @@ calhost:8088/v2`
 ```
 
 ##entry
+
 Get an Entry from factomd specified by the Entry Hash.
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params":
@@ -596,6 +622,8 @@ http://localhost:8088/v2`
 
 ##pending-entries
 
+Returns an array of the entries that have been submitted but have not been recoreded into the blockchain.
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": "", "method": "pending-entries"}' -H 'content-type:text/plain;' http://localhost:8088/
 `
 
@@ -615,6 +643,8 @@ http://localhost:8088/v2`
 ```
 
 ##transaction
+
+Retrieve details of a factoid transaction using a transactions hash
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}, "method": "transaction"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
@@ -664,6 +694,8 @@ http://localhost:8088/v2`
 
 ##pending-transactions
 
+Returns an array of factoid transactions that have not yet been recorded in the blockchain, but are known to the system.
+
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"Address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "pending-transactions"}' -H
 'content-type:text/plain;' http://localhost:8088/v2`
@@ -682,6 +714,8 @@ http://localhost:8088/v2`
 ```
 
 ##chain-head
+
+Return the keymr of the head of the chain for a chain ID ( the unique hash created when the chain was created)
 
 `curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
 "params":{"ChainID":"5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"}, "method": "chain-head"}' -H
@@ -712,6 +746,8 @@ http://localhost:8088/v2`
 ```
 
 ##entry-credit-balance
+
+Return its current balance for a specific entry credit address.
 
 `curl -X POST --data-binary {"jsonrpc": "2.0", "id": 0, "params":
 {"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "entry-credit-balance"} -H
@@ -775,8 +811,7 @@ This call returns the number of Factoshis (Factoids *10^-8) that are currently a
 
 ##entry-credit-rate
 
-This call returns the number of Factoshis (Factoids *10^-8) that purchase a single Entry Credit. The minimum factoid fees are also determined by
-this rate, along which how complex the factoid transaction is.
+Returns the number of Factoshis (Factoids *10^-8) that purchase a single Entry Credit. The minimum factoid fees are also determined by this rate, along with how complex the factoid transaction is.
 
 `curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "entry-credit-rate"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
@@ -802,6 +837,8 @@ this rate, along which how complex the factoid transaction is.
 ```
 
 ##properties
+
+Retrieve current properties of the Factom system, including the software and the API versions.
 
 `curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
@@ -829,6 +866,8 @@ this rate, along which how complex the factoid transaction is.
 
 ##factoid-submit
 
+Submit a factoid transaction.
+
 `curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "factoid-submit", "params":
 {"transaction":"0201565d109233010100b0a0e100646f3e8750c550e4582eca5047546ffef89c13a175985e320232bacac81cc428afd7c200ce7b98b
 fdae90f942bc1fe88c3dd44d8f4c81f4eeb88a5602da05abc82ffdb5301718b5edd2914acc2e4677f336c1a32736e5e9bde13663e6413894f57ec272
@@ -836,6 +875,8 @@ e28dc1908f98b79df30005a99df3c5caf362722e56eb0e394d20d61d34ff66c079afad1d09eee21d
 b3aa32250a"}} -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 ##commit-chain
+
+Send a Chain Commit Message to factomd to create a new Chain.
 
 `curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 {"message":"00015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c03
@@ -871,6 +912,8 @@ b3aa32250a"}} -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 ##reveal-chain
 
+Reveal the First Entry in a Chain to factomd after the Commit to compleate the Chain creation.
+
 `curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 {"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
 C6C6F20466163746F6D21"}, "method": "reveal-chain"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
@@ -901,6 +944,8 @@ C6C6F20466163746F6D21"}, "method": "reveal-chain"}' -H 'content-type:text/plain;
 ```
 
 ##commit-entry
+
+Send an Entry Commit Message to factom to create a new Entry.
 
 `curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 {"message":"00015507C1024BF5C956749FC3EBA4ACC60FD485FB100E601070A44FCCE54FF358D60669854734013B6A27BCCEB6A42D62A3
@@ -935,6 +980,8 @@ http://localhost:8088/v2`
 
 ##reveal-entry
 
+Reveal an Entry to factomd after the Commit to compleate the Entry creation.
+
 `curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
 {"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
 C6C6F20466163746F6D21"}, "method": "reveal-entry"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
@@ -967,7 +1014,7 @@ C6C6F20466163746F6D21"}, "method": "reveal-entry"}' -H 'content-type:text/plain;
 
 ##send-raw-message
 
-Does the commit and reveal chain example as raw messages
+Send a raw hex encoded binary message to the Factom network. This is mostly just for debugging and testing.
 
 Commit Chain Example
 
