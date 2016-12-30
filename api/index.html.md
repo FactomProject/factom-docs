@@ -27,7 +27,7 @@ All these APIs use JSON-RPC, which is a remote procedure call protocol encoded i
 
 They can be invoked as
 
-`curl -X GET –data-binary <JSON input> "method": "directory-block"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+`curl -X POST –data-binary <JSON input> "method": "directory-block"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
  
  The output will also be JSON.
 
@@ -41,7 +41,7 @@ They can be invoked as
 
 Retrieve the full directory block for a block using its key. 
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"KeyMR":"7d7f991a08178f88b4b48ec7d45e7a58c9eab5a404724136f14c0f0d741ba2aa"}, "method": "directory-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 `
@@ -90,7 +90,7 @@ Retrieve the full directory block for a block using its key.
 
 Returns the keymr of the latest directory block. 
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' -H
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 `
 > Example Request
@@ -118,7 +118,7 @@ Returns the keymr of the latest directory block.
 
 Returns various heights that allows you to view the state of the blockchain. 
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "heights"}' -H 'content-type:text/plain;'
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "heights"}' -H 'content-type:text/plain;'
 http://localhost:8088/v2`
 
 > Example Request
@@ -152,7 +152,7 @@ http://localhost:8088/v2`
 
 Retrieve an entry or transaction in raw format, as an string encoded binary blob.
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"1f2931558c0ef6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"}, "method": "raw-data"}' -H
 'content-type:text/plain;' http://localhost:8088/v2`
 
@@ -185,7 +185,7 @@ Retrieve an entry or transaction in raw format, as an string encoded binary blob
 
 Retrieve a directory block given only its height.
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-height",
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-height",
 "params":{"height":14460}}' -H 'content-type:text/plain;' http://localhost:8088/v2
 `
 > Example Request
@@ -246,7 +246,7 @@ Retrieve a directory block given only its height.
 Retrieve administrative blocks for any given height.
 The admin block contains data related to the identities within the factom system and the decisions the system makes as it builds the block chain. 
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
 "ablock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 > Example Request
@@ -321,7 +321,7 @@ The admin block contains data related to the identities within the factom system
 
 Retrieve the entry credit block for any given height. These blocks contain entry credit transaction information.
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
 "ecblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 > Example Request
@@ -399,7 +399,7 @@ Retrieve the entry credit block for any given height. These blocks contain entry
 
 Retrieve the factoid block for any given height. These blocks contain factoid transaction information.
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method": "fblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method": "fblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 > Example Request
 
@@ -508,7 +508,7 @@ Retrieve the factoid block for any given height. These blocks contain factoid tr
 
 Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"0561491594de81214ebd918f29d1f9f59266ea63ec76341162dc4a252a0225b9"}, "method": "receipt"}' -H 'content-type:text/plain;' http://lo
 calhost:8088/v2`
 
@@ -548,7 +548,7 @@ calhost:8088/v2`
 
 Retrieve a specified entry block given its merkle root key. 
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
 "params":{"KeyMR":"f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"},"method":"entry-block"}' -H
 'content-type:text/plain;' http://localhost:8088/v2
 `
@@ -588,7 +588,7 @@ Retrieve a specified entry block given its merkle root key.
 
 Get an Entry from factomd specified by the Entry Hash.
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params":
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params":
 {"Hash":"be5216cc7a5a3ad44b49245aec298f47cbdfca9862dee13b0093e5880012b771"}}' -H 'content-type:text/plain;'
 http://localhost:8088/v2`
 
@@ -624,7 +624,7 @@ http://localhost:8088/v2`
 
 Returns an array of the entries that have been submitted but have not been recoreded into the blockchain.
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params": "", "method": "pending-entries"}' -H 'content-type:text/plain;' http://localhost:8088/
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params": "", "method": "pending-entries"}' -H 'content-type:text/plain;' http://localhost:8088/
 `
 
 > Example Request
@@ -646,7 +646,7 @@ Returns an array of the entries that have been submitted but have not been recor
 
 Retrieve details of a factoid transaction using a transactions hash
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}, "method": "transaction"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 > Example Response
@@ -696,7 +696,7 @@ Retrieve details of a factoid transaction using a transactions hash
 
 Returns an array of factoid transactions that have not yet been recorded in the blockchain, but are known to the system.
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
 {"Address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "pending-transactions"}' -H
 'content-type:text/plain;' http://localhost:8088/v2`
 
@@ -717,7 +717,7 @@ Returns an array of factoid transactions that have not yet been recorded in the 
 
 Return the keymr of the head of the chain for a chain ID ( the unique hash created when the chain was created)
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
 "params":{"ChainID":"5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"}, "method": "chain-head"}' -H
 'content-type:text/plain;' http://localhost:8088/v2`
 
@@ -782,7 +782,7 @@ content-type:text/plain; http://localhost:8088/v2`
 
 This call returns the number of Factoshis (Factoids *10^-8) that are currently available at the address specified.
 
-`curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
 }, "method": "factoid-balance"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 > Example Request
