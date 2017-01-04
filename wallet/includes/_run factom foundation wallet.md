@@ -134,7 +134,7 @@ Finishing up sync....
 Sample Terminal output is shown on the right.
 
 <br>
-Then with your web browser go to [http://localhwst:8091](http://localhwst:8091) to see your local Factom Foundation Wallet.
+Then with your web browser go to [http://localhost:8091](http://localhost:8091) to see your local Factom Foundation Wallet.
 <aside class="notice"><br>
 If this is the first time you are running the Wallet, now's a great time for a cup of tea! 
 The wallet needs to catch up on transactions and may take some time while displaying "syncing transactions", however it doesn't take too long, just about the time to prepare and drink your tea.
