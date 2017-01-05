@@ -28,9 +28,7 @@ Sample Terminal output is shown on the right.
 <br>
 <br>
 
-In this example, the sendfct command moved 1.234 FCT from the source address to the destination address. You should be able to see the Transaction ID (TxID) on the terminal and in the Node Visualizer. 
-
-![Factoid Transaction](images/cli_001.png)
+In this example, the sendfct command moved 1.234 FCT from the source address to the destination address. You should be able to see the Transaction ID (TxID) on the terminal.
 
 **To receive Factoids** use the same command as above. For instance, you may move FCT between two FA addresses within your local wallet.
 

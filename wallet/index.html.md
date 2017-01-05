@@ -13,6 +13,7 @@ toc_footers:
   - <a href='https://factom.com'>Back to FACTOM.COM</a>
 
 includes:
+  - introduction
   - before you begin
   - backup your wallets
   - install factom federation
@@ -30,32 +31,39 @@ includes:
 search: true
 ---
 
-# Introduction
+# Welcome
 
-We not only listen and collect our users' feedback, we also act upon it!  
-It is our utmost pleasure to present the new "Factom Foundation Wallet", it has been completely redesigned from the bottom up with improved functionality, ease of use, and a great new feel.
+![Factom Federation](/images/wallet_084.png)
+  
+**Welcome to the Federation!**
 
-Find the new features highlighted below:
+The Factom Federation introduces a new network of federated servers that really bring it to the distributed game. After all, Honesty is subversive. So here is what you need to know, at a high-level Factom Federation adds several new features:
 
-* A redesigned graphic user interface (GUI)
-* Two themes: light and dark
-* Address Book function
-* Contacts list
-* More details about transactions
-* Transaction verification via Factom Explorer or Local Explorer
-* QR codes for FCT and EC addresses
-* Ability to import/export transactions to file
-* Ability to import/export private keys 
-* Coin-control features such as specific or multiple input addresses for new transactions
-* Address generation from a "seed" in case you lose your wallet you can re-generate your addresses from the seed
-* Seed export to file function 
+* Distributed servers
+* A peer to peer network
+* Higher throughput
+* Confirmations in milliseconds
+* More user feedback with the "Factom Node Visualizer"
+* A more intuitive, redesigned Factom Foundation Wallet with added functionality
+* Factom Explorer v2
+* Factom RPC API v2
+* Factom Wallet Lib RCP API v2
+* A lot of fine tuning and stability improvements
 
-Here it is in all its glory!
+These new Factom guides replace all our previous ones. We have covered how to:
 
-**Light Theme**
+* Get started using Factom Federation (FF) software
+* Send and receive Factoids (FCT)
+* Convert FCT to Entry Credits (EC)
+* Make entries into Factom
+* Use the Factom Explorer v2
+* Use the Factom RPC API v2
+* Use the Factom Wallet Lib RPC API v2
+* And a lot more
 
-![Light Theme](/images/wallet_001.png)
+Some of these guides are intended for users who know their way around the command line (you should know enough to be dangerous and get yourself out of trouble).
 
-**Dark Theme**
+However, don't despair, we made sure to provide some easy to follow tutorials on how to use Factom with a Graphic User Interface (GUI) even though they still require some basic command line experience.
 
-![Dark Theme](/images/wallet_002.png)
+
+![Foundation Logo](/images/wallet_085.png)

@@ -34,9 +34,7 @@ Sample Terminal output is shown on the right.
 <br>
 <br>
 
-The buyec command burned some Factoids from the FA address and deposited 30 EC in the specified EC address. The Terminal also presented the TxID (Transaction ID). This movement will also display in the Node Visualizer.
-
-![EC Transaction](images/cli_002.png)
+The buyec command burned some Factoids from the FA address and deposited 30 EC in the specified EC address. The Terminal also presented the TxID (Transaction ID).
 
 <aside class="success">
 The TxID is useful for checking that ECs have moved to the right address. Take note of it for your records.
