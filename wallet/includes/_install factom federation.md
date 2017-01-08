@@ -12,7 +12,7 @@ Here is a step by step guide on how to install FF binaries on Mac, Windows, and 
 
 ###Mac
 
-This installer is for factomd, factom-walletd, factom-cli, and EnterpriseWallet the 4 binaries will be installed in /Applications/Factom/ together with a .factom folder in the root of the local user Home Folder. These are all required to run Factom via command line or the Factom Foundation Wallet.
+This installer is for factomd, factom-walletd, factom-cli, and enterprise-wallet the 4 binaries will be installed in /Applications/Factom/ together with a .factom folder in the root of the local user Home Folder. These are all required to run Factom via command line or the Factom Foundation Wallet.
 
 Before you start go to System Preferences/Security & Privacy, click on the lock at the bottom left of the window, type your username and password, then select "Allow apps downloaded from: Anywhere". At the prompt click on “Allow From Anywhere”.
 
@@ -45,7 +45,7 @@ You made it so far, wasn't that hard wasn't it?
 You are now ready to [run the Factom Foundation Wallet](#run-the-factom-foundation-wallet). 
 
 ###Windows
-This installer is for factomd, factom-walletd, factom-cli, and EnterpriseWallet the 4 binaries will be installed in c:\Program Files (x86)\Factom\ together with a .factom folder in the root of the local user Home Folder. These are all required to run Factom via command line or the Factom Wallet GUI.
+This installer is for factomd, factom-walletd, factom-cli, and enterprise-wallet the 4 binaries will be installed in c:\Program Files (x86)\Factom\ together with a .factom folder in the root of the local user Home Folder. These are all required to run Factom via command line or the Factom Wallet GUI.
 
 Next, locate the factom.msi file you just downloaded in Step 1.
 
@@ -84,7 +84,7 @@ When the installation is over select "Finish" to exit the installer.
 You made it so far, and ready to [run the Factom Foundation Wallet](#run-the-factom-foundation-wallet) on Windows! 
 
 ###Linux
-This installer is for factomd, factom-walletd, factom-cli, and EnterpriseWallet the 4 binaries will be installed on your local drive together with a .factom folder in the root of the local user Home Folder ~/.factom. These are all required to run Factom via command line or the Factom Foundation Wallet.
+This installer is for factomd, factom-walletd, factom-cli, and enterprise-wallet the 4 binaries will be installed on your local drive together with a .factom folder in the root of the local user Home Folder ~/.factom. These are all required to run Factom via command line or the Factom Foundation Wallet.
 
 The Linux installer will work for Debian and Ubuntu but not for RedHat Linux. (double check if still the case)
 

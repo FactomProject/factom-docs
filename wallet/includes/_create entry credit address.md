@@ -2,7 +2,7 @@
 
 Perform this step only if you intend to make entries into Factom or want to stock up on Entry Credits (EC) for future use.
 Remember, ECs are non-transferrable and cannot be sold or traded on an exchange. Make sure you need them before you go ahead.
-To proceed, Run FFW.
+
 You are now ready to generate a new Entry Credit (EC) address, it's very easy with our new wallet.
 
 If you haven't already, [Run FFWallet](#run-the-factom-foundation-wallet).

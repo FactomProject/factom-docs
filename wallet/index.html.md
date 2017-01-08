@@ -43,7 +43,7 @@ The Factom Federation introduces a new network of federated servers that really 
 * A peer to peer network
 * Higher throughput
 * Confirmations in milliseconds
-* More user feedback with the "Factom Node Visualizer"
+* More user feedback with the "Factom Control Panel"
 * A more intuitive, redesigned Factom Foundation Wallet with added functionality
 * Factom Explorer v2
 * Factom RPC API v2

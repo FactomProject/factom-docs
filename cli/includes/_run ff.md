@@ -10,7 +10,7 @@ Every time you come across "**Run FF**" you need to perform the following steps.
 For Mac and Windows, use the cd command with Terminal to browse to the location of your FF installation. On Linux, you will be able to run commands without having to browse the to install location.
 </aside>
 
-This step is required before you run factomd, factom-walletd, and factom-cli. The three applications are required to run the Factom Foundation Wallet.
+This step is required before you run factomd, factom-walletd, and factom-cli. The three applications are required to run the Factom Federation software.
 
 In a new Terminal window, run
 
@@ -26,13 +26,13 @@ On Mac, Windows and Linux, run "factomd" first
 
 `factomd`
 
-Then browse to [http://localhost:8090](http://localhost:8090) to see the Node Visualizer for your local FF node.
+Then browse to [http://localhost:8090](http://localhost:8090) to see the Control Panel for your local FF node.
 
 ![node 01](images/wallet_018.png)
 
 <aside class="notice"><br>
 If this is the first time you are running FF, now's a great time to check your Facebook feed or take your dog on a walk. 
-Syncing the Factom blockchain may take a little while, the blockchain is ...big. The Node Visualizer will display the progress and notify you when it has finished syncing.
+Syncing the Factom blockchain may take a little while, the blockchain is ...big. The Factom Control panel will display the progress and notify you when it has finished syncing.
 </aside>
 
 Once you are synced, in a new Terminal window browse (cd) to the location of your FF installation as you did above (Mac and Windows only).

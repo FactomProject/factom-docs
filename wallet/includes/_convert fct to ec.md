@@ -11,7 +11,7 @@ You will need a source address containing some FCT and a destination EC address 
 
 To get ECs proceed as follows.
 
-If you haven't already [run the wallet](#run-the-factom-foundation-wallet).
+If you haven't already [run FFWallet](#run-the-factom-foundation-wallet).
 
 Select "NEW TRANSACTION".
 

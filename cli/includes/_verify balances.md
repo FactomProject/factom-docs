@@ -2,11 +2,11 @@
 
 After sending or receiving factoids, importing secret keys, or redeeming your 12-word master passphrase you may want verify your address balances. We've provided 2 easy ways to verify your Factoid (FCT) or Entry Credit (EC) balances.
  
-**1) With the Node Visualizer**
+**1) With the Factom Control Panel**
 
-The Factom Node Visualizer is easy to use and great for verifying your FA or EC balances. Simply [run the wallet](#run-the-factom-foundation-wallet) and open the Node Visualizer web page in your browser: [http://localhost:8090/](http://localhost:8090/)
+The Factom Control Panel is easy to use and great for verifying your FA or EC balances. Simply [run FF](#run-factom-federation) and open the Control Panel web page in your browser: [http://localhost:8090/](http://localhost:8090/)
 
-Find the search bar on the upper right-hand corner of the Factom Node Visualizer.
+Find the search bar on the upper right-hand corner of the Factom Control Panel.
 
 ![Wallet 89](images/wallet_074.png)
 
@@ -18,7 +18,7 @@ Click GO.
 
 ![Wallet 91](images/wallet_076.png)
  
-The Node Visualizer will display the factoid balance for the FA address under "Amount Available." 
+The Control Panel will display the factoid balance for the FA address under "Amount Available." 
 In this example, we have a balance of 2 FCT.
 
 Repeat the steps above to verify the balance of an EC address. Paste the EC address you wish to verify in the search bar.
@@ -29,10 +29,10 @@ Click GO.
 
 ![Wallet 93](images/wallet_078.png)
 
-The Node Visualizer will display the Entry Credit balance for the EC address under "Amount Available." 
+The Control Panel will display the Entry Credit balance for the EC address under "Amount Available." 
 In this example, we have a balance of 20 EC.
 
-You may also use the Node Visualizer to get more info about Transaction IDs, Block Numbers, Chain IDs, and more. 
+You may also use the Control Panel to get more info about Transaction IDs, Block Numbers, Chain IDs, and more. 
  
 
 **2) With the Factom Explorer**
@@ -64,7 +64,7 @@ Hit Enter on your keyboard.
 The Explorer will display the balance of the FA address, in this example 3999 EC, along with its previous transactions.
 
 <aside class="notice"><br>
-To run the Node Visualizer you need some basic command line knowledge while the Factom Explorer doesn't require you to run any Factom apps. Choose the verification method that suits you best.
+To run the Factom Control Panel you need some basic command line knowledge while the Factom Explorer doesn't require you to run any Factom apps. Choose the verification method that suits you best.
 </aside>
 
 You made it this far and got the knowledge, now is time to teach others how to use Factom! (big grin)

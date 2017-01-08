@@ -32,7 +32,7 @@ FF is composed of three main components:
 * factomd 
 * factom-walletd 
 * factom-cli 
-* EnterpriseWallet
+* enterprise-wallet
 
 However to run the wallet you only new factomd and EnterpriseWallet running in separate Terminal windows, factom-walletd and factom-cli are only required if you want to run the command line wallet.
 

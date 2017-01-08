@@ -30,14 +30,14 @@ FF is composed of four main components:
 * factomd
 * factom-walletd
 * factom-cli
-* EnterpriseWallet
+* enterprise-wallet
 
 However, to run Factom Federation via command line you only need factomd, factom-walletd, and factom-cli. Each one of these apps needs to run in separate Terminal windows.
 
 <aside class="notice"><br>
 Pop quiz<br>
 How many windows will you need?<br>
-Answer: Four Terminal windows.
+Answer: Three Terminal windows.
 </aside>
 
 <aside class="warning"><br>
