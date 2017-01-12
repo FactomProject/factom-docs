@@ -8,7 +8,7 @@ Factom takes a while to download the blockchain. It can be expidited by download
 Note: currently factomd uses a lot of drive accesses when running. It is reccomended to hold the blockchain on a solid state drive. Running factomd on a spinning hard drive will be arduously slow. Since factomd currently scans the entire blockchain each time it is started, bootup takes a while (~30 min on an SSD). You can watch the progress on the Control Panel.
 </aside>
 
-Download the blockchain [here](https://www.factom.com/assets/site/factom_bootstrap.zip SHA256: 2d4d256c337cdabc8f75aa71180c72129f807c365c78356471350ac1e0a4faed). 
+Download the blockchain [here](https://www.factom.com/assets/site/factom_bootstrap.zip). 
 
 Extract the zip file to your home directory. It will create files in the location: ~/.factom/m2/main-database/ldb/MAIN/factoid_level.db/
 
