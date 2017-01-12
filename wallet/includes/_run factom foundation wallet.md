@@ -10,7 +10,11 @@ Note: currently factomd uses a lot of drive accesses when running. It is reccome
 
 Download the blockchain [here](https://www.factom.com/assets/site/factom_bootstrap.zip). 
 
-Extract the zip file to your home directory. It will create files in the location: ~/.factom/m2/main-database/ldb/MAIN/factoid_level.db/
+Extract the zip file to your home directory. It will create files in the location: 
+
+~/.factom/m2/main-database/ldb/MAIN/factoid_level.db/
+
+The newly created .factom folder is an invisible folder on Mac and Linux so you won't be able to see it unless you browse to it via Terminal.
 
 Compressed the blockchain is currently about 5 GB and uncompressed is over 9 GB.
 
