@@ -4,7 +4,7 @@ If you got this far, you are doing well Grasshopper. Ready to  get your hands on
 
 Here is a step by step guide on how to install FF binaries on Mac, Windows, and Linux.
 
-**Step 1**  Download the binaries for Mac, Windows, or Linux on [GitHub](https://github.com/FactomProject/distribution).
+**Step 1**  Download the installer for Mac, Windows, or Linux on [GitHub](https://github.com/FactomProject/distribution).
 
 **Step 2**  Save it to your desktop or downloads folder on your local hard drive.
 
