@@ -18,7 +18,7 @@ After factomd boots and downloads the remaining blocks, it likely is not keeping
 
 In most cases factomd will need to be restarted after synching to the latest blockchain.
 
-**Run Factom Foundation Wallet**
+**Run the Factom Foundation Wallet**
 
 *Time to remember Mr. Miyagi's lesson.*
  
