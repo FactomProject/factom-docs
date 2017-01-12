@@ -4,7 +4,7 @@ If you got this far, you are doing well Grasshopper. Ready to  get your hands on
 
 Here is a step by step guide on how to install FF binaries on Mac, Windows, and Linux.
 
-**Step 1**  Download the binaries for Mac, Windows, or Linux on GitHub **(add URLs)**.
+**Step 1**  Download the binaries for Mac, Windows, or Linux on [GitHub](https://github.com/FactomProject/distribution).
 
 **Step 2**  Save it to your desktop or downloads folder on your local hard drive.
 
@@ -49,7 +49,7 @@ You are now ready to [run Factom Federation](#run-factom-federation).
 ###Windows
 This installer is for factomd, factom-walletd, factom-cli, and enterprise-wallet the 4 binaries will be installed in c:\Program Files (x86)\Factom\ together with a .factom folder in the root of the local user Home Folder. These are all required to run Factom via command line or the Factom Wallet GUI.
 
-Next, locate the factom.msi file you just downloaded in Step 1.
+Next, locate the FactomInstall-amd64.msi or FactomInstall-i386.msi file you just downloaded in Step 1.
 
 Double click factom.msi to run it but you may be prompted with the following message.
 
@@ -88,10 +88,8 @@ You made it so far, and ready to [run Factom Federation](#run-factom-federation)
 ###Linux
 This installer is for factomd, factom-walletd, factom-cli, and enterprise-wallet the 4 binaries will be installed on your local drive together with a .factom folder in the root of the local user Home Folder ~/.factom. These are all required to run Factom via command line or the Factom Foundation Wallet.
 
-The Linux installer will work for Debian and Ubuntu but not for RedHat Linux. (double check if still the case)
-
 Download the factom.deb installer as per Step 1 then run the following command to install.
 
-`sudo dpkg --force-architecture -i ./factom.deb`
+`sudo dpkg -i ./factom-amd64.deb`
 
 We are aware Linux users are hardcore so we made sure one command is all they need to be ready to [run Factom Federation](#run-factom-federation).

@@ -1,8 +1,28 @@
 ## Run Factom Federation
 
+**README FIRST - Starting Factom**
+
+Factom takes a while to download the blockchain. It can be expidited by downloading the first 70k blocks via HTTP. Factomd still checks the blockchain on each bootup, so it will check for inconsistencies in the download.
+
+<aside class="notice"><br>
+Note: currently factomd uses a lot of drive accesses when running. It is reccomended to hold the blockchain on a solid state drive. Running factomd on a spinning hard drive will be arduously slow. Since factomd currently scans the entire blockchain each time it is started, bootup takes a while (~30 min on an SSD). You can watch the progress on the Control Panel.
+</aside>
+
+Download the blockchain [here](https://www.factom.com/assets/site/factom_bootstrap.zip SHA256: 2d4d256c337cdabc8f75aa71180c72129f807c365c78356471350ac1e0a4faed). 
+
+Extract the zip file to your home directory. It will create files in the location: ~/.factom/m2/main-database/ldb/MAIN/factoid_level.db/
+
+Compressed the blockchain is currently about 5 GB and uncompressed is over 9 GB.
+
+After factomd boots and downloads the remaining blocks, it likely is not keeping up with minutes. To see if it is, on the control panel click the "More Detailed Node Information" button. Towards the right of the top line there will be a field "-/ 0". If the 0 number does not increase after a minute, then it is not keeping up with minutes.
+
+In most cases factomd will need to be restarted after synching to the latest blockchain.
+
+**Run Factom Federation**
+
 *Time to remember Mr. Miyagi's lesson.*
  
-This step will be used every time you need to run the Factom Foundation Wallet, so get familiar with it. Practice makes perfect. Wax on, wax off.
+This step will be used every time you need to run Factom Federation software, so get familiar with it. Practice makes perfect. Wax on, wax off.
  
 Every time you come across "**Run FF**" you need to perform the following steps. These are the basic steps to run the wallet.
 
@@ -31,8 +51,8 @@ Then browse to [http://localhost:8090](http://localhost:8090) to see the Control
 ![node 01](images/wallet_018.png)
 
 <aside class="notice"><br>
-If this is the first time you are running FF, now's a great time to check your Facebook feed or take your dog on a walk. 
-Syncing the Factom blockchain may take a little while, the blockchain is ...big. The Factom Control panel will display the progress and notify you when it has finished syncing.
+If this is the first time you are running FF, and haven't dowloaded the blockchain via http as recommended above, now's a great time to check your Facebook feed or take your dog on a walk. 
+Syncing the Factom blockchain may take a little while, the blockchain is ...big. The Factom Control panel will display the progress and notify you when it has finished syncing. This will also occur when it has been a while since the last time you have run factomd. 
 </aside>
 
 Once you are synced, in a new Terminal window browse (cd) to the location of your FF installation as you did above (Mac and Windows only).
