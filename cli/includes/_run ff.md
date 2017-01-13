@@ -14,7 +14,9 @@ Extract the zip file to your home directory. It will create files in the locatio
 
 ~/.factom/m2/main-database/ldb/MAIN/factoid_level.db/
 
-The newly created .factom folder is an invisible folder on Mac and Linux so you won't be able to see it unless you browse to it via Terminal.
+<aside class="success"><br>
+The newly created .factom folder is an invisible folder on Mac and Linux so you won't be able to see it unless you browse to it via Terminal. On Mac, in Finder, you can also use Go/Go to Folder... and type ~/.factom to see its content. 
+</aside>
 
 Compressed the blockchain is currently about 5 GB and uncompressed is over 9 GB.
 
