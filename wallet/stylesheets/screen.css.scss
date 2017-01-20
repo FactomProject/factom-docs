@@ -323,6 +323,18 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff with the light background in the left half of the page
 
+.fullContent {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+    margin-right: 0% !important;
+  }
+  &>p {
+    margin-right: 20% !important;
+  }
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .content {
   // to place content above the dark box
   position: relative;
@@ -544,6 +556,10 @@ html, body {
       text-decoration: none;
       border-bottom: dashed 1px #ccc;
     }
+  }
+  &.fullContent pre, &.fullContent blockquote {
+    width: inherit;
+    float: none;
   }
 
   pre {

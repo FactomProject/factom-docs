@@ -157,8 +157,6 @@ Step 3/3 for Transactions 120000 / 122410
 Step 3/3 for Transactions 122410 / 122410
 Finishing up sync....
 ```
-Sample Terminal output is shown on the right.
-
 <br>
 Then with your web browser go to [http://localhost:8091](http://localhost:8091) to see your local Factom Foundation Wallet.
 <aside class="notice"><br>
@@ -184,7 +182,6 @@ Pat yourself on the back for making it this far! You have now run FF Wallet for 
 <aside class="success"><br>
 There are other advanced features shown on the settings page and we will tell you more about them as we go along with our guides, for the time being we will use the wallet with default settings.
 </aside>
-
 
 
 
