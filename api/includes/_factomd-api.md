@@ -36,7 +36,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {  
    "jsonrpc":"2.0",
    "id":0,
@@ -85,7 +85,7 @@ curl -X POST --data-binary \
 
 > Example Response
 
-```cURL
+```json-doc
 {  
    "jsonrpc":"2.0",
    "id":0,
@@ -116,7 +116,7 @@ curl -X POST --data-binary \
 
 > Example Response
 
-```cURL
+```json-doc
 {  
    "jsonrpc":"2.0",
    "id":0,
@@ -167,7 +167,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {  
    "jsonrpc":"2.0",
    "id":0,
@@ -202,7 +202,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -266,7 +266,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -349,7 +349,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -431,7 +431,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -588,7 +588,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry-block",
 
 > Example Response
 
-```cURL
+```json-doc
 {  
  "jsonrpc":"2.0",
  "id":0,
@@ -635,7 +635,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params
 
 > Example Response
 
-```cURL
+```json-doc
 {  
  "jsonrpc":"2.0",
  "id":0,
@@ -673,7 +673,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {  
  "jsonrpc":"2.0",
  "id":0,
@@ -717,7 +717,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction",
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -783,7 +783,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "pending-trans
 
 > Example Response
 
-```cURL
+```json-doc
 {"jsonrpc":"2.0","id":0,"result":[{
     "TransactionID": "337a32712f14c5df0b57a64bd6c321a043081688ecd4f33fd8319470da2256b1",
     "Status": "AckStatusACK"
@@ -815,7 +815,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -851,7 +851,7 @@ curl -X POST --data-binary {"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -886,7 +886,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -918,7 +918,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -948,7 +948,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -985,7 +985,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "factoid-submi
 
 > Example Response
 
-```cURL
+```json-doc
 {  
    "jsonrpc":"2.0",
    "id":0,
@@ -1022,7 +1022,7 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-chain", "para
 
 > Example Response
 
-```cURL
+```json-doc
 {  
    "jsonrpc":"2.0",
    "id":0,
@@ -1059,7 +1059,7 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-chain", "para
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -1095,7 +1095,7 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-entry", "para
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -1131,7 +1131,7 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-entry", "para
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -1152,7 +1152,7 @@ Send a raw hex encoded binary message to the Factom network. This is mostly just
 
 > Example Request
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -1165,7 +1165,7 @@ Send a raw hex encoded binary message to the Factom network. This is mostly just
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -1186,7 +1186,7 @@ p://localhost:8088/v2`
 
 > Example Request
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -1199,7 +1199,7 @@ p://localhost:8088/v2`
 
 > Example Response
 
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -1224,7 +1224,7 @@ Entry Hash : f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734
 ```shell
 curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "junk"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
-```cURL
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,

@@ -2,8 +2,8 @@
 title: API Documentation - factomd RPC API V2
 
 language_tabs:
-  - shell:	shell
-  - json:	json
+  - shell:  curl
+  - json:   json
 
 
 toc_footers:
