@@ -6,19 +6,20 @@ All these APIs use JSON-RPC, which is a remote procedure call protocol encoded i
 
 They can be invoked as:
 
-`curl -X POST –data-binary <JSON input> "method": "directory-block"}' -H 'content-type:text/plain;' http://localhost:8089/v2`
- 
+`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "METHOD_NAME", "params":{"PARAM_1":"DATA_1"}}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+
  The output will also be JSON.
 
  An example of a request and a response are given in the Right Panel for each of the RPC Methods.
 
-##RPC Methods
-
-###errors
-
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "bad"}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+## errors
 
 > Example Request
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "bad"}'  \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
 
 ```json
 {
@@ -27,9 +28,10 @@ They can be invoked as:
     "method": "bad"
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -40,11 +42,9 @@ They can be invoked as:
 }
 ```
 
-###address
+Example of an invalid method
 
-Retrieve the public and private parts of a Factoid or Entry Credit address stored in the wallet.
-
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "address", "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"}}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+## address
 
 > Example Request
 
@@ -59,9 +59,15 @@ Retrieve the public and private parts of a Factoid or Entry Credit address store
 }
 ```
 
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
+"address", "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"}}' \ 
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -72,11 +78,9 @@ Retrieve the public and private parts of a Factoid or Entry Credit address store
 }
 ```
 
-###all-addresses
+Retrieve the public and private parts of a Factoid or Entry Credit address stored in the wallet.
 
-Retrieve all of the Factoid and Entry Credit addresses stored in the wallet.
-
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "all-addresses"}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+## all-addresses
 
 > Example Request
 
@@ -88,9 +92,14 @@ Retrieve all of the Factoid and Entry Credit addresses stored in the wallet.
 }
 ```
 
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "all-addresses"}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -109,11 +118,9 @@ Retrieve all of the Factoid and Entry Credit addresses stored in the wallet.
 }
 ```
 
-###generate-ec-address
+Retrieve all of the Factoid and Entry Credit addresses stored in the wallet.
 
-Create a new Entry Credit Address and store it in the wallet.
-
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "generate-ec-address"}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+## generate-ec-address
 
 > Example Request
 
@@ -125,9 +132,15 @@ Create a new Entry Credit Address and store it in the wallet.
 }
 
 ```
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "generate-ec-address"}' \ 
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -138,13 +151,16 @@ Create a new Entry Credit Address and store it in the wallet.
 }
 ```
 
-###generate-factoid-address
-
 Create a new Entry Credit Address and store it in the wallet.
 
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "generate-ec-address"}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+## generate-factoid-address
 
 > Example Request
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "generate-ec-address"}' \ 
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
 
 ```json
 {
@@ -156,7 +172,7 @@ Create a new Entry Credit Address and store it in the wallet.
 
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -167,13 +183,16 @@ Create a new Entry Credit Address and store it in the wallet.
 }
 ```
 
-###get-height
+Create a new Entry Credit Address and store it in the wallet.
 
-Get the current hight of blocks that have been cached by the wallet while syncing.
-
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "get-height"}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+## get-height
 
 > Example Request
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "get-height"}' \ 
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
 
 ```json
 {
@@ -185,7 +204,7 @@ Get the current hight of blocks that have been cached by the wallet while syncin
 
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -195,13 +214,16 @@ Get the current hight of blocks that have been cached by the wallet while syncin
 }
 ```
 
-###import-addresses
+Get the current hight of blocks that have been cached by the wallet while syncing.
 
-Import Factoid and/or Entry Credit address secret keys into the wallet.
-
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-addresses", "params":{"addresses":[{"secret":"Fs2G4Hs9YxqBZ8TkfyWwNKmJbwet3Zg1JNXt8MrQReCEph6rGt9v"},{"secret":"Es3tXbGBVKZDhUWzDKzQtg4rcpmmHPXAY9vxSM2JddwJSD5td3f8"}]}}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+## import-addresses
 
 > Example Request
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-addresses", "params":{"addresses":[{"secret":"Fs2G4Hs9YxqBZ8TkfyWwNKmJbwet3Zg1JNXt8MrQReCEph6rGt9v"},{"secret":"Es3tXbGBVKZDhUWzDKzQtg4rcpmmHPXAY9vxSM2JddwJSD5td3f8"}]}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
 
 ```json
 {
@@ -223,7 +245,7 @@ Import Factoid and/or Entry Credit address secret keys into the wallet.
 
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -242,13 +264,17 @@ Import Factoid and/or Entry Credit address secret keys into the wallet.
 }
 ```
 
-###import-koinify
+Import Factoid and/or Entry Credit address secret keys into the wallet.
 
-Import a Koinify crowd sale address into the wallet. In our examples we used the word "yellow" twelve times, note that in your case the master passphrase will be different.
-
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-koinify", "params":{"words":"yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"}}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+## import-koinify
 
 > Example Request
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-koinify", "params":
+{"words":"yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
 
 ```json
 {
@@ -263,7 +289,7 @@ Import a Koinify crowd sale address into the wallet. In our examples we used the
 
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -274,11 +300,10 @@ Import a Koinify crowd sale address into the wallet. In our examples we used the
 }
 ```
 
-###wallet-backup
+Import a Koinify crowd sale address into the wallet. In our examples we used the word "yellow" twelve times, note that in your case the master passphrase will be different.
 
-Return the wallet seed and all addresses in the wallet for backup and offline storage.
 
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "wallet-backup"}' -H 'content-type:text/plain;' http://localhost:8089/v2`
+## wallet-backup
 
 > Example Request
 
@@ -290,9 +315,14 @@ Return the wallet seed and all addresses in the wallet for backup and offline st
 }
 ```
 
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "wallet-backup"}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -320,13 +350,17 @@ Return the wallet seed and all addresses in the wallet for backup and offline st
 }
 ```
 
-###properties
+Return the wallet seed and all addresses in the wallet for backup and offline storage.
 
-Retrieve current properties of factom-walletd, including the wallet and wallet API versions.
+## properties
 
-`curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}' -H 'content-type:text/plain;' http://localhost:8089/v2`
 
 > Example Request
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}'  \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
 
 ```json
 {
@@ -338,7 +372,7 @@ Retrieve current properties of factom-walletd, including the wallet and wallet A
 
 > Example Response
 
-```json
+```cURL
 {
     "jsonrpc": "2.0",
     "id": 0,
@@ -349,4 +383,4 @@ Retrieve current properties of factom-walletd, including the wallet and wallet A
 }
 ```
 
-
+Retrieve current properties of factom-walletd, including the wallet and wallet API versions.

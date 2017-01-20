@@ -323,6 +323,12 @@ html, body {
 ////////////////////////////////////////////////////////////////////////////////
 // This is all the stuff with the light background in the left half of the page
 
+.fullContent {
+  &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
+    margin-right: 20% !important;
+  }
+}
+
 .content {
   // to place content above the dark box
   position: relative;

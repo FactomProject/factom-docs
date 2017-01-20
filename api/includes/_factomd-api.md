@@ -1,28 +1,20 @@
 # factomd API
-This is the API reference for the factomd process. The API is designed for outside application to process transactions and interact with the Factom federated servers. It's listening port can be configured and runs on 8088 by default.
+
+This is the API reference for the factomd process. The API is designed for outside application to process transactions and interact with the Factom federated servers. It’s listening port can be configured and runs on 8088 by default.
 
 All these APIs use JSON-RPC, which is a remote procedure call protocol encoded in JSON. It is a very simple protocol (and very similar to XML-RPC), defining only a handful of data types and commands.
 
-They can be invoked as
+They can be invoked in your terminal as
 
-`curl -X POST –data-binary <JSON input> "method": "directory-block"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
- 
+`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "METHOD_HERE", "params": {"PARAM_1":"PARAM_DATA_1"}}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+
  The output will also be JSON.
 
- An example of a request and a response are given in the Right Panel for each of the RPC Methods
+ The right panel will contain the curl commands to be run in your terminal, as well as the json structures of the request and reponse. The json structs detail the required parameters for each call.
 
 
+## directory-block
 
-## RPC Methods
-
-###directory-block
-
-Retrieve the full directory block for a block using its key. 
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
-{"KeyMR":"7d7f991a08178f88b4b48ec7d45e7a58c9eab5a404724136f14c0f0d741ba2aa"}, "method": "directory-block"}' -H
-'content-type:text/plain;' http://localhost:8088/v2
-`
 > Example Request
 
 ```json
@@ -35,42 +27,46 @@ Retrieve the full directory block for a block using its key.
   }
 }
 ```
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"directory-block", "params": {"KeyMR":"7ed5d5b240973676c4a8a71c08c0cedb9e0ea335eaef22995911bcdc0fe9b26b"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
 > Example Response
 
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "header": {
-      "prevblockkeymr": "59da2e17929da7d132e7f8d1c5c130195ae3960348d8b408563dc2b9dd2ce062",
-      "sequencenumber": 22954,
-      "timestamp": 1481304240
-    },
-    "entryblocklist": [
-      {
-        "chainid": "000000000000000000000000000000000000000000000000000000000000000a",
-        "keymr": "5f6ba4e95cdce6cf3226a5b7e922885fc86dbfd38f4c842e9ab4d35f2fed08f7"
+```cURL
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "header":{  
+         "prevblockkeymr":"7d15d82e70201e960655ce3e7cf475c9da593dfb82c6dca6377349bd148bf001",
+         "sequencenumber":72497,
+         "timestamp":1484858820
       },
-      {
-        "chainid": "000000000000000000000000000000000000000000000000000000000000000c",
-        "keymr": "52ce82963f1a70a6c88ed151e396400b34026a67a6eecf6669e3c5f3e2e18436"
-      },
-      {
-        "chainid": "000000000000000000000000000000000000000000000000000000000000000f",
-        "keymr": "7a9b23445d01221830e50323e705262a89a67486a9dcdf966ef8c3f14d1411ff"
-      }
-    ]
-  }
+      "entryblocklist":[  
+         {  
+            "chainid":"000000000000000000000000000000000000000000000000000000000000000a",
+            "keymr":"3faa880a97ef6ce1feca643cffa015dd6be6a597b3f9260e408c5ac9351d1f8d"
+         },
+         {  
+            "chainid":"000000000000000000000000000000000000000000000000000000000000000c",
+            "keymr":"5f8c98930a1874a46b47b65b9376a02fbff65b760f6866519799d69e2bc019ee"
+         },
+         {  
+            "chainid":"000000000000000000000000000000000000000000000000000000000000000f",
+            "keymr":"8c6fed0f41317cc45201b5b170a9ac5bc045029e39a90b6061211be2c0678718"
+         }
+      ]
+   }
 }
 ```
-###directory-block-head
 
-Returns the keymr of the latest directory block. 
+Every directory block has a KeyMR (Key Merkle Root), which can be used to retrieve it. The reponse will contain information that can be used to naviagate through all transactions (entry and factoid) within that block. The header of the directory block will contain information regarding the previous directory block's keyMR, directory block height, and the timestamp. 
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' -H
-'content-type:text/plain;' http://localhost:8088/v2
-`
+## directory-block-head
 > Example Request
 
 ```json
@@ -80,26 +76,35 @@ Returns the keymr of the latest directory block.
   "method": "directory-block-head"
 }
 ```
-> Example Response
 
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "keymr": "36c360817761e0d92af464f7c2e94a7495104d6b0a6051218cc53e52d3d519b6"
-  }
-}
+```shell
+curl -X POST --data-binary \
+'{"jsonrpc": "2.0", "id": 0, "method": "directory-block-head"}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
-###heights
+> Example Response
 
-Returns various heights that allows you to view the state of the blockchain. 
+```cURL
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "keymr":"7ed5d5b240973676c4a8a71c08c0cedb9e0ea335eaef22995911bcdc0fe9b26b"
+   }
+}
+```
+The directory block head is the last known directory block by factom, or in other words, the most recently recorded block. This can be used to grab the latest block and the information required to traverse the entire blockchain. 
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "heights"}' -H 'content-type:text/plain;'
-http://localhost:8088/v2`
+## heights
 
 > Example Request
+
+```shell
+curl -X POST --data-binary \
+'{"jsonrpc": "2.0", "id": 0, "method": "heights"}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -108,33 +113,46 @@ http://localhost:8088/v2`
   "method": "heights"
 }
 ```
+
 > Example Response
 
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "directoryblockheight": 14460,
-    "leaderheight": 22955,
-    "entryblockheight": 14460,
-    "entryheight": 14460,
-    "missingentrycount": 0,
-    "entryblockdbheightprocessing": 14460,
-    "entryblockdbheightcomplete": 14460
-  }
+```cURL
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "directoryblockheight":72498,
+      "leaderheight":72498,
+      "entryblockheight":72498,
+      "entryheight":72498,
+      "missingentrycount":0,
+      "entryblockdbheightprocessing":72498,
+      "entryblockdbheightcomplete":72498
+   }
 }
 ```
 
-###raw-data
+Returns various heights that allows you to view the state of the blockchain. The heights returned provide a lot of information regarding the state of factomd, but not all are neede by most applications. The heights also indicate the most recent block, which could not be complete, and still being built. The heights mean as follows:
 
-Retrieve an entry or transaction in raw format, as an string encoded binary blob.
+* directoryblockheight : The current directory block height of the local factomd node.
+* leaderheight : The current block being worked on by the leaders in the network. This block is not yet complete, but all transactions submitted will go into this block (depending on network conditions, the transaction may be delayed into the next block)
+* entryblockheight : The height at which the factomd node has all the entry blocks. Directory blocks are obtained first, entry blocks could be lagging behind the directory block when sycning.
+* entryheight : The height at which the local factomd node has all the entries. If you added entries at a block height above this, they will be not be able to be retrieved by the local factomd until it syncs further.
+* missingentrycount : More insight to the system, this should mostly be ignored
+* entryblockdbheightprocessing : More insight to the system, this should mostly be ignored
+* entryblockdbheightcomplete : More insight to the system, this should mostly be ignored
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
-{"hash":"1f2931558c0ef6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"}, "method": "raw-data"}' -H
-'content-type:text/plain;' http://localhost:8088/v2`
+A fully synced node should show the same number for all but 'missingentrycount'
+
+## raw-data
 
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"raw-data", "params":{"hash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -146,27 +164,30 @@ Retrieve an entry or transaction in raw format, as an string encoded binary blob
   }
 }
 ```
+
 > Example Response
 
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "method": "raw-data",
-  "params": {
-    "hash": "1f2931558c0ef6ef9d40450fa3a49dc3a29d18c30ced91c791bbe6060d405e39"
-  }
+```cURL
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "data":"00f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca30000900040e5a5fa49cf19015475fb1b5c8e4269b4586f04ec98e0bb60dd32c214e201c9cf97febe09afca45549db35a9f61ca930855ce6d753853fb270490bcafb65e43020015466163746f6d20496e63204261736520436861696e0014466163746f6d697a652045766572797468696e67000c42656c6c2041766572616765001142656c6c204176657261676520446174617b22736f75726365223a227777772e62656c6c617665726167652e636f6d222c2271756f74655f64617465223a22323031372d30312d31392031373a33333a3031222c2264617461223a5b7b22474f4c44223a22313231332e3134227d2c7b2253494c564552223a2231372e3139227d5d7d"
+   }
 }
 ```
 
-###dblock-by-height
+Retrieve an entry or transaction in raw format, the data is a hex encoded string. 
 
-Retrieve a directory block given only its height.
+## dblock-by-height
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "dblock-by-height",
-"params":{"height":14460}}' -H 'content-type:text/plain;' http://localhost:8088/v2
-`
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"dblock-by-height", "params":{"height":14460}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -178,9 +199,10 @@ Retrieve a directory block given only its height.
   }
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -219,16 +241,17 @@ Retrieve a directory block given only its height.
 }
 ```
 
-###ablock-by-height
+Retrieve a directory block given only its height.
 
-Retrieve administrative blocks for any given height.
-
-The admin block contains data related to the identities within the factom system and the decisions the system makes as it builds the block chain. 
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
-"ablock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+## ablock-by-height
 
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
+"ablock-by-height", "params": {"height":1}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -240,9 +263,10 @@ The admin block contains data related to the identities within the factom system
   }
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -296,14 +320,21 @@ The admin block contains data related to the identities within the factom system
 }
 ```
 
-###ecblock-by-height
+Retrieve administrative blocks for any given height.
 
-Retrieve the entry credit block for any given height. These blocks contain entry credit transaction information.
+The admin block contains data related to the identities within the factom system and the decisions the system makes as it builds the block chain. The 'abentries' (admin block entries) in the json response can be of various types, the most common is a directory block signature (DBSig). A majority of the federated servers sign every directory block, meaning every block after m5 will contain 5 DBSigs in each admin block. 
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method":
-"ecblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+The ABEntries are detailed here: [Github Link](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#adminid-bytes)
+
+## ecblock-by-height
 
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
+"ecblock-by-height", "params": {"height":1}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -315,9 +346,10 @@ Retrieve the entry credit block for any given height. These blocks contain entry
   }
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -374,13 +406,17 @@ Retrieve the entry credit block for any given height. These blocks contain entry
 }
 ```
 
-###fblock-by-height
+Retrieve the entry credit block for any given height. These blocks contain entry credit transaction information.
 
-Retrieve the factoid block for any given height. These blocks contain factoid transaction information.
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params": {"height":1}, "method": "fblock-by-height"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+## fblock-by-height
 
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
+ "fblock-by-height", "params": {"height":1}}' \
+ -H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -392,9 +428,10 @@ Retrieve the factoid block for any given height. These blocks contain factoid tr
   }
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -483,15 +520,17 @@ Retrieve the factoid block for any given height. These blocks contain factoid tr
 }
 ```
 
-###receipt
+Retrieve the factoid block for any given height. These blocks contain factoid transaction information.
 
-Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
-{"hash":"0561491594de81214ebd918f29d1f9f59266ea63ec76341162dc4a252a0225b9"}, "method": "receipt"}' -H 'content-type:text/plain;' http://lo
-calhost:8088/v2`
+## receipt
 
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"receipt", "params":{"hash":"0561491594de81214ebd918f29d1f9f59266ea63ec76341162dc4a252a0225b9"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -503,35 +542,38 @@ calhost:8088/v2`
   }
 }
 ```
+
 > Example Response
 
-```json
+```
 //issue TODO
 {
-    "jsonrpc":"2.0",
-    "id":0,
-    "result":{
-        "Receipt":{
-            "Entry":////TODO
-            "MerkleBranch":////TODO
-            "EntryBlockKeyMR":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-            "DirectoryBlockKeyMR":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-            "BitcoinTransactionHash":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-            "BitcoinBlockHash":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-        }
+  "jsonrpc":"2.0",
+  "id":0,
+  "result":{
+    "Receipt":{
+        "Entry":////TODO
+        "MerkleBranch":////TODO
+        "EntryBlockKeyMR":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "DirectoryBlockKeyMR":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "BitcoinTransactionHash":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "BitcoinBlockHash":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
     }
+  }
 }
 ```
 
-###entry-block
+Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
-Retrieve a specified entry block given its merkle root key. 
+## entry-block
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
-"params":{"KeyMR":"f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"},"method":"entry-block"}' -H
-'content-type:text/plain;' http://localhost:8088/v2
-`
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry-block", 
+"params":{"KeyMR":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883"}}'\
+ -H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -546,32 +588,39 @@ Retrieve a specified entry block given its merkle root key.
 
 > Example Response
 
-```json
-{
-    "jsonrpc":"2.0",
-    "id":0,
-    "result":{
-        "Header":{
-            "BlockSequenceNumber":0,
-            "ChainID":"bb4e132bb2f8792c3174f5c1de108816c36cee86a383e1067926353e41f334bc",
-            "PrevKeyMR":"0000000000000000000000000000000000000000000000000000000000000000",
-            "Timestamp":0,
-            "DBHeight":24
-        },
-        "EntryList":[]
-    }
+```cURL
+{  
+ "jsonrpc":"2.0",
+ "id":0,
+ "result":{  
+  "header":{  
+   "blocksequencenumber":4211,
+   "chainid":"0caff62ea5b5aa015c706add7b2463a5be07e1f0537617f553558090f23c7f56",
+   "prevkeymr":"f7588bc41f03220a5ba4128432dc58b2027c05f432c91d79e6213ecdd5c923b3",
+   "timestamp":1450147800,
+   "dbheight":15000
+  },
+  "entrylist":[  
+   {  
+    "entryhash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2",
+    "timestamp":1450147980
+   }
+  ]
+ }
 }
 ```
 
-###entry
+Retrieve a specified entry block given its merkle root key. The entry block contains 0 to many entries
 
-Get an Entry from factomd specified by the Entry Hash.
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params":
-{"Hash":"be5216cc7a5a3ad44b49245aec298f47cbdfca9862dee13b0093e5880012b771"}}' -H 'content-type:text/plain;'
-http://localhost:8088/v2`
+## entry
 
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params":
+{"Hash":"24674e6bc3094eb773297de955ee095a05830e431da13a37382dcdc89d73c7d7"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -583,54 +632,92 @@ http://localhost:8088/v2`
   }
 }
 ```
+
 > Example Response
 
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "chainid": "ffd6a308e6ec9a746a84c33dbff73190e900f5ba2f8d27731d8c1a1d603a8230",
-    "content": "6869",
-    "extids": [
-      "33343533343537383334"
-    ]
-  }
+```cURL
+{  
+ "jsonrpc":"2.0",
+ "id":0,
+ "result":{  
+  "chainid":"df3ade9eec4b08d5379cc64270c30ea7315d8a8a1a69efe2b98a60ecdd69e604",
+  "content":"...",
+  "extids":[  
+     "466163746f6d416e63686f72436861696e"
+  ]
+ }
 }
 ```
 
-###pending-entries
+Get an Entry from factomd specified by the Entry Hash.
 
-Returns an array of the entries that have been submitted but have not been recoreded into the blockchain.
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params": "", "method": "pending-entries"}' -H 'content-type:text/plain;' http://localhost:8088/
-`
+## pending-entries
 
 > Example Request
 
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
+"pending-entries", "params": {}}' -H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
 ```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": [
-    {
-      "entryhash": "bb4abd1c5eac490158ae0b25d9ff0453ece01e65e6fb9465c5661ea3d937ec90",
-      "chainid": "6bd0ba63e1c6b34313b4050e82f9646cd551f2099cdd22119b5241fca15f32c1"
-    }
-  ]
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"pending-entries",
+   "params":{  
+
+   }
 }
 ```
 
-###transaction
+> Example Response
 
-Retrieve details of a factoid transaction using a transactions hash.
+```cURL
+{  
+ "jsonrpc":"2.0",
+ "id":0,
+ "result":[  
+    {  
+       "EntryHash":"dde3f69025780f58da583b6961cf17291004f733fb2fa1a69738e0a7768387e4",
+       "ChainID":"5c7a44a37870ca729d03820339379955781a863bc461545a9df06bbc15110bdb",
+       "Status":"AckStatusACK"
+    },
+    {  
+       "EntryHash":"45da41a07c6157839a735147a555ba4b009b72a9a7fe126c0d418413743f1683",
+       "ChainID":"f6df2b40bf16be03deddc169a6429804a67a761ed5f2d5499f7e56a7202f854b",
+       "Status":"AckStatusACK"
+    }
+ ]
+}
+```
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
-{"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}, "method": "transaction"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+Returns an array of the entries that have been submitted but have not been recoreded into the blockchain.
+
+## transaction
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction", "params":
+{"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"transaction",
+   "params":{  
+      "hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"
+   }
+}
+```
 
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -671,36 +758,49 @@ Retrieve details of a factoid transaction using a transactions hash.
 }
 ```
 
-###pending-transactions
+Retrieve details of a factoid transaction using a transactions hash.
+
+## pending-transactions
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "pending-transactions", "params":
+{"Address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"pending-transactions",
+   "params":{  
+      "Address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"
+   }
+}
+```
+
+> Example Response
+
+```cURL
+{"jsonrpc":"2.0","id":0,"result":[{
+    "TransactionID": "337a32712f14c5df0b57a64bd6c321a043081688ecd4f33fd8319470da2256b1",
+    "Status": "AckStatusACK"
+  }]}
+```
 
 Returns an array of factoid transactions that have not yet been recorded in the blockchain, but are known to the system.
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":
-{"Address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "pending-transactions"}' -H
-'content-type:text/plain;' http://localhost:8088/v2`
-
-```
-[
-  {
-    "TransactionID": "337a32712f14c5df0b57a64bd6c321a043081688ecd4f33fd8319470da2256b1",
-    "Status": "AckStatusACK"
-  },
-  {
-    "TransactionID": "9f94b2c0e827ac4e09fa1a649d4f2296cf19654a8589700c395ace0066357b14",
-    "Status": "AckStatusACK"
-  }
-]
-```
-
-###chain-head
-
-Return the keymr of the head of the chain for a chain ID (the unique hash created when the chain was created).
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
-"params":{"ChainID":"5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"}, "method": "chain-head"}' -H
-'content-type:text/plain;' http://localhost:8088/v2`
+## chain-head
 
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
+"chain-head", "params":{"ChainID":"5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -712,9 +812,10 @@ Return the keymr of the head of the chain for a chain ID (the unique hash create
   }
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -724,15 +825,18 @@ Return the keymr of the head of the chain for a chain ID (the unique hash create
 }
 ```
 
-###entry-credit-balance
+Return the keymr of the head of the chain for a chain ID (the unique hash created when the chain was created).
 
-Return its current balance for a specific entry credit address.
-
-`curl -X POST --data-binary {"jsonrpc": "2.0", "id": 0, "params":
-{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}, "method": "entry-credit-balance"} -H
-content-type:text/plain; http://localhost:8088/v2`
+## entry-credit-balance
 
 > Example Request
+
+```shell
+curl -X POST --data-binary {"jsonrpc": "2.0", "id": 0, "method": 
+"entry-credit-balance", "params":
+{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}} \
+-H content-type:text/plain; http://localhost:8088/v2
+```
 
 ```json
 {
@@ -747,7 +851,7 @@ content-type:text/plain; http://localhost:8088/v2`
 
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -757,14 +861,17 @@ content-type:text/plain; http://localhost:8088/v2`
 }
 ```
 
-###factoid-balance
+Return its current balance for a specific entry credit address.
 
-This call returns the number of Factoshis (Factoids *10^-8) that are currently available at the address specified.
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
-}, "method": "factoid-balance"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+## factoid-balance
 
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"factoid-balance", "params":{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -776,9 +883,10 @@ This call returns the number of Factoshis (Factoids *10^-8) that are currently a
   }
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -788,13 +896,17 @@ This call returns the number of Factoshis (Factoids *10^-8) that are currently a
 }
 ```
 
-###entry-credit-rate
+This call returns the number of Factoshis (Factoids *10^-8) that are currently available at the address specified.
 
-Returns the number of Factoshis (Factoids *10^-8) that purchase a single Entry Credit. The minimum factoid fees are also determined by this rate, along with how complex the factoid transaction is.
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "entry-credit-rate"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+## entry-credit-rate
 
 > Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, 
+"method": "entry-credit-rate"}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
@@ -803,9 +915,10 @@ Returns the number of Factoshis (Factoids *10^-8) that purchase a single Entry C
   "method": "entry-credit-rate"
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -814,12 +927,9 @@ Returns the number of Factoshis (Factoids *10^-8) that purchase a single Entry C
   }
 }
 ```
+Returns the number of Factoshis (Factoids *10^-8) that purchase a single Entry Credit. The minimum factoid fees are also determined by this rate, along with how complex the factoid transaction is.
 
-###properties
-
-Retrieve current properties of the Factom system, including the software and the API versions.
-
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+## properties
 
 > Example Request
 
@@ -830,9 +940,15 @@ Retrieve current properties of the Factom system, including the software and the
   "method": "properties"
 }
 ```
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"properties"}' -H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -843,75 +959,107 @@ Retrieve current properties of the Factom system, including the software and the
 }
 ```
 
-###factoid-submit
+Retrieve current properties of the Factom system, including the software and the API versions.
 
-Submit a factoid transaction.
 
-`curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "factoid-submit", "params":
-{"transaction":"0201565d109233010100b0a0e100646f3e8750c550e4582eca5047546ffef89c13a175985e320232bacac81cc428afd7c200ce7b98b
-fdae90f942bc1fe88c3dd44d8f4c81f4eeb88a5602da05abc82ffdb5301718b5edd2914acc2e4677f336c1a32736e5e9bde13663e6413894f57ec272
-e28dc1908f98b79df30005a99df3c5caf362722e56eb0e394d20d61d34ff66c079afad1d09eee21dcd4ddaafbb65aacea4d5c1afcd086377d77172f15
-b3aa32250a"}} -H 'content-type:text/plain;' http://localhost:8088/v2`
+## factoid-submit
 
-###commit-chain
+>Example Request
 
-Send a Chain Commit Message to factomd to create a new Chain.
-
-`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
-{"message":"00015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c03
-1b4124395c940e5e2c5ea496e8aaa2f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d606698547340b3b6a27bcceb6a42d62a3a8d0
-2a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac120237086112b5ef3
-4fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}, "method": "commit-chain"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
-
-> Example Request
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "factoid-submit", "params":
+{"transaction":"0201565d109233010100b0a0e100646f3e8750c550e4582eca5047546ffef89c13a175985e320232bacac81cc428afd7c200ce7b98bfdae90f942bc1fe88c3dd44d8f4c81f4eeb88a5602da05abc82ffdb5301718b5edd2914acc2e4677f336c1a32736e5e9bde13663e6413894f57ec272e28dc1908f98b79df30005a99df3c5caf362722e56eb0e394d20d61d34ff66c079afad1d09eee21dcd4ddaafbb65aacea4d5c1afcd086377d77172f15b3aa32250a"}}' \
+ -H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "params": {
-    "message": "00015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d606698547340b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac120237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"
-  },
-  "method": "commit-chain"
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"factoid-submit",
+   "params":{  
+      "transaction":"0201565d109233010100b0a0e100646f3e8750c550e4582eca5047546ffef89c13a175985e320232bacac81cc428afd7c200ce7b98bfdae90f942bc1fe88c3dd44d8f4c81f4eeb88a5602da05abc82ffdb5301718b5edd2914acc2e4677f336c1a32736e5e9bde13663e6413894f57ec272e28dc1908f98b79df30005a99df3c5caf362722e56eb0e394d20d61d34ff66c079afad1d09eee21dcd4ddaafbb65aacea4d5c1afcd086377d77172f15b3aa32250a"
+   }
 }
 ```
 
 > Example Response
 
+```cURL
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "message":"Successfully submitted the transaction",
+      "txid":"aa8bac391e744340140ea0d95c7b37f9cc8a58601961bd751f5adb042af6f33b"
+   }
+}
+```
+
+Submit a factoid transaction. The transaction hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#factoid-transaction)
+
+## commit-chain
+
+> Example Request
+
+```shell
+curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-chain", "params":
+{"message":
+"00015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d606698547340b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac120237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}}' \ 
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
 ```json
 {
   "jsonrpc": "2.0",
   "id": 0,
-  "result": {
-    "message": "Chain Commit Success",
-    "txid": "1580788d133a9e21406e6406a4a85150fe450895117a4365f77affe0fe5899fd"
+  "method": "commit-chain",
+  "params": {
+    "message": "00015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d606698547340b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac120237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"
   }
 }
 ```
 
-###reveal-chain
+> Example Response
 
-Reveal the First Entry in a Chain to factomd after the Commit to compleate the Chain creation.
+```cURL
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "message":"Chain Commit Success",
+      "txid":"76e123d133a841fe3e08c5e3f3d392f8431f2d7668890c03f003f541efa8fc61"
+   }
+}
+```
 
-`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
-{"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
-C6C6F20466163746F6D21"}, "method": "reveal-chain"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+Send a Chain Commit Message to factomd to create a new Chain. The commit chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#chain-commit)
+
+## reveal-chain
 
 > Example Request
+
+```
+curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-chain", "params":
+{"entry":
+"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"}}' \
+ -H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
   "jsonrpc": "2.0",
   "id": 0,
+  "method": "reveal-chain",
   "params": {
     "entry": "007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"
-  },
-  "method": "reveal-chain"
+  }
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -922,31 +1070,32 @@ C6C6F20466163746F6D21"}, "method": "reveal-chain"}' -H 'content-type:text/plain;
 }
 ```
 
-###commit-entry
+Reveal the First Entry in a Chain to factomd after the Commit to compleate the Chain creation. The reveal chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
 
-Send an Entry Commit Message to factom to create a new Entry.
-
-`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
-{"message":"00015507C1024BF5C956749FC3EBA4ACC60FD485FB100E601070A44FCCE54FF358D60669854734013B6A27BCCEB6A42D62A3
-A8D02A6F0D73653215771DE243A63AC048A18B59DA29F4CBD953E6EBE684D693FDCA270CE231783E8ECC62D630F983CD59E559C625
-3F84D1F54C8E8D8665D493F7B4A4C1864751E3CDEC885A64C2144E0938BF648A00"}, "method": "commit-entry"}' -H 'content-type:text/plain;'
-http://localhost:8088/v2`
+## commit-entry
 
 > Example Request
+
+```shell
+curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-entry", "params":
+{"message":"00015507C1024BF5C956749FC3EBA4ACC60FD485FB100E601070A44FCCE54FF358D60669854734013B6A27BCCEB6A42D62A3A8D02A6F0D73653215771DE243A63AC048A18B59DA29F4CBD953E6EBE684D693FDCA270CE231783E8ECC62D630F983CD59E559C6253F84D1F54C8E8D8665D493F7B4A4C1864751E3CDEC885A64C2144E0938BF648A00"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
   "jsonrpc": "2.0",
   "id": 0,
+  "method": "commit-entry",
   "params": {
     "message": "00015507C1024BF5C956749FC3EBA4ACC60FD485FB100E601070A44FCCE54FF358D60669854734013B6A27BCCEB6A42D62A3A8D02A6F0D73653215771DE243A63AC048A18B59DA29F4CBD953E6EBE684D693FDCA270CE231783E8ECC62D630F983CD59E559C6253F84D1F54C8E8D8665D493F7B4A4C1864751E3CDEC885A64C2144E0938BF648A00"
-  },
-  "method": "commit-entry"
+  }
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -957,30 +1106,32 @@ http://localhost:8088/v2`
 }
 ```
 
-###reveal-entry
+Send an Entry Commit Message to factom to create a new Entry. The entry commit hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry-commit)
 
-Reveal an Entry to factomd after the Commit to compleate the Entry creation.
-
-`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
-{"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656
-C6C6F20466163746F6D21"}, "method": "reveal-entry"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+## reveal-entry
 
 > Example Request
+
+```shell
+curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-entry", "params":
+{"entry":"007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
 
 ```json
 {
   "jsonrpc": "2.0",
   "id": 0,
+  "method": "reveal-entry",
   "params": {
     "entry": "007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"
-  },
-  "method": "reveal-entry"
+  }
 }
 ```
 
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -991,64 +1142,64 @@ C6C6F20466163746F6D21"}, "method": "reveal-entry"}' -H 'content-type:text/plain;
 }
 ```
 
-###send-raw-message
+Reveal an Entry to factomd after the Commit to compleate the Entry creation. The reveal entry hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
+
+## send-raw-message
 
 Send a raw hex encoded binary message to the Factom network. This is mostly just for debugging and testing.
 
-Commit Chain Example:
+### Commit Chain Example:
 
-`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
+> Example Request
+
+```cURL
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "send-raw-message",
+  "params": {
+    "message": "0401554b9c15b100015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d606698547340b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac120237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"
+  }
+}
+```
+
+> Example Response
+
+```cURL
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "message": "Successfully sent the message"
+  }
+}
+```
+
+`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "send-raw-message", "params":
 {"message":"0401554b9c15b100015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c1
 11f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d606698547340b3b6a27bcce
 b6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac12
-0237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}, "method": "send-raw-message"}' -H 'content-type:text/plain;' htt
+0237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}}' -H 'content-type:text/plain;' htt
 p://localhost:8088/v2`
 
-> Example Request
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "params": {
-    "message": "0401554b9c15b100015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c111f4f24c88d9c031b4124395c940e5e2c5ea496e8aaa2f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d606698547340b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b26d0d446bc69b22c887c534297c7d01b2ac120237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"
-  },
-  "method": "send-raw-message"
-}
-```
-> Example Response
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "message": "Successfully sent the message"
-  }
-}
-```
-
-Reveal Chain Example:
-
-`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "params":
-{"message":"0c01554b8e5881007e18ccc911f057fb111c7570778f6fdc51e189f35a6e6da683ec2a264443531f000e0005746573745a0005746573
-745a48656c6c6f20466163746f6d21"}, "method": "send-raw-message"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
+### Reveal Chain Example:
 
 > Example Request
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
+  "method": "send-raw-message",
   "params": {
     "message": "0c01554b8e5881007e18ccc911f057fb111c7570778f6fdc51e189f35a6e6da683ec2a264443531f000e0005746573745a0005746573745a48656c6c6f20466163746f6d21"
-  },
-  "method": "send-raw-message"
+  }
 }
 ```
+
 > Example Response
 
-```json
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
@@ -1057,22 +1208,30 @@ Reveal Chain Example:
   }
 }
 ```
+
+`curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "send-raw-message", "params":
+{"message":"0c01554b8e5881007e18ccc911f057fb111c7570778f6fdc51e189f35a6e6da683ec2a264443531f000e0005746573745a0005746573
+745a48656c6c6f20466163746f6d21"}}' -H 'content-type:text/plain;' http://localhost:8088/v2`
 
 To Check:
 ChainID : 7e18ccc911f057fb111c7570778f6fdc51e189f35a6e6da683ec2a264443531f
 Entry Hash : f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734
 
-###errors
+## errors
 
 > Example Request
 
-```json
+```shell
+curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "junk"}' -H 'content-type:text/plain;' http://localhost:8088/v2
+```
+```cURL
 {
   "jsonrpc": "2.0",
   "id": 0,
   "method": "junk"
 }
 ```
+
 > Example Response
 
 ```json
@@ -1085,34 +1244,3 @@ Entry Hash : f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734
   }
 }
 ```
-
-## Security
-
-###Encrypted Connections
-
-When factomd is run with TLS enabled, the calling program needs to specify the certificate file generated by factomd. This is how to use curl with TLS:
-
-`curl -X POST --cacert ~/.factom/m2/factomdAPIpub.cert --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}' -H 'content-type:text/plain;' https://localhost:8088/v2`
-
-###Password Protection
-
-When factomd is run with a password, it uses HTTP Basic Authentication. It is recommended to encrypt the connection when using a password, because otherwise the password can be sniffed on the network. Here is how to run with just the password:
-
-`curl -X POST -u userHere:securePassHere --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}' -H 'content-type:text/plain;' http://localhost:8088/v2`
-
-###Combined Password and Encryption
-
-`curl -X POST -u userHere:securePassHere --cacert ~/.factom/m2/factomdAPIpub.cert --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}'
--H 'content-type:text/plain;' https://localhost:8088/v2`
-
-###Creating Certificates
-
-Normally, when started the program creates a new certificate if one is not found. The certificates are bound to a set of specific IP addresses.
-
-Normally it finds the IP address by asking the OS. When using cloud services that use a different public IP than the server sees (AWS, Azure) the certificate needs to be told what the external IP address is manually. There are two options for this.
-
-1 - Edit the config file to show the external IP address instead of localhost for FactomdLocation.
-
-2 - Start factomd with the selfaddr flag and pass a comma separated list of authorized domains and IP addresses:
-
-`factomd -tls=true -selfaddr=domain.net,123.23.111.444`
