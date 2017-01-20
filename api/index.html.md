@@ -2,7 +2,8 @@
 title: API Documentation - factomd RPC API V2
 
 language_tabs:
-  - json
+  - shell:	shell
+  - json:	json
 
 
 toc_footers:
@@ -13,8 +14,9 @@ toc_footers:
   - <a href='https://factom.com'>Back to FACTOM.COM</a>
 
 includes:
-  - factomd api
-  - wallet api
+  - factomd-api
+  - wallet-api
+  - security-api
   
 
 search: true
@@ -23,3 +25,5 @@ search: true
 #Introduction
 
 Welcome to the Factom APIs documentation. Here you'll find intructions for factomd and factom-walletd JSON-RPC APIs.
+The API call examples are in curl, but the json structures are also provided for programming solutions. If using GoLang, there is a factom library solution created here:
+https://github.com/FactomProject/factom

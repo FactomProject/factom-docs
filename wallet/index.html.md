@@ -1,9 +1,6 @@
 ---
 title: Factom Federation Wallet
 
-language_tabs:
-  - shell
-
 toc_footers:
   - <a href='../api'>Factom API Docs</a>
   - <a href='../cli'>Factom CLI Docs</a>
