@@ -352,6 +352,260 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "wallet-backup
 
 Return the wallet seed and all addresses in the wallet for backup and offline storage.
 
+## transactions (Retrieving)
+
+There are a few ways to search for a transaction
+
+### Using a Range
+
+> Example Request
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"transactions",
+   "params":{  
+      "range":{  
+         "start":1,
+         "end":2
+      }
+   }
+}
+```
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method"
+:"transactions", "params":{"range":{"start":1,"end":2}}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+> Example Reponse 
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "transactions":[  
+         {  
+            "blockheight":2,
+            "feespaid":7999200,
+            "signed":true,
+            "timestamp":1441138236,
+            "totalecoutputs":100000000,
+            "totalinputs":107999200,
+            "totaloutputs":0,
+            "inputs":[  
+               {  
+                  "address":"FA21zXEUHMPiRtzBgiMY15cGrSpgXCsZqrDPxPv4oUZsR5f2AcjP",
+                  "amount":107999200
+               }
+            ],
+            "outputs":null,
+            "ecoutputs":[  
+               {  
+                  "address":"EC2LQ673tP3bRPgzuY6iyNVNvzHxVtzAcG5yw6KyBJpftGWsdS2t",
+                  "amount":100000000
+               }
+            ],
+            "txid":"82bd7f0461cfc915b539075faac07488e911ea6dcf1512ca913a876e020ff251"
+         },
+         {  
+            "blockheight":1,
+            "feespaid":7999200,
+            "signed":true,
+            "timestamp":1441138021,
+            "totalecoutputs":200000000,
+            "totalinputs":207999200,
+            "totaloutputs":0,
+            "inputs":[  
+               {  
+                  "address":"FA2vGRwutdPdTHQa7kkpX3LkSgqKQ1MS2nur4UqbxqP5MGHcziWa",
+                  "amount":207999200
+               }
+            ],
+            "outputs":null,
+            "ecoutputs":[  
+               {  
+                  "address":"EC1whAxbYYsfQoAFLuzHCsz4Qz29WePBcrrGj5MqMQ1PR43wjiBH",
+                  "amount":200000000
+               }
+            ],
+            "txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"
+         }
+      ]
+   }
+}
+```
+
+This will retrieve all transactions within a given block height range.
+
+### By TxID
+
+> Example Request
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"transactions",
+   "params":{  
+      "txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"
+   }
+}
+```
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
+"transactions", "params":{"txid":
+"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+> Example Reponse
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "transactions":[  
+         {  
+            "feespaid":7999200,
+            "signed":true,
+            "timestamp":8,
+            "totalecoutputs":200000000,
+            "totalinputs":207999200,
+            "totaloutputs":0,
+            "inputs":[  
+               {  
+                  "address":"FA2vGRwutdPdTHQa7kkpX3LkSgqKQ1MS2nur4UqbxqP5MGHcziWa",
+                  "amount":207999200
+               }
+            ],
+            "outputs":null,
+            "ecoutputs":[  
+               {  
+                  "address":"EC1whAxbYYsfQoAFLuzHCsz4Qz29WePBcrrGj5MqMQ1PR43wjiBH",
+                  "amount":200000000
+               }
+            ],
+            "txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"
+         }
+      ]
+   }
+}
+```
+
+This will retrieve a transaction by the given TxID. This call is the fastest way to retrieve a transaction, but it will not display the height of the transaction. If a height is in the response, it will be 0. To retrieve the height of a transaction, use the 'By Address' method
+
+This call in the backend really pushes the request to factomd. For a more informative reponse, it is advised to use the <a href="#transaction">factomd transaction method</a>
+
+### By Address
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
+"method":"transactions", "params":
+{"address":"FA2vGRwutdPdTHQa7kkpX3LkSgqKQ1MS2nur4UqbxqP5MGHcziWa"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"transactions",
+   "params":{  
+      "address":"FA2vGRwutdPdTHQa7kkpX3LkSgqKQ1MS2nur4UqbxqP5MGHcziWa"
+   }
+}
+```
+
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "transactions":[  
+         {  
+            "blockheight":1,
+            "feespaid":7999200,
+            "signed":true,
+            "timestamp":1441138021,
+            "totalecoutputs":200000000,
+            "totalinputs":207999200,
+            "totaloutputs":0,
+            "inputs":[  
+               {  
+                  "address":"FA2vGRwutdPdTHQa7kkpX3LkSgqKQ1MS2nur4UqbxqP5MGHcziWa",
+                  "amount":207999200
+               }
+            ],
+            "outputs":null,
+            "ecoutputs":[  
+               {  
+                  "address":"EC1whAxbYYsfQoAFLuzHCsz4Qz29WePBcrrGj5MqMQ1PR43wjiBH",
+                  "amount":200000000
+               }
+            ],
+            "txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"
+         },
+         {  
+            "feespaid":1673832600,
+            "signed":true,
+            "timestamp":1441137600,
+            "totalecoutputs":0,
+            "totalinputs":178826890364500,
+            "totaloutputs":178825216531900,
+            "inputs":[  
+               {  
+                  "address":"FA2L6Vng4jBMbbDZtYLsxKQbAAin4Rxg2CgvnyzXrwENSK1t2QUx",
+                  "amount":178826890364500
+               }
+            ],
+            "outputs":[  
+               {  
+                  "address":"FA2vGRwutdPdTHQa7kkpX3LkSgqKQ1MS2nur4UqbxqP5MGHcziWa",
+                  "amount":224108800
+               }
+            ],
+            "ecoutputs":null,
+            "txid":"18b13f36b22d6cc23cab2a42fc277ecb0033a0281e646f14e0339e1fbc2ee464"
+         }
+      ]
+   }
+}
+```
+
+Retrieves all transactions that an address is apart of.
+
+### All Transactions
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, 
+"method":"transactions"}' -H 'content-type:text/plain;' \
+http://localhost:8089/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"transactions"
+}
+```
+
+`The developers were so preoccupied with whether or not they could, they didn’t stop to think if they should.`
+
+The amount of data returned by this is so large, I couldn't get you a sample output as it froze my terminal window. It is strongly reccomended to use other techniques to retrieve transactions, it is rarely the case to require EVERY transaction in the blockchain. If you are still determined to retrieve EVERY transaction in the blockchain, use other techniques such as using the 'range' method and specifically requesting for transactions between blocks X and Y, then incrementing your X's and Y's until you reach the latest block. This is much more manageable.
+
 ## tmp-transactions
 
 > Example Request
