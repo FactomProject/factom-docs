@@ -760,6 +760,96 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction",
 
 Retrieve details of a factoid transaction using a transactions hash.
 
+## factoid-ack
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
+"method":"factoid-ack", "params":{
+"TxID":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"factoid-ack",
+   "params":{  
+      "TxID":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"
+   }
+}
+```
+
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0",
+      "transactiondate":1441138021975,
+      "transactiondatestring":"2015-09-01 15:07:01",
+      "blockdate":1441137600000,
+      "blockdatestring":"2015-09-01 15:00:00",
+      "status":"DBlockConfirmed"
+   }
+}
+```
+
+Factoid Acknowledgements will give the current status of a transaction. "DBlockConfirmed" is the highest level of confirmation you can obtain. This means the transaction has completed.
+
+## entry-ack
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, 
+"method":"entry-ack", "params":{"TxID":
+"9228b4b080b3cf94cceea866b74c48319f2093f56bd5a63465288e9a71437ee8"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"entry-ack",
+   "params":{  
+      "TxID":"9228b4b080b3cf94cceea866b74c48319f2093f56bd5a63465288e9a71437ee8"
+   }
+}
+```
+
+> Example Reponse
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "committxid":"e5b5be39a41df43a3c46beaa238dc5e6f7bb11115a8da1a9b45cd694e257935a",
+      "entryhash":"9228b4b080b3cf94cceea866b74c48319f2093f56bd5a63465288e9a71437ee8",
+      "commitdata":{  
+         "transactiondate":1449547801861,
+         "transactiondatestring":"2015-12-07 22:10:01",
+         "blockdate":1449547800000,
+         "blockdatestring":"2015-12-07 22:10:00",
+         "status":"DBlockConfirmed"
+      },
+      "entrydata":{  
+         "blockdate":1449547800000,
+         "blockdatestring":"2015-12-07 22:10:00",
+         "status":"DBlockConfirmed"
+      }
+   }
+}
+```
+
+Entry Acknowledgements will give the current status of a transaction. "DBlockConfirmed" is the highest level of confirmation you can obtain. This means the entry has made it into Factom.
+
 ## pending-transactions
 
 > Example Request
