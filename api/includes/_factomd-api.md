@@ -700,7 +700,7 @@ Returns an array of the entries that have been submitted but have not been recor
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction", "params":
-{"hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"}}' \
+{"hash":"64251aa63e011f803c883acf2342d784b405afa59e24d9c5506c84f6c91bf18b"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -710,7 +710,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction",
    "id":0,
    "method":"transaction",
    "params":{  
-      "hash":"f355ac4e3a0fa9d8a2f1bb2f169bc7a13a00a023e4280e22ec95f7b374ae429c"
+      "hash":"64251aa63e011f803c883acf2342d784b405afa59e24d9c5506c84f6c91bf18b"
    }
 }
 ```
@@ -718,47 +718,49 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction",
 > Example Response
 
 ```json-doc
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "factoidtransaction": {
-      "millitimestamp": 1481322322340,
-      "inputs": [
-        {
-          "amount": 201144428,
-          "address": "a675d5ad742ccc4f33f5769724e1522be33cc8b09e57e0e73a25c2227847811b",
-          "useraddress": ""
-        }
-      ],
-      "outputs": [
-        {
-          "amount": 200000000,
-          "address": "646f3e8750c550e4582eca5047546ffef89c13a175985e320232bacac81cc428",
-          "useraddress": ""
-        }
-      ],
-      "outecs": [],
-      "rcds": [
-        "f06f190d3307f52ff56e2ea6874250cb8ce0332dcc809b80100493b1ff064c59"
-      ],
-      "sigblocks": [
-        {
-          "Signatures": [
-            "cdf206701b87f5f32d3871e20916af11f5d1dc5774bc386c3f543f553c2430207f3948ef69f311750aac4f2b10b4deb61e349389068bbe39f4d462ccda85380d"
-          ]
-        }
-      ],
-      "blockheight": 0
-    },
-    "includedintransactionblock": "",
-    "includedindirectoryblock": "",
-    "includedindirectoryblockheight": -1
-  }
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "factoidtransaction":{  
+         "millitimestamp":1443537161594,
+         "inputs":[  
+            {  
+               "amount":1000000000,
+               "address":"ab87d1b89117aba0e6b131d1ee42f99c6e806b76ca68c0823fb65c80d694b125",
+               "useraddress":""
+            }
+         ],
+         "outputs":[  
+            {  
+               "amount":992000800,
+               "address":"648f374d3de5d1541642c167a34d0f7b7d92fd2dab4d32f313776fa5a2b73a98",
+               "useraddress":""
+            }
+         ],
+         "outecs":[  
+
+         ],
+         "rcds":[  
+            "10560cc304eb0a3b0540bc387930d2a7b2373270cfbd8448bc68a867cefb9f74"
+         ],
+         "sigblocks":[  
+            {  
+               "Signatures":[  
+                  "d68d5ce3bee5e69f113d643df1f6ba0dd476ada40633751537d5b840e2be811d4734ef9f679966fa86b1777c8a387986b4e21987174f9df808c2081be2c04a08"
+               ]
+            }
+         ],
+         "blockheight":0
+      },
+      "includedintransactionblock":"786dd9b5d3c3b2d9c40c538fa99277fe10c16cda32b5642d63bd7f60804aa11d",
+      "includedindirectoryblock":"d6b4b0988a3a777a88cebf4e6c34ccc16363f48560cd81c446da73461c4e965c",
+      "includedindirectoryblockheight":3999
+   }
 }
 ```
 
-Retrieve details of a factoid transaction using a transactions hash.
+Retrieve details of a factoid transaction using a transactions hash. Note that information regarding the directory block height, directory block keymr, and transaction block keymr are also included. The "blockheight" parameter in the reponse will always be 0 when using this call, refer to "includedindirectoryblockheight" if you need the height.
 
 ## factoid-ack
 
