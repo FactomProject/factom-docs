@@ -994,11 +994,22 @@ Run the addfee again and the feepaid and feerequired will match up
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"sub-fee","params": {"tx-name":"TX_NAME","address":"FA2H7gecy8Nr7cxF7ngtByW23PxvrysuzYMAiAhbRTddCWZTLs4P"}}' -H 'content-type:text/plain;' http://localhost:8089/v2
+curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method"
+:"sub-fee","params": {"tx-name":"TX_NAME","address":
+"FA2H7gecy8Nr7cxF7ngtByW23PxvrysuzYMAiAhbRTddCWZTLs4P"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
 ```json
-
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"sub-fee",
+   "params":{  
+      "tx-name":"TX_NAME",
+      "address":"FA2H7gecy8Nr7cxF7ngtByW23PxvrysuzYMAiAhbRTddCWZTLs4P"
+   }
+}
 ```
 
 > Example Response
