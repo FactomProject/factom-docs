@@ -67,6 +67,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 Every directory block has a KeyMR (Key Merkle Root), which can be used to retrieve it. The reponse will contain information that can be used to naviagate through all transactions (entry and factoid) within that block. The header of the directory block will contain information regarding the previous directory block's keyMR, directory block height, and the timestamp. 
 
 ## directory-block-head
+
 > Example Request
 
 ```json
@@ -545,8 +546,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```
-//issue TODO
+```json
 {
   "jsonrpc":"2.0",
   "id":0,
@@ -739,7 +739,6 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction",
             }
          ],
          "outecs":[  
-
          ],
          "rcds":[  
             "10560cc304eb0a3b0540bc387930d2a7b2373270cfbd8448bc68a867cefb9f74"
@@ -1240,9 +1239,9 @@ Reveal an Entry to factomd after the Commit to compleate the Entry creation. The
 
 Send a raw hex encoded binary message to the Factom network. This is mostly just for debugging and testing.
 
-### Commit Chain Example:
+### Commit Chain Example
 
-> Example Request
+> Example Request 
 
 ```json-doc
 {
@@ -1274,7 +1273,7 @@ b6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da2946c901273e616bdbb166c535b2
 0237086112b5ef34fc6474e5e941d60aa054b465d4d770d7f850169170ef39150b"}}' -H 'content-type:text/plain;' htt
 p://localhost:8088/v2`
 
-### Reveal Chain Example:
+### Reveal Chain Example
 
 > Example Request
 
@@ -1316,6 +1315,9 @@ Entry Hash : f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734
 ```shell
 curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "junk"}' -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
+
+> Example Response
+
 ```json-doc
 {
   "jsonrpc": "2.0",
@@ -1324,9 +1326,7 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "junk"}' -H 'content-
 }
 ```
 
-> Example Response
-
-```json
+```json-doc
 {
   "jsonrpc": "2.0",
   "id": 0,

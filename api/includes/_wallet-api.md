@@ -130,7 +130,6 @@ Retrieve all of the Factoid and Entry Credit addresses stored in the wallet.
     "id": 0,
     "method": "generate-ec-address"
 }
-
 ```
 
 ```shell
@@ -602,7 +601,7 @@ http://localhost:8089/v2
 }
 ```
 
-`The developers were so preoccupied with whether or not they could, they didn’t stop to think if they should.`
+*The developers were so preoccupied with whether or not they could, they didn’t stop to think if they should.*
 
 The amount of data returned by this is so large, I couldn't get you a sample output as it froze my terminal window. It is strongly reccomended to use other techniques to retrieve transactions, it is rarely the case to require EVERY transaction in the blockchain. If you are still determined to retrieve EVERY transaction in the blockchain, use other techniques such as using the 'range' method and specifically requesting for transactions between blocks X and Y, then incrementing your X's and Y's until you reach the latest block. This is much more manageable.
 
@@ -683,7 +682,6 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0,
       "ecoutputs":null
    }
 }
-
 ```
 
 Deletes a working transaction in the wallet. The full transaction will be returned, and then deleted.
@@ -706,6 +704,8 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"new-transactio
     }
 }
 ```
+
+> Example Response
 
 ```json-doc
 {  
@@ -845,7 +845,7 @@ curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"add-output",
 
 Adds a factoid address output to the transaction. Keep in mind the output is done in factoshis. 1 factoid is 1,000,000,000 factoshis.
 
-So to send 10 factoids, you must send 1,000,000,000 factoshis (no commas in json)
+So to send 10 factoids, you must send 1,000,000,000 factoshis (no commas in json).
 
 ## add-ec-output
 
@@ -985,7 +985,7 @@ Curl to do that:
 
 `curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"add-input","params":
 {"tx-name":"TX_NAME","address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q","amount":1000010000}}' \
--H 'content-type:text/plain;' http://localhost:8089/v2 `
+-H 'content-type:text/plain;' http://localhost:8089/v2`
 
 Run the addfee again and the feepaid and feerequired will match up
 
@@ -994,7 +994,7 @@ Run the addfee again and the feepaid and feerequired will match up
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"sub-fee","params":{"tx-name":"TX_NAME","address":"FA2H7gecy8Nr7cxF7ngtByW23PxvrysuzYMAiAhbRTddCWZTLs4P"}}' -H 'content-type:text/plain;' http://localhost:8089/v2
+curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"sub-fee","params": {"tx-name":"TX_NAME","address":"FA2H7gecy8Nr7cxF7ngtByW23PxvrysuzYMAiAhbRTddCWZTLs4P"}}' -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
 ```json
