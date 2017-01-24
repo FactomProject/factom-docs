@@ -529,7 +529,7 @@ Retrieve the factoid block for any given height. These blocks contain factoid tr
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
-"receipt", "params":{"hash":"0561491594de81214ebd918f29d1f9f59266ea63ec76341162dc4a252a0225b9"}}' \
+"receipt", "params":{"hash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -539,7 +539,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
   "id": 0,
   "method": "receipt",
   "params": {
-    "Hash": "0561491594de81214ebd918f29d1f9f59266ea63ec76341162dc4a252a0225b9"
+    "Hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
   }
 }
 ```
@@ -547,21 +547,63 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 > Example Response
 
 ```json
-{
-  "jsonrpc":"2.0",
-  "id":0,
-  "result":{
-    "Receipt":{
-        "Entry":////TODO
-        "MerkleBranch":////TODO
-        "EntryBlockKeyMR":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-        "DirectoryBlockKeyMR":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-        "BitcoinTransactionHash":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-        "BitcoinBlockHash":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-    }
-  }
-}
-```
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "receipt":{  
+         "entry":{  
+            "key":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+         },
+         "merklebranch":[  
+            {  
+               "left":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2",
+               "right":"0000000000000000000000000000000000000000000000000000000000000003",
+               "top":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af"
+            },
+            {  
+               "left":"6adbc7ba1758f2850c92e4a09dea8ba9c6d844cdd4d596db2421b0f843c3e530",
+               "right":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af",
+               "top":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883"
+            },
+            {  
+               "left":"0caff62ea5b5aa015c706add7b2463a5be07e1f0537617f553558090f23c7f56",
+               "right":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
+               "top":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5"
+            },
+            {  
+               "left":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5",
+               "right":"1deef358d7e02adfe353f8137d1535e34f112d7a3b9fbf06b5c64dee5e4b2042",
+               "top":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb"
+            },
+            {  
+               "left":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb",
+               "right":"3d93579d9f5b22387cb46c1ad280da9ba9e1fe753972ef08d9e9f1c938a765c0",
+               "top":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47"
+            },
+            {  
+               "left":"9f5d7d533e66e920a68d9fd63d0cee1517fb6de713946968453cfd2cb3081dfd",
+               "right":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47",
+               "top":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362"
+            },
+            {  
+               "left":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362",
+               "right":"f62391cfbdb158a4b20f301e2800f0b3933ba23417bf1aeb630ff968765ddb30",
+               "top":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509"
+            },
+            {  
+               "left":"3000e97b6045299a108c04b656a9965d2ac5e7a9ae76718afb6009c4098d320b",
+               "right":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509",
+               "top":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b"
+            }
+         ],
+         "entryblockkeymr":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
+         "directoryblockkeymr":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b",
+         "bitcointransactionhash":"469a96c847cf8bf1f325b6eec850f46488ed671930d62b54ed186a8031477a7d",
+         "bitcoinblockhash":"000000000000000001edf3adf719dfc1263661d2c4b0ed779d004a2cbb7cca32"
+      }
+   }
+}```
 
 Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
