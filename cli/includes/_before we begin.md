@@ -25,14 +25,13 @@ The interface you will be using to run Factom Federation software related comman
 
 Give it a try and get familiar before you go any further. Going forward we will use "Terminal" to describe the interface where you type commands, just don't forget it has a different name in Windows.
 
-FF is composed of four main components:
+FF is composed of three main components:
 
 * factomd
 * factom-walletd
 * factom-cli
-* enterprise-wallet
 
-However, to run Factom Federation via command line you only need factomd, factom-walletd, and factom-cli. Each one of these apps needs to run in separate Terminal windows.
+To run Factom Federation via command line you need factomd, factom-walletd, and factom-cli. Each one of these apps needs to run in separate Terminal windows.
 
 <aside class="notice"><br>
 Pop quiz<br>
