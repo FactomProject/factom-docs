@@ -32,14 +32,13 @@ FF is composed of three main components:
 * factomd 
 * factom-walletd 
 * factom-cli 
-* enterprise-wallet
 
-However to run the wallet you only new factomd and EnterpriseWallet running in separate Terminal windows, factom-walletd and factom-cli are only required if you want to run the command line wallet.
+However to run the wallet you only need the new desktop app if used online or the app + factomd if running locally, factom-walletd and factom-cli are only required if you want to run the command line wallet.
 
 <aside class="notice"><br>
 <i>Pop quiz</i><br>
 How many windows will you need?<br>
-Answer: Two Terminal windows.
+Answer: Either Desktop App only or Desktop App + One Terminal window (factomd).
 </aside>
 
 <aside class="warning"><br>
