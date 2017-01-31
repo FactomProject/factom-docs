@@ -1,7 +1,7 @@
 # Create A Factoid Address
 
 The first thing you need is most probably a Factoid Address (FA) and it's very easy to do that with our new wallet.
-If you haven't already done so, [Run FFWallet](#create-a-factoid-address).
+If you haven't already done so, [Run Wallet](#run-enterprise-wallet).
 
 Click on Address Book.
 

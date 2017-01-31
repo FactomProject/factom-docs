@@ -1,0 +1,70 @@
+#Install Enterprise Wallet
+
+Enterprise wallet has been updated to be installed as a Desktop Application for Windows, Mac, or Linux. The process of backing up your wallets remains the same, and the desktop app uses the same file locations as the binary version (factom-walletd).
+This guide will go over the installation of the new Enterprise Wallet.
+
+<aside class="warning"><br>
+For people who have run Factom Genesis (FG), our previous software release, you may need to import an old wallet file in the new wallet. We strongly recommend to only install the wallet desktop app at this stage without running it until you get familiar with the next guide: Run Enterprise Wallet.  
+</aside>
+
+Here is a step by step guide on how to install Enterprise Wallet on Mac, Windows, and Linux.
+
+**Step 1**  Download the installer for Mac, Windows, or Linux on [GitHub](https://github.com/FactomProject/distribution/releases).
+
+**Step 2**  Save it to your desktop or downloads folder on your local hard drive.
+
+**Step 3**  Follow the instructions for your OS.
+
+##Mac
+
+Double click on the .dmg file downloaded at Step 1, when prompted drag EnterpriseWallet.app into the Applications folder.
+
+![Install Mac Wallet](/images/wallet_086.png)
+
+The wallet will be installed at the following location:
+
+/Applications/EnterpriseWallet.app
+
+Double click the app to launch it or drag to your dock to create a shortcut.
+
+You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read the guide carefully before you run the app, especially if you have an old wallet file to import. 
+
+##Windows
+
+Double click on the .msi file downloaded at Step 1 to run the wallet installer.
+
+Wait until it loads up. 
+
+![Install Windows Wallet](/images/wallet_087.png)
+
+Then follow the prompts and click install. Let the intaller finish.
+
+![Install Windows Wallet 2](/images/wallet_088.png)
+
+The wallet will be installed at the following location:
+
+C:\Users\YOUR_USERNAME\AppData\Local\Programs\enterprisewallet\EnterpriseWallet.exe
+
+A shortcut will also be added to your desktop for easy launch.
+
+You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read the guide carefully before you run the app, especially if you have an old wallet file to import.
+
+##Linux
+
+Locate the .deb file downloaded at Step 1 to run the wallet installer.
+
+Open a terminal window and go to where the .deb is located, for example:
+
+`cd ~/Downloads`
+
+Install the .deb package with this command:
+
+`sudo dpkg -i enterprise-wallet-setup-amd64.deb`
+
+![Install Linux Wallet](/images/wallet_089.png)
+
+You will be able to run the wallet by simply searching for it in the search bar.
+
+![Install Linux Wallet 2](/images/wallet_090.png)
+
+You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read the guide carefully before you run the app, especially if you have an old wallet file to import.

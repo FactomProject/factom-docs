@@ -5,7 +5,7 @@ Remember, ECs are non-transferrable and cannot be sold or traded on an exchange.
 
 You are now ready to generate a new Entry Credit (EC) address, it's very easy with our new wallet.
 
-If you haven't already, [Run FFWallet](#run-the-factom-foundation-wallet).
+If you haven't already, [Run Wallet](#run-enterprise-wallet).
 
 Click on Address Book.
 

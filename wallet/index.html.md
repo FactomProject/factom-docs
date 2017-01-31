@@ -13,7 +13,8 @@ includes:
   - before you begin
   - backup your wallets
   - install factom federation
-  - run factom foundation wallet
+  - install-enterprise-wallet
+  - run-enterprise-wallet
   - create factoid address
   - create entry credit address
   - send and receive fct

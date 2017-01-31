@@ -4,7 +4,7 @@ After sending or receiving factoids, importing secret keys, or redeeming your 12
  
 **1) With the Factom Control Panel**
 
-The Factom Control Panel is easy to use and great for verifying your FA or EC balances. Simply [run FFWallet](#run-the-factom-foundation-wallet) and open the Control Panel web page in your browser: [http://localhost:8090/](http://localhost:8090/)
+The Factom Control Panel is easy to use and great for verifying your FA or EC balances. Simply [Run Wallet](#run-enterprise-wallet) and open the Control Panel web page in your browser: [http://localhost:8090/](http://localhost:8090/)
 
 Find the search bar on the upper right-hand corner of the Factom Control Panel.
 
