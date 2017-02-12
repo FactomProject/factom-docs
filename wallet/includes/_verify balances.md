@@ -61,7 +61,7 @@ Hit Enter on your keyboard.
 
 ![Wallet 98](images/wallet_083.png)
 
-The Explorer will display the balance of the FA address, in this example 3999 EC, along with its previous transactions.
+The Explorer will display the balance of the EC address, in this example 3999 EC, along with its previous transactions.
 
 <aside class="notice"><br>
 To run the Factom Control Panel you need some basic command line knowledge while the Factom Explorer doesn't require you to run any Factom apps. Choose the verification method that suits you best.
