@@ -22,6 +22,7 @@ includes:
   - redeem from koinify
   - import private key
   - verify balances
+  - factom-explorer
   - useful tools
   
 
