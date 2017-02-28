@@ -26,7 +26,7 @@ The Chain Name can be specified with multiple sequential byte strings. A [byte s
 ##Directory Block
 Factom is constructed of a hierarchical set of blocks, with the highest being Directory Blocks, which consist of a header and a body. Each Directory Block has a header for unique identification and contains hashes of the Entry Blocks and their respective ChainIDs for entries made during the time period. To link this data together, each Directory Block contains the serial hash of the previous Directory Block. The body of the Directory Block is a series of pairs of ChainIDs and Entry Block Merkle Roots.
 
-The example below displays Directory Block ID 75416. Note that this block has not yet been anchored on the Bitcoin blockchain.
+The example below displays [Directory Block ID 75416](http://explorer.factom.org/dblock/49336542108f65f24bd4d4044b7558181d439ed9505ad61eff653c586eeb3cda). Note that this block was not yet anchored on the Bitcoin blockchain, at the time of writing.
 
 ![Explorer 3](/images/wallet_097.png)
 
@@ -79,11 +79,11 @@ Each Admin Block is referenced in two ways:
 Since there aren't Key Merkle Roots in the Admin Block, and use straight hashing, and also since there's only 1 hash in the header, the choice was to have two hashes of the Admin Blocks. The solution was to have the SHA256 of the block. Then to get the different hash use an SHA512 of the previous Admin Block, take the top 256 bits, then use that to refer to the previous Admin Block. This way, if someone wanted to fake an Admin Block, while having the hashes match, they would need to break not only an SHA256 once, but also an SHA512 at the same time for the same fake data.
 </aside>
 
-The 5 entries included in this Admin Block present more information.
+The 5 entries included in this [Admin Block](http://explorer.factom.org/ablock/69f4bebe76d94054f4bdb0cf56a47cafacae60ce6be76885ecd60252463a6e8e) present more information.
 
 ![Explorer 7](/images/wallet_101.png) 
 
-Clicking on any of the entries shows further data such as the Hash, ChainID, Timestamp, Entry Data and JSON Data.
+Clicking on [any of the entries](http://explorer.factom.org/entry/21d21a9632b9715b607c96fddf9f56bc9f77f7e0839b8c218e0c69ae82272415) shows further data such as the Hash, ChainID, Timestamp, Entry Data and JSON Data.
 
 ![Explorer 8](/images/wallet_102.png)
 
@@ -93,7 +93,7 @@ An Entry is a single data submission made by a user. A collection of entries mak
 
 An Entry Credit (EC) Block is a data structure which packages Chain Commits, Entry Commits, and EC balance increases over a ten-minute period. The Entries are ordered in the Entry Block in the order that they were received by each Federated server. All the Federated servers contribute to the building of the EC Block.
 
-The Entry Credit Block consists of a header and a body. The body is composed of primarily Commits and balance increases with minute markers and server markers distributed throughout the body.
+The [Entry Credit Block](http://explorer.factom.org/ecblock/b3633e936305288392e322dbfc406537647a2c6119d313aac8673c34ff2ea8c5) consists of a header and a body. The body is composed of primarily commits and balance increases with minute markers and server markers distributed throughout the body.
 
 ![Explorer 9](/images/wallet_103.png)
 
@@ -107,43 +107,42 @@ This particular block contains 57 Entries.
 
 ##Factoid Block
 
-Factoid Blocks package Factoid transactions that take place each minute over a ten-minute period. Factoid transactions and their minute markers are arranged in the order in which they were received by the Federated server. 
+[Factoid Blocks](http://explorer.factom.org/fblock/3f150e28e6fdde47a707d2a3e5df3236dcad05df0a088e0edfa36e8cdb4f9607) package Factoid transactions that take place each minute over a ten-minute period. Factoid transactions and their minute markers are arranged in the order in which they were received by the Federated server. 
 Factoid transactions begin with a version number above zero, differentiating them from other types of transactions, and minute markers are included in the ledger Merkle roots.
 
 ![Explorer 12](/images/wallet_106.png)
-
 
 In the below list of entries, FCT transactions may be identified by looking at the Totalins and Totalouts.
 
 ![Explorer 13](/images/wallet_107.png)
 
-Selecting the second entry, more information is displayed about the FCT transaction such as the Tx ID, Timestamp, the Block Height, as well as its FCT Inputs and Outputs.
+Selecting the [second entry](http://explorer.factom.org/tx/04b5292074368df8f971f1792e96c0de511ee1a23e6185daa2f8d0ee35c3d79b), more information is displayed about the FCT transaction such as the Tx ID, Timestamp, the Block Height, as well as its FCT Inputs and Outputs.
 
 ![Explorer 14](/images/wallet_108.png)
 
 ##Entry Block
 
-Entry Blocks package Entry Hashes of all entries for a particular Factom Chain received over a ten-minute period, arranged in the order in which they were received by the Federated server. 
+[Entry Blocks](http://explorer.factom.org/eblock/a66d2c6b9bf118baaca96016e6fd03d52c0fc2a2332e001be32286805a8ef8fb) package Entry Hashes of all entries for a particular Factom Chain received over a ten-minute period, arranged in the order in which they were received by the Federated server. 
 
 After each ten-minute period, the Merkle Roots for each Entry Block are stored in the Directory Block. Entry Blocks contain Entry Hashes with 10 one-minute markers.
 
 ![Explorer 15](/images/wallet_109.png)
 
-Entry Data can be viewed by selecting an entry in this Entry Block.
+Entry Data can be viewed by selecting [an entry](http://explorer.factom.org/entry/c9bd61c180ecdcccc39be2af1c1f40a540b20ecb2b1c78960eed8ff6fbf1c6f7) in this Entry Block.
 
 ![Explorer 16](/images/wallet_110.png) 
 
-Selecting the Chain ID redirects to the First Entry display, showing the Chain that the entry was made to and a series of user-populated External Ids.
+Selecting the Chain ID redirects to the [First Entry display](http://explorer.factom.org/chain/0181d4011dda7f3f7dbcbdd7b66ea3be60261b096f7453152102afb95d258783), showing the Chain that the entry was made to and a series of user-populated External Ids.
 
-In this example, a Chain was created to track the DOW 30 stock price for McDonald’s, data provided by Intrinio.
+In this example, a Chain was created to track the [DOW 30 stock price for McDonald’s](http://explorer.factom.org/chain/0181d4011dda7f3f7dbcbdd7b66ea3be60261b096f7453152102afb95d258783), data provided by Intrinio.
 
 ![Explorer 17](/images/wallet_111.png)
 
-Selecting the first entry shows the Entry Data.
+Selecting the [first entry](http://explorer.factom.org/entry/2de58fff050698d54254effcb8267856be604f1c175fd85a1418817d978ce341) shows the Entry Data.
 
 ![Explorer 18](/images/wallet_112.png)
 
-Selecting the second entry shows more data and info about its source such as the website, the stock quote date and the quote itself.
+Selecting the [second entry](http://explorer.factom.org/entry/f1331281a67da1a6400b6c5fe6077c692ce28c48c7d5c29796934edc5248b062) shows more data and info about its source such as the website, the stock quote date and the quote itself.
 
 ![Explorer 19](/images/wallet_113.png)
 
@@ -171,7 +170,7 @@ When sending FCT to a third party or exchange, the transaction ID is the proof t
 
 ![Explorer 24](/images/wallet_116.png)
 
-Explorer displays details of the transaction such as the time it was made and Inputs and Outputs. This example shows that 100 FTC were sent from the input address to the output address, with a transaction fee of 0.006 FCT debited to the sender. 
+Explorer displays [details of the transaction](http://explorer.factom.org/tx/e41ebc5be64aa06cb4cdeb8d5c14ded4ae12c2a0630aa89c2fc001c086c73bdd) such as the time it was made and Inputs and Outputs. This example shows that 100 FTC were sent from the input address to the output address, with a transaction fee of 0.006 FCT debited to the sender. 
 
 ![Explorer 25](/images/wallet_117.png)
 
@@ -189,7 +188,7 @@ Explorer returns the Project Gutenberg Chain with all its entries.
 ##Search for a Block ID
 
 Specific blocks can be pulled up by entering the Block ID (also known as Block Height) into the search bar. 
-The example below shows block 7740.
+The example below shows [block 7740](http://explorer.factom.org/dblock/d89e94a62c49efe3874745dff51e17a9fcfe486085ed2319a0a49b4463d0e9df).
 
 ![Explorer 28](/images/wallet_120.png)
 
