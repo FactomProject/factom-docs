@@ -1,4 +1,4 @@
-# Verify FCT and EC Balances
+## Verify FCT and EC Balances
 
 After sending or receiving factoids, importing secret keys, or redeeming your 12-word master passphrase you may want verify your address balances. We've provided 2 easy ways to verify your Factoid (FCT) or Entry Credit (EC) balances.
  

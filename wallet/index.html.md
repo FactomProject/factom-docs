@@ -4,26 +4,26 @@ title: Factom Federation Wallet
 toc_footers:
   - <a href='../api'>Factom API Docs</a>
   - <a href='../cli'>Factom CLI Docs</a>
-  - <a href='../wallet'>Enterprise Wallet Docs</a>
+  - <a href='../wallet'>Factom Product Docs</a>
   - <a href='https://github.com/factomproject'>Factom on GitHub</a>
   - <a href='https://factom.com'>Back to FACTOM.COM</a>
 
 includes:
   - introduction
-  - before you begin
-  - backup your wallets
-  - install factom federation
+  - before-you-begin
+  - backup-your-wallets
+  - install-factom-federation
   - install-enterprise-wallet
   - run-enterprise-wallet
-  - create factoid address
-  - create entry credit address
-  - send and receive fct
-  - convert fct to ec
-  - redeem from koinify
-  - import private key
-  - verify balances
+  - create-factoid-address
+  - create-entry-credit-address
+  - send-and-receive-fct
+  - convert-fct-to-ec
+  - redeem-from-koinify
+  - import-private-key
+  - verify-balances
   - factom-explorer
-  - useful tools
+  - useful-tools
   
 
 search: true

@@ -1,4 +1,4 @@
-# Run Enterprise Wallet
+## Run Enterprise Wallet
 
 *Time to remember Mr. Miyagi's lesson.*
  
@@ -14,7 +14,7 @@ Enterprise Wallet is a desktop app for Mac, Windows and Linux, which allows to r
 The online wallet option is still experimental and the hosted factomd node may have reliability issues while we tune things, for production environments we recommend running your own local wallet and factomd nodes.
 </aside> 
 
-## Run Enterprise Wallet Online
+### Run Enterprise Wallet Online
 
 <aside class="warning"><br>
 There are two options, one for people who have run Factom Genesis (FG), our previous software release, and one for people who haven't. The former have to import their old FG wallet file, the latter don't, choose the next step accordingly.
@@ -77,8 +77,7 @@ Pat yourself on the back for making it this far! You have now run Enterprise Wal
 There are other advanced features shown on the settings page and we will tell you more about them as we go along with our guides, for the time being we will use the wallet with default settings.
 </aside>
 
-
-## Run Enterprise Wallet Locally
+### Run Enterprise Wallet Locally
 
 **README FIRST - Starting Factom**
 

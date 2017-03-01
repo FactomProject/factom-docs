@@ -1,4 +1,4 @@
-# Backup Your Wallets!
+## Backup Your Wallets!
 
 **If you've used Factom Genesis (FG)**, our previous software release, you should have a local wallet file. We highly recommend you backup your (FG) wallet file every time you import or generate a new address. Do read this guide fully, at least once.
 

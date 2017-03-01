@@ -1,4 +1,4 @@
-#Install Enterprise Wallet
+## Install Enterprise Wallet
 
 Enterprise wallet has been updated to be installed as a Desktop Application for Windows, Mac, or Linux. The process of backing up your wallets remains the same, and the desktop app uses the same file locations as the binary version (factom-walletd).
 This guide will go over the installation of the new Enterprise Wallet.
@@ -15,7 +15,7 @@ Here is a step by step guide on how to install Enterprise Wallet on Mac, Windows
 
 **Step 3**  Follow the instructions for your OS.
 
-##Mac
+### Mac
 
 Double click on the .dmg file downloaded at Step 1, when prompted drag EnterpriseWallet.app into the Applications folder.
 
@@ -29,7 +29,7 @@ Double click the app to launch it or drag to your dock to create a shortcut.
 
 You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read the guide carefully before you run the app, especially if you have an old wallet file to import. 
 
-##Windows
+### Windows
 
 Double click on the .msi file downloaded at Step 1 to run the wallet installer.
 
@@ -49,7 +49,7 @@ A shortcut will also be added to your desktop for easy launch.
 
 You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read the guide carefully before you run the app, especially if you have an old wallet file to import.
 
-##Linux
+### Linux
 
 Locate the .deb file downloaded at Step 1 to run the wallet installer.
 

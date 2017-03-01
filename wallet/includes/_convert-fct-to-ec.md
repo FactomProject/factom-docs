@@ -1,4 +1,4 @@
-# Convert FCT to Entry Credits
+## Convert FCT to Entry Credits
 
 *“It's still magic even if you know how it's done.”*
  
@@ -39,7 +39,7 @@ Note, transactions in Factom confirm every 10 minutes so you may have to wait un
 Most user would be happy up to here with our guide for what they need, simply send and receive Factoids. However, we strongly recommend to read further to get familiar with other wallet uses, functions and settings.
 </aside>
 
-##Advanced EC Transactions
+### Advanced EC Transactions
 
 Go to settings and select "Enable coin control (specific or multiple input addresses for new transactions)". 
 

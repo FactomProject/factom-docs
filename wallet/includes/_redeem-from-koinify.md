@@ -1,4 +1,4 @@
-# Redeem FCT from Koinify
+## Redeem FCT from Koinify
 
 This section is relevant if you participated in our Software Token Sale hosted by Koinify back in 2015 and haven't redeemed your Factoids (FCT). Although Koinify closed their operations, they never held your FCT, and you only need your 12-word master passphrase to access your FCT.
 

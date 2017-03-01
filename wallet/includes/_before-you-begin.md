@@ -1,4 +1,4 @@
-# Before You Begin
+## Before You Begin
 
 Before attempting to transact factoids (FCT) read these guides thoroughly (at least once). 
 The software is still under Beta, so use the instructions at your risk. Do not use a large amount of Factoids in case there are issues, bugs, or you mistype a command. 

@@ -9,7 +9,7 @@ language_tabs:
 toc_footers:
   - <a href='../api'>Factom API Docs</a>
   - <a href='../cli'>Factom CLI Docs</a>
-  - <a href='../wallet'>Enterprise Wallet Docs</a>
+  - <a href='../wallet'>Factom Product Docs</a>
   - <a href='https://github.com/factomproject'>Factom on GitHub</a>
   - <a href='https://factom.com'>Back to FACTOM.COM</a>
 

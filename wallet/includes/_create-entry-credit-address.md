@@ -1,38 +1,46 @@
-# Create A Factoid Address
+## Create an Entry Credit Address
 
-The first thing you need is most probably a Factoid Address (FA) and it's very easy to do that with our new wallet.
-If you haven't already done so, [Run Wallet](#run-enterprise-wallet).
+Perform this step only if you intend to make entries into Factom or want to stock up on Entry Credits (EC) for future use.
+Remember, ECs are non-transferrable and cannot be sold or traded on an exchange. Make sure you need them before you go ahead.
+
+You are now ready to generate a new Entry Credit (EC) address, it's very easy with our new wallet.
+
+If you haven't already, [Run Wallet](#run-enterprise-wallet).
 
 Click on Address Book.
 
-![Wallet 03](images/wallet_022.png)
+![Wallet 035](images/wallet_022.png)
+
+Select "ENTRY CREDIT ADDRESSES".
+
+![Wallet 36](images/wallet_036.png)
 
 Then hover with your mouse on the "yellow +" button at the bottom right.
 
-![Wallet 04](images/wallet_023.png)
+![Wallet 37](images/wallet_023.png)
 
 The button will expand and show "NEW ADDRESS", then click on it.
 
-![Wallet 05](images/wallet_024.png)
+![Wallet 38](images/wallet_024.png)
  
 All you need is type a Nickname for the address, also known as "alias", then click "ADD TO ADDRESS BOOK".
-We nicknamed our address FCT01, give it a name that is relevant to you.
+We nicknamed our address EC01, give it a name that is relevant to you.
 
-![Wallet 06](images/wallet_025.png)
+![Wallet 39](images/wallet_035.png)
 
-The wallet will prompt you with the newly created FA address and its nickname.
+The wallet will prompt you with the newly created EC address and its nickname.
  
-![Wallet 07](images/wallet_026.png)
+![Wallet 40](images/wallet_038.png)
 
 If you want to, click on "Open address in new tab" to see more details including its QR code.
 
-![Wallet 08](images/wallet_027.png) 
+![Wallet 41](images/wallet_039.png) 
 
 If needed, you can quickly copy the address to your smartphone with any QR code reader app, otherwise click "COPY TO CLIPBOARD" to use on your computer instead. Once done click on "MANAGE ADDRESSES" or the X button at the top right to return to your Address Book.
 
 You will see your newly created address in the list.
 
-![Wallet 09](images/wallet_028.png)
+![Wallet 42](images/wallet_040.png)
 
 <aside class="warning"><br>
 Note that some addresses have a "full white star" on their left, others have an "empty star".
@@ -40,35 +48,35 @@ This is to show you the addresses that have been created with your wallet "seed"
 As we mentioned in the "Backup Your Wallets!" guide only addresses created with the wallet seed can be recovered with the "seed file".
 </aside>
 
-![Wallet 10](images/wallet_029.png)
+![Wallet43](images/wallet_041.png)
 
 If you click on the blue QR code button on the left of an address you will go back to the QR code screen above.
 
-![Wallet 11](images/wallet_030.png) 
+![Wallet 44](images/wallet_030.png) 
 
 If you click on the blue pencil you will be able to edit address details such as its Nickname, and more.
 
-![Wallet 12](images/wallet_031.png)
+![Wallet 45](images/wallet_042.png)
 
-In the "EDIT FACTOID ADDRESS" screen you can simply change its Nickname by typing over the old one.
+In the "EDIT ENTRY CREDIT ADDRESS" screen you can simply change its Nickname by typing over the old one.
 You can change the Nickname as many times as you want.
   
-![Wallet 13](images/wallet_032.png)
+![Wallet 46](images/wallet_043.png)
 
 Another thing you notice is the "DISPLAY PRIVATE KEY" button, if you click it, it will show "Displaying private key is disabled in settings".
 
 Let's give it a try so you get familiar with another important function. Go to "Settings", select "Enable ability to export private keys" then hit "SAVE CHANGES".
  
-![Wallet 14](images/wallet_033.png)
+![Wallet 47](images/wallet_033.png)
 
-<aside class="success"><br>
+<aside class="notice"><br>
 Note, the settings page is where you can export your wallet seed to a file.
 </aside>
 
 Then go back to your Address Book and click on the "blue pencil" to edit your address. 
 If you now click on "DISPLAY PRIVATE KEY" it will appear on the left. 
 
-![Wallet 15](images/wallet_034.png)
+![Wallet 48](images/wallet_044.png)
 
 <aside class="warning"><br> 
 We strongly recommend saving the Private Keys of all your External Addresses by clicking the "COPY TO CLIPBOARD" button and pasting to a file or simply by writing them down.

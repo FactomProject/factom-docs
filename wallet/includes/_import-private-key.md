@@ -1,4 +1,4 @@
-# Import Private Key
+## Import Private Key
 
 This section is relevant if you have a private key for a FCT or EC address for instance from a previous wallet ot third party.
 
