@@ -1153,6 +1153,127 @@ curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"compose-transactio
 
 Compose transaction marshals the transaction into a hex encoded string. The string can be inputted into the factomd API 'factoid-submit' to be sent to the network.
 
+## compose-chain
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
+ "compose-chain", "params": {"chain": {"firstentry":
+ {"extids":["abcd", "1234"], "content":"1234abcd"}},
+  "ecpub":"EC2DKSYyRcNWf7RS963VFYgMExo1824HVeCfQ9PGPmNzwrcmgm2r"}}'\
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"compose-chain",
+   "params":{  
+      "chain":{  
+         "firstentry":{  
+            "extids":[  
+               "abcd",
+               "1234"
+            ],
+            "content":"1234abcd"
+         }
+      },
+      "ecpub":"EC2DKSYyRcNWf7RS963VFYgMExo1824HVeCfQ9PGPmNzwrcmgm2r"
+   }
+}
+```
+
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "commit":{  
+         "jsonrpc":"2.0",
+         "id":2885,
+         "params":{  
+            "message":"00015a9177f43d5df6e0e2761359d30a8275058e299fcc0381534545f55cf43e41983f5d4c9456abc6ea48b1287d0e5f2cf64798647221842e46b37e920cfaea62723c15195c320a9c707c2dfe35d43a21255c51012dae80cefbb14cf6571b6e195f5365bac7d30b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29e84f101bcf1d3a8ca45ad5c1a0ab3cf8ab935a2ad4f75914a0fb08e267facd9540cefe6833f3ea0295c3c2035bcd42a94e26477f096474b05e67538a34945a09"
+         },
+         "method":"commit-chain"
+      },
+      "reveal":{  
+         "jsonrpc":"2.0",
+         "id":2886,
+         "params":{  
+            "entry":"00e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b85500080002abcd000212341234abcd"
+         },
+         "method":"reveal-chain"
+      }
+   }
+}
+```
+
+This method, compose-chain, will return the appropriate api calls to create a chain in factom. You must first call the "commit-chain", then the "reveal-chain" api calls. To be safe, wait a few seconds after calling commit.
+
+## compose-entry
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{ "jsonrpc": "2.0", "id": 0, "method":
+ "compose-entry", "params": { "entry": 
+ {"chainid":"48e0c94d00bf14d89ab10044075a370e1f55bcb28b2ff16206d865e192827645", 
+ "extids":["cd90", "90cd"], "content":"abcdef"}, "ecpub":"EC2DKSYyRcNWf7RS963VFYgMExo1824HVeCfQ9PGPmNzwrcmgm2r"}}'\
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"compose-entry",
+   "params":{  
+      "entry":{  
+         "chainid":"48e0c94d00bf14d89ab10044075a370e1f55bcb28b2ff16206d865e192827645",
+         "extids":[  
+            "cd90",
+            "90cd"
+         ],
+         "content":"abcdef"
+      },
+      "ecpub":"EC2DKSYyRcNWf7RS963VFYgMExo1824HVeCfQ9PGPmNzwrcmgm2r"
+   }
+}
+```
+
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "commit":{  
+         "jsonrpc":"2.0",
+         "id":2889,
+         "params":{  
+            "message":"00015a91804aa917606c4f9717f13e157e0b80c6f482888a62bd20440c7eb49f90393c9c279457013b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29e95f7957b0555b7cb80e93c6923b43e98e9a308503197af70af607fc30abc1b36d52b3388d0507460caf4d30a1be8fba80c5416f34bf6c0394e26a9a9814070a"
+         },
+         "method":"commit-entry"
+      },
+      "reveal":{  
+         "jsonrpc":"2.0",
+         "id":2890,
+         "params":{  
+            "entry":"0048e0c94d00bf14d89ab10044075a370e1f55bcb28b2ff16206d865e19282764500080002cd90000290cdabcdef"
+         },
+         "method":"reveal-entry"
+      }
+   }
+}
+```
+
+This method, compose-entry, will return the appropriate api calls to create a entry in factom. You must first call the "commit-entry", then the "reveal-entry" api calls. To be safe, wait a few seconds after calling commit.
+
 ## properties
 
 > Example Request
