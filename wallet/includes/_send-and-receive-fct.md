@@ -1,8 +1,6 @@
 ## Send and Receive FCT
 
-**You can send Factoids** (FCT) from your local wallet to another local Factoid Address (FA) within your wallet, to an exchange or third party. To do so you will need a source address and a destination address.
-You need to perform this action when you want to send FCT to an exchange, a friend, or a third party.  
-Assuming you have a local FA address containing some FCT you wish to send and have a destination address you will need to:
+**You can send Factoids** (FCT) from your local wallet to a another Factoid Address (FA) within your wallet or a third party. To do so you will need a source address and a destination address to execute the necessary command. You need to perform this action when you want to send FCT to an exchange, a friend, or third party. Assuming you have a local FA address containing some FCT you wish to send and have a destination address you will need to:
 
 [Run Wallet](#run-enterprise-wallet). (Yes, we know it's growing on you)
 
