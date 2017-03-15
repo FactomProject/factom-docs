@@ -1,35 +1,81 @@
 # Factom CLI Commands
 
-<i>factom-cli</i> is a command line interface program for interacting with <i>factomd</i>  and <i>factom-walletd</i>.
-
 ```shell
 factom-cli [OPTIONS] SUBCOMMAND [OPTIONS]
 ```
+<i>factom-cli</i> is a command line interface program for interacting with <i>factomd</i>  and <i>factom-walletd</i>.
+
 ## Flags
+
+###-f
+
+```shell
+$ echo hello | factom-cli addchain -f -n moe -n larry \
+ EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwexample
+```
+
+The f flag, used with the addchain, addentry, buyec, composechain, composeentry, sendfct, sendtx, and signtx subcommands, tells factom-cli to continue on with processing without waiting for acknowledgement of the success of the subcommand to be generated. This can be useful for scripts where a long string of subcommands can be executed in a fraction of the time it would take if an acknowledgement of each had to be awaited.
+
+###-q
+
+```shell
+$ echo goodbye | factom-cli addentry -q -n moe -n larry -e curly \
+ EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwexample
+```
+
+The q flag specifies "quiet" execution of the addchain, addentry, addtxecoutput, addtxfee, 
+addtxinput, addtxoutput, buyec, newtx, sendfct, sendtx, signtx, and subtxfee subcommands. This means that no output will be returned back to the user. This again can be useful for scripts where there is no need for feedback from factom-cli.
 
 ###-e -x
 
-The addentry subcommands support the -e and -x flags for adding external ids to the Entries they create. Multiple -e and -x flags may be used, and -e and -x may be used in combination. -e string will encode the string as binary and set it as the next external id. -x hexstring will decode the hexstring into binary and set it as the next external id.
-
 ```shell
-$ factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] [-e EXTID1 -e EXTID2 -x HEXEXTID ...] [-CET] ECADDRESS <STDIN>
+$ factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] \
+[-e EXTID1 -e EXTID2 -x HEXEXTID ...] [-CET] ECADDRESS <STDIN>
 ```
 
-###-n -h
+The addentry subcommands support the -e and -x flags for adding external ids to the Entries they create. Multiple -e and -x flags may be used, and -e and -x may be used in combination. -e string will encode the string as binary and set it as the next external id. -x hexstring will decode the hexstring into binary and set it as the next external id.
 
-The get firstentry, get chainhead, and get allentries subcommands support the -n and -h flags for using Chain Names as an alternative for providing a ChainID. The Chain Name is the combination of External IDs on the first Entry in the Chain.
+###-n -h
 
 ```shell
 $ factom-cli get chainhead -n test -h 3031
 ```
 
-###-r
+The get firstentry, get chainhead, and get allentries subcommands support the -n and -h flags for using Chain Names as an alternative for providing a ChainID. The Chain Name is the combination of External IDs on the first Entry in the Chain.
 
-The r flag tells factom-cli to try and resolve a public Factoid or Entry Credit Address from a DNS name registered through Netki.
+###-r
 
 ```shell
 $ factom-cli sendfct -r $my_factoid_address factom.michaeljbeam.me
 ```
+
+The r flag tells factom-cli to try and resolve a public Factoid or Entry Credit Address from a DNS name registered through Netki.
+
+###-C
+
+```shell
+$ echo hello | factom-cli addchain -n moe -n larry -C \
+ EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwexample
+```
+
+The C flag, used with the addchain subcommand, limits the subcommand output to a single field, the ChainID with no headers. This means that a variable can be assigned to the value of the executed command directly.
+
+###-E
+
+```shell
+$ echo goodbye | factom-cli addentry -n moe -n larry -e curly -E \
+ EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwexample
+```
+
+The E flag, used with the addchain and addentry subcommands, limits the subcommand output to a single field, the Entry Hash with no headers. This means that a variable can be assigned to the value of the executed command directly.
+
+###-T
+
+```shell
+$ factom-cli get pendingtransactions -T
+```
+
+The T flag, used with the addchain, addentry, buyec, get pendingtransactions, listtxs address, listtxs subcommands, limits the subcommand output to a single field, the Entry Hash with no headers. This means that a variable can be assigned to the value of the executed command directly.
 
 ## Commands
 
@@ -43,7 +89,8 @@ Returns information about a factoid transaction, or an entry / entry credit tran
 ###addchain
 
 ```shell 
-factom-cli addchain [-fq] [-n NAME1 -n NAME2 -h HEXNAME3 ] [-CET] ECADDRESS <STDIN>
+factom-cli addchain [-fq] [-n NAME1 -n NAME2 -h HEXNAME3 ] [-CET] /
+ECADDRESS <STDIN>
 ``` 
 
 Create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
@@ -51,7 +98,8 @@ Create a new Factom Chain. Read data for the First Entry from stdin. Use the Ent
 ###addentry
 
 ```shell 
-factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] [-e EXTID1 -e EXTID2 -x HEXEXTID ...] [-CET] ECADDRESS <STDIN>
+factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] /
+ [-e EXTID1 -e EXTID2 -x HEXEXTID ...] [-CET] ECADDRESS <STDIN>
 ```
 Create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
 
@@ -108,14 +156,16 @@ Buy entry credits
 ###composechain
 
 ```shell
-$ factom-cli composechain [-f] [-n NAME1 -n NAME2 -h HEXNAME3 ] ECADDRESS <STDIN>
+$ factom-cli composechain [-f] [-n NAME1 -n NAME2 -h HEXNAME3 ] /
+ECADDRESS <STDIN>
 ```
 Create API calls to create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
 
 ###composeentry
 
 ```shell
-$ factom-cli composeentry [-f] [-n NAME1 -h HEXNAME2 ...|-c CHAINID]  [-e EXTID1 -e EXTID2 -x HEXEXTID ...] ECADDRESS <STDIN>
+$ factom-cli composeentry [-f] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] /
+[-e EXTID1 -e EXTID2 -x HEXEXTID ...] ECADDRESS <STDIN>
 ```
 Create API calls to create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
 
@@ -143,7 +193,8 @@ List the private addresses stored in the wallet
 ###get
 
 ```shell
-factom-cli get allentries|chainhead|dblock|eblock|entry|firstentry|head|heights
+factom-cli get allentries|chainhead|dblock|eblock|entry|firstentry| /
+head|heights
 ```
 Get data about Factom Chains, Entries, and Blocks
 
