@@ -553,7 +553,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
    "result":{  
       "receipt":{  
          "entry":{  
-            "key":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+            "entryhash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
          },
          "merklebranch":[  
             {  
