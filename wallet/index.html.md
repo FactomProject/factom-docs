@@ -23,6 +23,7 @@ includes:
   - import-private-key
   - verify-balances
   - factom-explorer
+  - factomd-control-panel
   - useful-tools
   
 
