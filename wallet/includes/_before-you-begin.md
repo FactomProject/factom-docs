@@ -33,7 +33,7 @@ FF is composed of three main components:
 * factom-walletd 
 * factom-cli 
 
-However to run the wallet you only need the new desktop app if used online or the app + factomd if running locally, factom-walletd and factom-cli are only required if you want to run the command line wallet.
+However to run the wallet you only need the new desktop app (Enterpise Wallet) if used online or the app + factomd if running locally, factom-walletd and factom-cli are only required if you want to run the command line wallet.
 
 <aside class="notice"><br>
 <i>Pop quiz</i><br>
