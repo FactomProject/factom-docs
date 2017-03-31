@@ -1,31 +1,5 @@
 ## Run Factom Federation
 
-**README FIRST - Starting Factom**
-
-Factom takes a while to download the blockchain. It can be expidited by downloading the first 70k blocks via HTTP. Factomd still checks the blockchain on each bootup, so it will check for inconsistencies in the download.
-
-<aside class="notice"><br>
-Note: currently factomd uses a lot of drive accesses when running. It is reccomended to hold the blockchain on a solid state drive. Running factomd on a spinning hard drive will be arduously slow. Since factomd currently scans the entire blockchain each time it is started, bootup takes a while (~30 min on an SSD). You can watch the progress on the Control Panel.
-</aside>
-
-Download the blockchain [here](https://www.factom.com/assets/site/factom_bootstrap.zip). 
-
-Extract the zip file to your home directory. It will create files in the location: 
-
-~/.factom/m2/main-database/ldb/MAIN/factoid_level.db/
-
-<aside class="success"><br>
-The newly created .factom folder is an invisible folder on Mac and Linux so you won't be able to see it unless you browse to it via Terminal. On Mac, in Finder, you can also use Go/Go to Folder... and type ~/.factom to see its content. 
-</aside>
-
-Compressed the blockchain is currently about 5 GB and uncompressed is over 9 GB.
-
-After factomd boots and downloads the remaining blocks, it likely is not keeping up with minutes. To see if it is, on the control panel click the "More Detailed Node Information" button. Towards the right of the top line there will be a field "-/ 0". If the 0 number does not increase after a minute, then it is not keeping up with minutes.
-
-In most cases factomd will need to be restarted after synching to the latest blockchain.
-
-**Run Factom Federation**
-
 *Time to remember Mr. Miyagi's lesson.*
  
 This step will be used every time you need to run Factom Federation software, so get familiar with it. Practice makes perfect. Wax on, wax off.
@@ -61,13 +35,17 @@ If this is the first time you are running FF, and haven't dowloaded the blockcha
 Syncing the Factom blockchain may take a little while, the blockchain is ...big. The Factom Control panel will display the progress and notify you when it has finished syncing. This will also occur when it has been a while since the last time you have run factomd. 
 </aside>
 
+You can alternatively download the first 70,000 blocks via disk image by following our [Bootstrap Guide](#starting-factom-via-bootstrap).
+
 Once you are synced, in a new Terminal window browse (cd) to the location of your FF installation as you did above (Mac and Windows only).
 
 <aside class="warning"><br>
 There are two options now, one for people who have run Factom Genesis (FG), our previous software release, and one for people who haven't. The former have to import their old FG wallet file, the latter don't, choose the next step accordingly.
 </aside>
 
-**If you have previously used Factom Genesis (FG)**, you need to import your FG wallet file (named *factoid_wallet_bolt.db*) the first time your run *factom-walletd* to make sure all its previous addresses and balances are transferred over. You have learned how to backup your wallet file in our [Backup Your Wallet File!](#backup-your-wallet-file) guide and you should know if still in the default location within the .factom folder at ~/.factom/factoid_wallet_bolt.db.
+### If you have used FG
+
+If you have run our previous software release “Factom Genesis (FG)” you need to import your FG wallet file (named *factoid_wallet_bolt.db*) the first time your run *factom-walletd* to make sure all its previous addresses and balances are transferred over. You have learned how to backup your wallet file in our [Backup Your Wallet File!](#backup-your-wallet-file) guide and you should know if still in the default location within the .factom folder at ~/.factom/factoid_wallet_bolt.db.
 
 Simply run the next command with a special flag and the path to your wallet file: 
 
@@ -87,7 +65,9 @@ Remember, you only need to do this once the first time you run factom-walletd, t
 
 Once you are happy continue by following the instructions to run the factom-cli command below. 
 
-**If you have never used FG**, run:
+### If you have never used FG 
+
+Run:
 
 `factom-walletd` 
 

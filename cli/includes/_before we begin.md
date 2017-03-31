@@ -43,3 +43,27 @@ Answer: Three Terminal windows.
 What your tech savvy mother would say?<br>
 Do not run Factom Federation while connected to an unsafe network, like at a cafe, an airport, public wifi hotspot, etc. The wallet is not encrypted, and hackers could potentially steal your precious Factoids. You do not want to feel like Gollum without his ring. 
 </aside>
+
+### Starting Factom Via Bootstrap
+
+Factom takes a while to download the blockchain. It can be expedited by downloading the first 70k blocks via HTTP. Factomd still checks the blockchain on each boot, so it will check for inconsistencies in the download.
+
+<aside class="notice"><br>
+Note: currently factomd uses a lot of drive accesses when running. It is reccomended to hold the blockchain on a solid state drive. Running factomd on a spinning hard drive will be arduously slow. Since factomd currently scans the entire blockchain each time it is started, bootup takes a while (~30 min on an SSD). You can watch the progress on the Control Panel.
+</aside>
+
+Download the blockchain [here](https://www.factom.com/assets/site/factom_bootstrap.zip). 
+
+Extract the zip file to your home directory. It will create files in the location: 
+
+~/.factom/m2/main-database/ldb/MAIN/factoid_level.db/
+
+<aside class="success"><br>
+The newly created .factom folder is an invisible folder on Mac and Linux so you won't be able to see it unless you browse to it via Terminal. On Mac, in Finder, you can also use Go/Go to Folder... and type ~/.factom to see its content. 
+</aside>
+
+Compressed the blockchain is currently about 5 GB and uncompressed is over 9 GB at the time of writing.
+
+<aside class="warning"><br>
+After factomd boots for the first time and is 100% synced, it will need to be restarted at least once. Successive restarts should be fine without having to restart.
+</aside>
