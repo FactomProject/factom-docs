@@ -175,7 +175,7 @@ The "Connections/Raw" tab displays all the servers and nodes that are connected 
 
 **Connections/Other**
 
-The "Connections/Other" tab displays all the servers and nodes that are connected to the local factomd node with their status and the server Identity Hash.
+The "Connections/Other" tab displays all the servers and nodes that are connected to the local factomd node with their status and Identity Hash.
 
 ![Control Panel 17](/images/wallet_138.png)
 
