@@ -169,13 +169,13 @@ The "My Node" tab displays the local factomd node name (FNode0), its Identity Ch
 
 **Connections/Raw**
 
-The "Connections/Raw" tab displays all the servers that are connected to the local factomd node with their status and IP Address.
+The "Connections/Raw" tab displays all the servers and nodes that are connected to the local factomd node with their status and IP Address.
 
 ![Control Panel 16](/images/wallet_137.png)
 
 **Connections/Other**
 
-The "Connections/Other" tab displays all the servers that are connected to the local factomd node with their status and the server Identity Hash.
+The "Connections/Other" tab displays all the servers and nodes that are connected to the local factomd node with their status and the server Identity Hash.
 
 ![Control Panel 17](/images/wallet_138.png)
 
