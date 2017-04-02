@@ -16,6 +16,7 @@ toc_footers:
 includes:
   - factomd-api
   - wallet-api
+  - debug-api
   - security-api
   
 

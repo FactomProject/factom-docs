@@ -10,7 +10,7 @@ They can be invoked as:
 
  The output will also be JSON.
 
- An example of a request and a response are given in the Right Panel for each of the RPC Methods.
+ An example of a request and a response are given in the right panel for each of the RPC Methods.
 
 ## errors
 
