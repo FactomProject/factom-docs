@@ -6,8 +6,6 @@ An example of a request and a response are given in the right panel for each of 
 
 ## holding-queue
 
-Show current holding messages in queue.
-
 > Example Request
 
 ```json
@@ -33,6 +31,8 @@ Show current holding messages in queue.
 	}
 }
 ```
+
+Show current holding messages in queue.
 
 ## network-info
 
@@ -648,10 +648,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "messages"}' \
 "id":0,
 "result":{
 	"Messages":[
-		{
-			"... Messages ..."
-		}
-	}
+		"... Messages ..."
+	]}
 }
 ```
 
