@@ -9,7 +9,14 @@ For people who have run Factom Genesis (FG), our previous software release, you 
 
 Here is a step by step guide on how to install Enterprise Wallet on Mac, Windows, and Linux.
 
-**Step 1**  Download the installer for Mac, Windows, or Linux on [GitHub](https://github.com/FactomProject/distribution/releases).
+**Step 1**  Download the installer for Mac, Windows, or Linux on [GitHub](https://github.com/FactomProject/distribution).
+
+These are the file names for the different installers:
+
+* **Mac:** *enterprise-wallet-setup.dmg*
+* **Windows 64bit:** *enterprise-wallet-setup-amd64.exe*
+* **Linux (Ubuntu/Debian) 64bit:** *enterprise-wallet-setup-amd64.deb*
+* **Linux (Redhat/Centos):** *enterprise-wallet-linux.zip*
 
 **Step 2**  Save it to your desktop or downloads folder on your local hard drive.
 
@@ -17,7 +24,7 @@ Here is a step by step guide on how to install Enterprise Wallet on Mac, Windows
 
 ### Mac
 
-Double click on the .dmg file downloaded at Step 1, when prompted drag EnterpriseWallet.app into the Applications folder.
+Double click on the "enterprise-wallet-setup.dmg" file downloaded at Step 1, when prompted drag EnterpriseWallet.app into the Applications folder.
 
 ![Install Mac Wallet](/images/wallet_086.png)
 
@@ -31,7 +38,7 @@ You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read t
 
 ### Windows
 
-Double click on the .msi file downloaded at Step 1 to run the wallet installer.
+Double click on the "enterprise-wallet-setup-amd64.exe" file downloaded at Step 1 to run the wallet installer.
 
 Wait until it loads up. 
 
@@ -51,7 +58,7 @@ You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read t
 
 ### Linux
 
-Locate the .deb file downloaded at Step 1 to run the wallet installer.
+For Ubuntu/Debian locate the "enterprise-wallet-setup-amd64.deb" file downloaded at Step 1 to run the wallet installer.
 
 Open a terminal window and go to where the .deb is located, for example:
 
