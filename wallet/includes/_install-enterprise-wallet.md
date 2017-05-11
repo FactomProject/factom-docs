@@ -58,7 +58,9 @@ You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read t
 
 ### Linux
 
-For Ubuntu/Debian locate the "enterprise-wallet-setup-amd64.deb" file downloaded at Step 1 to run the wallet installer.
+**For Ubuntu/Debian**
+ 
+Locate the "enterprise-wallet-setup-amd64.deb" file downloaded at Step 1 to run the wallet installer.
 
 Open a terminal window and go to where the .deb is located, for example:
 
@@ -73,5 +75,19 @@ Install the .deb package with this command:
 You will be able to run the wallet by simply searching for it in the search bar.
 
 ![Install Linux Wallet 2](/images/wallet_090.png)
+
+**For Redhat/Centos**
+
+Locate the "enterprise-wallet-linux.zip" and unzip it into a folder of your choice. Then open a Terminal window and cd to the "linux-unpacked" folder, for example:
+
+`cd ~/Desktop/linux-unpacked`
+
+<aside class="notice"><br>
+You location may be different and you can also change the folder name from "linux-unpacked" to "EnterpriseWallet" or something more meaningful to you.
+</aside>
+
+Then run the wallet by executing the "enterprisewallet" binary with the following command:
+
+`enterprisewallet`
 
 You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read the guide carefully before you run the app, especially if you have an old wallet file to import.
