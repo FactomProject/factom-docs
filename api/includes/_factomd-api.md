@@ -603,7 +603,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
          "bitcoinblockhash":"000000000000000001edf3adf719dfc1263661d2c4b0ed779d004a2cbb7cca32"
       }
    }
-}```
+}
+```
 
 Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
