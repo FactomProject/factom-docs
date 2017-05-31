@@ -1132,6 +1132,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "factoid-submi
 
 Submit a factoid transaction. The transaction hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#factoid-transaction)
 
+The factoid-submit api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this factoid-submit api call with [compose-transaction](#compose-transaction) which takes easier to construct arguments.
+
 ## commit-chain
 
 > Example Request
@@ -1168,6 +1170,10 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-chain", "para
 ```
 
 Send a Chain Commit Message to factomd to create a new Chain. The commit chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#chain-commit)
+
+The commit-chain api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-chain api call with [compose-chain](#compose-chain) which takes easier to construct arguments.
+
+The [compose-chain](#compose-chain) api call has two api calls in it's response: [commit-chain](#commit-chain) and [reveal-chain](#reveal-chain). To successfully create a chain, the [reveal-chain](#reveal-chain) must be called after the [commit-chain](#commit-chain).
 
 ## reveal-chain
 
@@ -1206,6 +1212,10 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-chain", "para
 
 Reveal the First Entry in a Chain to factomd after the Commit to compleate the Chain creation. The reveal chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
 
+The reveal-chain api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-chain api call with [compose-chain](#compose-chain) which takes easier to construct arguments.
+
+The [compose-chain](#compose-chain) api call has two api calls in it's response: [commit-chain](#commit-chain) and [reveal-chain](#reveal-chain). To successfully create a chain, the [reveal-chain](#reveal-chain) must be called after the [commit-chain](#commit-chain).
+
 ## commit-entry
 
 > Example Request
@@ -1242,6 +1252,10 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-entry", "para
 
 Send an Entry Commit Message to factom to create a new Entry. The entry commit hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry-commit)
 
+The commit-entry api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-entry api call with [compose-entry](#compose-entry) which takes easier to construct arguments.
+
+The [compose-entry](#compose-entry) api call has two api calls in it's response: [commit-entry](#commit-entry) and [reveal-entry](#reveal-entry). To successfully create an entry, the [reveal-entry](#reveal-entry) must be called after the [commit-entry](#commit-entry).
+
 ## reveal-entry
 
 > Example Request
@@ -1277,6 +1291,10 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-entry", "para
 ```
 
 Reveal an Entry to factomd after the Commit to compleate the Entry creation. The reveal entry hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
+
+The reveal-entry api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-entry api call with [compose-entry](#compose-entry) which takes easier to construct arguments.
+
+The [compose-entry](#compose-entry) api call has two api calls in it's response: [commit-entry](#commit-entry) and [reveal-entry](#reveal-entry). To successfully create an entry, the [reveal-entry](#reveal-entry) must be called after the [commit-entry](#commit-entry).
 
 ## send-raw-message
 

@@ -1151,7 +1151,7 @@ curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"compose-transactio
 }
 ```
 
-Compose transaction marshals the transaction into a hex encoded string. The string can be inputted into the factomd API 'factoid-submit' to be sent to the network.
+Compose transaction marshals the transaction into a hex encoded string. The string can be inputted into the factomd API [factoid-submit](#factoid-submit) to be sent to the network.
 
 ## compose-chain
 
@@ -1212,7 +1212,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 }
 ```
 
-This method, compose-chain, will return the appropriate api calls to create a chain in factom. You must first call the "commit-chain", then the "reveal-chain" api calls. To be safe, wait a few seconds after calling commit.
+This method, compose-chain, will return the appropriate api calls to create a chain in factom. You must first call the [commit-chain](#commit-chain), then the [reveal-chain](#reveal-chain) api calls. To be safe, wait a few seconds after calling commit.
 
 ## compose-entry
 
@@ -1272,7 +1272,7 @@ curl -X POST --data-binary '{ "jsonrpc": "2.0", "id": 0, "method":
 }
 ```
 
-This method, compose-entry, will return the appropriate api calls to create a entry in factom. You must first call the "commit-entry", then the "reveal-entry" api calls. To be safe, wait a few seconds after calling commit.
+This method, compose-entry, will return the appropriate api calls to create a entry in factom. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) api calls. To be safe, wait a few seconds after calling commit.
 
 ## properties
 
