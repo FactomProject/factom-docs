@@ -1,14 +1,14 @@
 # Useful Factom Tools
 
-**Factom Status**
+##Factom Status
 
 To check the status of Factom head over to 
 
-[http://factomstatus.com/](http://factomstatus.com/)
+[http://status.factom.com](http://status.factom.com/)
 
 It will show you, for example, when the Factom Network is under maintenance.
 
-**Factom Live Stats**
+##Factom Live Stats
 
 Another useful tool is the following found at:
 
@@ -24,7 +24,7 @@ It will present the data in the below format:
  
 `{"Records":85775274,"Entries":5981665,"Anchors":68227}` 
 
-**Factoid Live**
+##Factoid Live
 
 Finally a third party site, Factoid Live, built by a community member and found at:
  
