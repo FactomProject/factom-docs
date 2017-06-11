@@ -5,7 +5,7 @@
 **If you have never run FG** you can skip the backup right now but we strongly recommend backing up your new wallet once you get FF running. Get back to this guide when you are ready to do your backup, don't forget!
 
 <aside class="warning"><br>
-FF introduced a new way to generate addresses compared to our FG release. Simply put, it generates all new addresses from a seed. The seed is a 12 word passphrase which allows you to recover all your addresses, created with the seed in question, at a later date even if you lose your wallet file. 
+Factom Federation (FF) introduced a new way to generate addresses compared to our FG release. Simply put, it generates all new addresses from a seed. The seed is a 12 word passphrase which allows you to recover all your addresses, created with the seed in question, at a later date even if you lose your wallet file. 
 There are many reasons why you may have displaced your original wallet file such as because you changed computer, your hard drive failed, have overwritten the wallet file by mistake, and so on.
 <br>
 <br>
@@ -25,9 +25,9 @@ Keep this in mind especially if you are migrating from our FG wallet to our FF w
 
 Make sure to backup your FG wallet file before you run the new Factom Federation software. The wallet file is called "factoid_wallet_bolt.db" and is located in the .factom folder at the following locations:
 
-* **Mac** /Users/YourUsername/.factom/factoid_wallet_bolt.db
-* **Windows** C:\Users\YourUsername\.factom\factoid_wallet_bolt.db
-* **Linux** ~/.factom/factoid_wallet_bolt.db 
+* **Mac** `/Users/YourUsername/.factom/factoid_wallet_bolt.db`
+* **Windows** `C:\Users\YourUsername\.factom\factoid_wallet_bolt.db`
+* **Linux** `~/.factom/factoid_wallet_bolt.db` 
 
 <aside class="notice"><br>
 Note that the .factom folder is a hidden folder on Mac and Linux so perform a Google search for "how to show hidden files and folders on YOUR OS", replacing YOUR OS with Mac or Linux accordingly.
@@ -45,9 +45,9 @@ We will explain you how to do that when "we cross that bridge" in the <a href="#
 
 The wallet file is called "factom_wallet.db" and is located in the .factom folder at the following locations:
 
-* **Mac** /Users/YourUsername/.factom/wallet/factom_wallet.db
-* **Windows** C:\Users\YourUsername\.factom\wallet\factom_wallet.db
-* **Linux** ~/.factom/wallet/factom_wallet.db
+* **Mac** `/Users/YourUsername/.factom/wallet/factom_wallet.db`
+* **Windows** `C:\Users\YourUsername\.factom\wallet\factom_wallet.db`
+* **Linux** `~/.factom/wallet/factom_wallet.db`
 
 <aside class="notice"><br>  
 Note that the .factom folder is a hidden folder on Mac and Linux so perform a Google search for "how to show hidden files and folders on YOUR OS", replacing YOUR OS with Mac or Linux accordingly.
@@ -80,6 +80,10 @@ If you have multiple wallet seeds be careful not to overwrite another before mak
 You can have as many wallet seeds as you want just make sure you keep them safe.
 
 If you prefer using wallet seeds rather than saving wallet files try to only use seeded addresses and avoid "External Addresses".
+</aside>
+
+<aside class="warning"><br>
+Note that when importing your wallet seed in a new wallet your existing addresses do not show up automatically, you will see an empty wallet with no addresses at first. Don't panic, for them to appear in the wallet you need to create new addresses until they all show up. The wallet will restore your previous addresses one by one. So if for example you had 2 previous FCT addresses you have to generate 2 new addresses using the + button in the Address Book, for them to appear. 
 </aside>
 
 You are a security expert now. You just made your Factoids and Entry Credits proud!
