@@ -46,7 +46,7 @@ The first thing to do is to change the factomd node the wallet is pointing to. G
 
 ![Online Wallet 2](images/wallet_092.png)
 
-Now click "Custom Factomd Location" and enter in a valid factomd instance. Use: factomd-live.cloudapp.net:8088 (copy and paste the address in the text field).
+Now click "Custom Factomd Location" and enter in a valid factomd instance. Use: courtesy-node.factom.com (copy and paste the address in the text field).
 
 ![Online Wallet 2](images/wallet_093.png)
 
