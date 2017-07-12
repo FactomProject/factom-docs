@@ -1214,6 +1214,9 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 This method, compose-chain, will return the appropriate api calls to create a chain in factom. You must first call the [commit-chain](#commit-chain), then the [reveal-chain](#reveal-chain) api calls. To be safe, wait a few seconds after calling commit.
 
+**Notes**:  
+Ensure all data given in the `firstentry` fields are encoded in hex. This includes the content section.
+
 ## compose-entry
 
 > Example Request
@@ -1273,6 +1276,9 @@ curl -X POST --data-binary '{ "jsonrpc": "2.0", "id": 0, "method":
 ```
 
 This method, compose-entry, will return the appropriate api calls to create a entry in factom. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) api calls. To be safe, wait a few seconds after calling commit.
+
+**Notes**:  
+Ensure all data given in the `entry` fields are encoded in hex. This includes the content section.
 
 ## properties
 
