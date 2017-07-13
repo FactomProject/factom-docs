@@ -607,7 +607,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
          "bitcoinblockhash":"000000000000000001edf3adf719dfc1263661d2c4b0ed779d004a2cbb7cca32"
       }
    }
-}```
+}
+```
 
 Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
@@ -807,6 +808,104 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction",
 
 Retrieve details of a factoid transaction using a transactions hash. Note that information regarding the directory block height, directory block keymr, and transaction block keymr are also included. The "blockheight" parameter in the reponse will always be 0 when using this call, refer to "includedindirectoryblockheight" if you need the height.
 
+## ack
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, 
+"method":"ack", "params":{"hash":
+"e96cca381bf25f6dd4dfdf9f7009ff84ee6edaa3f47f9ccf06d2787482438f4b", "chainid":"f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300", "fulltransaction":""}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"ack",
+   "params":{  
+      "hash":"e96cca381bf25f6dd4dfdf9f7009ff84ee6edaa3f47f9ccf06d2787482438f4b",
+      "chainid":"f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300",
+      "fulltransaction":""
+   }
+}
+```
+
+This api call is used to find the status of a transaction, whether it be a factoid, reveal entry, or commit entry. When using this, you must specify the type of the transaction by giving the `chainid` field 1 of 3 values:
+
+* `f` for factoid transactions
+* `c` for entry credit transactions (commit entry/chain)
+* `################################################################` for reveal entry/chain
+   * Where `#` is the ChainID of the entry
+
+
+The status types returned are as follows:
+
+* "Unknown"         : Not found anywhere  
+* "NotConfirmed"    : Found on local node, but not in network (Holding Map)  
+* "TransactionACK"  : Found in network, but not written to the blockchain yet (ProcessList)  
+* "DBlockConfirmed" : Found in Blockchain
+
+You may also provide the full marshaled transaction, instead of a hash, and it will be hashed for you.
+
+The reponses vary based off the type:
+
+### Entries
+
+> Entry Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "committxid":"debbbb6b902de330bfaa78c6c9107eb0a451e10cd4523e150a8e8e6d5a042886",
+      "entryhash":"1a6c96162e81d429de92b2f18a0ba9b428e505de0077a5d16ad5707f0f8a73b2",
+      "commitdata":{  
+         "status":"DBlockConfirmed"
+      },
+      "entrydata":{  
+         "status":"DBlockConfirmed"
+      }
+   }
+}
+```
+
+Requesting for an entry requires you to specify if the hash you provide is a commit or an entry hash. The `chainid` field is used to specify this. If you are searching for a commit, put `c` as the chainid field, otherwise put the chainid that the entry belongs too.
+
+For commit/reveal acks, the response has 2 sections, one for the commit, one for the reveal. If you provide the entryhash and chainid, both will be filled (if found). If you only provide the commit txid and `c` as the chainid, then only the commitdata is guarenteed to come back with data. The `committxid` and `entryhash` fields corrospond to the `commitdata` and `entrydata` objects.
+
+
+_Extra notes_:  
+Why `c`? It is short for `000000000000000000000000000000000000000000000000000000000000000c`, which is the chainid for all entry credit blocks. All commits are placed in the entry credit block (assuming they are valid and are properly paid for)
+
+### Factoid Transactions
+
+> Factoid Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0",
+      "transactiondate":1441138021975,
+      "transactiondatestring":"2015-09-01 15:07:01",
+      "blockdate":1441137600000,
+      "blockdatestring":"2015-09-01 15:00:00",
+      "status":"DBlockConfirmed"
+   }
+}
+```
+
+To indicate the hash is a factoid transaction, put `f` in the chainid field.
+
+The reponse will look different than entry related ack calls.
+
+_Extra notes_:  
+Why `f`? It is short for `000000000000000000000000000000000000000000000000000000000000000f`, which is the chainid for all factoid blocks. All factoid transactions are placed in the factoid (assuming they are valid)
+
 ## factoid-ack
 
 > Example Request
@@ -845,6 +944,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
    }
 }
 ```
+
+**Deprecated**: Please refer to [ack](#ack)
 
 Factoid Acknowledgements will give the current status of a transaction. "DBlockConfirmed" is the highest level of confirmation you can obtain. This means the transaction has completed.
 
@@ -894,6 +995,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
    }
 }
 ```
+
+**Deprecated**: Please refer to [ack](#ack)
 
 Entry Acknowledgements will give the current status of a transaction. "DBlockConfirmed" is the highest level of confirmation you can obtain. This means the entry has made it into Factom.
 
@@ -1135,6 +1238,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "factoid-submi
 
 Submit a factoid transaction. The transaction hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#factoid-transaction)
 
+The factoid-submit api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this factoid-submit api call with [compose-transaction](#compose-transaction) which takes easier to construct arguments.
+
 ## commit-chain
 
 > Example Request
@@ -1165,12 +1270,21 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-chain", "para
    "id":0,
    "result":{  
       "message":"Chain Commit Success",
-      "txid":"76e123d133a841fe3e08c5e3f3d392f8431f2d7668890c03f003f541efa8fc61"
+      "txid":"76e123d133a841fe3e08c5e3f3d392f8431f2d7668890c03f003f541efa8fc61",
+      "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734",
+      "chainid": "  f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300"
    }
 }
 ```
 
 Send a Chain Commit Message to factomd to create a new Chain. The commit chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#chain-commit)
+
+The commit-chain api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-chain api call with [compose-chain](#compose-chain) which takes easier to construct arguments.
+
+The [compose-chain](#compose-chain) api call has two api calls in it's response: [commit-chain](#commit-chain) and [reveal-chain](#reveal-chain). To successfully create a chain, the [reveal-chain](#reveal-chain) must be called after the [commit-chain](#commit-chain).
+
+*Notes:*  
+It is possible to be unable to send a commit, if the commit already exists (if you try to send it twice). This is a mechanism to prevent you from double spending. If you encounter this error, just skip to the [reveal-chain](#reveal-chain). The error format can be found here: [repeated-commit](#repeated-commit)
 
 ## reveal-chain
 
@@ -1202,12 +1316,17 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-chain", "para
   "id": 0,
   "result": {
     "message": "Entry Reveal Success",
-    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734"
+    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734",
+    "chainid": "  f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300"
   }
 }
 ```
 
 Reveal the First Entry in a Chain to factomd after the Commit to compleate the Chain creation. The reveal chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
+
+The reveal-chain api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-chain api call with [compose-chain](#compose-chain) which takes easier to construct arguments.
+
+The [compose-chain](#compose-chain) api call has two api calls in it's response: [commit-chain](#commit-chain) and [reveal-chain](#reveal-chain). To successfully create a chain, the [reveal-chain](#reveal-chain) must be called after the [commit-chain](#commit-chain).
 
 ## commit-entry
 
@@ -1238,12 +1357,21 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-entry", "para
   "id": 0,
   "result": {
     "message": "Entry Commit Success",
-    "txid": "bf12150038699f678ac2314e9fa2d4786dc8984d9b8c67dab8cd7c2f2e83372c"
-  }
+    "txid": "bf12150038699f678ac2314e9fa2d4786dc8984d9b8c67dab8cd7c2f2e83372c",
+    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734"
+    }
 }
 ```
 
 Send an Entry Commit Message to factom to create a new Entry. The entry commit hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry-commit)
+
+The commit-entry api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-entry api call with [compose-entry](#compose-entry) which takes easier to construct arguments.
+
+The [compose-entry](#compose-entry) api call has two api calls in it's response: [commit-entry](#commit-entry) and [reveal-entry](#reveal-entry). To successfully create an entry, the [reveal-entry](#reveal-entry) must be called after the [commit-entry](#commit-entry).
+
+*Notes:*  
+It is possible to be unable to send a commit, if the commit already exists (if you try to send it twice). This is a mechanism to prevent you from double spending. If you encounter this error, just skip to the [reveal-entry](#reveal-entry). The error format can be found here: [repeated-commit](#repeated-commit)
+
 
 ## reveal-entry
 
@@ -1274,12 +1402,17 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-entry", "para
   "id": 0,
   "result": {
     "message": "Entry Reveal Success",
-    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734"
+    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734",
+    "chainid": "  f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300"
   }
 }
 ```
 
 Reveal an Entry to factomd after the Commit to compleate the Entry creation. The reveal entry hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
+
+The reveal-entry api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-entry api call with [compose-entry](#compose-entry) which takes easier to construct arguments.
+
+The [compose-entry](#compose-entry) api call has two api calls in it's response: [commit-entry](#commit-entry) and [reveal-entry](#reveal-entry). To successfully create an entry, the [reveal-entry](#reveal-entry) must be called after the [commit-entry](#commit-entry).
 
 ## send-raw-message
 
@@ -1356,21 +1489,111 @@ Entry Hash : f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734
 
 ## errors
 
-> Example Request
+There are various errors you can get back from the API. Here we will detail what they mean, and sometimes how to handle them.
 
-```shell
-curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "junk"}' -H 'content-type:text/plain;' http://localhost:8088/v2
-```
+Error types:
 
-> Example Response
+- Parse error
+- Invalid Request
+- Invalid params
+- Internal error
+- Method not found
+- Repeated Commit
+
+
+### Parse Error
+
+> Parse Error
 
 ```json-doc
 {
   "jsonrpc": "2.0",
-  "id": 0,
-  "method": "junk"
+  "id": null,
+  "error": {
+    "code": -32700,
+    "message": "Parse error"
+  }
 }
 ```
+
+**What does this mean?**  
+The server had an error parsing the JSON
+
+
+**What to do?**  
+Check the json you provided and ensure it is valid.
+
+### Invalid Request
+
+> Invalid Request
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": null,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+**What does this mean?**  
+The JSON sent is not a valid Request object.
+
+
+**What to do?**  
+Ensure that your request matches our JSON-RPC standard.
+
+### Invalid params
+
+> Invalid params
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": null,
+  "error": {
+    "code": -32602,
+    "message": "Invalid params"
+  }
+}
+```
+
+**What does this mean?**  
+The params sent do not match the expected paramaters
+
+
+**What to do?**  
+Ensure that your parameters are correct for the api call you are trying to call. Also ensure you have all fields needed.
+
+
+### Internal error
+
+> Internal error
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": null,
+  "error": {
+    "code": -32603,
+    "message": "Internal error"
+  }
+}
+```
+
+**What does this mean?**  
+There was an internal error when proccessing your request.
+
+
+**What to do?**  
+This error is hard to fix from the clientside, many times it is related to database lookups.
+
+
+### Method not found
+
+> Method not found
 
 ```json-doc
 {
@@ -1382,3 +1605,43 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "junk"}' -H 'content-
   }
 }
 ```
+
+**What does this mean?**  
+If you provide a method that is not a supported api method, this error will be returned. 
+
+
+**What to do?**  
+Check the method you provided for a typo, and ensure that your url you provide is correct (factomd api call to factomd, wallet api call to factom-walletd).
+
+
+### Repeated Commit
+
+> Repeated Commit
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":7,
+   "error":{  
+      "code":-32011,
+      "message":"Repeated Commit",
+      "data":{  
+         "entryhash":"018a03d4afb83347a546e6bf15c32ff7087f584bbb7248a0ab9b9bda92f12338",
+         "info":"A commit with equal or greater payment already exists"
+      }
+   }
+}
+```
+
+**What does this mean?**  
+This occurs if you send a commit to an entry that has already been paid for. If your commit is paying more than the current one, yours will go through.
+
+
+**What to do?**  
+If this error occurs, just send the reveal, as the entry has already been paid for. 
+
+In Factom every entry is paid for by the commit, and the data is given by the reveal. So if the commit is already paid for, you do not need to send another. This prevents you from double spending for an entry. Now if your entry requires more entry credits than the exisiting commit, you must send a new commit with more funds, and that will override the existing commit (but both commits will spend, so get it right the first time).
+
+
+ If you wish to find the existing commit, you can use the [ack](#ack) call, using the entryhash and the chainid.
+

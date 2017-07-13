@@ -27,9 +27,9 @@ includes:
   - make entry
   - read entries
   - papermill
-  - useful tools
   - compile ff
   - factom cli
+  - useful tools
 
 search: true
 ---

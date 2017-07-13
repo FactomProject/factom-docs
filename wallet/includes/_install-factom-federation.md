@@ -4,7 +4,7 @@ If you got this far, you are doing well Grasshopper. Ready to  get your hands on
 
 Here is a step by step guide on how to install FF binaries on Mac, Windows, and Linux.
 
-**Step 1**  Download the installer for Mac, Windows, or Linux on [GitHub](https://github.com/FactomProject/distribution/releases).
+**Step 1**  Download the installer for Mac, Windows, or Linux on [GitHub](https://github.com/FactomProject/distribution). There are various versions, make sure to select the one best suited for your system.
 
 **Step 2**  Save it to your desktop or downloads folder on your local hard drive.
 
@@ -20,7 +20,7 @@ Before you start go to System Preferences/Security & Privacy, click on the lock 
 
 Note that after running the Factom installer it is recommended you revert back your Security & Privacy settings to their original state.
 
-Next, locate the factom.mpkg.zip file you just downloaded, double click to unzip it, then double click the factom.mpkg file to run the installer.
+Next, locate the "factom.mpkg.zip" file you just downloaded, double click to unzip it, then double click the "factom.mpkg" file to run the installer.
 
 The installer will open, click continue. 
 
@@ -45,11 +45,11 @@ You made it so far, wasn't that hard wasn't it?
 You are now ready to [install Enterprise Wallet](#install-enterprise-wallet). 
 
 ### Windows
-This installer is for factomd, factom-walletd, factom-cli, the 3 binaries will be installed in c:\Program Files (x86)\Factom\ together with a .factom folder in the root of the local user Home Folder. These are all required to run Factom via command line.
+This installer is for factomd, factom-walletd, factom-cli, the 3 binaries will be installed in c:\Program Files (x86)\Factom\ or c:\Program Files\Factom\ (depending on your system) together with a .factom folder in the root of the local user Home Folder. These are all required to run Factom via command line.
 
-Next, locate the FactomInstall-amd64.msi or FactomInstall-i386.msi file you just downloaded in Step 1.
+Next, locate the "FactomInstall-amd64.msi" or "FactomInstall-i386.msi" file you just downloaded in Step 1.
 
-Double click factom.msi to run it but you may be prompted with the following message.
+Double click the .msi installer to run it but you may be prompted with the following message.
 
 ![Windows Prompt 1](/images/wallet_010.png)
 
@@ -86,9 +86,13 @@ You made it so far, and ready to [install Enterprise Wallet](#install-enterprise
 ### Linux
 This installer is for factomd, factom-walletd, factom-cli, the 3 binaries will be installed on your local drive together with a .factom folder in the root of the local user Home Folder ~/.factom. These are all required to run Factom via command line or the Factom Foundation Wallet.
 
-Download the factom.deb installer as per Step 1 then run the following command to install.
+Download the "factom-amd64.deb" or "factom-i386.deb" installer that suits your system as per Step 1 then run the following command to install.
 
 `sudo dpkg -i ./factom-amd64.deb`
+
+or
+
+`sudo dpkg -i ./factom-i386.deb`
 
 We are aware Linux users are hardcore so we made sure one command is all they need to be ready to [install Enterprise Wallet](#install-enterprise-wallet)!
 

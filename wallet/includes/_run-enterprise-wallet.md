@@ -46,7 +46,7 @@ The first thing to do is to change the factomd node the wallet is pointing to. G
 
 ![Online Wallet 2](images/wallet_092.png)
 
-Now click "Custom Factomd Location" and enter in a valid factomd instance. Use: factomd-live.cloudapp.net:8088 (copy and paste the address in the text field).
+Now click "Custom Factomd Location" and enter in a valid factomd instance. Use: courtesy-node.factom.com (copy and paste the address in the text field).
 
 ![Online Wallet 2](images/wallet_093.png)
 
@@ -107,12 +107,10 @@ Then browse to [http://localhost:8090](http://localhost:8090) to see the Control
 
 <aside class="notice"><br>
 If this is the first time you are running FF, now's a great time to check your Facebook feed or take your dog on a walk. 
-Syncing the Factom blockchain may take a little while, the blockchain is ...big. The Control Panel will display the progress and notify you when it has finished syncing. This will also occur when it has been a while since the last time you have run factomd.
+Syncing the Factom blockchain may take a little while, the blockchain is ...big. The Control Panel will display the progress and notify you when it has finished syncing. This will also occur when it has been a while since the last time you have run factomd. However, after the first full sync is complete, successive syncs are faster and you will only have to sync blocks since the last full sync.
+<br>
+You can alternatively download the first 70,000 blocks via disk image by following our <a href="#starting-factom-via-bootstrap">Bootstrap Guide</a>.
 </aside>
-
-You can alternatively download the first 70,000 blocks via disk image by following our [Bootstrap Guide](#starting-factom-via-bootstrap).
-
-Once you are synced, in a new Terminal window browse (cd) to the location of your FF installation as you did above (Mac and Windows only).
 
 On Windows, Mac and Linux locate the Enterprise Wallet app and launch it.
 
