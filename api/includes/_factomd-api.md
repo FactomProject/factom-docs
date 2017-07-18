@@ -1128,7 +1128,7 @@ Why `c`? It is short for `000000000000000000000000000000000000000000000000000000
 }
 ```
 
-To indicate the hash is a factoid transaction, put `f` in the chainid field.
+The `hash` field for a factoid transaction is equivalent to `txid`. To indicate the hash is a factoid transaction, put `f` in the chainid field and the `txid` in the hash field.
 
 The reponse will look different than entry related ack calls.
 
