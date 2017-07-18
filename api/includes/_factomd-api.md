@@ -527,90 +527,319 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 Retrieve the factoid block for any given height. These blocks contain factoid transaction information.
 
-## receipt
+## factoid-block
 
 > Example Request
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
-"receipt", "params":{"hash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"}}' \
+"factoid-block", "params": {"KeyMR":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "method": "receipt",
-  "params": {
-    "Hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
-  }
-}
-```
-
-> Example Response
 
 ```json
 {  
    "jsonrpc":"2.0",
    "id":0,
-   "result":{  
-      "receipt":{  
-         "entry":{  
-            "entryhash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
-         },
-         "merklebranch":[  
-            {  
-               "left":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2",
-               "right":"0000000000000000000000000000000000000000000000000000000000000003",
-               "top":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af"
-            },
-            {  
-               "left":"6adbc7ba1758f2850c92e4a09dea8ba9c6d844cdd4d596db2421b0f843c3e530",
-               "right":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af",
-               "top":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883"
-            },
-            {  
-               "left":"0caff62ea5b5aa015c706add7b2463a5be07e1f0537617f553558090f23c7f56",
-               "right":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
-               "top":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5"
-            },
-            {  
-               "left":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5",
-               "right":"1deef358d7e02adfe353f8137d1535e34f112d7a3b9fbf06b5c64dee5e4b2042",
-               "top":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb"
-            },
-            {  
-               "left":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb",
-               "right":"3d93579d9f5b22387cb46c1ad280da9ba9e1fe753972ef08d9e9f1c938a765c0",
-               "top":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47"
-            },
-            {  
-               "left":"9f5d7d533e66e920a68d9fd63d0cee1517fb6de713946968453cfd2cb3081dfd",
-               "right":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47",
-               "top":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362"
-            },
-            {  
-               "left":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362",
-               "right":"f62391cfbdb158a4b20f301e2800f0b3933ba23417bf1aeb630ff968765ddb30",
-               "top":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509"
-            },
-            {  
-               "left":"3000e97b6045299a108c04b656a9965d2ac5e7a9ae76718afb6009c4098d320b",
-               "right":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509",
-               "top":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b"
-            }
-         ],
-         "entryblockkeymr":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
-         "directoryblockkeymr":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b",
-         "bitcointransactionhash":"469a96c847cf8bf1f325b6eec850f46488ed671930d62b54ed186a8031477a7d",
-         "bitcoinblockhash":"000000000000000001edf3adf719dfc1263661d2c4b0ed779d004a2cbb7cca32"
-      }
+   "method":"factoid-block",
+   "params":{  
+      "KeyMR":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480"
    }
 }
 ```
 
-Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "fblock":{  
+         "bodymr":"1118c35047d58381f363c69a2501cfab34b5dca2f1c2806530c22af8bf7b3f59",
+         "prevkeymr":"694e5ea2cd1feb49ff6ecb5b77739f4885352143b389db7c7559a91b5df7eb20",
+         "prevledgerkeymr":"581914c0e606a95e0df75596a75de62d828f5e215a6380a62db90025f0516d6d",
+         "exchrate":120000,
+         "dbheight":41915,
+         "transactions":[  
+            {  
+               "txid":"a1dfd97c32df3f060a56436a661e2e997e2954198294c351380c1029c9029f4b",
+               "blockheight":0,
+               "millitimestamp":1466346000464,
+               "inputs":[  
+
+               ],
+               "outputs":[  
+
+               ],
+               "outecs":[  
+
+               ],
+               "rcds":[  
+
+               ],
+               "sigblocks":[  
+
+               ]
+            },
+            {  
+               "txid":"6e0c010d3977e59734f4cc5f520092af7916420a2b03fb37c80d7d364261d164",
+               "blockheight":0,
+               "millitimestamp":1466346049257,
+               "inputs":[  
+                  {  
+                     "amount":6990000000,
+                     "address":"c825bc4e3309b97d8e0f1af0f0f0a71930a151488af886fad792e775928a7d5a",
+                     "useraddress":"FA3VE46DUpZEgC1vRsZiWEcbjNMB6jbfQQ1nS66PSE7Jt5ADAQ8Z"
+                  },
+                  {  
+                     "amount":1560000,
+                     "address":"330fd717584445ac866dc2facd8b856e63bdb8b15b5ed46c0b053b2c6c5c5c3f",
+                     "useraddress":"FA2MZs5wASMo9cCiKezdiQKCd8KA6Zbg2xKXKGmYEZBqon9J3ZKv"
+                  }
+               ],
+               "outputs":[  
+                  {  
+                     "amount":6990000000,
+                     "address":"330fd717584445ac866dc2facd8b856e63bdb8b15b5ed46c0b053b2c6c5c5c3f",
+                     "useraddress":"FA2MZs5wASMo9cCiKezdiQKCd8KA6Zbg2xKXKGmYEZBqon9J3ZKv"
+                  }
+               ],
+               "outecs":[  
+
+               ],
+               "rcds":[  
+                  "0143a73f3b72b34c281f51b23e3861fb08dde5195f37ed2dd6e1dcf4df6924cdc7",
+                  "012c94f2bbe49899679c54482eba49bf1d024476845e478f9cce3238f612edd761"
+               ],
+               "sigblocks":[  
+                  {  
+                     "signatures":[  
+                        "3a58153da5a9a8cb000689983e2532168b22a1c29c197379a263d9e4c844c6ffb2cd2d79d9a33782e66b66cccd749b9b20fd81215d891ff7c601d625a96dcd0c"
+                     ]
+                  },
+                  {  
+                     "signatures":[  
+                        "b3a9554231d940c288cabbbf056067c64c7478dc0264da1451ceeb1c1a28ab63a7ac71a2a08075f742fdfe0f80012ca3614af92c2c5f757d3aac762a0dfb2d08"
+                     ]
+                  }
+               ]
+            },
+            {  
+               "txid":"6d966064383b0da8df1e8db6ec319c01fcf0a119439936bc6ed86afe4769a252",
+               "blockheight":0,
+               "millitimestamp":1466346444191,
+               "inputs":[  
+                  {  
+                     "amount":46535848,
+                     "address":"1b81ea64ac318395390caf9acb3efbece402b03cd20aa7540f1172f2e235b656",
+                     "useraddress":"FA2BCCVgPD7ZGFpYpzbWXbqtmJroL6wQFcJgPSME6coUqh9EUng9"
+                  }
+               ],
+               "outputs":[  
+                  {  
+                     "amount":45095848,
+                     "address":"dcb8222e77488961e3a5516de51a5831708f10ddb62b1464d1d87fc10354d01e",
+                     "useraddress":"FA3eHXyQ7ibbX75pbhcAJqkaWhLYqfNptG1ifxjogDgADLgKXrcX"
+                  }
+               ],
+               "outecs":[  
+
+               ],
+               "rcds":[  
+                  "0112cb1fc2b1d5e8a82f6727a02731ced20e09ba04eaf5762ab1b8f6b0c280fbe1"
+               ],
+               "sigblocks":[  
+                  {  
+                     "signatures":[  
+                        "c0ef56d70389388d70464478750cde51deabb6b1d19a4e3766937163d337e0c6ba1c9d71c7d4e6ef37efd66512463fc61ed5b93eced32d1d2c9b2bec0c232b0b"
+                     ]
+                  }
+               ]
+            }
+         ],
+         "chainid":"000000000000000000000000000000000000000000000000000000000000000f",
+         "keymr":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480",
+         "ledgerkeymr":"f6b05c36fe0a7c91f3d96f41fab2987250398350499f8369a1905357a1bb31e9"
+      },
+      "rawdata":"000000000000000000000000000000000000000000000000000000000000000f1118c35047d58381f363c69a2501cfab34b5dca2f1c2806530c22af8bf7b3f59694e5ea2cd1feb49ff6ecb5b77739f4885352143b389db7c7559a91b5df7eb20581914c0e606a95e0df75596a75de62d828f5e215a6380a62db90025f0516d6d000000000001d4c00000a3bb000000000300000200020155690850500000000002015569090ee90201009a858bdf00c825bc4e3309b97d8e0f1af0f0f0a71930a151488af886fad792e775928a7d5adf9b40330fd717584445ac866dc2facd8b856e63bdb8b15b5ed46c0b053b2c6c5c5c3f9a858bdf00330fd717584445ac866dc2facd8b856e63bdb8b15b5ed46c0b053b2c6c5c5c3f0143a73f3b72b34c281f51b23e3861fb08dde5195f37ed2dd6e1dcf4df6924cdc73a58153da5a9a8cb000689983e2532168b22a1c29c197379a263d9e4c844c6ffb2cd2d79d9a33782e66b66cccd749b9b20fd81215d891ff7c601d625a96dcd0c012c94f2bbe49899679c54482eba49bf1d024476845e478f9cce3238f612edd761b3a9554231d940c288cabbbf056067c64c7478dc0264da1451ceeb1c1a28ab63a7ac71a2a08075f742fdfe0f80012ca3614af92c2c5f757d3aac762a0dfb2d08000000000000020155690f159f0101009698a9281b81ea64ac318395390caf9acb3efbece402b03cd20aa7540f1172f2e235b65695c0b728dcb8222e77488961e3a5516de51a5831708f10ddb62b1464d1d87fc10354d01e0112cb1fc2b1d5e8a82f6727a02731ced20e09ba04eaf5762ab1b8f6b0c280fbe1c0ef56d70389388d70464478750cde51deabb6b1d19a4e3766937163d337e0c6ba1c9d71c7d4e6ef37efd66512463fc61ed5b93eced32d1d2c9b2bec0c232b0b000000"
+   }
+}
+```
+
+Retrieve a specified factoid block given its merkle root key.
+
+
+## entrycredit-block
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"entrycredit-block", "params": {"KeyMR":"2050b16701f29238d6b99bcf3fb0ca55d6d884139601f06691fc370cda659d60"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"entrycredit-block",
+   "params":{  
+      "KeyMR":"2050b16701f29238d6b99bcf3fb0ca55d6d884139601f06691fc370cda659d60"
+   }
+}
+```
+
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "ecblock":{  
+         "header":{  
+            "bodyhash":"5eb9fea36690f9279360019d141faabef23b733030c2c6972f7870f38c22c385",
+            "prevheaderhash":"cd62ba005d20e9384e28a29da742b6fc3d6b12a2458dbb5d9be3e9daf743036c",
+            "prevfullhash":"848b20a3c499d9ade0fcc879e0febcc9fd107c6b6411627c262e44ce19499872",
+            "dbheight":1998,
+            "headerexpansionarea":"",
+            "objectcount":14,
+            "bodysize":433,
+            "chainid":"000000000000000000000000000000000000000000000000000000000000000c",
+            "ecchainid":"000000000000000000000000000000000000000000000000000000000000000c"
+         },
+         "body":{  
+            "entries":[  
+               {  
+                  "serverindexnumber":0
+               },
+               {  
+                  "number":1
+               },
+               {  
+                  "version":0,
+                  "millitime":"014fd1eafcba",
+                  "entryhash":"5710aeb50e7ad82b3ad469e91019bc86b360796cfd4c037168ffe9040b7dfec7",
+                  "credits":1,
+                  "ecpubkey":"17ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d",
+                  "sig":"7cd6b1df3d3f9cf519a2437e799ee8acd815a2aeec7d5743295ff476632b070cb4459300a2bef1055e6fbb0c7ff5c62a9695f41be246c566051dd172816d7b06"
+               },
+               {  
+                  "version":0,
+                  "millitime":"014fd1eafcbc",
+                  "entryhash":"ae8088e67f5bc7023f1b9dd84022c41067e8777e6436f73fc2384511ae637122",
+                  "credits":1,
+                  "ecpubkey":"17ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d",
+                  "sig":"5b126ac909fff2f0553e6b02d559478e95be3af80926b710e1fa086b177fb5ae2b065737d58375924653f70527695a3c1c84823acc6d83000347fbecf49eca0a"
+               },
+               {  
+                  "version":0,
+                  "millitime":"014fd1eafcd7",
+                  "entryhash":"5685ab402185def2ee2639be7a119d1fbf66114ce923c585bf20920c839ed1a7",
+                  "credits":1,
+                  "ecpubkey":"17ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d",
+                  "sig":"0213cf5675124b211d16cb3c0c35f3cf87fa83e6970d0e7eb1feadd49bbd774878edc18066afe75b32fe525be4720326f622df0fa13afc5ad6653e6a0cf0e607"
+               },
+               {  
+                  "number":2
+               },
+               {  
+                  "number":3
+               },
+               {  
+                  "number":4
+               },
+               {  
+                  "number":5
+               },
+               {  
+                  "number":6
+               },
+               {  
+                  "number":7
+               },
+               {  
+                  "number":8
+               },
+               {  
+                  "number":9
+               },
+               {  
+                  "number":10
+               }
+            ]
+         }
+      },
+      "rawdata":"000000000000000000000000000000000000000000000000000000000000000c5eb9fea36690f9279360019d141faabef23b733030c2c6972f7870f38c22c385cd62ba005d20e9384e28a29da742b6fc3d6b12a2458dbb5d9be3e9daf743036c848b20a3c499d9ade0fcc879e0febcc9fd107c6b6411627c262e44ce19499872000007ce00000000000000000e00000000000001b1000001010300014fd1eafcba5710aeb50e7ad82b3ad469e91019bc86b360796cfd4c037168ffe9040b7dfec70117ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d7cd6b1df3d3f9cf519a2437e799ee8acd815a2aeec7d5743295ff476632b070cb4459300a2bef1055e6fbb0c7ff5c62a9695f41be246c566051dd172816d7b060300014fd1eafcbcae8088e67f5bc7023f1b9dd84022c41067e8777e6436f73fc2384511ae6371220117ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d5b126ac909fff2f0553e6b02d559478e95be3af80926b710e1fa086b177fb5ae2b065737d58375924653f70527695a3c1c84823acc6d83000347fbecf49eca0a0300014fd1eafcd75685ab402185def2ee2639be7a119d1fbf66114ce923c585bf20920c839ed1a70117ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d0213cf5675124b211d16cb3c0c35f3cf87fa83e6970d0e7eb1feadd49bbd774878edc18066afe75b32fe525be4720326f622df0fa13afc5ad6653e6a0cf0e60701020103010401050106010701080109010a"
+   }
+}
+```
+
+Retrieve a specified entrycredit block given its merkle root key. The numbers are minute markers.
+
+
+## admin-block
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"admin-block", "params": {"KeyMR":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"admin-block",
+   "params":{  
+      "KeyMR":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"
+   }
+}
+```
+
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "ablock":{  
+         "header":{  
+            "prevbackrefhash":"452201ee821c28ff601cd70a20c492d3f2a84a543c492b97b631d8f5e575c712",
+            "dbheight":100,
+            "headerexpansionsize":0,
+            "headerexpansionarea":"",
+            "messagecount":2,
+            "bodysize":131,
+            "adminchainid":"000000000000000000000000000000000000000000000000000000000000000a",
+            "chainid":"000000000000000000000000000000000000000000000000000000000000000a"
+         },
+         "abentries":[  
+            {  
+               "identityadminchainid":"0000000000000000000000000000000000000000000000000000000000000000",
+               "prevdbsig":{  
+                  "pub":"0426a802617848d4d16d87830fc521f4d136bb2d0c352850919c2679f189613a",
+                  "sig":"50ed8fb2440b1d1e2036f617f64224a347c797898d7433e1934db47b1e057f250af772404c9d595a1f86d44d5034f4985ecdddc01c23e5945efe1fc866ea8505"
+               }
+            },
+            {  
+               "minutenumber":1
+            }
+         ],
+         "backreferencehash":"7cbd0f9b59e3ebe5f34836c6d7d0d42b9cafafb8cb348d71cb7c66b6de782d7a",
+         "lookuphash":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"
+      },
+      "rawdata":"000000000000000000000000000000000000000000000000000000000000000a452201ee821c28ff601cd70a20c492d3f2a84a543c492b97b631d8f5e575c712000000640000000002000000830100000000000000000000000000000000000000000000000000000000000000000426a802617848d4d16d87830fc521f4d136bb2d0c352850919c2679f189613a50ed8fb2440b1d1e2036f617f64224a347c797898d7433e1934db47b1e057f250af772404c9d595a1f86d44d5034f4985ecdddc01c23e5945efe1fc866ea85050001"
+   }
+}
+```
+
+Retrieve a specified admin block given its merkle root key.
 
 ## entry-block
 
@@ -999,6 +1228,91 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
 **Deprecated**: Please refer to [ack](#ack)
 
 Entry Acknowledgements will give the current status of a transaction. "DBlockConfirmed" is the highest level of confirmation you can obtain. This means the entry has made it into Factom.
+
+## receipt
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"receipt", "params":{"hash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "receipt",
+  "params": {
+    "Hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+  }
+}
+```
+
+> Example Response
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "receipt":{  
+         "entry":{  
+            "entryhash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+         },
+         "merklebranch":[  
+            {  
+               "left":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2",
+               "right":"0000000000000000000000000000000000000000000000000000000000000003",
+               "top":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af"
+            },
+            {  
+               "left":"6adbc7ba1758f2850c92e4a09dea8ba9c6d844cdd4d596db2421b0f843c3e530",
+               "right":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af",
+               "top":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883"
+            },
+            {  
+               "left":"0caff62ea5b5aa015c706add7b2463a5be07e1f0537617f553558090f23c7f56",
+               "right":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
+               "top":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5"
+            },
+            {  
+               "left":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5",
+               "right":"1deef358d7e02adfe353f8137d1535e34f112d7a3b9fbf06b5c64dee5e4b2042",
+               "top":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb"
+            },
+            {  
+               "left":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb",
+               "right":"3d93579d9f5b22387cb46c1ad280da9ba9e1fe753972ef08d9e9f1c938a765c0",
+               "top":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47"
+            },
+            {  
+               "left":"9f5d7d533e66e920a68d9fd63d0cee1517fb6de713946968453cfd2cb3081dfd",
+               "right":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47",
+               "top":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362"
+            },
+            {  
+               "left":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362",
+               "right":"f62391cfbdb158a4b20f301e2800f0b3933ba23417bf1aeb630ff968765ddb30",
+               "top":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509"
+            },
+            {  
+               "left":"3000e97b6045299a108c04b656a9965d2ac5e7a9ae76718afb6009c4098d320b",
+               "right":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509",
+               "top":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b"
+            }
+         ],
+         "entryblockkeymr":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
+         "directoryblockkeymr":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b",
+         "bitcointransactionhash":"469a96c847cf8bf1f325b6eec850f46488ed671930d62b54ed186a8031477a7d",
+         "bitcoinblockhash":"000000000000000001edf3adf719dfc1263661d2c4b0ed779d004a2cbb7cca32"
+      }
+   }
+}
+```
+
+Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
 ## pending-transactions
 
