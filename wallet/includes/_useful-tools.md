@@ -12,7 +12,7 @@ It will show you, for example, when the Factom Network is under maintenance.
 
 Another useful tool is the following found at:
 
-[http://presentfactom.cloudapp.net:8080/BlockChainStatus](http://presentfactom.cloudapp.net:8080/BlockChainStatus)
+[https://www.trustedoracle.com/BlockChainStatus](https://www.trustedoracle.com/BlockChainStatus)
 
 It will show you some live stats for factom such as:
 
