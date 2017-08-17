@@ -20,7 +20,7 @@ Then upgrade Enterprise Wallet to the latest version by following our [Install E
 
 ![Online Wallet 00](images/wallet_140.png)
 
-**3.** Enter a strong password and write it down – if you forget it and cannot recover it, you will lose access to the factoids that are stored in your Secure Wallet. Click the checkbox to acknowledge this, and then click “Proceed To Encrypted Wallet” to automatically generate a new "factom_wallet_encrypted.db" file in your .factom folder (which will be encrypted with the password you just chose).
+**3.** Enter a strong password and write it down – if you forget it and cannot recover it, you will lose access to the factoids that are stored in your Secure Wallet. Tick the checkbox to acknowledge this, and then click “Proceed To Encrypted Wallet” to automatically generate a new "factom_wallet_encrypted.db" file in your .factom folder (which will be encrypted with the password you just chose).
 
 ![Online Wallet 00](images/wallet_142.png)
 
