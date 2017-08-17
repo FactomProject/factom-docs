@@ -60,3 +60,7 @@ Important: Double-check the address you are funding before sending the transacti
 
 ### The End
 If you have followed the above steps, when you next [Run Enterprise Wallet](#run-enterprise-wallet) and select the "Secure" option using the password you chose earlier, your balances will include the factoids that you sent to it, and your wallet will be securely encrypted.
+
+<aside class="notice"><br>
+Users who hold Entry Credits in a Not Secure wallet (unencrypted) can also import them into a Secure Wallet (encrypted) by simply <a href="#import-private-key">importing the private keys</a> of their EC Addresses.
+</aside>

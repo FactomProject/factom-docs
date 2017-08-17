@@ -56,10 +56,6 @@ This will automatically generate a new "factom_wallet_encrypted.db" file in your
 
 ![Online Wallet 00](images/wallet_142.png)
 
-This is what a secure wallet will look like:
-
-![Online Wallet 00](images/wallet_143.png)
-
 <aside class="notice"><br>
 Opening a secure wallet will encrypt all private keys and the seed. Keep in mind this means that if you forget your password and seed, there is no recovery option.
 
@@ -80,13 +76,11 @@ Make sure to tick the box next to "I acknowledge that my private keys will not b
 
 ![Online Wallet 00](images/wallet_144.png)
 
-This is what a secure wallet will look like:
-
-![Online Wallet 00](images/wallet_145.png)
-
 <aside class="notice"><br>
-A non-secure wallet does not use encryption, and therefore it can be accessed by other users on your machine or malware. This will leave your private keys exposed and unencrypted on your hard drive. Choose your options carefully and be sure to immediately <a href="#backup-your-wallets">back up your seed</a>.
+A non-secure wallet does not use encryption, and therefore it can be accessed by other users on your machine or malware. This will leave your private keys exposed and unencrypted on your hard drive. Choose your options carefully and be sure to immediately <a href="#backup-your-wallets">back up your seed</a>. We strongly recommend everyone to use the secure option.
 </aside>
+
+Learn how to transfer FCT from a Not Secure wallet to a Secure one by following our guide [here](#transfer-fct-to-secure-wallet).
 
 Once you are happy continue by following the instructions below for either the Online or Local Enterprise Wallet setup.
 
