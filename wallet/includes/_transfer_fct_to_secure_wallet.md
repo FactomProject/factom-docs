@@ -46,7 +46,7 @@ Important: This backup should be copied to a safe location, and should be clearl
 
 ![Online Wallet 00](images/wallet_141.png)
 
-On the second screen tick the box and click the "Proceed to Unencrypted Wallet" button.
+On the second screen tick the checkbox and click the "Proceed to Unencrypted Wallet" button.
 
 ![Online Wallet 00](images/wallet_144.png)
 
