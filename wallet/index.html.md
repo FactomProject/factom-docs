@@ -21,6 +21,7 @@ includes:
   - convert-fct-to-ec
   - redeem-from-koinify
   - import-private-key
+  - transfer_fct_to_secure_wallet
   - verify-balances
   - factom-explorer
   - factomd-control-panel
