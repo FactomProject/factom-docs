@@ -33,14 +33,13 @@ jobs:
       - run:
           name: Push images to AWS ECR
           command: |
-            # Login to AWS ECR
-            login="$(aws ecr get-login  --no-include-email --region $AWS_REGION)"
-            ${login}
+            # Login to DockerHub
+            docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
             # apiplus_api_docs
             export factom_docs_container_tag=$(git rev-parse HEAD)
-            docker tag factom_docs "${AWS_REPO_BASE_URI}/factom_docs:${factom_docs_container_tag}"
-            docker push "${AWS_REPO_BASE_URI}/factom_docs:${factom_docs_container_tag}"
+            docker tag factom_docs "factominc/factom_docs:${factom_docs_container_tag}"
+            docker push "factominc/factom_docs:${factom_docs_container_tag}"
 
 
       - run:
