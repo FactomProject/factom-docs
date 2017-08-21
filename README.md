@@ -1,4 +1,6 @@
 # Read before making API doc changes
+[![CircleCI](https://circleci.com/gh/FactomProject/factom-docs/tree/develop.svg?style=svg)](https://circleci.com/gh/FactomProject/factom-docs/tree/develop)
+
 The docs have docs? Yes, they do.
 
 
