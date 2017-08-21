@@ -43,17 +43,32 @@ We will explain you how to do that when "we cross that bridge" in the <a href="#
 
 **Backup your Factom Federation (FF) wallet file**
 
-The wallet file is called "factom_wallet.db" and is located in the .factom folder at the following locations:
+We have two types of wallets for users to choose from when using Enterpise Wallet: Secure Wallet (encrypted) and Not Secure Wallet (unencrypted). The wallet files have different names accordingly:
+
+1. `factom_wallet_encrypted.dbis` (encrypted)
+2. `factom_wallet.db` (unencrypted wallet file) 
+
+They are located in the .factom folder at the following locations:
+
+*Encrypted Wallet File Locations*
+
+* **Mac** `/Users/YourUsername/.factom/wallet/factom_wallet_encrypted.dbis`
+* **Windows** `C:\Users\YourUsername\.factom\wallet\factom_wallet_encrypted.dbis`
+* **Linux** `~/.factom/wallet/factom_wallet_encrypted.dbis`
+
+*Unencrypted Wallet File Locations*
 
 * **Mac** `/Users/YourUsername/.factom/wallet/factom_wallet.db`
 * **Windows** `C:\Users\YourUsername\.factom\wallet\factom_wallet.db`
 * **Linux** `~/.factom/wallet/factom_wallet.db`
 
+Learn more on how to setup a Secure or Not Secure Wallet by following the [Choose Your Wallet Type guide](#choose-your-wallet-type).
+
 <aside class="notice"><br>  
 Note that the .factom folder is a hidden folder on Mac and Linux so perform a Google search for "how to show hidden files and folders on YOUR OS", replacing YOUR OS with Mac or Linux accordingly.
 </aside>
 
-**To backup** your FF wallet file, quit factomd and EnterpriseWallet, locate the factom_wallet.db file, make a copy, and save it to a location outside the .factom folder such as your documents folder, an external drive, a USB stick, or cloud storage.
+**To backup** your FF wallet file, quit factomd and EnterpriseWallet, locate the factom_wallet.db or factom_wallet_encrypted.dbis file, make a copy, and save it to a location outside the .factom folder such as your documents folder, an external drive, a USB stick, or cloud storage.
 
 **To create a fresh** FF wallet file, quit factomd and EnterpriseWallet then move your wallet file to a safe location out of the .factom folder. There should be no wallet file in the .factom folder. Restart factomd and factom-walletd and a new empty wallet will be generated.
 

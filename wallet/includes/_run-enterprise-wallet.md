@@ -32,11 +32,61 @@ If by any chance the operation fails, quit the wallet, delete the new wallet fil
 Remember, you only need to do this once the first time you run Enterprise Wallet, thereafter you can run it normally. 
 </aside>
 
+Once you are happy continue by following the instructions below to choose your wallet type.
+
+### Choose Your Wallet Type
+
+When you launch Enterprise Wallet you have the option to choose a "secure" or a "not secure" wallet, the former is encrypted the latter is unencrypted. 
+
+Each option maintains a different wallet file. This means you can have both a non secure, and a secure wallet.
+
+To open either one, just close and relaunch EnterpriseWallet, selecting the one you wish to open.
+
+![Online Wallet 00](images/wallet_139.png)
+
+**Secure Wallet**
+
+To create a Secure Wallet simply click on the Secure Wallet button.
+
+![Online Wallet 00](images/wallet_140.png)
+
+You will then need to enter a strong password for your wallet, tick the box next to "I acknowledge that if I lose this password and my seed I will lose access to the wallet and its funds", and finally click the "Proceed to Encrypted Wallet" button to access the Secure Wallet. 
+
+This will automatically generate a new "factom_wallet_encrypted.db" file in your .factom folder (which will be encrypted with the password you just chose). You will need the same password every time you want to access your Secure Wallet, make sure to write it down and keep it safe.
+
+![Online Wallet 00](images/wallet_142.png)
+
+<aside class="notice"><br>
+Opening a secure wallet will encrypt all private keys and the seed. Keep in mind this means that if you forget your password and seed, there is no recovery option.
+
+Be careful selecting this option, When using an encrypted wallet, be sure to immediately <a href="#backup-your-wallets">back up your seed</a>. This allows you to regenerate your wallet if you lose the password or the database gets corrupted.
+
+This option will not convert a v1 wallet if found on disk. This is intentional, as converting any wallet to an encrypted wallet means the original wallet still exists, and still insecure. Addresses and seeds can still be imported/exported using the settings and address book tabs.
+</aside>
+
+Once you are happy continue by following the instructions below for either the Online or Local Enterprise Wallet setup.
+
+**Not Secure Wallet**
+
+To create a Not Secure Wallet simply click on the Not Secure button.
+
+![Online Wallet 00](images/wallet_141.png)
+
+Make sure to tick the box next to "I acknowledge that my private keys will not be encrypted and are thus unprotected", and finally click the "Proceed to Unencrypted Wallet" button to access the Secure Wallet. 
+
+![Online Wallet 00](images/wallet_144.png)
+
+<aside class="notice"><br>
+A non-secure wallet does not use encryption, and therefore it can be accessed by other users on your machine or malware. This will leave your private keys exposed and unencrypted on your hard drive. Choose your options carefully and be sure to immediately <a href="#backup-your-wallets">back up your seed</a>. We strongly recommend everyone to use the secure option.
+</aside>
+
+Learn how to transfer FCT from a Not Secure wallet to a Secure one by following our guide [here](#transfer-fct-to-secure-wallet).
+
 Once you are happy continue by following the instructions below for either the Online or Local Enterprise Wallet setup.
 
 ### Run Enterprise Wallet Online
 
-On Windows, Mac and Linux locate the Enterprise Wallet app and launch it.
+On Windows, Mac and Linux locate the Enterprise Wallet app and launch it. 
 
 At first launch it may show an error message under the "Transactions Tab".
 

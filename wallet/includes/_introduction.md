@@ -17,7 +17,8 @@ Find the new features highlighted below:
 * Ability to import/export private keys 
 * Coin-control features such as specific or multiple input addresses for new transactions
 * Address generation from a "seed" in case you lose your wallet you can re-generate your addresses from the seed
-* Seed export to file function 
+* Seed export to file function
+* Ability to use Encrypted or Unencrypted Wallets
 
 Here it is in all its glory!
 

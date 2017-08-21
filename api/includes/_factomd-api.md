@@ -333,7 +333,7 @@ The ABEntries are detailed here: [Github Link](https://github.com/FactomProject/
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
-"ecblock-by-height", "params": {"height":1}}' \
+"ecblock-by-height", "params": {"height":10000}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -343,7 +343,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
   "id": 0,
   "method": "ecblock-by-height",
   "params": {
-    "height": 14460
+    "height": 10000
   }
 }
 ```
@@ -351,59 +351,78 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 > Example Response
 
 ```json-doc
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "ecblock": {
-      "header": {
-        "bodyhash": "ef7a85d4bf868e34aff4edce479f6ee412161e1faa3596a112cd5ef75e96f59c",
-        "prevheaderhash": "add44ed20133c7b8c9500ab5819d3aee665fffcce7acb6baa098fa8210b43a8b",
-        "prevfullhash": "2f1dd9e5f1ab34102f65dea55c1598e2344568d68c0511640b7f436295615746",
-        "dbheight": 14460,
-        "headerexpansionarea": "",
-        "objectcount": 10,
-        "bodysize": 20,
-        "chainid": "000000000000000000000000000000000000000000000000000000000000000c",
-        "ecchainid": "000000000000000000000000000000000000000000000000000000000000000c"
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "ecblock":{  
+         "header":{  
+            "bodyhash":"4d1693377deddda4f23c8c2523a5c47a78b607312845e319a4131c82c6a44819",
+            "prevheaderhash":"d7dede56d2e7d46d879827fc6e4a3aca1be2816c9dca640686ec5f63cbb1fd9f",
+            "prevfullhash":"2bc12a0c7d5dd282fe62dd220d575f6834f188b587091f4ab50815bca1dcfd99",
+            "dbheight":10000,
+            "headerexpansionarea":"",
+            "objectcount":13,
+            "bodysize":296,
+            "chainid":"000000000000000000000000000000000000000000000000000000000000000c",
+            "ecchainid":"000000000000000000000000000000000000000000000000000000000000000c"
+         },
+         "body":{  
+            "entries":[  
+               {  
+                  "serverindexnumber":0
+               },
+               {  
+                  "version":0,
+                  "millitime":"0150f0bb0c15",
+                  "entryhash":"b87f8623b15a4574527699f594c1d77986dc140dbd4f4b277f35331a1f22f92e",
+                  "credits":1,
+                  "ecpubkey":"4bcbc1c5ab90e432bd407a51eaa513b4050eecda1fd42bbf6b7050a1d96f94b7",
+                  "sig":"99c8d4b12e6dfc2ad5b1ee0da12dd25becd43808ded49dfa12f5667ba6ad07e8e44478912a219dfccd02f1110531f8b43a21d09c4af455b5c4ac398cb5926902"
+               },
+               {  
+                  "number":1
+               },
+               {  
+                  "number":2
+               },
+               {  
+                  "number":3
+               },
+               {  
+                  "number":4
+               },
+               {  
+                  "version":0,
+                  "millitime":"0150f0bf8808",
+                  "entryhash":"5759b2609abf0d224250db124559ff51fcd739b29dbb3b32a619c5cc74a0318a",
+                  "credits":1,
+                  "ecpubkey":"3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29",
+                  "sig":"848506d790ce31287a3b97933631290f0e75cadf8be1cdf67a7e362bcdf15fc1fd50988ae001c683ac133f23c9a9af60521688870e96d78038e27d683960810a"
+               },
+               {  
+                  "number":5
+               },
+               {  
+                  "number":6
+               },
+               {  
+                  "number":7
+               },
+               {  
+                  "number":8
+               },
+               {  
+                  "number":9
+               },
+               {  
+                  "number":10
+               }
+            ]
+         }
       },
-      "body": {
-        "entries": [
-          {
-            "number": 1
-          },
-          {
-            "number": 2
-          },
-          {
-            "number": 3
-          },
-          {
-            "number": 4
-          },
-          {
-            "number": 5
-          },
-          {
-            "number": 6
-          },
-          {
-            "number": 7
-          },
-          {
-            "number": 8
-          },
-          {
-            "number": 9
-          },
-          {
-            "number": 10
-          }
-        ]
-      }
-    },
-    "rawdata": "000000000000000000000000000000000000000000000000000000000000000cef7a85d4bf868e34aff4edce479f6ee412161e1faa3596a112cd5ef75e96f59cadd44ed20133c7b8c9500ab5819d3aee665fffcce7acb6baa098fa8210b43a8b2f1dd9e5f1ab34102f65dea55c1598e2344568d68c0511640b7f4362956157460000387c00000000000000000a0000000000000014010101020103010401050106010701080109010a"
-  }
+      "rawdata":"000000000000000000000000000000000000000000000000000000000000000c4d1693377deddda4f23c8c2523a5c47a78b607312845e319a4131c82c6a44819d7dede56d2e7d46d879827fc6e4a3aca1be2816c9dca640686ec5f63cbb1fd9f2bc12a0c7d5dd282fe62dd220d575f6834f188b587091f4ab50815bca1dcfd990000271000000000000000000d0000000000000128000003000150f0bb0c15b87f8623b15a4574527699f594c1d77986dc140dbd4f4b277f35331a1f22f92e014bcbc1c5ab90e432bd407a51eaa513b4050eecda1fd42bbf6b7050a1d96f94b799c8d4b12e6dfc2ad5b1ee0da12dd25becd43808ded49dfa12f5667ba6ad07e8e44478912a219dfccd02f1110531f8b43a21d09c4af455b5c4ac398cb5926902010101020103010403000150f0bf88085759b2609abf0d224250db124559ff51fcd739b29dbb3b32a619c5cc74a0318a013b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29848506d790ce31287a3b97933631290f0e75cadf8be1cdf67a7e362bcdf15fc1fd50988ae001c683ac133f23c9a9af60521688870e96d78038e27d683960810a01050106010701080109010a"
+   }
 }
 ```
 
@@ -433,180 +452,394 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 > Example Response
 
 ```json-doc
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "fblock": {
-      "bodymr": "e12db6a1945d513f066cab66c94dc5cca1b8f90997b95a47b46e70b1656f764a",
-      "prevkeymr": "98f3a6bcd978080fb612359f131fdb73c6119dea1f45c977a3fa30dfd507ebf5",
-      "prevledgerkeymr": "fe7734478375e16f92f9e5513dbc3f2e830dd2bb263801ba816129242ce83cfe",
-      "exchrate": 95369,
-      "dbheight": 14460,
-      "transactions": [
-        {
-          "millitimestamp": 1480284840637,
-          "inputs": [],
-          "outputs": [],
-          "outecs": [],
-          "rcds": [],
-          "sigblocks": [],
-          "blockheight": 0
-        },
-        {
-          "millitimestamp": 1480284848556,
-          "inputs": [
-            {
-              "amount": 201144428,
-              "address": "dfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8f",
-              "useraddress": ""
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "fblock":{  
+         "bodymr":"16a82932aa64e6ad45b2749f2abb871fcf3353ab9d4e163c9bd90e5bbd745b59",
+         "prevkeymr":"a164ccbb77a21904edc4f2bb753aa60635fb2b60279c06ae01aa211f37541736",
+         "prevledgerkeymr":"2fb170f73c3961d4218ff806dd75e6e348ca1798a5fc7a99d443fbe2ff939d99",
+         "exchrate":666600,
+         "dbheight":1,
+         "transactions":[  
+            {  
+               "txid":"e321605afa458333cdded91644b0d9a21b4325bb3340b85a943974bf70aa1e99",
+               "blockheight":0,
+               "millitimestamp":1441137675547,
+               "inputs":[  
+
+               ],
+               "outputs":[  
+
+               ],
+               "outecs":[  
+
+               ],
+               "rcds":[  
+
+               ],
+               "sigblocks":[  
+
+               ]
+            },
+            {  
+               "txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0",
+               "blockheight":0,
+               "millitimestamp":1441138021975,
+               "inputs":[  
+                  {  
+                     "amount":207999200,
+                     "address":"7d4f56c528ab09da5bbf7b37b0b453f43db303730e28e9ebe02657dff431d4f7",
+                     "useraddress":"FA2vGRwutdPdTHQa7kkpX3LkSgqKQ1MS2nur4UqbxqP5MGHcziWa"
+                  }
+               ],
+               "outputs":[  
+
+               ],
+               "outecs":[  
+                  {  
+                     "amount":200000000,
+                     "address":"17ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d",
+                     "useraddress":"EC1whAxbYYsfQoAFLuzHCsz4Qz29WePBcrrGj5MqMQ1PR43wjiBH"
+                  }
+               ],
+               "rcds":[  
+                  "01a5be79b6ada79c0af4d6b7f91234ff321f3b647ed01e02ccbbc0fe9dcc632934"
+               ],
+               "sigblocks":[  
+                  {  
+                     "signatures":[  
+                        "82f22455b9756ee4b4db411a5d00e31b689c1bd1abe1d1e887cf4c52e67fc51fe4d9594c24643a91009c6ea91701b5b6df240248c2f39453162b61d71b982701"
+                     ]
+                  }
+               ]
             }
-          ],
-          "outputs": [
-            {
-              "amount": 200000000,
-              "address": "031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f",
-              "useraddress": ""
-            }
-          ],
-          "outecs": [],
-          "rcds": [
-            "3f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971ac"
-          ],
-          "sigblocks": [
-            {
-              "signatures": [
-                "68fd6905eeb276739b2541398db3b1b06d73f99a50803bac83eafabc24be656e26278af6fe8070c85e861e21c39a56a5a422dd2d58dd65a7eeff849f6d02de04"
-              ]
-            }
-          ],
-          "blockheight": 0
-        },
-        {
-          "millitimestamp": 1480284956754,
-          "inputs": [
-            {
-              "amount": 401144428,
-              "address": "dfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8f",
-              "useraddress": ""
-            }
-          ],
-          "outputs": [
-            {
-              "amount": 400000000,
-              "address": "031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f",
-              "useraddress": ""
-            }
-          ],
-          "outecs": [],
-          "rcds": [
-            "3f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971ac"
-          ],
-          "sigblocks": [
-            {
-              "signatures": [
-                "363c20508bddf5a9d4762e2496a861a1f03ec0dc50389b836dec898a3b37c33a6f831edf057f48a961b2d336231a78137e7402a0ca3a1d5c186ce2bb79e44907"
-              ]
-            }
-          ],
-          "blockheight": 0
-        }
-      ],
-      "chainid": "000000000000000000000000000000000000000000000000000000000000000f",
-      "keymr": "cbadd7e280377ad8360a4b309df9d14f56552582c05100145ca3367e50adc497",
-      "ledgerkeymr": "886747480a30f833a27a819fe4b92fbd617cda028329fd2e4b87c7721ff65dea"
-    },
-    "rawdata": "000000000000000000000000000000000000000000000000000000000000000fe12db6a1945d513f066cab66c94dc5cca1b8f90997b95a47b46e70b1656f764a98f3a6bcd978080fb612359f131fdb73c6119dea1f45c977a3fa30dfd507ebf5fe7734478375e16f92f9e5513dbc3f2e830dd2bb263801ba816129242ce83cfe00000000000174890000387c000000000b0000071c020158a7da22bd000000020158a7da41ac010100dff4f06cdfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8fdfaf8400031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971ac68fd6905eeb276739b2541398db3b1b06d73f99a50803bac83eafabc24be656e26278af6fe8070c85e861e21c39a56a5a422dd2d58dd65a7eeff849f6d02de04020158a7da70a5010100b09dae6cdfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8fafd7c200031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971ac7e503a078b7f5bac25333c54a724530b97d25b8c2a83f82fdde249987b8bf4a4ba3da41643b7723102c3506bae86f6347ae94b72e8ca4c14617d8d3ca57df70500020158a7da9f9f010100818fccb26cdfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8f818f86c600031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971aced5c095795dc3a2fdcf7689718d10f32be9c656049f169900eac51a34b3f1cb2a0d35ba0a9440892219be15927a4702f062e29ac35238ece375bda4dea9a2a0500020158a7dace9101010083ddb1806c031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f83dceb9400dfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8f013b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29fdb846a8f9abcb8a1eda9556a8d5f8ef959d1649fddb5ba1ccd3a66b6bc919d8ed225b1273e671685812725a10a7bbac95f0ed9f128bcb3547b068fe3137e50500020158a7dafd8201010081bfa3f46cdfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8f81bede8800031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971ac66080fa6968bd4b104f1f7a2b5f5bd30b05b066bca956ef28ae94a17f1e18fd102de60f7612811707fda09df69802f5fe4438c1b7b750b57fcc4684c9235520100020158a7db2c7b010100dff4f06cdfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8fdfaf8400031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971ac40316508538da5dda6d029e6d8b7eca7b9a5074def82a1d78a0f04ac82fe1efbe14f01b01a6778d648ee47c3acf6f9ab2c9f044087703d55f9901403b991780500020158a7db5b75010100dff4f06cdfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8fdfaf8400031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971ac4f050366992fe0a8fb8939825e1286f096f8f1e3528d23e737a499ba73ac1c041501c77f8baf780b3cb915f630a07ac2c0cb312bfb8c89b27ab550fef070a30500020158a7db8a6e010100b09dae6cdfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8fafd7c200031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971aca6d367d754fd45454c04fd090a68ba4b02ad0316362a7fcd16f164f56d335e8ebd83a3f6e9f5dc1cae9a3ad4eb48a675b8c8b984a1989d359f2bcad368c9c60900020158a7dbb96001010083ddb1806c031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f83dceb9400dfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8f013b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29c59178bafe8aca410070ba26fd2d4eb607360f52a1b74b60f55a66a3c65bfc5c9ce9b03f6dd4880246723d8542c93fc935f988bc77cc3b9f3d616b414005730300020158a7dbe85201010081bfa3f46cdfda7feae639018161018676f141c5744397278c9021e1e9d36e89656c7abe8f81bede8800031cce24bcc43b596af105167de2c03603c20ada3314a7cfb47befcad4883e6f013f8f50d848f1973751c5776e2f34ab9acf42f72da96d74acd64d2935d75971ac363c20508bddf5a9d4762e2496a861a1f03ec0dc50389b836dec898a3b37c33a6f831edf057f48a961b2d336231a78137e7402a0ca3a1d5c186ce2bb79e449070000"
-  }
+         ],
+         "chainid":"000000000000000000000000000000000000000000000000000000000000000f",
+         "keymr":"aa100f203f159e4369081bb366f6816b302387ec19a4f8b9c98495d97fbe3527",
+         "ledgerkeymr":"5810ed83155dfb7b6039323b8a5572cd03166a37d1c3e86d4538c99907a81757"
+      },
+      "rawdata":"000000000000000000000000000000000000000000000000000000000000000f16a82932aa64e6ad45b2749f2abb871fcf3353ab9d4e163c9bd90e5bbd745b59a164ccbb77a21904edc4f2bb753aa60635fb2b60279c06ae01aa211f375417362fb170f73c3961d4218ff806dd75e6e348ca1798a5fc7a99d443fbe2ff939d9900000000000a2be8000000010000000002000000c702014f8a7fcd1b00000002014f8a851657010001e397a1607d4f56c528ab09da5bbf7b37b0b453f43db303730e28e9ebe02657dff431d4f7dfaf840017ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d01a5be79b6ada79c0af4d6b7f91234ff321f3b647ed01e02ccbbc0fe9dcc63293482f22455b9756ee4b4db411a5d00e31b689c1bd1abe1d1e887cf4c52e67fc51fe4d9594c24643a91009c6ea91701b5b6df240248c2f39453162b61d71b98270100000000000000000000"
+   }
 }
 ```
 
 Retrieve the factoid block for any given height. These blocks contain factoid transaction information.
 
-## receipt
+## factoid-block
 
 > Example Request
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
-"receipt", "params":{"hash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"}}' \
+"factoid-block", "params": {"KeyMR":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "method": "receipt",
-  "params": {
-    "Hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
-  }
-}
-```
-
-> Example Response
 
 ```json
 {  
    "jsonrpc":"2.0",
    "id":0,
-   "result":{  
-      "receipt":{  
-         "entry":{  
-            "entryhash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
-         },
-         "merklebranch":[  
-            {  
-               "left":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2",
-               "right":"0000000000000000000000000000000000000000000000000000000000000003",
-               "top":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af"
-            },
-            {  
-               "left":"6adbc7ba1758f2850c92e4a09dea8ba9c6d844cdd4d596db2421b0f843c3e530",
-               "right":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af",
-               "top":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883"
-            },
-            {  
-               "left":"0caff62ea5b5aa015c706add7b2463a5be07e1f0537617f553558090f23c7f56",
-               "right":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
-               "top":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5"
-            },
-            {  
-               "left":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5",
-               "right":"1deef358d7e02adfe353f8137d1535e34f112d7a3b9fbf06b5c64dee5e4b2042",
-               "top":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb"
-            },
-            {  
-               "left":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb",
-               "right":"3d93579d9f5b22387cb46c1ad280da9ba9e1fe753972ef08d9e9f1c938a765c0",
-               "top":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47"
-            },
-            {  
-               "left":"9f5d7d533e66e920a68d9fd63d0cee1517fb6de713946968453cfd2cb3081dfd",
-               "right":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47",
-               "top":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362"
-            },
-            {  
-               "left":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362",
-               "right":"f62391cfbdb158a4b20f301e2800f0b3933ba23417bf1aeb630ff968765ddb30",
-               "top":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509"
-            },
-            {  
-               "left":"3000e97b6045299a108c04b656a9965d2ac5e7a9ae76718afb6009c4098d320b",
-               "right":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509",
-               "top":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b"
-            }
-         ],
-         "entryblockkeymr":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
-         "directoryblockkeymr":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b",
-         "bitcointransactionhash":"469a96c847cf8bf1f325b6eec850f46488ed671930d62b54ed186a8031477a7d",
-         "bitcoinblockhash":"000000000000000001edf3adf719dfc1263661d2c4b0ed779d004a2cbb7cca32"
-      }
+   "method":"factoid-block",
+   "params":{  
+      "KeyMR":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480"
    }
 }
 ```
 
-Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "fblock":{  
+         "bodymr":"1118c35047d58381f363c69a2501cfab34b5dca2f1c2806530c22af8bf7b3f59",
+         "prevkeymr":"694e5ea2cd1feb49ff6ecb5b77739f4885352143b389db7c7559a91b5df7eb20",
+         "prevledgerkeymr":"581914c0e606a95e0df75596a75de62d828f5e215a6380a62db90025f0516d6d",
+         "exchrate":120000,
+         "dbheight":41915,
+         "transactions":[  
+            {  
+               "txid":"a1dfd97c32df3f060a56436a661e2e997e2954198294c351380c1029c9029f4b",
+               "blockheight":0,
+               "millitimestamp":1466346000464,
+               "inputs":[  
+
+               ],
+               "outputs":[  
+
+               ],
+               "outecs":[  
+
+               ],
+               "rcds":[  
+
+               ],
+               "sigblocks":[  
+
+               ]
+            },
+            {  
+               "txid":"6e0c010d3977e59734f4cc5f520092af7916420a2b03fb37c80d7d364261d164",
+               "blockheight":0,
+               "millitimestamp":1466346049257,
+               "inputs":[  
+                  {  
+                     "amount":6990000000,
+                     "address":"c825bc4e3309b97d8e0f1af0f0f0a71930a151488af886fad792e775928a7d5a",
+                     "useraddress":"FA3VE46DUpZEgC1vRsZiWEcbjNMB6jbfQQ1nS66PSE7Jt5ADAQ8Z"
+                  },
+                  {  
+                     "amount":1560000,
+                     "address":"330fd717584445ac866dc2facd8b856e63bdb8b15b5ed46c0b053b2c6c5c5c3f",
+                     "useraddress":"FA2MZs5wASMo9cCiKezdiQKCd8KA6Zbg2xKXKGmYEZBqon9J3ZKv"
+                  }
+               ],
+               "outputs":[  
+                  {  
+                     "amount":6990000000,
+                     "address":"330fd717584445ac866dc2facd8b856e63bdb8b15b5ed46c0b053b2c6c5c5c3f",
+                     "useraddress":"FA2MZs5wASMo9cCiKezdiQKCd8KA6Zbg2xKXKGmYEZBqon9J3ZKv"
+                  }
+               ],
+               "outecs":[  
+
+               ],
+               "rcds":[  
+                  "0143a73f3b72b34c281f51b23e3861fb08dde5195f37ed2dd6e1dcf4df6924cdc7",
+                  "012c94f2bbe49899679c54482eba49bf1d024476845e478f9cce3238f612edd761"
+               ],
+               "sigblocks":[  
+                  {  
+                     "signatures":[  
+                        "3a58153da5a9a8cb000689983e2532168b22a1c29c197379a263d9e4c844c6ffb2cd2d79d9a33782e66b66cccd749b9b20fd81215d891ff7c601d625a96dcd0c"
+                     ]
+                  },
+                  {  
+                     "signatures":[  
+                        "b3a9554231d940c288cabbbf056067c64c7478dc0264da1451ceeb1c1a28ab63a7ac71a2a08075f742fdfe0f80012ca3614af92c2c5f757d3aac762a0dfb2d08"
+                     ]
+                  }
+               ]
+            },
+            {  
+               "txid":"6d966064383b0da8df1e8db6ec319c01fcf0a119439936bc6ed86afe4769a252",
+               "blockheight":0,
+               "millitimestamp":1466346444191,
+               "inputs":[  
+                  {  
+                     "amount":46535848,
+                     "address":"1b81ea64ac318395390caf9acb3efbece402b03cd20aa7540f1172f2e235b656",
+                     "useraddress":"FA2BCCVgPD7ZGFpYpzbWXbqtmJroL6wQFcJgPSME6coUqh9EUng9"
+                  }
+               ],
+               "outputs":[  
+                  {  
+                     "amount":45095848,
+                     "address":"dcb8222e77488961e3a5516de51a5831708f10ddb62b1464d1d87fc10354d01e",
+                     "useraddress":"FA3eHXyQ7ibbX75pbhcAJqkaWhLYqfNptG1ifxjogDgADLgKXrcX"
+                  }
+               ],
+               "outecs":[  
+
+               ],
+               "rcds":[  
+                  "0112cb1fc2b1d5e8a82f6727a02731ced20e09ba04eaf5762ab1b8f6b0c280fbe1"
+               ],
+               "sigblocks":[  
+                  {  
+                     "signatures":[  
+                        "c0ef56d70389388d70464478750cde51deabb6b1d19a4e3766937163d337e0c6ba1c9d71c7d4e6ef37efd66512463fc61ed5b93eced32d1d2c9b2bec0c232b0b"
+                     ]
+                  }
+               ]
+            }
+         ],
+         "chainid":"000000000000000000000000000000000000000000000000000000000000000f",
+         "keymr":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480",
+         "ledgerkeymr":"f6b05c36fe0a7c91f3d96f41fab2987250398350499f8369a1905357a1bb31e9"
+      },
+      "rawdata":"000000000000000000000000000000000000000000000000000000000000000f1118c35047d58381f363c69a2501cfab34b5dca2f1c2806530c22af8bf7b3f59694e5ea2cd1feb49ff6ecb5b77739f4885352143b389db7c7559a91b5df7eb20581914c0e606a95e0df75596a75de62d828f5e215a6380a62db90025f0516d6d000000000001d4c00000a3bb000000000300000200020155690850500000000002015569090ee90201009a858bdf00c825bc4e3309b97d8e0f1af0f0f0a71930a151488af886fad792e775928a7d5adf9b40330fd717584445ac866dc2facd8b856e63bdb8b15b5ed46c0b053b2c6c5c5c3f9a858bdf00330fd717584445ac866dc2facd8b856e63bdb8b15b5ed46c0b053b2c6c5c5c3f0143a73f3b72b34c281f51b23e3861fb08dde5195f37ed2dd6e1dcf4df6924cdc73a58153da5a9a8cb000689983e2532168b22a1c29c197379a263d9e4c844c6ffb2cd2d79d9a33782e66b66cccd749b9b20fd81215d891ff7c601d625a96dcd0c012c94f2bbe49899679c54482eba49bf1d024476845e478f9cce3238f612edd761b3a9554231d940c288cabbbf056067c64c7478dc0264da1451ceeb1c1a28ab63a7ac71a2a08075f742fdfe0f80012ca3614af92c2c5f757d3aac762a0dfb2d08000000000000020155690f159f0101009698a9281b81ea64ac318395390caf9acb3efbece402b03cd20aa7540f1172f2e235b65695c0b728dcb8222e77488961e3a5516de51a5831708f10ddb62b1464d1d87fc10354d01e0112cb1fc2b1d5e8a82f6727a02731ced20e09ba04eaf5762ab1b8f6b0c280fbe1c0ef56d70389388d70464478750cde51deabb6b1d19a4e3766937163d337e0c6ba1c9d71c7d4e6ef37efd66512463fc61ed5b93eced32d1d2c9b2bec0c232b0b000000"
+   }
+}
+```
+
+Retrieve a specified factoid block given its merkle root key.
+
+
+## entrycredit-block
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"entrycredit-block", "params": {"KeyMR":"2050b16701f29238d6b99bcf3fb0ca55d6d884139601f06691fc370cda659d60"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"entrycredit-block",
+   "params":{  
+      "KeyMR":"2050b16701f29238d6b99bcf3fb0ca55d6d884139601f06691fc370cda659d60"
+   }
+}
+```
+
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "ecblock":{  
+         "header":{  
+            "bodyhash":"5eb9fea36690f9279360019d141faabef23b733030c2c6972f7870f38c22c385",
+            "prevheaderhash":"cd62ba005d20e9384e28a29da742b6fc3d6b12a2458dbb5d9be3e9daf743036c",
+            "prevfullhash":"848b20a3c499d9ade0fcc879e0febcc9fd107c6b6411627c262e44ce19499872",
+            "dbheight":1998,
+            "headerexpansionarea":"",
+            "objectcount":14,
+            "bodysize":433,
+            "chainid":"000000000000000000000000000000000000000000000000000000000000000c",
+            "ecchainid":"000000000000000000000000000000000000000000000000000000000000000c"
+         },
+         "body":{  
+            "entries":[  
+               {  
+                  "serverindexnumber":0
+               },
+               {  
+                  "number":1
+               },
+               {  
+                  "version":0,
+                  "millitime":"014fd1eafcba",
+                  "entryhash":"5710aeb50e7ad82b3ad469e91019bc86b360796cfd4c037168ffe9040b7dfec7",
+                  "credits":1,
+                  "ecpubkey":"17ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d",
+                  "sig":"7cd6b1df3d3f9cf519a2437e799ee8acd815a2aeec7d5743295ff476632b070cb4459300a2bef1055e6fbb0c7ff5c62a9695f41be246c566051dd172816d7b06"
+               },
+               {  
+                  "version":0,
+                  "millitime":"014fd1eafcbc",
+                  "entryhash":"ae8088e67f5bc7023f1b9dd84022c41067e8777e6436f73fc2384511ae637122",
+                  "credits":1,
+                  "ecpubkey":"17ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d",
+                  "sig":"5b126ac909fff2f0553e6b02d559478e95be3af80926b710e1fa086b177fb5ae2b065737d58375924653f70527695a3c1c84823acc6d83000347fbecf49eca0a"
+               },
+               {  
+                  "version":0,
+                  "millitime":"014fd1eafcd7",
+                  "entryhash":"5685ab402185def2ee2639be7a119d1fbf66114ce923c585bf20920c839ed1a7",
+                  "credits":1,
+                  "ecpubkey":"17ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d",
+                  "sig":"0213cf5675124b211d16cb3c0c35f3cf87fa83e6970d0e7eb1feadd49bbd774878edc18066afe75b32fe525be4720326f622df0fa13afc5ad6653e6a0cf0e607"
+               },
+               {  
+                  "number":2
+               },
+               {  
+                  "number":3
+               },
+               {  
+                  "number":4
+               },
+               {  
+                  "number":5
+               },
+               {  
+                  "number":6
+               },
+               {  
+                  "number":7
+               },
+               {  
+                  "number":8
+               },
+               {  
+                  "number":9
+               },
+               {  
+                  "number":10
+               }
+            ]
+         }
+      },
+      "rawdata":"000000000000000000000000000000000000000000000000000000000000000c5eb9fea36690f9279360019d141faabef23b733030c2c6972f7870f38c22c385cd62ba005d20e9384e28a29da742b6fc3d6b12a2458dbb5d9be3e9daf743036c848b20a3c499d9ade0fcc879e0febcc9fd107c6b6411627c262e44ce19499872000007ce00000000000000000e00000000000001b1000001010300014fd1eafcba5710aeb50e7ad82b3ad469e91019bc86b360796cfd4c037168ffe9040b7dfec70117ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d7cd6b1df3d3f9cf519a2437e799ee8acd815a2aeec7d5743295ff476632b070cb4459300a2bef1055e6fbb0c7ff5c62a9695f41be246c566051dd172816d7b060300014fd1eafcbcae8088e67f5bc7023f1b9dd84022c41067e8777e6436f73fc2384511ae6371220117ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d5b126ac909fff2f0553e6b02d559478e95be3af80926b710e1fa086b177fb5ae2b065737d58375924653f70527695a3c1c84823acc6d83000347fbecf49eca0a0300014fd1eafcd75685ab402185def2ee2639be7a119d1fbf66114ce923c585bf20920c839ed1a70117ef7a21d1a616d65e6b73f3c6a7ad5c49340a6c2592872020ec60767ff00d7d0213cf5675124b211d16cb3c0c35f3cf87fa83e6970d0e7eb1feadd49bbd774878edc18066afe75b32fe525be4720326f622df0fa13afc5ad6653e6a0cf0e60701020103010401050106010701080109010a"
+   }
+}
+```
+
+Retrieve a specified entrycredit block given its merkle root key. The numbers are minute markers.
+
+
+## admin-block
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"admin-block", "params": {"KeyMR":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"admin-block",
+   "params":{  
+      "KeyMR":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"
+   }
+}
+```
+
+> Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "ablock":{  
+         "header":{  
+            "prevbackrefhash":"452201ee821c28ff601cd70a20c492d3f2a84a543c492b97b631d8f5e575c712",
+            "dbheight":100,
+            "headerexpansionsize":0,
+            "headerexpansionarea":"",
+            "messagecount":2,
+            "bodysize":131,
+            "adminchainid":"000000000000000000000000000000000000000000000000000000000000000a",
+            "chainid":"000000000000000000000000000000000000000000000000000000000000000a"
+         },
+         "abentries":[  
+            {  
+               "identityadminchainid":"0000000000000000000000000000000000000000000000000000000000000000",
+               "prevdbsig":{  
+                  "pub":"0426a802617848d4d16d87830fc521f4d136bb2d0c352850919c2679f189613a",
+                  "sig":"50ed8fb2440b1d1e2036f617f64224a347c797898d7433e1934db47b1e057f250af772404c9d595a1f86d44d5034f4985ecdddc01c23e5945efe1fc866ea8505"
+               }
+            },
+            {  
+               "minutenumber":1
+            }
+         ],
+         "backreferencehash":"7cbd0f9b59e3ebe5f34836c6d7d0d42b9cafafb8cb348d71cb7c66b6de782d7a",
+         "lookuphash":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"
+      },
+      "rawdata":"000000000000000000000000000000000000000000000000000000000000000a452201ee821c28ff601cd70a20c492d3f2a84a543c492b97b631d8f5e575c712000000640000000002000000830100000000000000000000000000000000000000000000000000000000000000000426a802617848d4d16d87830fc521f4d136bb2d0c352850919c2679f189613a50ed8fb2440b1d1e2036f617f64224a347c797898d7433e1934db47b1e057f250af772404c9d595a1f86d44d5034f4985ecdddc01c23e5945efe1fc866ea85050001"
+   }
+}
+```
+
+Retrieve a specified admin block given its merkle root key.
 
 ## entry-block
 
@@ -804,6 +1037,104 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction",
 
 Retrieve details of a factoid transaction using a transactions hash. Note that information regarding the directory block height, directory block keymr, and transaction block keymr are also included. The "blockheight" parameter in the reponse will always be 0 when using this call, refer to "includedindirectoryblockheight" if you need the height.
 
+## ack
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, 
+"method":"ack", "params":{"hash":
+"e96cca381bf25f6dd4dfdf9f7009ff84ee6edaa3f47f9ccf06d2787482438f4b", "chainid":"f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300", "fulltransaction":""}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"ack",
+   "params":{  
+      "hash":"e96cca381bf25f6dd4dfdf9f7009ff84ee6edaa3f47f9ccf06d2787482438f4b",
+      "chainid":"f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300",
+      "fulltransaction":""
+   }
+}
+```
+
+This api call is used to find the status of a transaction, whether it be a factoid, reveal entry, or commit entry. When using this, you must specify the type of the transaction by giving the `chainid` field 1 of 3 values:
+
+* `f` for factoid transactions
+* `c` for entry credit transactions (commit entry/chain)
+* `################################################################` for reveal entry/chain
+   * Where `#` is the ChainID of the entry
+
+
+The status types returned are as follows:
+
+* "Unknown"         : Not found anywhere  
+* "NotConfirmed"    : Found on local node, but not in network (Holding Map)  
+* "TransactionACK"  : Found in network, but not written to the blockchain yet (ProcessList)  
+* "DBlockConfirmed" : Found in Blockchain
+
+You may also provide the full marshaled transaction, instead of a hash, and it will be hashed for you.
+
+The reponses vary based off the type:
+
+### Entries
+
+> Entry Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "committxid":"debbbb6b902de330bfaa78c6c9107eb0a451e10cd4523e150a8e8e6d5a042886",
+      "entryhash":"1a6c96162e81d429de92b2f18a0ba9b428e505de0077a5d16ad5707f0f8a73b2",
+      "commitdata":{  
+         "status":"DBlockConfirmed"
+      },
+      "entrydata":{  
+         "status":"DBlockConfirmed"
+      }
+   }
+}
+```
+
+Requesting for an entry requires you to specify if the hash you provide is a commit or an entry hash. The `chainid` field is used to specify this. If you are searching for a commit, put `c` as the chainid field, otherwise put the chainid that the entry belongs too.
+
+For commit/reveal acks, the response has 2 sections, one for the commit, one for the reveal. If you provide the entryhash and chainid, both will be filled (if found). If you only provide the commit txid and `c` as the chainid, then only the commitdata is guarenteed to come back with data. The `committxid` and `entryhash` fields corrospond to the `commitdata` and `entrydata` objects.
+
+
+_Extra notes_:  
+Why `c`? It is short for `000000000000000000000000000000000000000000000000000000000000000c`, which is the chainid for all entry credit blocks. All commits are placed in the entry credit block (assuming they are valid and are properly paid for)
+
+### Factoid Transactions
+
+> Factoid Example Response
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0",
+      "transactiondate":1441138021975,
+      "transactiondatestring":"2015-09-01 15:07:01",
+      "blockdate":1441137600000,
+      "blockdatestring":"2015-09-01 15:00:00",
+      "status":"DBlockConfirmed"
+   }
+}
+```
+
+The `hash` field for a factoid transaction is equivalent to `txid`. To indicate the hash is a factoid transaction, put `f` in the chainid field and the `txid` in the hash field.
+
+The reponse will look different than entry related ack calls.
+
+_Extra notes_:  
+Why `f`? It is short for `000000000000000000000000000000000000000000000000000000000000000f`, which is the chainid for all factoid blocks. All factoid transactions are placed in the factoid (assuming they are valid)
+
 ## factoid-ack
 
 > Example Request
@@ -842,6 +1173,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
    }
 }
 ```
+
+**Deprecated**: Please refer to [ack](#ack)
 
 Factoid Acknowledgements will give the current status of a transaction. "DBlockConfirmed" is the highest level of confirmation you can obtain. This means the transaction has completed.
 
@@ -892,7 +1225,94 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
 }
 ```
 
+**Deprecated**: Please refer to [ack](#ack)
+
 Entry Acknowledgements will give the current status of a transaction. "DBlockConfirmed" is the highest level of confirmation you can obtain. This means the entry has made it into Factom.
+
+## receipt
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"receipt", "params":{"hash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "receipt",
+  "params": {
+    "Hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+  }
+}
+```
+
+> Example Response
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "receipt":{  
+         "entry":{  
+            "entryhash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+         },
+         "merklebranch":[  
+            {  
+               "left":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2",
+               "right":"0000000000000000000000000000000000000000000000000000000000000003",
+               "top":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af"
+            },
+            {  
+               "left":"6adbc7ba1758f2850c92e4a09dea8ba9c6d844cdd4d596db2421b0f843c3e530",
+               "right":"d2f3554d8394dc59932383de36dd742449d1c25ef1d21cdab07c4b9f044356af",
+               "top":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883"
+            },
+            {  
+               "left":"0caff62ea5b5aa015c706add7b2463a5be07e1f0537617f553558090f23c7f56",
+               "right":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
+               "top":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5"
+            },
+            {  
+               "left":"434ea8fc39fa1686035b4c993ef2c62ee67f67332fc59da1d373f33140d7c2b5",
+               "right":"1deef358d7e02adfe353f8137d1535e34f112d7a3b9fbf06b5c64dee5e4b2042",
+               "top":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb"
+            },
+            {  
+               "left":"9482ce541c7198e21947c3043f12dddda6184bb4928f01ae2c3f885b2ed3d5bb",
+               "right":"3d93579d9f5b22387cb46c1ad280da9ba9e1fe753972ef08d9e9f1c938a765c0",
+               "top":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47"
+            },
+            {  
+               "left":"9f5d7d533e66e920a68d9fd63d0cee1517fb6de713946968453cfd2cb3081dfd",
+               "right":"6c83c08ee21925ce8c958a3b0b5da21bb04d66465f6f1366783f637bcdbb9d47",
+               "top":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362"
+            },
+            {  
+               "left":"e1d971bedc93c03963d7808b570744d3853e8c521b21a5e3985f2651b85b5362",
+               "right":"f62391cfbdb158a4b20f301e2800f0b3933ba23417bf1aeb630ff968765ddb30",
+               "top":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509"
+            },
+            {  
+               "left":"3000e97b6045299a108c04b656a9965d2ac5e7a9ae76718afb6009c4098d320b",
+               "right":"5858cdfc5418ed2d6d2f023f91786d6169e420d7ac3f5f3fc4d5121cd7848509",
+               "top":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b"
+            }
+         ],
+         "entryblockkeymr":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
+         "directoryblockkeymr":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b",
+         "bitcointransactionhash":"469a96c847cf8bf1f325b6eec850f46488ed671930d62b54ed186a8031477a7d",
+         "bitcoinblockhash":"000000000000000001edf3adf719dfc1263661d2c4b0ed779d004a2cbb7cca32"
+      }
+   }
+}
+```
+
+Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
 ## pending-transactions
 
@@ -1164,7 +1584,9 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-chain", "para
    "id":0,
    "result":{  
       "message":"Chain Commit Success",
-      "txid":"76e123d133a841fe3e08c5e3f3d392f8431f2d7668890c03f003f541efa8fc61"
+      "txid":"76e123d133a841fe3e08c5e3f3d392f8431f2d7668890c03f003f541efa8fc61",
+      "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734",
+      "chainid": "  f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300"
    }
 }
 ```
@@ -1174,6 +1596,9 @@ Send a Chain Commit Message to factomd to create a new Chain. The commit chain h
 The commit-chain api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-chain api call with [compose-chain](#compose-chain) which takes easier to construct arguments.
 
 The [compose-chain](#compose-chain) api call has two api calls in it's response: [commit-chain](#commit-chain) and [reveal-chain](#reveal-chain). To successfully create a chain, the [reveal-chain](#reveal-chain) must be called after the [commit-chain](#commit-chain).
+
+*Notes:*  
+It is possible to be unable to send a commit, if the commit already exists (if you try to send it twice). This is a mechanism to prevent you from double spending. If you encounter this error, just skip to the [reveal-chain](#reveal-chain). The error format can be found here: [repeated-commit](#repeated-commit)
 
 ## reveal-chain
 
@@ -1205,7 +1630,8 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-chain", "para
   "id": 0,
   "result": {
     "message": "Entry Reveal Success",
-    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734"
+    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734",
+    "chainid": "  f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300"
   }
 }
 ```
@@ -1245,8 +1671,9 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "commit-entry", "para
   "id": 0,
   "result": {
     "message": "Entry Commit Success",
-    "txid": "bf12150038699f678ac2314e9fa2d4786dc8984d9b8c67dab8cd7c2f2e83372c"
-  }
+    "txid": "bf12150038699f678ac2314e9fa2d4786dc8984d9b8c67dab8cd7c2f2e83372c",
+    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734"
+    }
 }
 ```
 
@@ -1255,6 +1682,10 @@ Send an Entry Commit Message to factom to create a new Entry. The entry commit h
 The commit-entry api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-entry api call with [compose-entry](#compose-entry) which takes easier to construct arguments.
 
 The [compose-entry](#compose-entry) api call has two api calls in it's response: [commit-entry](#commit-entry) and [reveal-entry](#reveal-entry). To successfully create an entry, the [reveal-entry](#reveal-entry) must be called after the [commit-entry](#commit-entry).
+
+*Notes:*  
+It is possible to be unable to send a commit, if the commit already exists (if you try to send it twice). This is a mechanism to prevent you from double spending. If you encounter this error, just skip to the [reveal-entry](#reveal-entry). The error format can be found here: [repeated-commit](#repeated-commit)
+
 
 ## reveal-entry
 
@@ -1285,7 +1716,8 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-entry", "para
   "id": 0,
   "result": {
     "message": "Entry Reveal Success",
-    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734"
+    "entryhash": "f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734",
+    "chainid": "  f9164cd66af9d5773b4523a510b5eefb9a5e626480feeb6671ef2d17510ca300"
   }
 }
 ```
@@ -1371,21 +1803,111 @@ Entry Hash : f5c956749fc3eba4acc60fd485fb100e601070a44fcce54ff358d60669854734
 
 ## errors
 
-> Example Request
+There are various errors you can get back from the API. Here we will detail what they mean, and sometimes how to handle them.
 
-```shell
-curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "junk"}' -H 'content-type:text/plain;' http://localhost:8088/v2
-```
+Error types:
 
-> Example Response
+- Parse error
+- Invalid Request
+- Invalid params
+- Internal error
+- Method not found
+- Repeated Commit
+
+
+### Parse Error
+
+> Parse Error
 
 ```json-doc
 {
   "jsonrpc": "2.0",
-  "id": 0,
-  "method": "junk"
+  "id": null,
+  "error": {
+    "code": -32700,
+    "message": "Parse error"
+  }
 }
 ```
+
+**What does this mean?**  
+The server had an error parsing the JSON
+
+
+**What to do?**  
+Check the json you provided and ensure it is valid.
+
+### Invalid Request
+
+> Invalid Request
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": null,
+  "error": {
+    "code": -32600,
+    "message": "Invalid Request"
+  }
+}
+```
+
+**What does this mean?**  
+The JSON sent is not a valid Request object.
+
+
+**What to do?**  
+Ensure that your request matches our JSON-RPC standard.
+
+### Invalid params
+
+> Invalid params
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": null,
+  "error": {
+    "code": -32602,
+    "message": "Invalid params"
+  }
+}
+```
+
+**What does this mean?**  
+The params sent do not match the expected paramaters
+
+
+**What to do?**  
+Ensure that your parameters are correct for the api call you are trying to call. Also ensure you have all fields needed.
+
+
+### Internal error
+
+> Internal error
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": null,
+  "error": {
+    "code": -32603,
+    "message": "Internal error"
+  }
+}
+```
+
+**What does this mean?**  
+There was an internal error when proccessing your request.
+
+
+**What to do?**  
+This error is hard to fix from the clientside, many times it is related to database lookups.
+
+
+### Method not found
+
+> Method not found
 
 ```json-doc
 {
@@ -1397,3 +1919,43 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "junk"}' -H 'content-
   }
 }
 ```
+
+**What does this mean?**  
+If you provide a method that is not a supported api method, this error will be returned. 
+
+
+**What to do?**  
+Check the method you provided for a typo, and ensure that your url you provide is correct (factomd api call to factomd, wallet api call to factom-walletd).
+
+
+### Repeated Commit
+
+> Repeated Commit
+
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":7,
+   "error":{  
+      "code":-32011,
+      "message":"Repeated Commit",
+      "data":{  
+         "entryhash":"018a03d4afb83347a546e6bf15c32ff7087f584bbb7248a0ab9b9bda92f12338",
+         "info":"A commit with equal or greater payment already exists"
+      }
+   }
+}
+```
+
+**What does this mean?**  
+This occurs if you send a commit to an entry that has already been paid for. If your commit is paying more than the current one, yours will go through.
+
+
+**What to do?**  
+If this error occurs, just send the reveal, as the entry has already been paid for. 
+
+In Factom every entry is paid for by the commit, and the data is given by the reveal. So if the commit is already paid for, you do not need to send another. This prevents you from double spending for an entry. Now if your entry requires more entry credits than the exisiting commit, you must send a new commit with more funds, and that will override the existing commit (but both commits will spend, so get it right the first time).
+
+
+ If you wish to find the existing commit, you can use the [ack](#ack) call, using the entryhash and the chainid.
+
