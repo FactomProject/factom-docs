@@ -70,7 +70,7 @@ On this screen, you'll see the option to display your private key. Excelsior! Bu
 
 ![Display Key](/images/wallet_151.png)
 
-**Restoring an Address with a Private Key**
+**Import an Address with a Private Key**
 
 To restore or import an address using a private key is very similar to creating a new address based on your seed. From the address book, you'll first click the New Address button at the bottom right corner of the window.
 
