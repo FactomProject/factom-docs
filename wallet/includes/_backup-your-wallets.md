@@ -30,7 +30,7 @@ Restoring your backed up wallet is just a matter of plugging in your seed phrase
 
 ![Settings Button](/images/wallet_147.png)
 
-Next, scroll down to the bottom of the page until you see the "Restore a Seed". You can click the orange button to proceed from here.
+Next, scroll down to the bottom of the page until you see "Restore a Seed". You can click the orange button to proceed from here.
 
 ![Restore Button](/images/wallet_148.png)
 
@@ -56,9 +56,9 @@ So how do I recover External Addresses?
 
 **Viewing Private Keys**
 
-If you need to maintain access to an external address that's not based on your seed, you can do so by saving the private key for that address. This key allows you to sign transactions from that address. In other words, you can spend any factiods contatined within. Anyone who has this key can do the same, so it's crucial to make sure that no one else is able to obtain this key.
+If you need to maintain access to an external address that's not based on your seed, you can do so by saving the private key for that address. This key allows you to sign transactions from that address. In other words, you can spend any factoids contained within. Anyone who has this key can do the same, so it's crucial to make sure that no one else can obtain this key.
 
-To view the private key for any address in your address book, you need to first enable this ability in your settings. Navigate to the setting menu on the sidebar and check the box next to "Enable ability to export private keys" under Advanced Settings.
+To view the private key for any address in your address book, you need to first enable this ability in your settings. Navigate to the settings menu on the sidebar and check the box next to "Enable ability to export private keys" under Advanced Settings.
 
 ![Allow viewing](/images/wallet_152.png)
 
@@ -66,7 +66,7 @@ Next, navigate back to the Address Book. From here, click on the edit icon next 
 
 ![Edit Address](/images/wallet_150.png)
 
-On this screen, you'll see the option to display your private key. Excelsior! But remember, anyone who sees this can potentially spend factoids from that adress. You want to keep this string secure. A paper record is safer than anything that exists on a computer. But if you absolutley need to keep a digital record, you can at least encrypt it.
+On this screen, you'll see the option to display your private key. Excelsior! But remember, anyone who sees this can potentially spend factoids from that address. You want to keep this string secure. A paper record is safer than anything that exists on a computer. But if you absolutely need to keep a digital record, you can at least encrypt it.
 
 ![Display Key](/images/wallet_151.png)
 
