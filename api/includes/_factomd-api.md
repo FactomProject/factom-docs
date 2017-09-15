@@ -1252,7 +1252,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```json
+```json-doc
 {  
    "jsonrpc":"2.0",
    "id":0,
@@ -1604,7 +1604,7 @@ It is possible to be unable to send a commit, if the commit already exists (if y
 
 > Example Request
 
-```
+```shell
 curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-chain", "params":
 {"entry":
 "007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"}}' \

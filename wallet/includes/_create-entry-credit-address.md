@@ -70,7 +70,7 @@ Let's give it a try so you get familiar with another important function. Go to "
 ![Wallet 47](images/wallet_033.png)
 
 <aside class="notice"><br>
-Note, the settings page is where you can export your wallet seed to a file.
+You can view your the seed phrases that generate your internal addresses by clicking the Backup button on the sidebar.
 </aside>
 
 Then go back to your Address Book and click on the "blue pencil" to edit your address. 
@@ -80,7 +80,7 @@ If you now click on "DISPLAY PRIVATE KEY" it will appear on the left.
 
 <aside class="warning"><br> 
 We strongly recommend saving the Private Keys of all your External Addresses by clicking the "COPY TO CLIPBOARD" button and pasting to a file or simply by writing them down.
-This is to be able to import your External Addresses in case you "EXPORT SEED TO FILE" when, for example, you switch to a new computer or your hard drive fails.
+This is to be able to import your External Addresses in case you [restore your original seed](#restore-a-seed) when, for example, you switch to a new computer or your hard drive fails.
 The seed will not be able to re-generate External Addresses.
 Alternatively, save your wallet file as mentioned in the Backup Your Wallets! guide.
 As uncle Bob used to say, better be safe than sorry! 
