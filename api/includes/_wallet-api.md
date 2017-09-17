@@ -1,6 +1,6 @@
 # factom-walletd API
 
-API reference documentation for factom-walletd. factom-walletd serves the wallet api on port :8089.
+API reference documentation for factom-walletd. factom-walletd serves the wallet API on port:8089.
 
 All these APIs use JSON-RPC, which is a remote procedure call protocol encoded in JSON. It is a very simple protocol (and very similar to XML-RPC), defining only a handful of data types and commands.
 
@@ -379,7 +379,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method"
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
-> Example Reponse 
+> Example Response 
 
 ```json-doc
 {  
@@ -462,7 +462,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
-> Example Reponse
+> Example Response
 
 ```json-doc
 {  
@@ -499,7 +499,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 This will retrieve a transaction by the given TxID. This call is the fastest way to retrieve a transaction, but it will not display the height of the transaction. If a height is in the response, it will be 0. To retrieve the height of a transaction, use the 'By Address' method
 
-This call in the backend really pushes the request to factomd. For a more informative reponse, it is advised to use the <a href="#transaction">factomd transaction method</a>
+This call in the backend actually pushes the request to factomd. For a more informative response, it is advised to use the <a href="#transaction">factomd transaction method</a>
 
 ### By Address
 
@@ -581,7 +581,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
 }
 ```
 
-Retrieves all transactions that an address is apart of.
+Retrieves all transactions that an address is a party to.
 
 ### All Transactions
 
@@ -603,7 +603,7 @@ http://localhost:8089/v2
 
 *The developers were so preoccupied with whether or not they could, they didn’t stop to think if they should.*
 
-The amount of data returned by this is so large, I couldn't get you a sample output as it froze my terminal window. It is strongly reccomended to use other techniques to retrieve transactions, it is rarely the case to require EVERY transaction in the blockchain. If you are still determined to retrieve EVERY transaction in the blockchain, use other techniques such as using the 'range' method and specifically requesting for transactions between blocks X and Y, then incrementing your X's and Y's until you reach the latest block. This is much more manageable.
+The amount of data returned by this is so large, I couldn't get you a sample output as it froze my terminal window. It is strongly recommended to use other techniques to retrieve transactions; it is rarely the case to require EVERY transaction in the blockchain. If you are still determined to retrieve EVERY transaction in the blockchain, use other techniques such as using the 'range' method and specifically requesting for transactions between blocks X and Y, then incrementing your X's and Y's until you reach the latest block. This is much more manageable.
 
 ## tmp-transactions
 
@@ -782,9 +782,9 @@ curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"add-input","params
 }
 ```
 
-Adds an input to the transaction from the given address. The public address is given, and the wallet must have the private key associated with the address in order to succusfully sign the transaction.
+Adds an input to the transaction from the given address. The public address is given, and the wallet must have the private key associated with the address to successfully sign the transaction.
 
-The input is measured in factoshis, so to send 10 factoids, you must input 1,000,000,000 factoshis (without commas in json)
+The input is measured in factoshis, so to send ten factoids, you must input 1,000,000,000 factoshis (without commas in JSON)
 
 ## add-output
 
@@ -845,7 +845,7 @@ curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"add-output",
 
 Adds a factoid address output to the transaction. Keep in mind the output is done in factoshis. 1 factoid is 1,000,000,000 factoshis.
 
-So to send 10 factoids, you must send 1,000,000,000 factoshis (no commas in json).
+So to send ten factoids, you must send 1,000,000,000 factoshis (no commas in JSON).
 
 ## add-ec-output
 
@@ -908,11 +908,11 @@ curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"add-ec-output"
 }
 ```
 
-When adding entry credit outputs, the amount given is in factoshis, not entry credtis. This means math is required to determine the correct amount of factoshis to pay to get X EC.
+When adding entry credit outputs, the amount given is in factoshis, not entry credits. This means math is required to determine the correct amount of factoshis to pay to get X EC.
 
 `(ECRate * ECTotalOutput)`
 
-In our case the rate is 1000, meaning 1000 entry credits per factoid. We added 10 entry credits, so we need 1,000 * 10 = 10,000 factoshis
+In our case, the rate is 1000, meaning 1000 entry credits per factoid. We added 10 entry credits, so we need 1,000 * 10 = 10,000 factoshis
 
 To get the ECRate search in the search bar above for "entry-credit-rate"
 
@@ -977,9 +977,9 @@ curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"add-fee","params":
 }
 ```
 
-Addfee is a shortcut and safeguard for adding the required additonal factoshis to covert the fee. The fee is displayed in the returned transaction after each step, but this be used instead of manually adding the additional input. It is a safeguard as it prevents overpaying.
+Addfee is a shortcut and safeguard for adding the required additional factoshis to covert the fee. The fee is displayed in the returned transaction after each step, but addfee should be used instead of manually adding the additional input. This will help to prevent overpaying.
 
-Addfee will complain if your inputs and outputs do not match up. For example, in the steps above we added the inputs first, this was intentional to show a case of overpaying. Obviously no one wants to overpay for a transaction, so addfee has returned an error and this message: 'Inputs and outputs don't add up' . This is because we have 2,000,000,000 factoshis as input and only 1,000,000,000 + 10,000 as output. Lets correct the input by doing 'add-input', and putting 1000010000 as the amount for the address. It will overwrite the previous input.
+Addfee will complain if your inputs and outputs do not match up. For example, in the steps above we added the inputs first. This was done intentionally to show a case of overpaying. Obviously, no one wants to overpay for a transaction, so addfee has returned an error and the message: 'Inputs and outputs don't add up'. This is because we have 2,000,000,000 factoshis as input and only 1,000,000,000 + 10,000 as output. Let's correct the input by doing 'add-input', and putting 1000010000 as the amount for the address. It will overwrite the previous input.
 
 Curl to do that:
 
@@ -987,7 +987,7 @@ Curl to do that:
 {"tx-name":"TX_NAME","address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q","amount":1000010000}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2`
 
-Run the addfee again and the feepaid and feerequired will match up
+Run the addfee again, and the feepaid and feerequired will match up
 
 ## sub-fee
 
@@ -1050,7 +1050,7 @@ curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method"
 }
 ```
 
-When paying from a transaction, you can also make the recieving transaction pay for it. Using sub fee, you can use the recieiving address in the parameters, and the fee will be deducted from their output amount.
+When paying from a transaction, you can also make the receiving transaction pay for it. Using sub fee, you can use the receiving address in the parameters, and the fee will be deducted from their output amount.
 
 This allows a wallet to send all it's factoids, by making the input and output the remaining balance, then using sub fee on the output address.
 
@@ -1074,7 +1074,7 @@ curl -X POST --data-binary '{"jsonrpc":"2.0","id":0,"method":"sign-transaction",
 }
 ```
 
-> Example Reponse
+> Example Response
 
 ```json-doc
 {  
@@ -1212,7 +1212,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 }
 ```
 
-This method, compose-chain, will return the appropriate api calls to create a chain in factom. You must first call the [commit-chain](#commit-chain), then the [reveal-chain](#reveal-chain) api calls. To be safe, wait a few seconds after calling commit.
+This method, compose-chain, will return the appropriate API calls to create a chain in factom. You must first call the [commit-chain](#commit-chain), then the [reveal-chain](#reveal-chain) API calls. To be safe, wait a few seconds after calling commit.
 
 **Notes**:  
 Ensure all data given in the `firstentry` fields are encoded in hex. This includes the content section.
@@ -1275,7 +1275,7 @@ curl -X POST --data-binary '{ "jsonrpc": "2.0", "id": 0, "method":
 }
 ```
 
-This method, compose-entry, will return the appropriate api calls to create a entry in factom. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) api calls. To be safe, wait a few seconds after calling commit.
+This method, compose-entry, will return the appropriate API calls to create an entry in factom. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) API calls. To be safe, wait a few seconds after calling commit.
 
 **Notes**:  
 Ensure all data given in the `entry` fields are encoded in hex. This includes the content section.
