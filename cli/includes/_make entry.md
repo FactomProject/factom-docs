@@ -1,5 +1,5 @@
 ## Make a Factom Entry
-Once you have created your first Factom chain and noted the ChainID you are ready to make your first entry! 
+Once you have created your first Factom chain and noted the ChainID, you are ready to make your first entry! 
 Writing an entry in Factom costs 1 Entry Credit.
 
 First, [Run FF](#run-factom-federation).
@@ -12,7 +12,7 @@ In the factom-cli Terminal window run the addentry command as constructed below:
 In your case, the only differences will be the name between quotes, the ChainID, and the EC address.
 The name of the entry can be anything you want. In our example "my first entry" is the name of the new entry.<br> 
 Our ChainID a4ab1e2ef212208b3513c5f06fcdcfa79b7c2b610526ce2dc374bb789700a791 should be replaced by your own.<br>
-Finally, the EC address above should be replaced by your own, again, make sure it has enough EC balance to cover for the fee.   
+Finally, the EC address above should be replaced by your own, again, make sure it has enough EC balance to cover the fee.   
 </aside>
 
 > Terminal output for:<br>

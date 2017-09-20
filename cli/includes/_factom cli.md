@@ -14,7 +14,7 @@ $ echo hello | factom-cli addchain -f -n moe -n larry \
  EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwexample
 ```
 
-The f flag, used with the addchain, addentry, buyec, composechain, composeentry, sendfct, sendtx, and signtx subcommands, tells factom-cli to continue on with processing without waiting for acknowledgement of the success of the subcommand to be generated. This can be useful for scripts where a long string of subcommands can be executed in a fraction of the time it would take if an acknowledgement of each had to be awaited.
+The f flag, used with the addchain, addentry, buyec, composechain, composeentry, sendfct, sendtx, and signtx subcommands, tells factom-cli to continue on with processing without waiting for acknowledgment of the success of the subcommand to be generated. This can be useful for scripts where you can execute a long string of subcommands in a fraction of the time it would take if you had to wait for an acknowledgment of each command individually.
 
 ###-q
 
@@ -143,7 +143,7 @@ Backup the running wallet
 ```shell
 factom-cli balance [-r] ADDRESS
 ```
-If this is an EC Address, returns number of Entry Credits. If this is a Factoid Address, returns the Factoid balance.
+If this is an EC Address, returns the number of Entry Credits. If this is a Factoid Address, returns the Factoid balance.
 
 ###buyec
 
@@ -174,7 +174,7 @@ Create API calls to create a new Factom Entry. Read data for the Entry from stdi
 ```shell
 $ factom-cli composetx TXNAME
 ```
-Compose a wallet transaction into a json rpc object
+Compose a wallet transaction into a JSON RPC object
 
 ###ecrate
 
@@ -217,14 +217,14 @@ Get ebhead by chainid
 ```shell
 factom-cli get dblock KEYMR
 ```
-Get dblock contents by merkle root
+Get dblock contents by Merkle root
 
 ###get eblock
 
 ```shell
 factom-cli get eblock KEYMR
 ```
-Get eblock by merkle root
+Get eblock by Merkle root
 
 ###get entry
 

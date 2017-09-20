@@ -19,7 +19,7 @@ The Factoid Papermill app has a different name on different platforms.
 
 Factoid Papermill is available for [Windows](https://github.com/FactomProject/factoidpapermill/blob/master/bin/factoidpapermill.exe?raw=true), [Mac](https://github.com/FactomProject/factoidpapermill/blob/master/bin/factoidpapermill-mac?raw=true), and [Linux](https://github.com/FactomProject/factoidpapermill/blob/master/bin/factoidpapermill-linux?raw=true). 
 
-Download the appropriate version and double click to open. 
+Download the appropriate version and double-click to open. 
 
 Upon launching it will automatically generate a new Factoid Private Key and its relative Factoid Address.
 
@@ -42,7 +42,7 @@ Sample Terminal output is shown on the right.
 <br>
 <br>
 
-Take note of the FA Address and Private Key and keep them in a safe place. If you need more addresses and private keys repeat the process. You can use your newly generated Factoid Address to receive factoids from a third party or an exchange. This method of storing factoids is considered a "cold wallet" or "paper wallet".
+Take note of the FA Address and Private Key and keep them in a safe place. If you need more addresses and private keys repeat the process. You can use your newly generated Factoid Address to receive factoids from a third party or an exchange. This method of storing factoids is considered a "cold wallet" or "paper wallet."
 
 <aside class="notice"><br>
 Your New Factoid Private Key and New Factoid Address will be different than this example.
