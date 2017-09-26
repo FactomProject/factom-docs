@@ -5,7 +5,7 @@ The Factom blockchain comprises of more than 77,000 blocks, at the time of writi
 Exploring Factom blocks manually via the Factom Explorer can be very insightful and informative for users looking to understand Factom's data structure design. Furthermore, it provides important information such as FCT or EC balance visually, without having to run our software. The Factom Explorer is accessible at [https://explorer.factom.org](https://explorer.factom.org/).
 
 ##Overview
-The Explorer has 2 tabs, "Explorer" and "Chains". The "Explorer" tab displays details of the [Factom Data Structures](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md) including the Directory Blocks with their IDs and block times, KeyMRs, Admin Entries, EC Entries, Factoid Entries, and user generated Entries.
+The Explorer has two tabs, "Explorer" and "Chains." The "Explorer" tab displays details of the [Factom Data Structures](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md) including the Directory Blocks with their IDs and block times, KeyMRs, Admin Entries, EC Entries, Factoid Entries, and user-generated Entries.
 
 ![Explorer 1](/images/wallet_095.png)
 
@@ -24,13 +24,13 @@ The Chain Name can be specified with multiple sequential byte strings. A [byte s
 ![Explorer 2](/images/wallet_096.png)
 
 ##Directory Block
-Factom is constructed of a hierarchical set of blocks, with the highest being Directory Blocks, which consist of a header and a body. Each Directory Block has a header for unique identification and contains hashes of the Entry Blocks and their respective ChainIDs for entries made during the time period. To link this data together, each Directory Block contains the serial hash of the previous Directory Block. The body of the Directory Block is a series of pairs of ChainIDs and Entry Block Merkle Roots.
+Factom is constructed of a hierarchical set of blocks, with the highest being Directory Blocks, each of which consists of a header and a body. Each Directory Block has a header for unique identification and contains hashes of the Entry Blocks and their respective ChainIDs for entries made during the time period. To link this data together, each Directory Block contains the serial hash of the previous Directory Block. The body of the Directory Block is a series of pairs of ChainIDs and Entry Block Merkle Roots.
 
-The example below displays [Directory Block ID 75416](http://explorer.factom.org/dblock/49336542108f65f24bd4d4044b7558181d439ed9505ad61eff653c586eeb3cda). Note that this block was not yet anchored on the Bitcoin blockchain, at the time of writing.
+The example below displays [Directory Block ID 75416](http://explorer.factom.org/dblock/49336542108f65f24bd4d4044b7558181d439ed9505ad61eff653c586eeb3cda). Note that factomd had not anchored this block on the Bitcoin blockchain at the time of writing.
 
 ![Explorer 3](/images/wallet_097.png)
 
-In the example below [Directory Block ID 70405](http://explorer.factom.org/dblock/2c6c6247ae2602a08d5b59850682a60228bbc23ae66c67916836b684fc8daea9) shows that the block has been anchored on the Bitcoin blockchain.
+In the example below [Directory Block ID 70405](http://explorer.factom.org/dblock/2c6c6247ae2602a08d5b59850682a60228bbc23ae66c67916836b684fc8daea9) shows that factomd has anchored the block on the Bitcoin blockchain.
 
 Click on the "[BTC Transaction](https://blockchain.info/tx/83ea4629b0e5d7ae7ee313d377dc4f9cb258652c76937afce4d0be29add6d8a3)" and the "[Anchor entry](http://explorer.factom.org/entry/e47fe17ea16474444d3895d6048b2ade4c71114f9742d31a6e1d7d035019e2ee)" to get further information.
 
@@ -53,7 +53,7 @@ The Admin Block contains the signatures and organizational data needed to valida
 This is a SHA256 of the entire block. Clicking it displays the Admin Block itself which contains:
 
 * Partial Hash and Full Hash represent the "BackReferenceHash" or LookupHash.
-* This particular examples includes 5 entries
+* This particular example includes five entries
 * The Previous Block hash is also included 
 * The Raw binary is the fully serialized admin block 
 * The JSON Data
@@ -64,7 +64,7 @@ The JSON Data includes the references to the previous block such as:
 * The current Directory Block Height: *\"DBHeight\":75416* 
 * And more info about the current block such as size, entries, messages, etc
 
-The LookupHash for the current Admin Block, 75416, will be included in the next created Admin Block as the Previous Block Back Reference (PrevBackRefHash) in the near future (about 10 minutes) where it gets referenced. The next Admin Block will also include the same type of data, this creates the Factom Blockchain composed of consecutive blocks with references to previous blocks. 
+The LookupHash for the current Admin Block, 75416, will be included in the next created Admin Block as the Previous Block Back Reference (PrevBackRefHash) shortly (in about 10 minutes) where it gets referenced. The next Admin Block will also include the same type of data; this creates the Factom Blockchain composed of consecutive blocks with references to previous blocks. 
 
 ![Explorer 6](/images/wallet_100.png)
 
@@ -76,10 +76,10 @@ Each Admin Block is referenced in two ways:
 2. By the next Admin Block
 <br>
 <br>
-Since there aren't Key Merkle Roots in the Admin Block, and use straight hashing, and also since there's only 1 hash in the header, the choice was to have two hashes of the Admin Blocks. The solution was to have the SHA256 of the block. Then to get the different hash use an SHA512 of the previous Admin Block, take the top 256 bits, then use that to refer to the previous Admin Block. This way, if someone wanted to fake an Admin Block, while having the hashes match, they would need to break not only an SHA256 once, but also an SHA512 at the same time for the same fake data.
+Since there aren't Key Merkle Roots in the Admin Block, and use straight hashing, and also since there's only one hash in the header, the choice was to have two hashes of the Admin Blocks. The solution was to have the SHA256 of the block. Then to get the different hash use an SHA512 of the previous Admin Block, take the top 256 bits, then use that to refer to the previous Admin Block. This way, if someone wanted to fake an Admin Block while having the hashes match, they would need to break not only an SHA256 once but also an SHA512 at the same time for the same fake data.
 </aside>
 
-The 5 entries included in this [Admin Block](http://explorer.factom.org/ablock/69f4bebe76d94054f4bdb0cf56a47cafacae60ce6be76885ecd60252463a6e8e) present more information.
+The five entries included in this [Admin Block](http://explorer.factom.org/ablock/69f4bebe76d94054f4bdb0cf56a47cafacae60ce6be76885ecd60252463a6e8e) present more information.
 
 ![Explorer 7](/images/wallet_101.png) 
 
@@ -124,7 +124,7 @@ Selecting the [second entry](http://explorer.factom.org/tx/04b5292074368df8f971f
 
 [Entry Blocks](http://explorer.factom.org/eblock/a66d2c6b9bf118baaca96016e6fd03d52c0fc2a2332e001be32286805a8ef8fb) package Entry Hashes of all entries for a particular Factom Chain received over a ten-minute period, arranged in the order in which they were received by the Federated server. 
 
-After each ten-minute period, the Merkle Roots for each Entry Block are stored in the Directory Block. Entry Blocks contain Entry Hashes with 10 one-minute markers.
+After each ten-minute period, the Merkle Roots for each Entry Block are stored in the Directory Block. Entry Blocks contain Entry Hashes with ten one-minute markers.
 
 ![Explorer 15](/images/wallet_109.png)
 

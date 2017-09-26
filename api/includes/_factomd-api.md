@@ -10,7 +10,7 @@ They can be invoked in your terminal as
 
  The output will also be JSON.
 
- The right panel will contain the curl commands you'll need to run in your terminal, as well as the JSON structures of the request and response. The JSON structs detail the required parameters for each call.
+The right panel contains example requests and responses, with the ability to view requests as either cURL commands or JSON structures. The requests will detail the required parameters for each call.
 
 
 ## directory-block

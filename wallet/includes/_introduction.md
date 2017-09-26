@@ -2,7 +2,7 @@
 
 ## Introduction
 
-It is our utmost pleasure to present the new "Enterprise Wallet", it has been completely redesigned from the bottom up with improved functionality, ease of use, and a great new feel.
+It is our utmost pleasure to present the new "Enterprise Wallet," it has been completely redesigned from the bottom up with improved functionality, ease of use, and a great new feel.
 
 Find the new features highlighted below:
 

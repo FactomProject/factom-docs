@@ -1,6 +1,6 @@
 # Debug API
 
-These API calls were initially created for the Factom team's internal use to help them develop better tools and quickly monitor processes, nodes, and servers. These API calls are primarily for debugging information and purposes.
+These API calls were initially created for the Factom team's internal use to help them develop better tools and quickly monitor processes, nodes, and servers. These API calls are primarily for debugging purposes.
 
 You can see an example of a request and a response in the right panel for each of the RPC Methods.
 

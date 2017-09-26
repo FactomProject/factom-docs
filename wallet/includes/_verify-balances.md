@@ -1,10 +1,10 @@
 ## Verify FCT and EC Balances
 
-After sending or receiving factoids, importing secret keys, or redeeming your 12-word master passphrase you may want verify your address balances. We've provided 2 easy ways to verify your Factoid (FCT) or Entry Credit (EC) balances.
+After sending or receiving factoids, importing secret keys, or redeeming your 12-word master passphrase, you may want to verify your Factoid (FCT) or Entry Credit (EC) address balances. We've provided two easy ways for you to do so.
  
 **1) With the Factom Control Panel**
 
-The Factom Control Panel is easy to use and great for verifying your FA or EC balances. Simply [Run Wallet](#run-enterprise-wallet) and open the Control Panel web page in your browser: [http://localhost:8090/](http://localhost:8090/)
+The Factom Control Panel is easy to use and great for verifying your FA or EC balances. Simply [Run Wallet](#run-enterprise-wallet) and open the Control Panel webpage in your browser: [http://localhost:8090/](http://localhost:8090/)
 
 Find the search bar on the upper right-hand corner of the Factom Control Panel.
 
@@ -64,7 +64,7 @@ Hit Enter on your keyboard.
 The Explorer will display the balance of the EC address, in this example 3999 EC, along with its previous transactions.
 
 <aside class="notice"><br>
-To run the Factom Control Panel you need some basic command line knowledge while the Factom Explorer doesn't require you to run any Factom apps. Choose the verification method that suits you best.
+To run the Factom Control Panel, you need some basic command line knowledge while the Factom Explorer doesn't require you to run any Factom apps. Choose the verification method that suits you best.
 </aside>
 
 You made it this far and got the knowledge, now is time to teach others how to use Factom! (big grin)

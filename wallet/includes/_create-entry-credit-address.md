@@ -3,7 +3,7 @@
 Perform this step only if you intend to make entries into Factom or want to stock up on Entry Credits (EC) for future use.
 Remember, ECs are non-transferrable and cannot be sold or traded on an exchange. Make sure you need them before you go ahead.
 
-You are now ready to generate a new Entry Credit (EC) address, it's very easy with our new wallet.
+You are now ready to generate a new Entry Credit (EC) address. It's very easy with our new wallet.
 
 If you haven't already, [Run Wallet](#run-enterprise-wallet).
 
@@ -11,7 +11,7 @@ Click on Address Book.
 
 ![Wallet 035](images/wallet_022.png)
 
-Select "ENTRY CREDIT ADDRESSES".
+Select "ENTRY CREDIT ADDRESSES."
 
 ![Wallet 36](images/wallet_036.png)
 
@@ -19,11 +19,11 @@ Then hover with your mouse on the "yellow +" button at the bottom right.
 
 ![Wallet 37](images/wallet_023.png)
 
-The button will expand and show "NEW ADDRESS", then click on it.
+The button will expand and show "NEW ADDRESS," then click on it.
 
 ![Wallet 38](images/wallet_024.png)
  
-All you need is type a Nickname for the address, also known as "alias", then click "ADD TO ADDRESS BOOK".
+All you need is type a Nickname for the address, also known as "alias," then click "ADD TO ADDRESS BOOK."
 We nicknamed our address EC01, give it a name that is relevant to you.
 
 ![Wallet 39](images/wallet_035.png)
@@ -36,7 +36,7 @@ If you want to, click on "Open address in new tab" to see more details including
 
 ![Wallet 41](images/wallet_039.png) 
 
-If needed, you can quickly copy the address to your smartphone with any QR code reader app, otherwise click "COPY TO CLIPBOARD" to use on your computer instead. Once done click on "MANAGE ADDRESSES" or the X button at the top right to return to your Address Book.
+If needed, you can quickly copy the address to your smartphone with any QR code reader app, otherwise, click "COPY TO CLIPBOARD" to use on your computer instead. Once done, click on "MANAGE ADDRESSES" or the X button at the top right to return to your Address Book.
 
 You will see your newly created address in the list.
 
@@ -44,17 +44,17 @@ You will see your newly created address in the list.
 
 <aside class="warning"><br>
 Note that some addresses have a "full white star" on their left, others have an "empty star".
-This is to show you the addresses that have been created with your wallet "seed" (full white star) and the ones that have been imported (empty star) also known as "External Addresses".
-As we mentioned in the "Backup Your Wallets!" guide only addresses created with the wallet seed can be recovered with the "seed file".
+This is to show you the addresses that have been created with your wallet "seed" (full white star) and the ones that have been imported (empty star) also known as "External Addresses."
+As we mentioned in the "Backup Your Wallets!" guide only addresses created with the wallet seed can be recovered with the "seed file."
 </aside>
 
 ![Wallet43](images/wallet_041.png)
 
-If you click on the blue QR code button on the left of an address you will go back to the QR code screen above.
+If you click on the blue QR code button on the left of an address, you will go back to the QR code screen above.
 
 ![Wallet 44](images/wallet_030.png) 
 
-If you click on the blue pencil you will be able to edit address details such as its Nickname, and more.
+If you click on the blue pencil, you will be able to edit address details such as its Nickname, and more.
 
 ![Wallet 45](images/wallet_042.png)
 
@@ -63,9 +63,9 @@ You can change the Nickname as many times as you want.
   
 ![Wallet 46](images/wallet_043.png)
 
-Another thing you notice is the "DISPLAY PRIVATE KEY" button, if you click it, it will show "Displaying private key is disabled in settings".
+Another thing you notice is the "DISPLAY PRIVATE KEY" button, if you click it, it will show "Displaying private key is disabled in settings."
 
-Let's give it a try so you get familiar with another important function. Go to "Settings", select "Enable ability to export private keys" then hit "SAVE CHANGES".
+Let's give it a try so that you get familiar with another important function. Go to "Settings," select "Enable ability to export private keys" then hit "SAVE CHANGES."
  
 ![Wallet 47](images/wallet_033.png)
 

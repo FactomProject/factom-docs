@@ -40,7 +40,7 @@ You can alternatively download the first 70,000 blocks via disk image by followi
 Once you are synced, in a new Terminal window browse (cd) to the location of your FF installation as you did above (Mac and Windows only).
 
 <aside class="warning"><br>
-There are two options now, one for people who have run Factom Genesis (FG), our previous software release, and one for people who haven't. The former ha to import their old FG wallet file; the latter doesn't. Choose the next step accordingly.
+There are two options now, one for people who have run Factom Genesis (FG), our previous software release, and one for people who haven't. The former has to import their old FG wallet file; the latter doesn't. Choose the next step accordingly.
 </aside>
 
 ### If you have used FG
