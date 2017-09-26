@@ -581,7 +581,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
 }
 ```
 
-Retrieves all transactions that an address is a party to.
+Retrieves all transactions that involve a particular address.
 
 ### All Transactions
 
