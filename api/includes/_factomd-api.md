@@ -494,7 +494,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 }
 ```
 
-Every directory block has a KeyMR (Key Merkle Root), which can be used to retrieve it. The reponse will contain information that can be used to naviagate through all transactions (entry and factoid) within that block. The header of the directory block will contain information regarding the previous directory block's keyMR, directory block height, and the timestamp. 
+Every directory block has a KeyMR (Key Merkle Root), which can be used to retrieve it. The response will contain information that can be used to navigate through all transactions (entry and factoid) within that block. The header of the directory block will contain information regarding the previous directory block's keyMR, directory block height, and the timestamp. 
 
 ## directory-block-head
 
