@@ -64,7 +64,7 @@ Extract the zip file to your home directory. It will create files in the locatio
 The newly created .factom folder is an invisible folder on Mac and Linux so you won't be able to see it unless you browse to it via Terminal. On Mac, in Finder, you can also use Go/Go to Folder... and type ~/.factom to see its content. 
 </aside>
 
-Compressed, the blockchain is currently about 5 GB and uncompressed it is over 9 GB at the time of writing.
+The blockchain is currently about 12 GB at the time of writing.
 
 <aside class="warning"><br>
 After factomd boots for the first time and is 100% synced, it will need to be restarted at least once. Successive restarts should be fine without having to restart.

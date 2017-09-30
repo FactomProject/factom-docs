@@ -4,7 +4,7 @@
 
 The Factomd Control Panel is the graphical interface for a factomd node. It presents a lot of useful information such as the state of the node, blockchain sync status, connected federated servers, etc. 
 
-It also allows you to search for transactions' IDs, block height, factoid and entry credit addresses, or other data points similarly to using the Factom Explorer. A very useful tool to have for any Factom user or developer who wants to keep an eye on what's going on when running factomd on their local machines.
+It also allows you to search for transactions' IDs, block height, factoid and entry credit addresses, or other data points similar to using the Factom Explorer. A very useful tool to have for any Factom user or developer who wants to keep an eye on what's going on when running factomd on their local machines.
 
 The Control Panel is accessible after running factomd via command line at the following URL: [http://localhost:8090](http://localhost:8090). 
 
@@ -34,7 +34,7 @@ Use this button to switch to the More Detailed Node Information Page.
 
 **3 - Search Bar**
 
-The search bar allows you to search for a block height, transaction ID, factoid and entry credit address, chain ID, entries, etc, similarly to the Factom Explorer. 
+The search bar allows you to search for a block height, transaction ID, factoid and entry credit address, chain ID, entries, etc, similar to the Factom Explorer. 
 
 This way you'll be able to search using your local copy of the Factom blockchain instead of having to use the Factom Explorer online.
 
