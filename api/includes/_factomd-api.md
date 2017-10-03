@@ -1327,9 +1327,6 @@ curl -X POST --data-binary \
       "leaderheight":72498,
       "entryblockheight":72498,
       "entryheight":72498,
-      "missingentrycount":0,
-      "entryblockdbheightprocessing":72498,
-      "entryblockdbheightcomplete":72498
    }
 }
 ```
@@ -1340,11 +1337,8 @@ Returns various heights that allows you to view the state of the blockchain. The
 * leaderheight : The current block being worked on by the leaders in the network. This block is not yet complete, but all transactions submitted will go into this block (depending on network conditions, the transaction may be delayed into the next block)
 * entryblockheight : The height at which the factomd node has all the entry blocks. Directory blocks are obtained first, entry blocks could be lagging behind the directory block when sycning.
 * entryheight : The height at which the local factomd node has all the entries. If you added entries at a block height above this, they will be not be able to be retrieved by the local factomd until it syncs further.
-* missingentrycount : More insight to the system, this should mostly be ignored
-* entryblockdbheightprocessing : More insight to the system, this should mostly be ignored
-* entryblockdbheightcomplete : More insight to the system, this should mostly be ignored
 
-A fully synced node should show the same number for all but 'missingentrycount'
+A fully synced node should show the same number for all, (except between minute 0 and 1, when leaderheight will be 1 block ahead.)
 
 ## pending-entries
 
