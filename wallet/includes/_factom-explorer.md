@@ -79,7 +79,7 @@ Each Admin Block is referenced in two ways:
 Keeping the Admin Blocks secure is critical to the integrity of the Factom Blockchain. However, since there aren't any Key Merkle Roots and the blocks use straight hashing rather than a slower function that would make brute force attacks more difficult, we had to get creative.
 <br>
 <br>
-Because the header only has one hash, we decieded to have two hashes of each Admin Block. We start with an SHA256 hash of the block. Then, to get a difference hash, we use an SHA512 hash of the previous Admin Block. We then take the top 256 Bits and use that to refer to the previous Admin block. This way, if someone wanted to fake an Admin Block while having the hashes match, they would need to break not only an SHA256 once but also an SHA512 at the same time for the same fake data.
+The header only has one hash, so we decieded to have two hashes of each Admin Block. We start with an SHA256 hash of the block. Then, to get a difference hash, we use an SHA512 hash of the previous Admin Block. We then take the top 256 Bits and use that to refer to the previous Admin block. This way, if someone wanted to fake an Admin Block while having the hashes match, they would need to break both an SHA256 <i>and</i> an SHA512 at the same time for the same fake data. Eat that, hackers!
 </aside>
 
 The five entries included in this [Admin Block](http://explorer.factom.org/ablock/69f4bebe76d94054f4bdb0cf56a47cafacae60ce6be76885ecd60252463a6e8e) present more information.
