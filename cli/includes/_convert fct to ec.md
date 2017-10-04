@@ -2,7 +2,7 @@
 *“It's still magic even if you know how it's done.”*<br> 
 *― Terry Pratchett, A Hat Full of Sky*
 
-Before we automagically convert Factoids (FCT) to Entry Credits (EC), here is how the spell works. FCT are burned to create ECs. The number of FCT used will be deducted from your wallet's balance, so don't freak out when you see your FCT balance reduced. Just look for the newly created ECs on the EC address. Now if you don't see the newly created ECs, it's time to freakout and repeat these words, "Houston, we have a problem." (Disclaimer: Factom has no customer service center in Houston.)
+Before we automagically convert Factoids (FCT) to Entry Credits (EC), here is how the spell works. FCT are burned to create ECs. The number of FCT used will be deducted from your wallet's balance, so don't freak out when you see your FCT balance reduced. Just look for the newly created ECs on the EC address. Now if you don't see the newly created ECs, it's time to freak out and repeat these words, "Houston, we have a problem." (Disclaimer: Factom has no customer service center in Houston.)
 
 Moving on...and getting down to business.
 

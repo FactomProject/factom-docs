@@ -34,17 +34,17 @@ The wallet will be installed at the following location:
 
 Double click the app to launch it or drag to your dock to create a shortcut.
 
-You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read the guide carefully before you run the app, especially if you have an old wallet file to import. 
+You are ready to [Run Enterprise Wallet](#run-enterprise-wallet). However, read the guide carefully before you run the app, especially if you have an old wallet file to import. 
 
 ### Windows
 
-Double click on the "enterprise-wallet-setup-amd64.exe" file downloaded at Step 1 to run the wallet installer.
+Double click on the "enterprise-wallet-setup-amd64.exe" file downloaded in Step 1 to run the wallet installer.
 
 Wait until it loads up. 
 
 ![Install Windows Wallet](/images/wallet_087.png)
 
-Then follow the prompts and click install. Let the intaller finish.
+Then follow the prompts and click install. Let the installer finish.
 
 ![Install Windows Wallet 2](/images/wallet_088.png)
 
@@ -54,7 +54,7 @@ C:\Users\YOUR_USERNAME\AppData\Local\Programs\enterprisewallet\EnterpriseWallet.
 
 A shortcut will also be added to your desktop for easy launch.
 
-You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read the guide carefully before you run the app, especially if you have an old wallet file to import.
+You are ready to [Run Enterprise Wallet](#run-enterprise-wallet). However, read the guide carefully before you run the app, especially if you have an old wallet file to import.
 
 ### Linux
 
@@ -90,4 +90,4 @@ Then run the wallet by executing the "enterprisewallet" binary with the followin
 
 `enterprisewallet`
 
-You are ready to [Run Enterprise Wallet](#run-enterprise-wallet), however read the guide carefully before you run the app, especially if you have an old wallet file to import.
+You are ready to [Run Enterprise Wallet](#run-enterprise-wallet). However, read the guide carefully before you run the app, especially if you have an old wallet file to import.

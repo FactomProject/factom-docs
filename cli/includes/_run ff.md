@@ -4,7 +4,7 @@
  
 This step will be used every time you need to run Factom Federation software, so get familiar with it. Practice makes perfect. Wax on, wax off.
  
-Every time you come across "**Run FF**" you need to perform the following steps. These are the basic steps to run the wallet.
+Every time you come across "**Run FF**" you need to perform the following steps. These are the necessary steps to run the wallet.
 
 <aside class="warning"><br>
 For Mac and Windows, use the cd command with Terminal to browse to the location of your FF installation. On Linux, you will be able to run commands without having to browse the to install location.
@@ -31,8 +31,8 @@ Then browse to [http://localhost:8090](http://localhost:8090) to see the Control
 ![node 01](images/wallet_018.png)
 
 <aside class="notice"><br>
-If this is the first time you are running FF, and haven't dowloaded the blockchain via http as recommended above, now's a great time to check your Facebook feed or take your dog on a walk. 
-Syncing the Factom blockchain may take a little while, the blockchain is ...big. The Factom Control panel will display the progress and notify you when it has finished syncing. This will also occur when it has been a while since the last time you have run factomd. However, after the first full sync is complete, successive syncs are faster and you will only have to sync blocks since the last full sync.
+If this is the first time you are running FF, and haven't downloaded the blockchain via HTTP as recommended above, now's a very good time to check your Facebook feed or take your dog for a walk. 
+The blockchain is... big. Syncing the Factom blockchain may take a little while. The Factom Control panel will display the progress and notify you when it has finished syncing. This will also occur when it has been a while since the last time you have run factomd. However, after the first full sync is complete, successive syncs are faster and you will only have to sync blocks since the last full sync.
 <br>
 You can alternatively download the first 70,000 blocks via disk image by following our <a href="#starting-factom-via-bootstrap">Bootstrap Guide</a>.
 </aside>
@@ -40,7 +40,7 @@ You can alternatively download the first 70,000 blocks via disk image by followi
 Once you are synced, in a new Terminal window browse (cd) to the location of your FF installation as you did above (Mac and Windows only).
 
 <aside class="warning"><br>
-There are two options now, one for people who have run Factom Genesis (FG), our previous software release, and one for people who haven't. The former have to import their old FG wallet file, the latter don't, choose the next step accordingly.
+There are two options now, one for people who have run Factom Genesis (FG), our previous software release, and one for people who haven't. The former has to import their old FG wallet file; the latter doesn't. Choose the next step accordingly.
 </aside>
 
 ### If you have used FG
@@ -60,10 +60,10 @@ This command will tell factom-walletd to look for the file at the specified path
 If by any chance the operation fails, quit factom-walletd, delete the new wallet file located at ~/.factom/wallet/factoid_wallet.db and try again until you get all your addresses back.
 
 <aside class="success"><br>
-Remember, you only need to do this once the first time you run factom-walletd, thereafter you can run it normally. 
+Remember, you only need to do this once the first time you run factom-walletd, after that you can run it normally. 
 </aside>
 
-Once you are happy continue by following the instructions to run the factom-cli command below. 
+Once you are happy, continue by following the instructions to run the factom-cli command below. 
 
 ### If you have never used FG 
 
@@ -88,7 +88,7 @@ Starting with default settings.
 open /Home/.factom/m2/factomd.conf: no such file or directory
  
 Warning, factom-walletd API is not password protected. Factoids can be stolen remotely.
-Warning, factom-walletd API connection is unencrypted. Password is unprotected over the network.
+Warning, factom-walletd API connection is unencrypted. The password is unprotected over the network.
 Database started from: /Home/.factom/wallet/factom_wallet.db
 Database started from: /Home/.factom/wallet/factoid_blocks.cache
 2016/11/24 06:28:37 web.go serving :8089
@@ -139,9 +139,9 @@ Usage of ./factom-cli:
   -test.coverprofile string
         write a coverage profile to the named file after execution
   -test.cpu string
-        comma-separated list of number of CPUs to use for each test
+        comma-separated list of the number of CPUs to use for each test
   -test.cpuprofile string
-        write a cpu profile to the named file during execution
+        write a CPU profile to the named file during execution
   -test.memprofile string
         write a memory profile to the named file after execution
   -test.memprofilerate int
@@ -196,7 +196,7 @@ factom-cli backupwallet
     Backup the running wallet
  
 factom-cli balance [-r] ADDRESS
-    If this is an EC Address, returns number of Entry Credits. If this is a Factoid Address, returns the Factoid balance.
+    If this is an EC Address, returns the number of Entry Credits. If this is a Factoid Address, returns the Factoid balance.
  
 factom-cli buyec FCTADDRESS ECADDRESS ECAMOUNT
     Buy entry credits
@@ -208,7 +208,7 @@ factom-cli composeentry -c CHAINID [-e EXTID1 -e EXTID2 -E BEEF1D ...] ECADDRESS
     Create API calls to create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
  
 factom-cli composetx TXNAME
-    Compose a wallet transaction into a json rpc object
+    Compose a wallet transaction into a JSON RPC object
  
 factom-cli ecrate
     It takes this many Factoids to buy an Entry Credit.  Displays the larger between current and future rates. Also used to set Factoid fees.
@@ -256,7 +256,7 @@ factom-cli listtxs [tmp|all|address|id|range]
     List transactions from the wallet or the Factoid Chain
  
 factom-cli listtxs address ECADDRESS|FCTADDRESS
-    List transaction from the Factoid Chain with a specific address
+    List transactions from the Factoid Chain with a particular address
  
 factom-cli listtxs [all]
     List all transactions from the Factoid Chain

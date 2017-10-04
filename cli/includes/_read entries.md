@@ -35,7 +35,7 @@ Sample Terminal output is shown on the right.
 <br>
 
 <aside class="notice"><br>
-You may notice that there are two entries in the new chain even though you only made one. This is because every time a new chain is created, it generates an entry containing it's assigned name. 
+You may notice that there are two entries in the new chain even though you only made one. This is because every time a new chain is created, it generates an entry containing its assigned name. 
 The second entry, *Entry [ 1 ]*, is the first entry we made in the new chain, the one we named "my first entry."
 </aside>
 
@@ -44,4 +44,4 @@ This simple guide is designed to show how chains and entries work in Factom. Ref
 `factom-cli -h`
 
 You can then explore other ways and more command flags you can run to make entries suited for your needs.
-We will also release more advanced guides in the near future, stay tuned.
+We will also release more advanced guides in the near future. Stay tuned!

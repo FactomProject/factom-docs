@@ -1,6 +1,6 @@
 # Compile Factom Federation
 
-Quick-start guide to compile and run Factom Federation software.
+Quick-start guide to help you compile and run Factom Federation software.
 
 **Requirements not covered in guide**
 
@@ -20,7 +20,7 @@ Manual installation can be found here: [https://glide.sh/](https://glide.sh/)
 
 <aside class="warning"><br>
 BEFORE BUILDING FACTOMD!
-Glide can use github to gather all dependencies, but there is a chance your local github repos could cause some errors. If glide runs into an issue downloading a dependency, try deleting that folder it complains about (90% of dependecies are in '$GOPATH/src/github.com/FactomProject/'), and run glide install again.
+Glide can use GitHub to gather all dependencies, but there is a chance your local GitHub repos could cause some errors. If glide runs into an issue downloading a dependency, try deleting that folder it complains about (90% of dependencies are in '$GOPATH/src/github.com/FactomProject/'), and run glide install again.
 </aside>
 
 **Compile factomd**

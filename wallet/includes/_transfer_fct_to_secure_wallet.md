@@ -2,7 +2,7 @@
 
 ### Create Backup of Your Current Wallet
 
-First of all make sure to [Backup Your Wallets!](#backup-your-wallets)
+First of all, make sure to [Backup Your Wallets!](#backup-your-wallets)
 
 <aside class="warning"><br>
 Important: This backup should be copied to a safe location.
@@ -26,7 +26,7 @@ Then upgrade Enterprise Wallet to the latest version by following our [Install E
 
 **4.** From the Enterprise Wallet application, you can now [create a new factoid address](#create-a-factoid-address).
 
-**5.** Copy the address you generated in the previous step, so that you can fund it with factoids later in the process. You may want to save this in a separate text document for future reference (and to make it easy to copy and paste later on).
+**5.** Copy the address you generated in the previous step so that you can fund it with factoids later in the process. You may want to save this in a separate text document for future reference (and to make it easy to copy and paste later on).
 
 **6.** Once you are sure you have a backup of your wallet data, exit the application, and make sure that it is no longer running.
 
@@ -35,7 +35,7 @@ Then upgrade Enterprise Wallet to the latest version by following our [Install E
 Now it's time to backup your newly created secure wallet (encrypted) by following the [Backup Your Wallets!](#backup-your-wallets) guide.
 
 <aside class="warning"><br>
-Important: This backup should be copied to a safe location, and should be clearly distinguished from the first backup you made (in other words, make sure that you are able to keep the Secure and Not Secure backups safe).
+Important: This backup should be copied to a safe location, and should be clearly distinguished from the first backup you made (in other words, make sure that you can keep the Secure and Not Secure backups safe).
 </aside>
 
 ### Send FCT to Your Secure Wallet

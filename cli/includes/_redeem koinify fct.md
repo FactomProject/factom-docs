@@ -1,11 +1,11 @@
 ## Redeem Factoids from Koinify
 This section is relevant if you participated in the Koinify Software Token Sale hosted by Koinify back in 2015 and haven't redeemed your Factoids (FCT). Although Koinify closed their operations, they never held your FCT, and you only need your 12-word master passphrase to access your FCT.
 
-The 12-word master passphrase can be used with the factom-cli importwords command to create the crypto signatures required to reassign the Factoids to another address or purchase Entry Credits. So go find that magical piece of paper where you wrote down your unique 12-word magic spell and follow the instructions below:
+The 12-word master passphrase can be used with the factom-cli importwords command to create the crypto signatures required to reassign the Factoids to another address or purchase Entry Credits. So, go find that magical piece of paper where you wrote down your unique 12-word magic spell and follow the instructions below:
 
 [Run FF](#run-factom-federation).
 
-In this example we use the word "yellow" 12 times, but you probably have a different 12-word master passphrase.
+In this example, we use the word "yellow" 12 times, but you probably have a different 12-word master passphrase.
 
 In the factom-cli Terminal window run this command:
 
@@ -24,7 +24,7 @@ Sample Terminal output is shown on the right.
 <br>
 
 The operation will create a new Factoid Address in your local wallet and present the public key in the terminal output. 
-Make note of the FA address for your records. You will need it to verify that the FA address successfully imported with its balance.
+Make a note of the FA address for your records. You will need it to verify that the FA address successfully imported with its balance.
 
 Run the listaddresses command to list all the addresses in your wallet.
 
@@ -41,7 +41,7 @@ Sample Terminal output is shown on the right.
 <br>
 <br>
 
-In this example we successfully imported the FA address showing a balance of 20 factoids. The terminal output will give you a list of all FA and EC addresses in your wallet with their current balances. You can use the Node Visualizer or the Factom Explorer to [verify your local FCT balance](#verify-fct-and-ec-balances).
+In this example, we successfully imported the FA address showing a balance of 20 factoids. The terminal output will give you a list of all FA and EC addresses in your wallet with their current balances. You can use the Node Visualizer or the Factom Explorer to [verify your local FCT balance](#verify-fct-and-ec-balances).
 
 <aside class="notice">
 In your case, the FA address and its balance will be different. 
