@@ -69,7 +69,7 @@ The LookupHash for the current Admin Block, 75416, will be included in the next 
 ![Explorer 6](/images/wallet_100.png)
 
 <aside class="notice"><br>
-Each Admin Block is referenced in two ways:
+You can reference each Admin Block in two ways:
 <br>
 <br>
 1. By the Directory Block<br>  
@@ -79,7 +79,12 @@ Each Admin Block is referenced in two ways:
 Keeping the Admin Blocks secure is critical to the integrity of the Factom Blockchain. However, since there aren't any Key Merkle Roots and the blocks use straight hashing rather than a slower function that would make brute force attacks more difficult, we had to get creative.
 <br>
 <br>
-The header only has one hash, so we decieded to have two hashes of each Admin Block. We start with an SHA256 hash of the block. Then, to get a difference hash, we use an SHA512 hash of the previous Admin Block. We then take the top 256 Bits and use that to refer to the previous Admin block. This way, if someone wanted to fake an Admin Block while having the hashes match, they would need to break both an SHA256 <i>and</i> an SHA512 at the same time for the same fake data. Eat that, hackers!
+We decided to have two hashes of each Admin Block, both with 256 bits. 
+<ul>
+<li><strong>Hash 1:</strong> A SHA256 hash of the block.</li>
+<li><strong>Hash 2:</strong> A SHA512 hash of the previous Admin Block in which we only take the top 256 Bits.</li>
+</ul>
+This way, if someone wanted to fake an Admin Block while having the hashes match, they would need to break both a SHA256 <i>and</i> a SHA512 at the same time for the same fake data. Eat that, hackers!
 </aside>
 
 The five entries included in this [Admin Block](http://explorer.factom.org/ablock/69f4bebe76d94054f4bdb0cf56a47cafacae60ce6be76885ecd60252463a6e8e) present more information.
