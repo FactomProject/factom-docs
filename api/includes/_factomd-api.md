@@ -770,10 +770,10 @@ Retrieve a specified entry block given its merkle root key. The entry block cont
 > Example Request
 
 ```shell
-curl -X POST --data-binary {"jsonrpc": "2.0", "id": 0, "method": 
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
 "entry-credit-balance", "params":
-{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}} \
--H content-type:text/plain; http://localhost:8088/v2
+{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
 ```json
