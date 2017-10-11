@@ -1327,7 +1327,7 @@ curl -X POST --data-binary \
       "directoryblockheight":72498,
       "leaderheight":72498,
       "entryblockheight":72498,
-      "entryheight":72498,
+      "entryheight":72498
    }
 }
 ```
