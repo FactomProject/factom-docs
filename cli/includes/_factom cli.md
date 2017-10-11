@@ -287,28 +287,28 @@ List transactions from the wallet or the Factoid Chain
 ```shell
 factom-cli listtxs address ECADDRESS|FCTADDRESS
 ```
-List transaction from the Factoid Chain with a specific address
+List transaction from the Factoid Chain with a specific address. This command will only list confirmed transactions.
 
 ###listtxs [all]
 
 ```shell
 factom-cli listtxs [all]
 ```
-List all transactions from the Factoid Chain
+List all transactions from the Factoid Chain. This command will only list confirmed transactions.
 
 ###listtxs id 
 
 ```shell
 factom-cli listtxs id TXID
 ```
-List transaction from the Factoid Chain
+List transaction from the Factoid Chain. This command will only list confirmed transactions.
 
 ###listtxs range
 
 ```shell
 factom-cli listtxs range START END
 ```
-List the transactions from the Factoid Chain within the specified range
+List the transactions from the Factoid Chain within the specified range. This command will only list confirmed transactions.
 
 ###listtxs tmp
 
