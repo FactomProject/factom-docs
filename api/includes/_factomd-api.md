@@ -1529,7 +1529,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 > Example Response
 
-```json
+```json-doc
 {  
    "jsonrpc":"2.0",
    "id":0,
