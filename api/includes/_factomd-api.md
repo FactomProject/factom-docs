@@ -199,7 +199,7 @@ Why `f`? It is short for `000000000000000000000000000000000000000000000000000000
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
-"admin-block", "params": {"KeyMR":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"}}' \
+"admin-block", "params": {"keymr":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -209,7 +209,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
    "id":0,
    "method":"admin-block",
    "params":{  
-      "KeyMR":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"
+      "keymr":"cc03cb3558b6b1acd24c5439fadee6523dd2811af82affb60f056df3374b39ae"
    }
 }
 ```
@@ -260,7 +260,7 @@ Retrieve a specified admin block given its merkle root key.
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
-"chain-head", "params":{"ChainID":"5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"}}' \
+"chain-head", "params":{"chainid":"5a77d1e9612d350b3734f6282259b7ff0a3f87d62cfef5f35e91a5604c0490a3"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -270,7 +270,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
   "id": 0,
   "method": "chain-head",
   "params": {
-    "ChainID": "bb4e132bb2f8792c3174f5c1de108816c36cee86a383e1067926353e41f334bc"
+    "chainid": "bb4e132bb2f8792c3174f5c1de108816c36cee86a383e1067926353e41f334bc"
   }
 }
 ```
@@ -282,7 +282,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
   "jsonrpc": "2.0",
   "id": 0,
   "result": {
-    "ChainHead": "f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"
+    "chainhead": "f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c",
+    "chaininprocesslist":false
   }
 }
 ```
@@ -460,7 +461,7 @@ Retrieve a directory block given only its height.
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
-"directory-block", "params": {"KeyMR":"7ed5d5b240973676c4a8a71c08c0cedb9e0ea335eaef22995911bcdc0fe9b26b"}}' \
+"directory-block", "params": {"keymr":"7ed5d5b240973676c4a8a71c08c0cedb9e0ea335eaef22995911bcdc0fe9b26b"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -634,7 +635,7 @@ Retrieve the entry credit block for any given height. These blocks contain entry
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry","params":
-{"Hash":"24674e6bc3094eb773297de955ee095a05830e431da13a37382dcdc89d73c7d7"}}' \
+{"hash":"24674e6bc3094eb773297de955ee095a05830e431da13a37382dcdc89d73c7d7"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -673,7 +674,7 @@ Get an Entry from factomd specified by the Entry Hash.
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, 
-"method":"entry-ack", "params":{"TxID":
+"method":"entry-ack", "params":{"txid":
 "9228b4b080b3cf94cceea866b74c48319f2093f56bd5a63465288e9a71437ee8"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
@@ -684,7 +685,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
    "id":0,
    "method":"entry-ack",
    "params":{  
-      "TxID":"9228b4b080b3cf94cceea866b74c48319f2093f56bd5a63465288e9a71437ee8"
+      "txid":"9228b4b080b3cf94cceea866b74c48319f2093f56bd5a63465288e9a71437ee8"
    }
 }
 ```
@@ -724,7 +725,7 @@ Entry Acknowledgements will give the current status of a transaction. "DBlockCon
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry-block", 
-"params":{"KeyMR":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883"}}'\
+"params":{"keymr":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883"}}'\
  -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -734,7 +735,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"entry-block",
   "id": 0,
   "method": "entry-block",
   "params": {
-    "KeyMR": "f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"
+    "keymr": "f65f67774139fa78344dcdd302631a0d646db0c2be4d58e3e48b2a188c1b856c"
   }
 }
 ```
@@ -770,10 +771,10 @@ Retrieve a specified entry block given its merkle root key. The entry block cont
 > Example Request
 
 ```shell
-curl -X POST --data-binary {"jsonrpc": "2.0", "id": 0, "method": 
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
 "entry-credit-balance", "params":
-{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}} \
--H content-type:text/plain; http://localhost:8088/v2
+{"address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
 ```json
@@ -807,7 +808,7 @@ Return its current balance for a specific entry credit address.
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
-"entrycredit-block", "params": {"KeyMR":"2050b16701f29238d6b99bcf3fb0ca55d6d884139601f06691fc370cda659d60"}}' \
+"entrycredit-block", "params": {"keymr":"2050b16701f29238d6b99bcf3fb0ca55d6d884139601f06691fc370cda659d60"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -817,7 +818,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
    "id":0,
    "method":"entrycredit-block",
    "params":{  
-      "KeyMR":"2050b16701f29238d6b99bcf3fb0ca55d6d884139601f06691fc370cda659d60"
+      "keymr":"2050b16701f29238d6b99bcf3fb0ca55d6d884139601f06691fc370cda659d60"
    }
 }
 ```
@@ -948,7 +949,7 @@ Returns the number of Factoshis (Factoids *10^-8) that purchase a single Entry C
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
 "method":"factoid-ack", "params":{
-"TxID":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"}}' \
+"txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -958,7 +959,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
    "id":0,
    "method":"factoid-ack",
    "params":{  
-      "TxID":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"
+      "txid":"f1d9919829fa71ce18caf1bd8659cce8a06c0026d3f3fffc61054ebb25ebeaa0"
    }
 }
 ```
@@ -1025,7 +1026,7 @@ This call returns the number of Factoshis (Factoids *10^-8) that are currently a
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
-"factoid-block", "params": {"KeyMR":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480"}}' \
+"factoid-block", "params": {"keymr":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -1035,7 +1036,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
    "id":0,
    "method":"factoid-block",
    "params":{  
-      "KeyMR":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480"
+      "keymr":"1df843ee64f4b139047617a2df1007ea4470fabd097ddf87acabc39813f71480"
    }
 }
 ```
@@ -1326,7 +1327,7 @@ curl -X POST --data-binary \
       "directoryblockheight":72498,
       "leaderheight":72498,
       "entryblockheight":72498,
-      "entryheight":72498,
+      "entryheight":72498
    }
 }
 ```
@@ -1368,14 +1369,14 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
  "id":0,
  "result":[  
     {  
-       "EntryHash":"dde3f69025780f58da583b6961cf17291004f733fb2fa1a69738e0a7768387e4",
-       "ChainID":"5c7a44a37870ca729d03820339379955781a863bc461545a9df06bbc15110bdb",
-       "Status":"AckStatusACK"
+       "entryhash":"dde3f69025780f58da583b6961cf17291004f733fb2fa1a69738e0a7768387e4",
+       "chainid":"5c7a44a37870ca729d03820339379955781a863bc461545a9df06bbc15110bdb",
+       "status":"TransactionACK"
     },
     {  
-       "EntryHash":"45da41a07c6157839a735147a555ba4b009b72a9a7fe126c0d418413743f1683",
-       "ChainID":"f6df2b40bf16be03deddc169a6429804a67a761ed5f2d5499f7e56a7202f854b",
-       "Status":"AckStatusACK"
+       "entryhash":"45da41a07c6157839a735147a555ba4b009b72a9a7fe126c0d418413743f1683",
+       "chainid":"f6df2b40bf16be03deddc169a6429804a67a761ed5f2d5499f7e56a7202f854b",
+       "status":"TransactionACK"
     }
  ]
 }
@@ -1389,7 +1390,7 @@ Returns an array of the entries that have been submitted but have not been recor
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "pending-transactions", "params":
-{"Address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"}}' \
+{"address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -1399,7 +1400,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "pending-trans
    "id":0,
    "method":"pending-transactions",
    "params":{  
-      "Address":"EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwrcmgm2r"
+      "address":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
    }
 }
 ```
@@ -1407,10 +1408,32 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "pending-trans
 > Example Response
 
 ```json-doc
-{"jsonrpc":"2.0","id":0,"result":[{
-    "TransactionID": "337a32712f14c5df0b57a64bd6c321a043081688ecd4f33fd8319470da2256b1",
-    "Status": "AckStatusACK"
-  }]}
+{
+ "jsonrpc":"2.0",
+ "id":0,
+ "result":[
+  {
+    "transactionid": "337a32712f14c5df0b57a64bd6c321a043081688ecd4f33fd8319470da2256b1",
+    "status": "TransactionACK",
+    "inputs":[
+      {
+        "amount":100012000,
+        "address":"646f3e8750c550e4582eca5047546ffef89c13a175985e320232bacac81cc428",
+        "useraddress":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q"
+      }
+    ],
+    "outputs":[
+      {
+        "amount":100000000,
+        "address":"27c0a471c6c9b6da3fce0af7b1119ac2cbc68723657a9e2860d83c6776bbd6ff",
+        "useraddress":"FA2GaytuGnYuphP3uz3V9HuN9ECLAHRy73Hu7xhbydatJFx414j9"
+      }
+    ],
+    "ecoutputs":[],
+    "fees":12000
+  }
+ ]
+}
 ```
 
 Returns an array of factoid transactions that have not yet been recorded in the blockchain, but are known to the system.
@@ -1499,14 +1522,14 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
   "id": 0,
   "method": "receipt",
   "params": {
-    "Hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+    "hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
   }
 }
 ```
 
 > Example Response
 
-```json
+```json-doc
 {  
    "jsonrpc":"2.0",
    "id":0,
@@ -1572,7 +1595,7 @@ Retrieve a reciept providing cryptographially verfiable proof that information w
 
 > Example Request
 
-```
+```shell
 curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-chain", "params":
 {"entry":
 "007E18CCC911F057FB111C7570778F6FDC51E189F35A6E6DA683EC2A264443531F000E0005746573745A0005746573745A48656C6C6F20466163746F6D21"}}' \
@@ -1680,7 +1703,7 @@ Send a raw hex encoded binary message to the Factom network. This is mostly just
     "message": "Successfully sent the message"
   }
 }
-```
+```shell
 
 `curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "send-raw-message", "params":
 {"message":"0401554b9c15b100015507b2f70bd0165d9fa19a28cfaafb6bc82f538955a98c7b7e60d79fbf92655c1bff1c76466cb3bc3f3cc68d8b2c1
@@ -1775,7 +1798,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction",
          ],
          "sigblocks":[  
             {  
-               "Signatures":[  
+               "signatures":[  
                   "d68d5ce3bee5e69f113d643df1f6ba0dd476ada40633751537d5b840e2be811d4734ef9f679966fa86b1777c8a387986b4e21987174f9df808c2081be2c04a08"
                ]
             }
