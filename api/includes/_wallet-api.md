@@ -358,7 +358,7 @@ Retrieve all of the Factoid and Entry Credit addresses stored in the wallet.
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
  "compose-chain", "params": {"chain": {"firstentry":
- {"extids":["abcd", "1234"], "content":"1234abcd"}},
+ {"extids":["61626364", "31323334"], "content":"3132333461626364"}},
   "ecpub":"EC2DKSYyRcNWf7RS963VFYgMExo1824HVeCfQ9PGPmNzwrcmgm2r"}}'\
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
@@ -372,10 +372,10 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
       "chain":{  
          "firstentry":{  
             "extids":[  
-               "abcd",
-               "1234"
+               "61626364",
+               "31323334"
             ],
-            "content":"1234abcd"
+            "content":"3132333461626364"
          }
       },
       "ecpub":"EC2DKSYyRcNWf7RS963VFYgMExo1824HVeCfQ9PGPmNzwrcmgm2r"
@@ -413,7 +413,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 This method, compose-chain, will return the appropriate API calls to create a chain in factom. You must first call the [commit-chain](#commit-chain), then the [reveal-chain](#reveal-chain) API calls. To be safe, wait a few seconds after calling commit.
 
 **Notes**:  
-Ensure all data given in the `firstentry` fields are encoded in hex. This includes the content section.
+Ensure that all data given in the `firstentry` fields are encoded in hex. This includes the content section.
 
 ## compose-entry
 
