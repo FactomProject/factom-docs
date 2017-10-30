@@ -4,7 +4,7 @@
 
 To check the status of Factom head over to 
 
-[http://status.factom.com](http://status.factom.com/)
+[http://status.factom.com](http://status.factom.com)
 
 It will show you, for example, when the Factom Network is under maintenance.
 
@@ -12,7 +12,7 @@ It will show you, for example, when the Factom Network is under maintenance.
 
 Another useful tool is the following found at:
 
-[https://www.trustedoracle.com/BlockChainStatus](https://www.trustedoracle.com/BlockChainStatus)
+[https://oracle.factom.com](https://oracle.factom.com)
 
 It will show you some live stats for factom such as:
 
