@@ -12,7 +12,7 @@ It will show you, for example, when the Factom Network is under maintenance.
 
 Another useful tool is the following found at:
 
-[https://oracle.factom.com](https://oracle.factom.com)
+[https://oracle.factom.com/BlockChainStatus](https://oracle.factom.com/BlockChainStatus)
 
 It will show you some live stats for factom such as:
 
