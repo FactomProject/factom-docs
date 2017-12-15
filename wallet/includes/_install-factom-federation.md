@@ -96,3 +96,117 @@ or
 
 We are aware Linux users are hardcore, so we made sure one command is all they need to be ready to [install Enterprise Wallet](#install-enterprise-wallet)!
 
+### Docker
+
+If you've made it this far, you may not have an operating system. This will make it very difficult to run Factom Federation since, at this point, we do still require you to use a computing device. However, if you're simply looking for a way to get started in ANY environment, you've come to the right place.
+
+Because we are a very modern organization, we've made arrangements for you to get started in a containerized environment. All you need is [Docker](https://www.docker.com/) at minimum v17 and a clone of the [factomd repo](https://github.com/FactomProject/factomd).
+
+#### Build
+From wherever you have cloned the factomd repo, run
+
+`docker build -t factomd_container .`
+
+(yes, you can replace **factomd_container** with whatever you want to call the container.  e.g. **factomd**, **foo**, etc.)
+
+<aside class="notice"><br>
+<strong>Cross-Compile</strong>
+<br>
+<p>To cross-compile for a different target, you can pass in a <code>build-arg</code> as so
+<br><br>
+<code>docker build -t factomd_container --build-arg GOOS=darwin .</code></p>
+</aside>
+
+
+#### Run
+
+##### No Persistence
+`docker run --rm -p 8090:8090 factomd_container`
+  
+* This will start up **factomd** with no flags.
+* The Control Panel is accessible at port 8090  
+* When the container terminates, all data will be lost
+
+<aside class="notice">
+In the above, replace <strong>factomd_container</strong> with whatever you called it when you built it - e.g. <strong>factomd</strong>, <strong>foo</strong>, etc.
+</aside>
+
+##### With Persistence
+1. `docker volume create factomd_volume`
+2. `docker run --rm -v $(PWD)/factomd.conf:/source -v factomd_volume:/destination busybox /bin/cp /source /destination/factomd.conf`
+3. `docker run --rm -p 8090:8090 -v factomd_volume:/root/.factom/m2 factomd_container`
+
+* This will start up **factomd** with no flags.
+* The Control Panel is accessible at port 8090  
+* When the container terminates, the data will remain persisted in the volume **factomd_volume**
+* The above copies **factomd.conf** from the local directory into the container. Put _your_ version in there, or change the path appropriately.
+
+
+<aside class="notice">
+In the above
+<ul>
+    <li>replace <strong>factomd_container</strong> with whatever you called it when you built it - e.g. <strong>factomd</strong>, <strong>foo</strong>, etc.</li>
+    <li>replace <strong>factomd_volume</strong> with whatever you might want to call it - e.g. <strong>myvolume</strong>, <strong>barbaz</strong>, etc.</li>
+</ul>
+</aside>
+
+##### Additional Flags
+In all cases, you can startup with additional flags by passing them at the end of the docker command, e.g.
+
+`docker run --rm -p 8090:8090 factomd_container -port 9999`
+
+
+#### Copy
+
+```shell
+docker run --rm --entrypoint='' \
+    -v <FULLY_QUALIFIED_PATH_TO_TARGET_DIRECTORY>:/destination factomd_container \
+    /bin/cp /go/bin/factomd /destination
+```
+
+>The following will copy the binary to `/tmp/factomd`
+
+```shell
+docker run --rm --entrypoint='' \
+-v /tmp:/destination factomd_container \
+/bin/cp /go/bin/factomd /destination
+```
+
+
+So yeah, you want to get your binary _out_ of the container. To do so, you basically mount your target into the container and copy the binary over as shown.
+
+
+<aside class="notice">You should replace <strong>factomd_container</strong> with whatever you called it in the <a href="#build">build</a> section above  e.g. <strong>factomd</strong>, <strong>foo</strong>, etc.
+</aside>
+
+
+
+
+
+
+
+
+#### Cross-Compile Copy
+
+>Cross-Compile copy
+
+```shell
+docker run --rm --entrypoint='' \
+-v <FULLY_QUALIFIED_PATH_TO_TARGET_DIRECTORY>:/destination \
+factomd_container \
+/bin/cp /go/bin/darwin_amd64/factomd /destination
+```
+
+>To copy the darwin_amd64 version of the binary to `/tmp/factomd`...
+
+```shell
+docker run --rm --entrypoint='' 
+-v /tmp:/destination factomd_container \
+/bin/cp /go/bin/darwin_amd64/factomd /destination
+``` 
+
+If you cross-compiled to a different target, your binary will be in `/go/bin/<target>/factomd`.  e.g. If you built with `--build-arg GOOS=darwin`, then you can copy out the binary using the commands shown on the right.
+
+<aside class="notice">You should replace <strong>factomd_container</strong> with whatever you called it in the <strong>build</strong> section above  e.g. <strong>factomd</strong>, <strong>foo</strong>, etc.
+</aside>
+
