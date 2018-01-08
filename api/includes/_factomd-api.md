@@ -1589,7 +1589,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 }
 ```
 
-Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
+Retrieve a receipt providing cryptographically verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
 ## reveal-chain
 
@@ -1627,13 +1627,13 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "reveal-chain"
 }
 ```
 
-Reveal the First Entry in a Chain to factomd after the Commit to compleate the Chain creation. The reveal chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
+Reveal the First Entry in a Chain to factomd after the Commit to complete the Chain creation. The reveal-chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
 
-The reveal-chain api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-chain api call with [compose-chain](#compose-chain) which takes easier to construct arguments.
+The reveal-chain api takes a specifically formatted message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-chain api call with [compose-chain](#compose-chain) which takes easier to construct arguments.
 
-The [compose-chain](#compose-chain) api call has two api calls in it's response: [commit-chain](#commit-chain) and [reveal-chain](#reveal-chain). To successfully create a chain, the [reveal-chain](#reveal-chain) must be called after the [commit-chain](#commit-chain).
+The [compose-chain](#compose-chain) api call has two api calls in its response: [commit-chain](#commit-chain) and [reveal-chain](#reveal-chain). To successfully create a chain, the [reveal-chain](#reveal-chain) must be called after the [commit-chain](#commit-chain).
 
-## reveal-entry-binary
+## reveal-entry
 
 > Example Request
 
@@ -1668,9 +1668,9 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-entry", "para
 }
 ```
 
-Reveal an Entry to factomd after the Commit to compleate the Entry creation. The reveal entry hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
+Reveal an Entry to factomd after the Commit to complete the Entry creation. The reveal-entry hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
 
-The reveal-entry api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-entry api call with [compose-entry](#compose-entry) which takes easier to construct arguments.
+The reveal-entry api takes a specifically formatted message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-entry api call with [compose-entry](#compose-entry) which takes easier to construct arguments.
 
 The [compose-entry](#compose-entry) api call has two api calls in it's response: [commit-entry](#commit-entry) and [reveal-entry](#reveal-entry). To successfully create an entry, the [reveal-entry](#reveal-entry) must be called after the [commit-entry](#commit-entry).
 
@@ -1813,7 +1813,44 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "transaction",
 }
 ```
 
-Retrieve details of a factoid transaction using a transactions hash. Note that information regarding the directory block height, directory block keymr, and transaction block keymr are also included. The "blockheight" parameter in the reponse will always be 0 when using this call, refer to "includedindirectoryblockheight" if you need the height.
+```json-doc
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "result":{  
+      "entry":{
+         "version":0,
+         "chainid":"f920ae8d6a1d8e5e0978406ff801cc598a8d29d913dcf63101d9cbb709e3e885",
+         "extids":[
+            "437a68615a",
+            "7747575a70" 
+         ],       "content":"4e69586c4d596463765579774859556a49776c4c7a4d6a5a6f7672726b4a4847634d4a42777952764d79546d716f68776f455773795268795261786144504b4a534c4b626a4e4654477156794d584978524e70576861664b444f4f4c696a68757a636a656f7a645165416b527857464d50576f52716f704e5456687a6465757357547171724a4c58735a4353655a666b42476a576272455970524b70756f517a63546b5565514a6756684d4843696c78675a536655506a70774a7a45535a6d797973686161695761756e6973526c6357756e714454556d614c794462794c42445343586a6578686a434a5a7265646e6d7a4c6e4d595a6c47717a4b53696671547770485254714651464a6b71617179484c6b6e614966757556594b57696a644861706d6d55417a6b4c444c42414f7752797676436c704471676b6865734e7a4f4c4c65796f7a6f4f7a7176616c644b76666d61445449497169564a704c47497072766d6b6c497150517953684e4b5a6879796877664650764146424f4949554541466b694843594c5a4e6c7368784d736b7243627257586253424e4a4742504c7a475643586c74477654436c4e514a53486a517544644f68524b4b6d735a564f76507571464979615465574b7a717278587474676b79564f4f415a7769754169564466724a46524f5a61727a4f557173627163484172547646634a52714f7a6758484c7573676e6d6450716857537652464753616f685676506e65596b7563626148797750694e517544705a4177794e7750575759796a6d6e6b78764d4759737259594341685a6171584d6e6e6661634e7177797046654659554b53747545564b524c7878686454495368584d73766a436f7159666d4d756e70546a516a6143485271504b434b537570547146466c7a42585579737a4473687552786f5647596b7161646e435475577944796e584b796b446c525a4954666e484757654c7148536e6a51574e5a4864674b79474c6c756b5469744d54615866716241667579496a4f4f6b667465414156655a4e7054427756484f6a6e54617a72714d75504466586b747344436b7a477843497a756641766e4457706d426f766b54586e4d797665654c6654547851686674686b616d6f64594b466765546a6c435a5876785a524e4c445242666e6d41634b496d6943625a654c796d584b556c56715a556369545076685a4372517977674247584b416b764b57466b474d5977714f556a4a72744b6b754457474765444a795a6a737376445857675476436b654d56626d4d764d43424351594e544a5a72774f5554417479756d786b58444d486e7171774466594a717a4c6672744b6b495a4e72447249594550724f61636c6875496755754c57574f4a6457524b6f4f427a4b6967714a4f486846666a6363686e45646d426149"},"includedintransactionblock":"73a5dc5a5c06eaeeebf2db8a57eac10b977fc5fbf47e8325e3ad0485bcfec7c6", 
+         "includedindirectoryblock":"b50de1d4b6a923c3c7051bf04af2b1a7fa74d5992dea9dac816fb6f783b40539", 
+         "includedindirectoryblockheight":64574
+      }
+   }
+}
+```
+
+Retrieve details of a factoid transaction using a transaction's hash (or corresponding transaction id). 
+
+Note that information regarding the 
+
+- directory block height, 
+- directory block keymr, and 
+- transaction block keymr
+
+are also included. 
+
+The "blockheight" parameter in the reponse will always be 0 when using this call, refer to "includedindirectoryblockheight" if you need the height.
+
+Note: This call will also accept an entry hash as input, in which case the returned data concerns the entry. The returned fields and their format are shown in the 2nd Example Response at right.
+
+Note: If the input hash is non-existent, the returned fields will be as follows:
+
+- "includedintransactionblock":""
+- "includedindirectoryblock":""
+- "includedindirectoryblockheight":-1
 
 ## *Errors*
 
