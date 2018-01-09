@@ -10,7 +10,7 @@ They can be invoked in your terminal as
 
  The output will also be JSON.
 
- The right panel will contain the curl commands to be run in your terminal, as well as the json structures of the request and reponse. The json structs detail the required parameters for each call.
+ The right panel will contain the curl commands to be run in your terminal, as well as the JSON structures of the request and response. The JSON structs detail the required parameters for each call.
 
 ## ablock-by-height
 
@@ -91,7 +91,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 Retrieve administrative blocks for any given height.
 
-The admin block contains data related to the identities within the factom system and the decisions the system makes as it builds the block chain. The 'abentries' (admin block entries) in the json response can be of various types, the most common is a directory block signature (DBSig). A majority of the federated servers sign every directory block, meaning every block after m5 will contain 5 DBSigs in each admin block. 
+The admin block contains data related to the identities within the factom system and the decisions the system makes as it builds the block chain. The 'abentries' (admin block entries) in the JSON response can be of various types, the most common is a directory block signature (DBSig). A majority of the federated servers sign every directory block, meaning every block after m5 will contain 5 DBSigs in each admin block. 
 
 The ABEntries are detailed here: [Github Link](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#adminid-bytes)
 
@@ -136,7 +136,7 @@ The status types returned are as follows:
 
 You may also provide the full marshaled transaction, instead of a hash, and it will be hashed for you.
 
-The reponses vary based off the type:
+The responses vary based on the type:
 
 ### Entries
 
@@ -159,9 +159,9 @@ The reponses vary based off the type:
 }
 ```
 
-Requesting for an entry requires you to specify if the hash you provide is a commit or an entry hash. The `chainid` field is used to specify this. If you are searching for a commit, put `c` as the chainid field, otherwise put the chainid that the entry belongs too.
+Requesting an entry requires you to specify if the hash you provide is a commit or an entry hash. The `chainid` field is used to specify this. If you are searching for a commit, put `c` as the chainid field, otherwise, put the chainid that the entry belongs too.
 
-For commit/reveal acks, the response has 2 sections, one for the commit, one for the reveal. If you provide the entryhash and chainid, both will be filled (if found). If you only provide the commit txid and `c` as the chainid, then only the commitdata is guarenteed to come back with data. The `committxid` and `entryhash` fields corrospond to the `commitdata` and `entrydata` objects.
+For commit/reveal acks, the response has 2 sections, one for the commit, one for the reveal. If you provide the entryhash and chainid, both will be filled (if found). If you only provide the commit txid and `c` as the chainid, then only the commitdata is guaranteed to come back with data. The `committxid` and `entryhash` fields correspond to the `commitdata` and `entrydata` objects.
 
 
 _Extra notes_:  
@@ -188,7 +188,7 @@ Why `c`? It is short for `000000000000000000000000000000000000000000000000000000
 
 The `hash` field for a factoid transaction is equivalent to `txid`. To indicate the hash is a factoid transaction, put `f` in the chainid field and the `txid` in the hash field.
 
-The reponse will look different than entry related ack calls.
+The response will look different than entry related ack calls.
 
 _Extra notes_:  
 Why `f`? It is short for `000000000000000000000000000000000000000000000000000000000000000f`, which is the chainid for all factoid blocks. All factoid transactions are placed in the factoid (assuming they are valid)
@@ -329,7 +329,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "commit-chain"
 
 Send a Chain Commit Message to factomd to create a new Chain. The commit chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#chain-commit)
 
-The commit-chain api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-chain api call with [compose-chain](#compose-chain) which takes easier to construct arguments.
+The commit-chain API takes a specifically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-chain API call with [compose-chain](#compose-chain) which takes easier to construct arguments.
 
 The [compose-chain](#compose-chain) api call has two api calls in it's response: [commit-chain](#commit-chain) and [reveal-chain](#reveal-chain). To successfully create a chain, the [reveal-chain](#reveal-chain) must be called after the [commit-chain](#commit-chain).
 
@@ -373,7 +373,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "commit-entry"
 
 Send an Entry Commit Message to factom to create a new Entry. The entry commit hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry-commit)
 
-The commit-entry api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-entry api call with [compose-entry](#compose-entry) which takes easier to construct arguments.
+The commit-entry API takes a specifically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this commit-entry API call with [compose-entry](#compose-entry) which takes easier to construct arguments.
 
 The [compose-entry](#compose-entry) api call has two api calls in it's response: [commit-entry](#commit-entry) and [reveal-entry](#reveal-entry). To successfully create an entry, the [reveal-entry](#reveal-entry) must be called after the [commit-entry](#commit-entry).
 
@@ -690,7 +690,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0,
 }
 ```
 
-> Example Reponse
+> Example Response
 
 ```json-doc
 {  
@@ -1198,7 +1198,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "factoid-submi
 
 Submit a factoid transaction. The transaction hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#factoid-transaction)
 
-The factoid-submit api takes a specficically formated message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this factoid-submit api call with [compose-transaction](#compose-transaction) which takes easier to construct arguments.
+The factoid-submit API takes a specifically formatted message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this factoid-submit API call with [compose-transaction](#compose-transaction) which takes easier to construct arguments.
 
 ## fblock-by-height
 
@@ -1332,12 +1332,12 @@ curl -X POST --data-binary \
 }
 ```
 
-Returns various heights that allows you to view the state of the blockchain. The heights returned provide a lot of information regarding the state of factomd, but not all are neede by most applications. The heights also indicate the most recent block, which could not be complete, and still being built. The heights mean as follows:
+Returns various heights that allows you to view the state of the blockchain. The heights returned provide a lot of information regarding the state of factomd, but not all are needed by most applications. The heights also indicate the most recent block, which could not be complete, and still being built. The heights mean as follows:
 
 * directoryblockheight : The current directory block height of the local factomd node.
 * leaderheight : The current block being worked on by the leaders in the network. This block is not yet complete, but all transactions submitted will go into this block (depending on network conditions, the transaction may be delayed into the next block)
-* entryblockheight : The height at which the factomd node has all the entry blocks. Directory blocks are obtained first, entry blocks could be lagging behind the directory block when sycning.
-* entryheight : The height at which the local factomd node has all the entries. If you added entries at a block height above this, they will be not be able to be retrieved by the local factomd until it syncs further.
+* entryblockheight : The height at which the factomd node has all the entry blocks. Directory blocks are obtained first, entry blocks could be lagging behind the directory block when syncing.
+* entryheight : The height at which the local factomd node has all the entries. If you added entries at a block height above this, they will not be able to be retrieved by the local factomd until it syncs further.
 
 A fully synced node should show the same number for all, (except between minute 0 and 1, when leaderheight will be 1 block ahead.)
 
@@ -1382,7 +1382,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 }
 ```
 
-Returns an array of the entries that have been submitted but have not been recoreded into the blockchain.
+Returns an array of the entries that have been submitted but have not been recorded into the blockchain.
 
 ## pending-transactions
 
@@ -1589,7 +1589,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 }
 ```
 
-Retrieve a receipt providing cryptographically verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
+Retrieve a receipt providing cryptographically verifiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
 ## reveal-chain
 
@@ -1629,7 +1629,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "reveal-chain"
 
 Reveal the First Entry in a Chain to factomd after the Commit to complete the Chain creation. The reveal-chain hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
 
-The reveal-chain api takes a specifically formatted message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-chain api call with [compose-chain](#compose-chain) which takes easier to construct arguments.
+The reveal-chain API takes a specifically formatted message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-chain API call with [compose-chain](#compose-chain) which takes easier to construct arguments.
 
 The [compose-chain](#compose-chain) api call has two api calls in its response: [commit-chain](#commit-chain) and [reveal-chain](#reveal-chain). To successfully create a chain, the [reveal-chain](#reveal-chain) must be called after the [commit-chain](#commit-chain).
 
@@ -1670,7 +1670,7 @@ curl -X POST --data '{"jsonrpc": "2.0", "id": 0, "method": "reveal-entry", "para
 
 Reveal an Entry to factomd after the Commit to complete the Entry creation. The reveal-entry hex encoded string is documented here: [Github Documentation](https://github.com/FactomProject/FactomDocs/blob/master/factomDataStructureDetails.md#entry)
 
-The reveal-entry api takes a specifically formatted message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-entry api call with [compose-entry](#compose-entry) which takes easier to construct arguments.
+The reveal-entry API takes a specifically formatted message encoded in hex that includes signatures. If you have a factom-walletd instance running, you can construct this reveal-entry API call with [compose-entry](#compose-entry) which takes easier to construct arguments.
 
 The [compose-entry](#compose-entry) api call has two api calls in it's response: [commit-entry](#commit-entry) and [reveal-entry](#reveal-entry). To successfully create an entry, the [reveal-entry](#reveal-entry) must be called after the [commit-entry](#commit-entry).
 
@@ -1842,7 +1842,7 @@ Note that information regarding the
 
 are also included. 
 
-The "blockheight" parameter in the reponse will always be 0 when using this call, refer to "includedindirectoryblockheight" if you need the height.
+The "blockheight" parameter in the response will always be 0 when using this call, refer to "includedindirectoryblockheight" if you need the height.
 
 Note: This call will also accept an entry hash as input, in which case the returned data concerns the entry. The returned fields and their format are shown in the 2nd Example Response at right.
 
@@ -1886,7 +1886,7 @@ The server had an error parsing the JSON
 
 
 **What to do?**  
-Check the json you provided and ensure it is valid.
+Check the JSON you provided and ensure it is valid.
 
 ### Invalid Request
 
@@ -1926,11 +1926,11 @@ Ensure that your request matches our JSON-RPC standard.
 ```
 
 **What does this mean?**  
-The params sent do not match the expected paramaters
+The params sent do not match the expected parameters
 
 
 **What to do?**  
-Ensure that your parameters are correct for the api call you are trying to call. Also ensure you have all fields needed.
+Ensure that your parameters are correct for the API endpoint you are trying to call. Also, ensure that you have all the required fields.
 
 
 ### Internal error
@@ -1949,7 +1949,7 @@ Ensure that your parameters are correct for the api call you are trying to call.
 ```
 
 **What does this mean?**  
-There was an internal error when proccessing your request.
+There was an internal error when processing your request.
 
 
 **What to do?**  
@@ -1972,11 +1972,11 @@ This error is hard to fix from the clientside, many times it is related to datab
 ```
 
 **What does this mean?**  
-If you provide a method that is not a supported api method, this error will be returned. 
+If you provide a method that is not a supported API method, this error will be returned. 
 
 
 **What to do?**  
-Check the method you provided for a typo, and ensure that your url you provide is correct (factomd api call to factomd, wallet api call to factom-walletd).
+Check the method you provided for a typo, and ensure that your URL you provide is correct (factomd API call to factomd, wallet API call to factom-walletd).
 
 
 ### Repeated Commit
@@ -2005,7 +2005,7 @@ This occurs if you send a commit to an entry that has already been paid for. If 
 **What to do?**  
 If this error occurs, just send the reveal, as the entry has already been paid for. 
 
-In Factom every entry is paid for by the commit, and the data is given by the reveal. So if the commit is already paid for, you do not need to send another. This prevents you from double spending for an entry. Now if your entry requires more entry credits than the exisiting commit, you must send a new commit with more funds, and that will override the existing commit (but both commits will spend, so get it right the first time).
+In Factom every entry is paid for by the commit, and the data is given by the reveal. So if the commit is already paid for, you do not need to send another. This prevents you from double spending for an entry. Now if your entry requires more entry credits than the existing commit, you must send a new commit with more funds, and that will override the existing commit (but both commits will spend, so get it right the first time).
 
 
  If you wish to find the existing commit, you can use the [ack](#ack) call, using the entryhash and the chainid.

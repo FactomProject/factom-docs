@@ -784,7 +784,7 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"new-transactio
 
 This will create a new transaction. The txid is in flux until the final transaction is signed. Until then, it should not be used or recorded.
 
-When dealing with transactions all factoids are represented in factoshis. 1 factoid is 1e8 factoshis, meanining you can never send anything less than 0 to a transaction (0.5).
+When dealing with transactions all factoids are represented in factoshis. 1 factoid is 1e8 factoshis, meaning you can never send anything less than 0 to a transaction (0.5).
 
 ## properties
 

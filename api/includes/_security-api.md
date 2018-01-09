@@ -36,7 +36,7 @@ When you run factomd with a password, it uses HTTP Basic Authentication. It is r
 
 Normally, when started, the program creates a new certificate if one is not found. The certificates are bound to a set of specific IP addresses.
 
-Normally it finds the IP address by asking the OS. When using cloud services that use a different public IP than the server sees (AWS, Azure) the certificate needs to be told what the external IP address is manually. There are two options for this.
+Normally it finds the IP address by asking the OS. When using cloud services that use a different public IP than the server sees (AWS, Azure) you'll need to manually tell the certificate what the external IP address is. There are two options for doing this.
 
 1 - Edit the config file to show the external IP address instead of localhost for FactomdLocation.
 
