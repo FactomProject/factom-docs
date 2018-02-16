@@ -9,13 +9,13 @@ First, [Run FF](#run-factom-federation).
 
 In the factom-cli Terminal window run the addchain command as shown below. 
   
-`echo "my first chain" | factom-cli addchain -n chainName EC27kDNpFcJQwvdpFXaXjPqhtDSf6VK8kRN8Fv7EkhvS9tVkuAfX`
+`echo "my first chain" | factom-cli addchain -n {chainName} {EC_Public_Key}`
 
 <aside class="notice"><br>
 In your case, the only differences will be the data between the quotes, the chainName, and the EC address.<br>
 Be sure to use your EC address (not our example).
 </aside>
- 
+
 > Terminal output for:<br>
 > `factom-cli addchain`
 
@@ -26,8 +26,12 @@ ChainID: a4ab1e2ef212208b3513c5f06fcdcfa79b7c2b610526ce2dc374bb789700a791
 Entryhash: 232d1e54ecdfc369cc66e35dda73ce4beb7dffd3e75af94192034e79beaf6c8f
 ```
 
-You can name the chain whatever you want. In our example "chainName" is the name of the new chain. The quoted text is where the data for the first entry of the chain should be.
- 
+If you'd like to upload a file as the first entry of a chain, you can use a standard input to do so rather than a pipe. For example:
+
+`factom-cli addchain -n {chainName} {EC_Public_Key} < {fileName}`
+
+The result is the same either way. You'll now have a newly minted chain sitting immutably on the Factom blockchain.
+
 Sample Terminal output is shown on the right.
 <br>
 <br>
