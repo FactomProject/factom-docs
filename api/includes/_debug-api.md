@@ -499,37 +499,6 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "set-drop-rate
 
 Change the network drop rate for testing.
 
-## current-minute
-
-> Example Request
-
-```json
-{  
-   "jsonrpc":"2.0",
-   "id":0,
-   "method":"current-minute"
-}
-```
-
-```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "current-minute"}' \
--H 'content-type:text/plain;' http://localhost:8088/debug
-```
-> Example Response
-
-```json-doc
-{
-    "jsonrpc":"2.0",
-    "id":0,
-    "result":{
-        "Minute":0
-    }
-}
-```
-
-
-Get the current minute number for the open entry block.
-
 ## delay
 
 > Example Request

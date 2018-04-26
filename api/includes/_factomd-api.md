@@ -380,6 +380,38 @@ The [compose-entry](#compose-entry) api call has two api calls in it's response:
 *Notes:*  
 It is possible to be unable to send a commit, if the commit already exists (if you try to send it twice). This is a mechanism to prevent you from double spending. If you encounter this error, just skip to the [reveal-entry](#reveal-entry). The error format can be found here: [repeated-commit](#repeated-commit)
 
+
+## current-minute
+
+> Example Request
+
+```json
+{  
+   "jsonrpc":"2.0",
+   "id":0,
+   "method":"current-minute"
+}
+```
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "current-minute"}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+> Example Response
+
+```json-doc
+{
+    "jsonrpc":"2.0",
+    "id":0,
+    "result":{
+        "Minute":0
+    }
+}
+```
+
+
+Get the current minute number for the open entry block.
+
 ## dblock-by-height
 
 > Example Request
