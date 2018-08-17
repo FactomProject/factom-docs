@@ -1419,29 +1419,30 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"multiple-ec-ba
 }
 ```
 
-The multiple-ec-balances API is used to query the acknowledged and saved balances for a list of entry credit addresses. The saved balance is the last saved to the database and the acknowledged or “ack” balance is the balance after processing any in flight transactions known to the Factom node responding to the API call.
+The *multiple-ec-balances* API is used to query the acknowledged and saved balances for a list of entry credit addresses.
 
-* The `currentheight` is the current height that factomd was loading.
-* The `lastsavedheight` is the height last saved to the database.
+* `currentheight` is the current height that factomd was loading.
+* `lastsavedheight` is the height last saved to the database.
 * In `balances` it returns `"ack"`, `"saved"` and `"err"`. 
-* `ack` is the balance after processing any in flight transactions known to the Factom node responding to the API call
-* `saved` is the last saved to the database
-* `err` is just used to display any error that might have happened during the request. If it is `""` that means there was no error.
+  * `ack` is the balance after processing any in-flight transactions known to the Factom node responding to the API call
+  * `saved` is the last saved to the database
+  * `err` is just used to display any error that might have happened during the request. If it is `""` that means there was no error.
+  
 
-* If syntax of params is off e.g. missing a " , a comma, or a “[“ it will return: {"jsonrpc":"2.0","id":null,"error":{"code":-32600,"message":"Invalid Request"}}
+* If the syntax of the parameters is off e.g. missing a quote, a comma, or a square bracket, it will return: {"jsonrpc":"2.0","id":null,"error":{"code":-32600,"message":"Invalid Request"}}
 
-* If params are labeled incorrectly the call will return:
+* If parameters are labeled incorrectly the call will return:
 “{"code":-32602,"message":"Invalid params","data":"ERROR! Invalid params passed in, expected 'addresses'"}”
 
-* If factomd is not loaded up all the way to last saved block it will return:
+* If factomd is not loaded up all the way to the last saved block it will return:
 {"currentheight":0,"lastsavedheight":0,"balances":[{"ack":0,"saved":0,"err":"Not fully booted"}]}
 
-* If the list of address contains incorrectly formatted address the call will return: {"currentheight":0,"lastsavedheight":0,"balances":[{"ack":0,"saved":0,"err":"Error decoding address"}]}
+* If the list of addresses contains an incorrectly formatted address the call will return: {"currentheight":0,"lastsavedheight":0,"balances":[{"ack":0,"saved":0,"err":"Error decoding address"}]}
 
-* If an address in the list is valid but has never been part of a transaction you it will return: "balances":[{"ack":0,"saved":0,"err":"Address has not had a transaction"}]"
+* If an address in the list is valid but has never been part of a transaction the call will return: "balances":[{"ack":0,"saved":0,"err":"Address has not had a transaction"}]"
 
-**Refering to the example request:**
-This Example is for simulation, it will not work for mainnet or testnet
+**Referring to the example request:**
+This Example is for simulation, these addresses may not work or have the same value for mainnet or testnet
 
 ## multiple-fct-balances 
 
@@ -1489,29 +1490,30 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"multiple-fct-b
 }
 ```
 
-The multiple-fct-balances API is used to query the acknowledged and saved balances in factoshi (a factoshi is 10^8 factoids) not factoids(FCT) for a list of FCT addresses. The saved balance is the last saved to the database and the acknowledged or “ack” balance is the balance after processing any in flight transactions known to the Factom node responding to the API call.
+The *multiple-fct-balances* API is used to query the acknowledged and saved balances in factoshis (a factoshi is 10^8 factoids) not factoids(FCT) for a list of FCT addresses.
 
-* The `currentheight` is the current height that factomd was loading.
-* The `lastsavedheight` is the height last saved to the database.
+* `currentheight` is the current height that factomd was loading.
+* `lastsavedheight` is the height last saved to the database.
 * In `balances` it returns `"ack"`, `"saved"` and `"err"`. 
-* `ack` is the balance after processing any in flight transactions known to the Factom node responding to the API call
-* `saved` is the last saved to the database
-* `err` is just used to display any error that might have happened during the request. If it is `""` that means there was no error.
+  * `ack` is the balance after processing any in-flight transactions known to the Factom node responding to the API call
+  * `saved` is the last saved to the database
+  * `err` is just used to display any error that might have happened during the request. If it is `""` that means there was no error.
 
-* If syntax of params is off e.g. missing a " , a comma, or a “[“ it will return: {"jsonrpc":"2.0","id":null,"error":{"code":-32600,"message":"Invalid Request"}}
 
-* If params are labeled incorrectly the call will return:
+* If the syntax of the parameters is off e.g. missing a quote, a comma, or a square bracket, it will return: {"jsonrpc":"2.0","id":null,"error":{"code":-32600,"message":"Invalid Request"}}
+
+* If the parameters are labeled incorrectly the call will return:
 “{"code":-32602,"message":"Invalid params","data":"ERROR! Invalid params passed in, expected 'addresses'"}”
 
-* If factomd is not loaded up all the way to last saved block it will return:
+* If factomd is not loaded up all the way to the last saved block it will return:
 {"currentheight":0,"lastsavedheight":0,"balances":[{"ack":0,"saved":0,"err":"Not fully booted"}]}
 
-* If the list of address contains incorrectly formatted address the call will return: {"currentheight":0,"lastsavedheight":0,"balances":[{"ack":0,"saved":0,"err":"Error decoding address"}]}
+* If the list of addresses contains an incorrectly formatted address the call will return: {"currentheight":0,"lastsavedheight":0,"balances":[{"ack":0,"saved":0,"err":"Error decoding address"}]}
 
 * If an address in the list is valid but has never been part of a transaction you it will return: "balances":[{"ack":0,"saved":0,"err":"Address has not had a transaction"}]"
 
 **Refering to the example request:**
-This Example is for simulation, it will not work for mainnet or testnet
+This Example is for simulation, these addresses may not work or have the same value for mainnet or testnet
 
 ## pending-entries
 

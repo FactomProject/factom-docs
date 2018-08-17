@@ -1325,20 +1325,20 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "wallet-balanc
 }
 ```
 
-The *wallet-balances* API is used to query the acknowledged and saved balances for all addresses in the currently running factom-walletd. The saved balance is the last saved to the database and the acknowledged or “ack” balance is the balance after processing any in flight transactions known to the Factom node responding to the API call. The factoid address balances will be returned in factoshi  (a factoshi is 10^8 actoids not factoids(FCT) and the entry credit balances will be returned in entry credits. 
+The *wallet-balances* API is used to query the acknowledged and saved balances for all addresses in the currently running factom-walletd. The saved balance is the last saved to the database and the acknowledged or “ack” balance is the balance after processing any in-flight transactions known to the Factom node responding to the API call. The factoid address balance will be returned in factoshis  (a factoshi is 10^8 factoids) not factoids(FCT) and the entry credit balance will be returned in entry credits. 
 
 * If walletd and factomd are not **both** running this call will not work.
 
 * If factomd is not loaded up all the way to last saved block it will return:
 "result":{"Factomd Error":"Factomd is not fully booted, please wait and try again."}
 
-* If an address is in not the correct format the call will return:
+* If an address is not in the correct format the call will return:
 “result”:{“Factomd Error”:”There was an error decoding an address”}
 
-* If an address does not have a public and secret address it will not be included in the balances.
+* If an address does not have a public and private address known to the wallet it will not be included in the balance.
 
-* `"fctaccountbalances"` are the total of all factoid account balances returned in factoshi. Acknowledged first, saved next.  
-* `"ecaccountbalances"` are the total of all entry credit account balances returned in entry credits. Acknowledged first, saved next.  
+* `"fctaccountbalances"` are the total of all factoid account balances returned in factoshis. 
+* `"ecaccountbalances"` are the total of all entry credit account balances returned in entry credits.  
 
 ## *Errors*
 
