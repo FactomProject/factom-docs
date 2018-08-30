@@ -597,7 +597,7 @@ Create a new Entry Credit Address and store it in the wallet.
 > Example Request
 
 ```shell
-curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "generate-ec-address"}' \ 
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "generate-factoid-address"}' \ 
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -622,7 +622,7 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "generate-ec-a
 }
 ```
 
-Create a new Entry Credit Address and store it in the wallet.
+Create a new Factoid Address and store it in the wallet.
 
 ## get-height
 
