@@ -401,16 +401,45 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "current-minut
 
 ```json-doc
 {
-    "jsonrpc":"2.0",
-    "id":0,
-    "result":{
-        "Minute":0
+    "jsonrpc": "2.0",
+    "id": 0,
+    "result": {
+        "leaderheight": 4418,
+        "directoryblockheight": 4418,
+        "minute": 1,
+        "currentblockstarttime": 1535639576826240687,
+        "currentminutestarttime": 1535639590186099105,
+        "currenttime": 1535639593259007218,
+        "directoryblockinseconds": 100,
+        "stalldetected": false,
+        "faulttimeout": 120,
+        "roundtimeout": 30
     }
 }
 ```
 
 
-Get the current minute number for the open entry block.
+The *current-minute* API call returns: 
+
+* `leaderheight` returns the current block height.
+
+* `directoryblockheight` returns the last saved height.
+
+* `minute` returns the current minute number for the open entry block.
+
+* `currentblockstarttime` returns the start time for the current block.
+
+* `currentminutestarttime` returns the start time for the current minute.
+
+* `currenttime` returns the current nodes understanding of current time.
+
+* `directoryblockinseconds` returns the number of seconds per block.
+
+* `stalldetected` returns if factomd thinks it has stalled.
+
+* `faulttimeout` returns the number of seconds before leader node is faulted for failing to provide a necessary message.
+
+* `roundtimeout` returns the number of seconds between rounds of an election during a fault.
 
 ## dblock-by-height
 
