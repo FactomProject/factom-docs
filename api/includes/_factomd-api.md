@@ -1431,7 +1431,7 @@ The *multiple-ec-balances* API is used to query the acknowledged and saved balan
 
 * If the syntax of the parameters is off e.g. missing a quote, a comma, or a square bracket, it will return: {"jsonrpc":"2.0","id":null,"error":{"code":-32600,"message":"Invalid Request"}}
 
-* If parameters are labeled incorrectly the call will return:
+* If the parameters are labeled incorrectly the call will return:
 “{"code":-32602,"message":"Invalid params","data":"ERROR! Invalid params passed in, expected 'addresses'"}”
 
 * If factomd is not loaded up all the way to the last saved block it will return:
@@ -1512,7 +1512,7 @@ The *multiple-fct-balances* API is used to query the acknowledged and saved bala
 
 * If an address in the list is valid but has never been part of a transaction you it will return: "balances":[{"ack":0,"saved":0,"err":"Address has not had a transaction"}]"
 
-**Refering to the example request:**
+**Referring to the example request:**
 This Example is for simulation, these addresses may not work or have the same value for mainnet or testnet
 
 ## pending-entries
