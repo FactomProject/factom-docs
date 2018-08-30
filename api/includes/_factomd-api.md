@@ -1510,7 +1510,7 @@ The *multiple-fct-balances* API is used to query the acknowledged and saved bala
 
 * If the list of addresses contains an incorrectly formatted address the call will return: {"currentheight":0,"lastsavedheight":0,"balances":[{"ack":0,"saved":0,"err":"Error decoding address"}]}
 
-* If an address in the list is valid but has never been part of a transaction you it will return: "balances":[{"ack":0,"saved":0,"err":"Address has not had a transaction"}]"
+* If an address in the list is valid but has never been part of a transaction it will return: "balances":[{"ack":0,"saved":0,"err":"Address has not had a transaction"}]"
 
 **Referring to the example request:**
 This Example is for simulation, these addresses may not work or have the same value for mainnet or testnet
