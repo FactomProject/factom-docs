@@ -1519,7 +1519,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"multiple-fct-b
 }
 ```
 
-The *multiple-fct-balances* API is used to query the acknowledged and saved balances in factoshis (a factoshi is 10^8 factoids) not factoids(FCT) for a list of FCT addresses.
+The *multiple-fct-balances* API is used to query the acknowledged and saved balances in factoshis (a factoid is 10^8 factoshis) not factoids(FCT) for a list of FCT addresses.
 
 * `currentheight` is the current height that factomd was loading.
 * `lastsavedheight` is the height last saved to the database.
