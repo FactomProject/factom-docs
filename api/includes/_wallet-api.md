@@ -1325,7 +1325,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "wallet-balanc
 }
 ```
 
-The *wallet-balances* API is used to query the acknowledged and saved balances for all addresses in the currently running factom-walletd. The saved balance is the last saved to the database and the acknowledged or “ack” balance is the balance after processing any in-flight transactions known to the Factom node responding to the API call. The factoid address balance will be returned in factoshis  (a factoshi is 10^8 factoids) not factoids(FCT) and the entry credit balance will be returned in entry credits. 
+The *wallet-balances* API is used to query the acknowledged and saved balances for all addresses in the currently running factom-walletd. The saved balance is the last saved to the database and the acknowledged or “ack” balance is the balance after processing any in-flight transactions known to the Factom node responding to the API call. The factoid address balance will be returned in factoshis  (a factoid is 10^8 factoshis) not factoids(FCT) and the entry credit balance will be returned in entry credits. 
 
 * If walletd and factomd are not **both** running this call will not work.
 
