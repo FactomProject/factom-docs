@@ -1340,6 +1340,520 @@ The *wallet-balances* API is used to query the acknowledged and saved balances f
 * `"fctaccountbalances"` are the total of all factoid account balances returned in factoshis. 
 * `"ecaccountbalances"` are the total of all entry credit account balances returned in entry credits.  
 
+## identity-key
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-key", "params":{"public":"F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "identity-key",
+  "params": {
+    "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B"
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "result": {
+	  "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
+	  "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+    }
+}
+```
+
+This command alllows a user to retrieve an identity that is already stored in the wallet. When the public key of an idenity is input, the API will respond with the coresponding secret key. If the desired indentity isn't currently stored in the wallet, only the public key is returned.
+
+## all-identity-keys
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "all-identity-keys"}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "all-identity-keys"
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "keys": [
+      {
+        "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
+        "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+      },
+      {
+        "public": "AADAC9F17006CEDF63E9F03A324731EB5C432E7C6F87DDC1EF5362020A2AFB1D",
+        "secret": "D92567F2E3B677DC390FFDFA4EA8D38AC3B2D48945A11BB333D4A0984412ABD3"
+      },
+      {
+        "public": "73CF324418D0BB85B57EB0AE4EB8280B171F406F5DC85A9A7D1062640E15E591",
+        "secret": "191F3FE8EB7FDC76DAB388B7180A0427B07ACB3266D4AABEF93C3973F5A06806"
+      }
+    ]
+  }
+}
+```
+
+`all-identity-keys` returns all of the identity keys that are currently stored in the wallet.
+
+## import-identity-keys
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identity-keys", "params":{"keys":[{"secret":"B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"},{"secret":"191F3FE8EB7FDC76DAB388B7180A0427B07ACB3266D4AABEF93C3973F5A06806"}]}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "import-identity-keys",
+  "params": {
+    "keys": [
+      {
+        "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+      },
+      {
+        "secret": "191F3FE8EB7FDC76DAB388B7180A0427B07ACB3266D4AABEF93C3973F5A06806"
+      }
+    ]
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "keys": [
+      {
+        "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
+        "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+      },
+      {
+        "public": "73CF324418D0BB85B57EB0AE4EB8280B171F406F5DC85A9A7D1062640E15E591",
+        "secret": "191F3FE8EB7FDC76DAB388B7180A0427B07ACB3266D4AABEF93C3973F5A06806"
+      }
+    ]
+  }
+}
+```
+
+The `import-identity-keys` command allows a user to add a set of identities to the wallet. When the secret keys for a set of identities is sent, the API will respond with the matching public keys.
+
+## generate-identity-key
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "generate-identity-key"}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "generate-identity-key"
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
+    "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+  }
+}
+```
+
+Creates a new identity and adds it to the wallet.
+
+## remove-identity-key
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-identity-key", "params":{"public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B","secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "remove-identity-key",
+  "params": {
+    "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
+	"secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "result": {
+	  "success": "true"
+    }
+}
+```
+
+This command withdraws an identity from the wallet. Once executed, a user will no longer be able to retreive the identity, replace keys, or create/sign attributes for that identity with this wallet.
+
+## identity-keys-at-height
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys-at-height", "params": {"chainid":"2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",	"height": "121393"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "identity-keys-at-height",
+  "params": {
+	"chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+	"height": "121393"
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+    "height": "121393",
+    "keys": [
+      "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
+      "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54",
+      "BDA798F34A9FF3F103380436D540BD5FCCFD6D00BA1CDDA0F6A27D3A58E471B3",
+      "ECA4BD2B2E4026F75D26AE8B96E321845CB0C691BD205F933E07DCA80B7DC86C"
+    ]
+  }
+}
+```
+
+This command will return the valid public keys for an identity at a given point in time. This is useful for validating old data. Time is indicated by the block height of the Factom blockchain at the desired time. This will return a set of four public keys.
+
+## compose-identity-chain
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-chain", "params": {"name":["Factom","Inc"],"pubkeys": ["E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54","BDA798F34A9FF3F103380436D540BD5FCCFD6D00BA1CDDA0F6A27D3A58E471B3","ECA4BD2B2E4026F75D26AE8B96E321845CB0C691BD205F933E07DCA80B7DC86C"],"ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "compose-identity-chain",
+  "params": {
+    "name": [
+      "Factom",
+      "Inc"
+    ],
+    "pubkeys": [
+      "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
+      "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54",
+      "BDA798F34A9FF3F103380436D540BD5FCCFD6D00BA1CDDA0F6A27D3A58E471B3",
+      "ECA4BD2B2E4026F75D26AE8B96E321845CB0C691BD205F933E07DCA80B7DC86C"
+    ],
+    "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
+    "force": "false"
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "commit": {
+      "jsonrpc": "2.0",
+      "id": 2944,
+      "params": {
+        "message": "00015a9177f43d5df6e0e2761359d30a8275058e299fcc0381534545f55cf43e41983f5d4c9456abc6ea48b1287d0e5f2cf64798647221842e46b37e920cfaea62723c15195c320a9c707c2dfe35d43a21255c51012dae80cefbb14cf6571b6e195f5365bac7d30b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29e84f101bcf1d3a8ca45ad5c1a0ab3cf8ab935a2ad4f75914a0fb08e267facd9540cefe6833f3ea0295c3c2035bcd42a94e26477f096474b05e67538a34945a09"
+      },
+      "method": "commit-chain"
+    },
+    "reveal": {
+      "jsonrpc": "2.0",
+      "id": 2945,
+      "params": {
+        "entry": "22927282de49c4f6d19e9b2a9fa9b70a7edf96df3430b336553c1dca21ed8d0b"
+      },
+      "method": "reveal-chain"
+    }
+  }
+}
+```
+
+The `compose-identity-chain` method will return the appropriate API calls to create an identity chain in factom. The chain will be contructed based on the name a public keys that you send in the request. The response you receive is similar to the [compose-chain](#compose-chain) response. You must first call the [commit-chain](#commit-chain), then the [reveal-chain](#reveal-chain) API calls. To be safe, wait a few seconds after calling commit.
+
+## compose-identity-key-replacement
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-key-replacement", "params": {"chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","oldkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","newkey": "86E30A28F45D91A205185576854A31620D8D705945ACB83BC0EDFA325228B9FD","signerkey": "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "compose-identity-key-replacement",
+  "params": {
+    "chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+    "oldkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
+    "newkey": "86E30A28F45D91A205185576854A31620D8D705945ACB83BC0EDFA325228B9FD",
+    "signerkey": "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54",
+    "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
+    "force": "false"
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "commit": {
+      "jsonrpc": "2.0",
+      "id": 2947,
+      "params": {
+        "message": "00015a9177f43d5df6e0e2761359d30a8275058e299fcc0381534545f55cf43e41983f5d4c9456abc6ea48b1287d0e5f2cf64798647221842e46b37e920cfaea62723c15195c320a9c707c2dfe35d43a21255c51012dae80cefbb14cf6571b6e195f5365bac7d30b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29e84f101bcf1d3a8ca45ad5c1a0ab3cf8ab935a2ad4f75914a0fb08e267facd9540cefe6833f3ea0295c3c2035bcd42a94e26477f096474b05e67538a34945a09"
+      },
+      "method": "commit-entry"
+    },
+    "reveal": {
+      "jsonrpc": "2.0",
+      "id": 2948,
+      "params": {
+        "entry": "22927282de49c4f6d19e9b2a9fa9b70a7edf96df3430b336553c1dca21ed8d0b"
+      },
+      "method": "reveal-entry"
+    }
+  }
+}
+```
+
+You can use this method help you replace one of the keys of an identity. This will need to be done if you feel that key is compromised or have been in use for too long.Repolacing a key is done by adding a structured entry onto the identity's Factom chain. The `compose-identity-key-replacement` method will return the API calls needed to create that entry.
+
+The entry will be contructed based on the information you inclide in the request. 
+
+`chain_id`
+This is the ID of the identity chain in question.
+
+`oldkey`
+The `oldkey` is the private key for the level to be replaced.
+
+`newkey`
+The `newkey` is the key that will be replacing it. 
+
+`signerkey`
+The `signerkey` is a private key that must be from the level directly above the `oldkey` in the Identity Chain.
+
+The response you receive is similar to the [compose-entry](#compose-entry) response. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) API calls. To be safe, wait a few seconds after calling commit.
+
+## compose-identity-attribute
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute", "params": {"chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","oldkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","newkey": "86E30A28F45D91A205185576854A31620D8D705945ACB83BC0EDFA325228B9FD","signerkey": "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "compose-identity-attribute",
+  "params": {
+	"receiver-chainid": "string",
+	"destination-chainid": "string",
+	"attributes": "string",
+	"signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
+	"signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+    "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
+    "force": "false"
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "commit": {
+      "jsonrpc": "2.0",
+      "id": 2947,
+      "params": {
+        "message": "00015a9177f43d5df6e0e2761359d30a8275058e299fcc0381534545f55cf43e41983f5d4c9456abc6ea48b1287d0e5f2cf64798647221842e46b37e920cfaea62723c15195c320a9c707c2dfe35d43a21255c51012dae80cefbb14cf6571b6e195f5365bac7d30b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29e84f101bcf1d3a8ca45ad5c1a0ab3cf8ab935a2ad4f75914a0fb08e267facd9540cefe6833f3ea0295c3c2035bcd42a94e26477f096474b05e67538a34945a09"
+      },
+      "method": "commit-entry"
+    },
+    "reveal": {
+      "jsonrpc": "2.0",
+      "id": 2948,
+      "params": {
+        "entry": "22927282de49c4f6d19e9b2a9fa9b70a7edf96df3430b336553c1dca21ed8d0b"
+      },
+      "method": "reveal-entry"
+    }
+  }
+}
+```
+
+You can use this method help you replace one of the keys of an identity. This will need to be done if you feel that key is compromised or have been in use for too long.Repolacing a key is done by adding a structured entry onto the identity's Factom chain. The `compose-identity-key-replacement` method will return the API calls needed to create that entry.
+
+The entry will be contructed based on the information you inclide in the request. 
+
+`receiver-chainid`
+This is the Chain ID for the identity receiving the endorsement.
+
+`destination-chainid`
+The Chain ID of the destination. Dream big.
+
+`attributes`
+The attribute you are attesting to.
+
+`signer-chainid`
+The `signer-chainid` leads to the Identity Chain of the signing party. 
+
+`signerkey`
+The `signerkey` should be the secret key of the lowest level key from the signer's Idenity
+
+The response you receive is similar to the [compose-entry](#compose-entry) response. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) API calls. To be safe, wait a few seconds after calling commit.
+
+
+## compose-identity-attribute-endorsement
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute-endorsement", "params": {"chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","oldkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","newkey": "86E30A28F45D91A205185576854A31620D8D705945ACB83BC0EDFA325228B9FD","signerkey": "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "compose-identity-attribute-endorsement",
+  "params": {
+	"destination-chainid": "string",
+	"entry-hash": "string",
+	"signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
+	"signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+    "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
+    "force": "false"
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "commit": {
+      "jsonrpc": "2.0",
+      "id": 2947,
+      "params": {
+        "message": "00015a9177f43d5df6e0e2761359d30a8275058e299fcc0381534545f55cf43e41983f5d4c9456abc6ea48b1287d0e5f2cf64798647221842e46b37e920cfaea62723c15195c320a9c707c2dfe35d43a21255c51012dae80cefbb14cf6571b6e195f5365bac7d30b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29e84f101bcf1d3a8ca45ad5c1a0ab3cf8ab935a2ad4f75914a0fb08e267facd9540cefe6833f3ea0295c3c2035bcd42a94e26477f096474b05e67538a34945a09"
+      },
+      "method": "commit-entry"
+    },
+    "reveal": {
+      "jsonrpc": "2.0",
+      "id": 2948,
+      "params": {
+        "entry": "22927282de49c4f6d19e9b2a9fa9b70a7edf96df3430b336553c1dca21ed8d0b"
+      },
+      "method": "reveal-entry"
+    }
+  }
+}
+```
+
+This method helps you endorse an attribute that has already been registered on the Factom blockchain. To do this, you'll need to create a structured entry onto the Identity chain. The `compose-identity-attribute-endorsement` method will return the API calls needed to create that entry.
+
+The entry will be contructed based on the information you inclide in the request. 
+
+`destination-chainid`
+This is the ID of the identity chain in question.
+
+`entry-hash`
+Sure, you need that too.
+
+`signer-chainid`
+The `signer-chainid` leads to the Identity Chain of the signing party. 
+
+`signerkey`
+The `signerkey` should be the secret key of the lowest level key from the signer's Idenity
+
+The response you receive is similar to the [compose-entry](#compose-entry) response. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) API calls. To be safe, wait a few seconds after calling commit.
+
+
 ## *Errors*
 
 > Example Request
