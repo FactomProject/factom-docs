@@ -1345,7 +1345,7 @@ The *wallet-balances* API is used to query the acknowledged and saved balances f
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-key", "params":{"public":"F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-key", "params":{"public":"idpub1y3Z1viJE3zTHDPYDgypJehEGY5BfZaHDkoSUeRvxdkH2SWWVr"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1355,7 +1355,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-key"
   "id": 0,
   "method": "identity-key",
   "params": {
-    "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B"
+    "public": "idpub1y3Z1viJE3zTHDPYDgypJehEGY5BfZaHDkoSUeRvxdkH2SWWVr"
   }
 }
 ```
@@ -1364,16 +1364,16 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-key"
 
 ```json-doc
 {
-    "jsonrpc": "2.0",
-    "id": 0,
-    "result": {
-	  "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
-	  "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
-    }
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "public": "idpub1y3Z1viJE3zTHDPYDgypJehEGY5BfZaHDkoSUeRvxdkH2SWWVr",
+    "secret": "idsec2euiiB66gaLQbhgLX36GBvfxQ11wvMgNmFAQ1YdcgsSjTcyzRT"
+  }
 }
 ```
 
-This command alllows a user to retrieve an identity that is already stored in the wallet. When the public key of an idenity is input, the API will respond with the coresponding secret key. If the desired indentity isn't currently stored in the wallet, only the public key is returned.
+Given an identity public key as input, this command will respond with the coresponding public/private key pair from the wallet. If the desired indentity key isn't currently stored in the wallet, an error is returned to indicate this.
 
 ## all-identity-keys
 
@@ -1401,30 +1401,35 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "all-identity-
   "result": {
     "keys": [
       {
-        "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
-        "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+        "public": "idpub1y3Z1viJE3zTHDPYDgypJehEGY5BfZaHDkoSUeRvxdkH2SWWVr",
+        "secret": "idsec2euiiB66gaLQbhgLX36GBvfxQ11wvMgNmFAQ1YdcgsSjTcyzRT"
       },
       {
-        "public": "AADAC9F17006CEDF63E9F03A324731EB5C432E7C6F87DDC1EF5362020A2AFB1D",
-        "secret": "D92567F2E3B677DC390FFDFA4EA8D38AC3B2D48945A11BB333D4A0984412ABD3"
+        "public": "idpub2EMSb17Rf9jWwoKigMa3EydLc3e8o7uhYbU5mDqpdcXuTymDWa",
+        "secret": "idsec2rChEHLz3SPQQx3syQtB11pHAmxyGjux5FntnS7xqTCieHxxTc"
       },
       {
-        "public": "73CF324418D0BB85B57EB0AE4EB8280B171F406F5DC85A9A7D1062640E15E591",
-        "secret": "191F3FE8EB7FDC76DAB388B7180A0427B07ACB3266D4AABEF93C3973F5A06806"
+        "public": "idpub2Kcn1dbnz2KrvdST3c25gZfAWRGg9Up1VVg62obhEHvfPiogG2",
+        "secret": "idsec2phztdmsMXisSeLUHGrWNraT6Vizu4LMG3GNuq2GRXxmq4dECu"
+      },
+      {
+        "public": "idpub2ucJ6MTVNVGoGQdJKGk6DqtE7xcxYBa4WTuS8APuHHMHuh4M6W",
+        "secret": "idsec1xuUyeCCrJhsojf2wLAZqRxPzPFR8Gidd9DRRid1yGy8ncAJG3"
       }
     ]
   }
 }
+
 ```
 
-`all-identity-keys` returns all of the identity keys that are currently stored in the wallet.
+Returns all of the identity key pairs that are currently stored in the wallet.
 
 ## import-identity-keys
 
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identity-keys", "params":{"keys":[{"secret":"B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"},{"secret":"191F3FE8EB7FDC76DAB388B7180A0427B07ACB3266D4AABEF93C3973F5A06806"}]}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identity-keys", "params":{"keys":[{"secret":"idsec2rWrfNTD1x9HPPesA3fz8dmMNZdjmSBULHx8VTXE1J4D9icmAK"},{"secret":"idsec1iuqCFoiEfSZ1rU2FNpa7oFY3Kc29hHxP1R2PDyacJQEA8iShB"}]}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1436,10 +1441,10 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identi
   "params": {
     "keys": [
       {
-        "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+        "secret": "idsec2rWrfNTD1x9HPPesA3fz8dmMNZdjmSBULHx8VTXE1J4D9icmAK"
       },
       {
-        "secret": "191F3FE8EB7FDC76DAB388B7180A0427B07ACB3266D4AABEF93C3973F5A06806"
+        "secret": "idsec1iuqCFoiEfSZ1rU2FNpa7oFY3Kc29hHxP1R2PDyacJQEA8iShB"
       }
     ]
   }
@@ -1455,19 +1460,19 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identi
   "result": {
     "keys": [
       {
-        "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
-        "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+        "public": "idpub2g25nPNZ2kf6KGTjthYdHT3nykDbwEUEPyGJ52fo55SHwtAvLA",
+        "secret": "idsec2rWrfNTD1x9HPPesA3fz8dmMNZdjmSBULHx8VTXE1J4D9icmAK"
       },
       {
-        "public": "73CF324418D0BB85B57EB0AE4EB8280B171F406F5DC85A9A7D1062640E15E591",
-        "secret": "191F3FE8EB7FDC76DAB388B7180A0427B07ACB3266D4AABEF93C3973F5A06806"
+        "public": "idpub2cUE3EMmof6DfaVuprQWk3bfSa6s2D9NUKu2g12Wt7FkoRsDrg",
+        "secret": "idsec1iuqCFoiEfSZ1rU2FNpa7oFY3Kc29hHxP1R2PDyacJQEA8iShB"
       }
     ]
   }
 }
 ```
 
-The `import-identity-keys` command allows a user to add a set of identities to the wallet. When the secret keys for a set of identities is sent, the API will respond with the matching public keys.
+Allows a user to add one or more identity keys to the wallet. Using the secret keys as input, the command will return the corresponding key pairs that were imported.
 
 ## generate-identity-key
 
@@ -1493,20 +1498,20 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "generate-iden
   "jsonrpc": "2.0",
   "id": 0,
   "result": {
-    "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
-    "secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+    "public": "idpub26PEBWuumVp19yUSpfGJ2HPrTrU7hgw5empU7FPiTHdCKoy5Ao",
+    "secret": "idsec1kYsShFhYEfy28bkEJReHjR6AH9ybMZ4L9FDdYtb4VcRryaQsa"
   }
 }
 ```
 
-Creates a new identity and adds it to the wallet.
+Creates a new identity key and adds it to the wallet. New keys are generated from the same mnemonic seed used for FCT and EC addresses.
 
 ## remove-identity-key
 
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-identity-key", "params":{"public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B","secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-identity-key", "params":{"public": "idpub26PEBWuumVp19yUSpfGJ2HPrTrU7hgw5empU7FPiTHdCKoy5Ao"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1516,8 +1521,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-identi
   "id": 0,
   "method": "remove-identity-key",
   "params": {
-    "public": "F659ECBDADC1391711B17F227347268DAB60D64FAABA46E7D7D1E1E24EE49A9B",
-	"secret": "B864651C6A9F87D1357E6E22225506918AE1B28BC56AB8776EAA449FE215C84A"
+    "public": "idpub26PEBWuumVp19yUSpfGJ2HPrTrU7hgw5empU7FPiTHdCKoy5Ao"
   }
 }
 ```
@@ -1534,7 +1538,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-identi
 }
 ```
 
-This command withdraws an identity from the wallet. Once executed, a user will no longer be able to retreive the identity, replace keys, or create/sign attributes for that identity with this wallet.
+Given an identity public key, this command deletes the corresponding identity key pair from the wallet. Once executed, the user will no longer be able to retreive that key pair or sign attributes/endorsements with the key pair from this wallet.
 
 ## identity-keys-at-height
 
@@ -1583,7 +1587,7 @@ This command will return the valid public keys for an identity at a given point 
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-chain", "params": {"name":["Factom","Inc"],"pubkeys": ["E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54","BDA798F34A9FF3F103380436D540BD5FCCFD6D00BA1CDDA0F6A27D3A58E471B3","ECA4BD2B2E4026F75D26AE8B96E321845CB0C691BD205F933E07DCA80B7DC86C"],"ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-chain", "params": {"name":["Factom","Test","Identity"],"pubkeys": ["","","",""],"ecpub": ""}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
