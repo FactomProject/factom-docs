@@ -386,3 +386,10 @@ Sign a transaction in the wallet
 factom-cli subtxfee TXNAME ADDRESS
 ```
 Subtract the transaction fee from an output of a transaction in the wallet
+
+###walletpassphrase
+
+```shell
+factom-cli walletpassphrase [-v] "passphrase" <seconds-to-unlock>
+```
+Unlock the wallet for some number of seconds; must be an encrypted wallet. -v verbose.

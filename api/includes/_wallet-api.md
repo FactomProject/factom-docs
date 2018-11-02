@@ -1858,6 +1858,58 @@ The *wallet-balances* API is used to query the acknowledged and saved balances f
 * `"ecaccountbalances"` are the total of all entry credit account balances returned in entry credits.  
 
 
+## wallet-passphrase
+
+> Example Request
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "wallet-passphrase", "params":{"passphrase":"example","timeout":600}}' -H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "wallet-passphrase",
+    "params": {
+        "passphrase": "example",
+        "timeout": 600
+    }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "result": {
+        "success": true,
+        "unlockeduntil": 1445444940
+    }
+}
+```
+
+The *wallet-passphrase* API is used to decrypt and unlock an encrypted wallet database for a limited period of time. 
+
+When first running factom-wallet (i.e., when there is not a file "~/.factom/wallet/factom_wallet.db") start the wallet with `factom-walletd -walletencrypted="true" -passphrase="example"`.   You might want to run the command with a leading space to prevent writing the password to the commandline history.  The passphrase only needs to be specified the first time when being run.  After the wallet has been made, it should only be unlocked over the API/CLI to seperate the password from the wallet.
+
+If an unencrypted wallet already exists, it will give the error message:
+
+```
+Encrypted Wallet option was selected, however an unencrypted wallet already exists.
+Remove the wallet file at '/home/user/.factom/wallet/factom_wallet.db' to launch factom-walletd with encryption. (Back it up before deleting!)
+```
+
+To test the configuration worked, use factom-cli. 
+- before unlocking, running `factom-cli backupwallet` should return `Internal error: encrypted database is locked`
+- unlock and decrypt the wallet for 1 hour `factom-cli walletpassphrase "example" 600`
+-
+
+To restore a mnemonic seed run `factom-walletd -walletpassword="example" -m="yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"`.  The mnemonic can only be imported when a wallet does not already exist.
+
+
 ## *Errors*
 
 > Example Request
