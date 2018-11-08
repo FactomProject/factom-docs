@@ -387,9 +387,9 @@ factom-cli subtxfee TXNAME ADDRESS
 ```
 Subtract the transaction fee from an output of a transaction in the wallet
 
-###walletpassphrase
+###unlockwallet
 
 ```shell
-factom-cli walletpassphrase [-v] "passphrase" <seconds-to-unlock>
+ factom-cli unlockwallet [-v] "passphrase" <seconds-to-unlock>
 ```
-Unlock the wallet for some number of seconds; must be an encrypted wallet. -v verbose.
+Unlock the wallet for some number of seconds; must be an encrypted wallet. -v verbose. (Note: it is reccommended that you run the command with a leading space to prevent writing the password to the commandline history.)

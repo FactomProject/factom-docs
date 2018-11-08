@@ -1858,19 +1858,19 @@ The *wallet-balances* API is used to query the acknowledged and saved balances f
 * `"ecaccountbalances"` are the total of all entry credit account balances returned in entry credits.  
 
 
-## wallet-passphrase
+## unlock-wallet
 
 > Example Request
 
 ```shell
-curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "wallet-passphrase", "params":{"passphrase":"example","timeout":600}}' -H 'content-type:text/plain;' http://localhost:8089/v2
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet", "params":{"passphrase":"example","timeout":300}}' -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
 ```json
 {
     "jsonrpc": "2.0",
     "id": 0,
-    "method": "wallet-passphrase",
+    "method": "unlock-wallet",
     "params": {
         "passphrase": "example",
         "timeout": 600
@@ -1891,23 +1891,35 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "wallet-passph
 }
 ```
 
-The *wallet-passphrase* API is used to decrypt and unlock an encrypted wallet database for a limited period of time. 
+The *unlock-wallet* API call is used to decrypt and unlock an encrypted wallet database for a limited period of time.
 
-When first running factom-wallet (i.e., when there is not a file "~/.factom/wallet/factom_wallet.db") start the wallet with `factom-walletd -walletencrypted="true" -passphrase="example"`.   You might want to run the command with a leading space to prevent writing the password to the commandline history.  The passphrase only needs to be specified the first time when being run.  After the wallet has been made, it should only be unlocked over the API/CLI to seperate the password from the wallet.
+It takes two parameters:
+- `passphrase` - the passphrase to read the wallet
+- `timeout` - number of seconds to keep the wallet unlocked for. This is limited to at most 1073741824 (2^30) seconds and any value greater than 1073741824 seconds will be set to 1073741824 seconds.
 
-If an unencrypted wallet already exists, it will give the error message:
+While the wallet is locked, the only accessible RPC API commands are `get-height`, `properties`, `transactions`, and `unlock-wallet`.
 
+<!-- TODO: move these next instructions elsewhere and then link to it from here -->
+
+To create a new encrypted wallet, run ` factom-walletd -encrypted -passphrase="example"`.  Alternatively, to bootstrap an encrypted wallet with a custom mnemonic seed, run ` factom-walletd -encrypted -passphrase="example" -m="yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"`.  The wallet can only be created if there is no existing wallet at the default paths already (i.e., there is not file at "~/.factom/wallet/factom_wallet.db" or "~/.factom/wallet/factom_wallet_encrypted.db")
+
+Note: it is highly reccommended that you run the command with a leading space to prevent writing the password to the commandline history. 
+
+If an unencrypted wallet already exists , it will give the error message:
 ```
 Encrypted Wallet option was selected, however an unencrypted wallet already exists.
-Remove the wallet file at '/home/user/.factom/wallet/factom_wallet.db' to launch factom-walletd with encryption. (Back it up before deleting!)
+Remove or rename the wallet file at '/home/sam/.factom/wallet/factom_wallet.db' to launch factom-walletd with encryption. (Back it up before deleting!)
 ```
 
-To test the configuration worked, use factom-cli. 
-- before unlocking, running `factom-cli backupwallet` should return `Internal error: encrypted database is locked`
-- unlock and decrypt the wallet for 1 hour `factom-cli walletpassphrase "example" 600`
--
+After the wallet has been created, it is automatically locked and can only be unlocked over the factom-walletd `unlock-wallet` RPC call or via the ` factom-cli unlockwallet "example" 300` (note the leading space again).
 
-To restore a mnemonic seed run `factom-walletd -walletpassword="example" -m="yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"`.  The mnemonic can only be imported when a wallet does not already exist.
+The passphrase is *only* given the first time that you run the encrypted wallet. The reason for this behavior is to minimize the number of times that the wallet passphrase is written on the command line of the machine that holds the encrypted database. After you've created the encrypted wallet with the first run, all subsequent runs (so long as you use the same database file) will be done with just `factom-walletd -encrypted` followed by the same methods of unlocking stated previously.
+
+To test that the configuration worked, use factom-cli:
+- before unlocking, running `factom-cli backupwallet` will return `Wallet is locked`
+- unlock and decrypt the wallet for 300 seconds (5 minutes) ` factom-cli walletpassphrase "example" 300`
+- running `factom-cli newecaddress` should return a newly generated address and calling `factom-cli backupwallet` will work as well (so long as the commands are issued within the above unlock period)
+- after the 5 minutes is up, running `factom-cli backupwallet` again will result in another `Wallet is locked`
 
 
 ## *Errors*
