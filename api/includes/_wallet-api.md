@@ -1757,6 +1757,43 @@ http://localhost:8089/v2
 The amount of data returned by this is so large, I couldn't get you a sample output as it froze my terminal window. It is strongly recommended to use other techniques to retrieve transactions; it is rarely the case to require EVERY transaction in the blockchain. If you are still determined to retrieve EVERY transaction in the blockchain, use other techniques such as using the 'range' method and specifically requesting for transactions between blocks X and Y, then incrementing your X's and Y's until you reach the latest block. This is much more manageable.
 
 
+## unlock-wallet
+
+> Example Request
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "unlock-wallet",
+	"params":{  
+		"passphrase":"opensesame",
+		"timeout":"18000000"
+	}
+}
+```
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet"},	"params":{"passphrase":"opensesame", "timeout":"18000000"}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+> Example Response
+
+```json-doc
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "result": {
+        "success": true,
+        "unlockeduntil": "1542062049"
+    }
+}
+```
+
+Unlocks this wallet for the amount of time specified in milliseconds by `timeout`. The maximum amount of time a wallet can be unlocked for is 2<sup>30</sup> milliseconds.
+This command will not work on wallets that aren't encrypted. If succesful, returns the expiration time of your access as a Unix timestamp.
+
 ## wallet-backup
 
 > Example Request
