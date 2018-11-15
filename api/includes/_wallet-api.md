@@ -532,7 +532,7 @@ Ensure all data given in the `entry` fields are encoded in hex. This includes th
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute",   "params": {"receiver-chainid": "string","destination-chainid": "string","attributes": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute",   "params": {"receiver-chainid": "string","destination-chainid": "string","attributes": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signerchainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -546,7 +546,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
     "destination-chainid": "string",
     "attributes": "string",
     "signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
-    "signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+    "signerchainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
     "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
     "force": "false"
   }
@@ -593,8 +593,8 @@ The Chain ID of the destination. Dream big.
 `attributes`
 The attribute you are attesting to.
 
-`signer-chainid`
-The `signer-chainid` leads to the Identity Chain of the signing party. 
+`signerchainid`
+The `signerchainid` leads to the Identity Chain of the signing party. 
 
 `signerkey`
 The `signerkey` should be the secret key of the lowest level key from the signer's Identity
@@ -607,7 +607,7 @@ The response you receive is similar to the [compose-entry](#compose-entry) respo
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute-endorsement", "params": {"destination-chainid": "string","entry-hash": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute-endorsement", "params": {"destination-chainid": "string","entry-hash": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signerchainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -620,7 +620,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
     "destination-chainid": "string",
     "entry-hash": "string",
     "signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
-    "signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+    "signerchainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
     "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
     "force": "false"
   }
@@ -664,8 +664,8 @@ This is the ID of the identity chain in question.
 `entry-hash`
 Sure, you need that too.
 
-`signer-chainid`
-The `signer-chainid` leads to the Identity Chain of the signing party. 
+`signerchainid`
+The `signerchainid` leads to the Identity Chain of the signing party. 
 
 `signerkey`
 The `signerkey` should be the secret key of the lowest level key from the signer's Identity
@@ -1138,12 +1138,12 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-addres
 
 Import Factoid and/or Entry Credit address secret keys into the wallet. If the wallet is encrypted, it must be unlocked prior to using this command.
 
-## import-identity-keys
+## import-identity-key
 
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identity-keys", "params":{"keys":[{"secret":"idsec2rWrfNTD1x9HPPesA3fz8dmMNZdjmSBULHx8VTXE1J4D9icmAK"},{"secret":"idsec1iuqCFoiEfSZ1rU2FNpa7oFY3Kc29hHxP1R2PDyacJQEA8iShB"}]}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identity-key", "params":{"keys":[{"secret":"idsec2rWrfNTD1x9HPPesA3fz8dmMNZdjmSBULHx8VTXE1J4D9icmAK"},{"secret":"idsec1iuqCFoiEfSZ1rU2FNpa7oFY3Kc29hHxP1R2PDyacJQEA8iShB"}]}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1151,7 +1151,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identi
 {
   "jsonrpc": "2.0",
   "id": 0,
-  "method": "import-identity-keys",
+  "method": "import-identity-key",
   "params": {
     "keys": [
       {
