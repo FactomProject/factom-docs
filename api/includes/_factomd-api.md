@@ -401,16 +401,45 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "current-minut
 
 ```json-doc
 {
-    "jsonrpc":"2.0",
-    "id":0,
-    "result":{
-        "Minute":0
+    "jsonrpc": "2.0",
+    "id": 0,
+    "result": {
+        "leaderheight": 4418,
+        "directoryblockheight": 4418,
+        "minute": 1,
+        "currentblockstarttime": 1535639576826240687,
+        "currentminutestarttime": 1535639590186099105,
+        "currenttime": 1535639593259007218,
+        "directoryblockinseconds": 100,
+        "stalldetected": false,
+        "faulttimeout": 120,
+        "roundtimeout": 30
     }
 }
 ```
 
 
-Get the current minute number for the open entry block.
+The *current-minute* API call returns: 
+
+* `leaderheight` returns the current block height.
+
+* `directoryblockheight` returns the last saved height.
+
+* `minute` returns the current minute number for the open entry block.
+
+* `currentblockstarttime` returns the start time for the current block.
+
+* `currentminutestarttime` returns the start time for the current minute.
+
+* `currenttime` returns the current nodes understanding of current time.
+
+* `directoryblockinseconds` returns the number of seconds per block.
+
+* `stalldetected` returns if factomd thinks it has stalled.
+
+* `faulttimeout` returns the number of seconds before leader node is faulted for failing to provide a necessary message.
+
+* `roundtimeout` returns the number of seconds between rounds of an election during a fault.
 
 ## dblock-by-height
 
@@ -1431,7 +1460,7 @@ The *multiple-ec-balances* API is used to query the acknowledged and saved balan
 
 * If the syntax of the parameters is off e.g. missing a quote, a comma, or a square bracket, it will return: {"jsonrpc":"2.0","id":null,"error":{"code":-32600,"message":"Invalid Request"}}
 
-* If parameters are labeled incorrectly the call will return:
+* If the parameters are labeled incorrectly the call will return:
 “{"code":-32602,"message":"Invalid params","data":"ERROR! Invalid params passed in, expected 'addresses'"}”
 
 * If factomd is not loaded up all the way to the last saved block it will return:
@@ -1490,7 +1519,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"multiple-fct-b
 }
 ```
 
-The *multiple-fct-balances* API is used to query the acknowledged and saved balances in factoshis (a factoshi is 10^8 factoids) not factoids(FCT) for a list of FCT addresses.
+The *multiple-fct-balances* API is used to query the acknowledged and saved balances in factoshis (a factoid is 10^8 factoshis) not factoids(FCT) for a list of FCT addresses.
 
 * `currentheight` is the current height that factomd was loading.
 * `lastsavedheight` is the height last saved to the database.
@@ -1510,9 +1539,9 @@ The *multiple-fct-balances* API is used to query the acknowledged and saved bala
 
 * If the list of addresses contains an incorrectly formatted address the call will return: {"currentheight":0,"lastsavedheight":0,"balances":[{"ack":0,"saved":0,"err":"Error decoding address"}]}
 
-* If an address in the list is valid but has never been part of a transaction you it will return: "balances":[{"ack":0,"saved":0,"err":"Address has not had a transaction"}]"
+* If an address in the list is valid but has never been part of a transaction it will return: "balances":[{"ack":0,"saved":0,"err":"Address has not had a transaction"}]"
 
-**Refering to the example request:**
+**Referring to the example request:**
 This Example is for simulation, these addresses may not work or have the same value for mainnet or testnet
 
 ## pending-entries
