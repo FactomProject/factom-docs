@@ -271,8 +271,10 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "configuration
 }
 ```
 
-Get the current configuration state from factomd.
-
+Get the current configuration state from factomd.conf.  
+  
+*NOTE:* If a tag is commented out, this call will return the default value for it.  
+E.g: In the Example Response "ExchangeRate" is set to "0". factomd.config default does not have an "ExchangeRate" tag. That is why it is set to "0". 
 ## process-list
 
 > Example Request

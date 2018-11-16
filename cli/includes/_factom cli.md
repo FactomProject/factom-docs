@@ -89,7 +89,7 @@ Returns information about a factoid transaction, or an entry / entry credit tran
 ###addchain
 
 ```shell 
-factom-cli addchain [-fq] [-n NAME1 -n NAME2 -h HEXNAME3 ] [-CET] /
+factom-cli addchain [-fq] [-n NAME1 -n NAME2 -h HEXNAME3 ] [-CET] \
 ECADDRESS <STDIN>
 ``` 
 
@@ -98,7 +98,7 @@ Create a new Factom Chain. Read data for the First Entry from stdin. Use the Ent
 ###addentry
 
 ```shell 
-factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] /
+factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] \
  [-e EXTID1 -e EXTID2 -x HEXEXTID ...] [-CET] ECADDRESS <STDIN>
 ```
 Create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
@@ -156,7 +156,7 @@ Buy entry credits
 ###composechain
 
 ```shell
-$ factom-cli composechain [-f] [-n NAME1 -n NAME2 -h HEXNAME3 ] /
+$ factom-cli composechain [-f] [-n NAME1 -n NAME2 -h HEXNAME3 ] \
 ECADDRESS <STDIN>
 ```
 Create API calls to create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
@@ -164,7 +164,7 @@ Create API calls to create a new Factom Chain. Read data for the First Entry fro
 ###composeentry
 
 ```shell
-$ factom-cli composeentry [-f] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] /
+$ factom-cli composeentry [-f] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] \
 [-e EXTID1 -e EXTID2 -x HEXEXTID ...] ECADDRESS <STDIN>
 ```
 Create API calls to create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
@@ -193,7 +193,7 @@ List the private addresses stored in the wallet
 ###get
 
 ```shell
-factom-cli get allentries|chainhead|dblock|eblock|entry|firstentry| /
+factom-cli get allentries|chainhead|dblock|eblock|entry|firstentry| \
 head|heights
 ```
 Get data about Factom Chains, Entries, and Blocks
@@ -393,3 +393,128 @@ Subtract the transaction fee from an output of a transaction in the wallet
  factom-cli unlockwallet [-v] "passphrase" <seconds-to-unlock>
 ```
 Unlock the wallet for some number of seconds; must be an encrypted wallet. -v verbose. (Note: it is reccommended that you run the command with a leading space to prevent writing the password to the commandline history.)
+
+###newidentitykey
+
+```shell
+factom-cli newidentitykey
+```
+Generates a new identity key in the wallet
+
+###importidentitykeys
+
+```shell
+factom-cli importidentitykeys SECKEY [SECKEY...]
+```
+Import one or more identity keys into the wallet from the specified idsec keys
+
+###exportidentitykeys
+
+```shell
+factom-cli exportidentitykeys
+```
+List the identity key pairs (public and private) stored in the wallet
+
+###listidentitykeys
+
+```shell
+factom-cli listidentitykeys
+```
+List the public identity keys stored in the wallet
+
+###rmidentitykey
+
+```shell
+factom-cli rmidentitykey PUBKEY
+```
+Removes the identity key pair from the wallet for the specified idpub key.
+
+###identity
+
+```shell
+factom-cli identity addchain|addkeyreplacement|addattribute|addattributeendorsement|composechain|composekeyreplacement|composeattribute|composeattributeendorsement|getkeysatheight
+```
+Used with subcommands to create/manage Factom Identity Chains, their currently valid keys, attributes, and attribute endorsements
+
+####addchain
+```shell
+factom-cli identity addchain [-fq] [-n NAME1 -n NAME2] \
+[-k PUBKEY1 -k PUBKEY2] [-CET] ECADDRESS
+```
+
+Create a new Identity Chain. Use the Entry Credits from the specified address.
+
+Using the optional output flags allows you to get back information about the newly created chain and the transaction that created it. Those flags are: `-C` ChainID. `-E` EntryHash. `-T` TxID.
+
+####addkeyreplacement
+```shell
+factom-cli identity addkeyreplacement [-fq] \
+ [-c CHAINID | -n NAME1 -n NAME2 ... -n NAMEN] \
+ --oldkey PUBKEY --newkey PUBKEY --signerkey PUBKEY ECADDRESS [-CET]
+```
+
+Create a new Identity Key Replacement Entry using the Entry Credits from the specified address. The oldkey is replaced by the newkey, and signerkey (same or higher priority as oldkey) authorizes the replacement.
+
+Using the optional output flags allows you to get back information about the newly created entry and the transaction that created it. Those flags are: `-C` ChainID. `-E` EntryHash. `-T` TxID.
+
+####addattribute
+```shell
+factom-cli identity addattribute [-fq] -c CHAINID \
+-creceiver CHAINID -csigner CHAINID -signerkey PUBKEY \
+-attribute ATTRIBUTE_JSON_ARRAY ECADDRESS [-CET]
+```
+
+Create a new Identity Attribute Entry using the Entry Credits from the specified address.
+
+Using the optional output flags allows you to get back information about the newly created entry and the transaction that created it. Those flags are: `-C` ChainID. `-E` EntryHash. `-T` TxID.
+
+####addattributeendorsement
+```shell
+factom-cli identity addattributeendorsement [-fq] -c CHAINID \
+-csigner CHAINID -signerkey PUBKEY -entryhash ENTRYHASH ECADDRESS [-CET]
+```
+
+Create a new Endorsement Entry for the Identity Attribute at the given entry hash. Uses the Entry Credits from the specified address.
+
+Using the optional output flags allows you to get back information about the newly created entry and the transaction that created it. Those flags are: `-C` ChainID. `-E` EntryHash. `-T` TxID.
+
+####composechain
+```shell
+factom-cli identity composechain [-f] [-n NAME1 -n NAME2] \
+[-k PUBKEY1 -k PUBKEY2] ECADDRESS
+```
+
+Create API calls to create a new Factom Identity Chain. Use the Entry Credits from the specified address.
+
+####composekeyreplacement
+```shell
+factom-cli identity composekeyreplacement [-f] \
+[-c CHAINID | -n NAME1 -n NAME2 ... -n NAMEN] \
+--oldkey PUBKEY --newkey PUBKEY --signerkey PUBKEY ECADDRESS
+```
+
+Create API calls to create a new Identity key replacement entry using the Entry Credits from the specified address. The oldkey is replaced by the newkey, and signerkey (same or higher priority as oldkey) authorizes the replacement.
+
+####composeattribute
+```shell
+factom-cli identity composeattribute [-f] -c CHAINID \
+-creceiver CHAINID -csigner CHAINID -signerkey PUBKEY \
+-attribute ATTRIBUTE_JSON_ARRAY ECADDRESS
+```
+
+Create API calls to create a new Identity Attribute Entry using the Entry Credits from the specified address.
+
+####composeattributeendorsement
+```shell
+factom-cli identity composeattributeendorsement [-f] \
+-c CHAINID -csigner CHAINID -signerkey PUBKEY -entryhash ENTRYHASH ECADDRESS
+```
+
+Compose API calls to create a new Endorsement Entry for the Identity Attribute at the given entry hash. Uses the Entry Credits from the specified address.
+
+####getkeysatheight
+```shell
+factom-cli identity getkeysatheight [-c CHAINID | -n NAME1 -n NAME2 ... -n NAMEN] HEIGHT
+```
+
+Gets the set of identity public keys that were valid for the given identity chain at the specified height.
