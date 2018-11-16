@@ -6,7 +6,7 @@ When you run factomd with TLS enabled, the calling program needs to specify the 
 
 >Example Request
 
-```shell
+```shell-doc
 `curl -X POST --cacert ~/.factom/m2/factomdAPIpub.cert --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}' \
 -H 'content-type:text/plain;' https://localhost:8088/v2`
 ```
@@ -17,7 +17,7 @@ When you run factomd with a password, it uses HTTP Basic Authentication. It is r
 
 >Example Request
 
-```shell
+```shell-doc
 `curl -X POST -u userHere:securePassHere --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2`
 ```
@@ -26,11 +26,48 @@ When you run factomd with a password, it uses HTTP Basic Authentication. It is r
 
 >Example Request
 
-```shell
+```shell-doc
 `curl -X POST -u userHere:securePassHere --cacert ~/.factom/m2/factomdAPIpub.cert \
 --data-binary '{"jsonrpc":"2.0","id":0,"method":"properties"}' \
 -H 'content-type:text/plain;' https://localhost:8088/v2`
 ```
+
+## Creating an Encrypted Wallet
+
+>New Wallet
+
+```shell-doc
+` factom-walletd -encrypted -passphrase="example"`
+```
+
+>Bootstrap Wallet
+
+```shell-doc
+` factom-walletd -encrypted -passphrase="example" \
+-m="yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"`
+```
+
+To create a new encrypted wallet, run ` factom-walletd -encrypted -passphrase="example"`.  Alternatively, to bootstrap an encrypted wallet with a custom mnemonic seed, run ` factom-walletd -encrypted -passphrase="example" -m="yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"`.  The wallet can only be created if there is no existing wallet at the default paths already (i.e., there is not file at "~/.factom/wallet/factom_wallet.db" or "~/.factom/wallet/factom_wallet_encrypted.db")
+
+<aside class="warning"><strong>Keep it secret... Keep it safe...</strong><br>
+It is highly reccommended that you run the create command with a leading space to prevent writing the password to the commandline history.
+</aside> 
+
+If an unencrypted wallet already exists , it will give the error message:
+```
+Encrypted Wallet option was selected, however an unencrypted wallet already exists.
+Remove or rename the wallet file at '/home/sam/.factom/wallet/factom_wallet.db' to launch factom-walletd with encryption. (Back it up before deleting!)
+```
+
+After the wallet has been created, it is automatically locked and can only be unlocked with the factom-walletd [`unlock-wallet`](#unlock-wallet) RPC call or via the [` factom-cli unlockwallet "example" 300`](../cli#unlockwallet) (note the leading space again).
+
+The passphrase is *only* given the first time that you run the encrypted wallet. The reason for this behavior is to minimize the number of times that the wallet passphrase is written on the command line of the machine that holds the encrypted database. After you've created the encrypted wallet with the first run, all subsequent runs (so long as you use the same database file) will be done with just `factom-walletd -encrypted` followed by the same methods of unlocking stated previously.
+
+To test that the configuration worked, use factom-cli:
+- before unlocking, running `factom-cli backupwallet` will return `Wallet is locked`
+- unlock and decrypt the wallet for 300 seconds (5 minutes) ` factom-cli walletpassphrase "example" 300`
+- running `factom-cli newecaddress` should return a newly generated address and calling `factom-cli backupwallet` will work as well (so long as the commands are issued within the above unlock period)
+- after the 5 minutes is up, running `factom-cli backupwallet` again will result in another `Wallet is locked`
 
 ## Creating Certificates
 
