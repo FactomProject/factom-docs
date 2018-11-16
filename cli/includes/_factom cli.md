@@ -387,6 +387,13 @@ factom-cli subtxfee TXNAME ADDRESS
 ```
 Subtract the transaction fee from an output of a transaction in the wallet
 
+###unlockwallet
+
+```shell
+ factom-cli unlockwallet [-v] "passphrase" <seconds-to-unlock>
+```
+Unlock the wallet for some number of seconds; must be an encrypted wallet. -v verbose. (Note: it is reccommended that you run the command with a leading space to prevent writing the password to the commandline history.)
+
 ###newidentitykey
 
 ```shell
@@ -511,4 +518,3 @@ factom-cli identity getkeysatheight [-c CHAINID | -n NAME1 -n NAME2 ... -n NAMEN
 ```
 
 Gets the set of identity public keys that were valid for the given identity chain at the specified height.
-
