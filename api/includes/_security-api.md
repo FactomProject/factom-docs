@@ -50,10 +50,10 @@ When you run factomd with a password, it uses HTTP Basic Authentication. It is r
 To create a new encrypted wallet, run ` factom-walletd -encrypted -passphrase="example"`.  Alternatively, to bootstrap an encrypted wallet with a custom mnemonic seed, run ` factom-walletd -encrypted -passphrase="example" -m="yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"`.  The wallet can only be created if there is no existing wallet at the default paths already (i.e., there is not file at "~/.factom/wallet/factom_wallet.db" or "~/.factom/wallet/factom_wallet_encrypted.db")
 
 <aside class="warning"><strong>Keep it secret... Keep it safe...</strong><br>
-It is highly reccommended that you run the create command with a leading space to prevent writing the password to the commandline history.
+It is highly recommended that you run the create command with a leading space to prevent writing the password to the command line history.
 </aside> 
 
-If an unencrypted wallet already exists , it will give the error message:
+If an unencrypted wallet already exists, it will give the error message:
 ```
 Encrypted Wallet option was selected, however an unencrypted wallet already exists.
 Remove or rename the wallet file at '/home/sam/.factom/wallet/factom_wallet.db' to launch factom-walletd with encryption. (Back it up before deleting!)

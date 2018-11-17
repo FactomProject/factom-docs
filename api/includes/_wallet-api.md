@@ -1505,7 +1505,7 @@ Lists all the current working transactions in the wallet. These are transactions
 
 ## transactions (Retrieving)
 
-This command allows you to retreive transactions made by this wallet. Since the transactions are public, this can be done even if a wallet is currently locked. There are a few ways to search for a transaction...
+This command allows you to retrieve transactions made by this wallet. Since the transactions are public, this can be done even if a wallet is currently locked. There are a few ways to search for a transaction...
 
 ### Using a Range
 
@@ -1767,15 +1767,15 @@ The amount of data returned by this is so large, I couldn't get you a sample out
     "jsonrpc": "2.0",
     "id": 0,
     "method": "unlock-wallet",
-	"params":{  
-		"passphrase":"opensesame",
-		"timeout":"18000000"
-	}
+    "params":{  
+        "passphrase":"opensesame",
+        "timeout":"18000000"
+    }
 }
 ```
 
 ```shell
-curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet"},	"params":{"passphrase":"opensesame", "timeout":"18000000"}' \
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet"},    "params":{"passphrase":"opensesame", "timeout":"18000000"}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1793,7 +1793,7 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet
 ```
 
 Unlocks this wallet for the amount of time specified in seconds by `timeout`. The maximum amount of time a wallet can be unlocked for is 2<sup>30</sup> seconds (Roughly 34 Years... Give or take a decade).
-This command will only work on wallets that are encrypted. If succesful, returns the expiration time of your access as a Unix timestamp.
+This command will only work on wallets that are encrypted. If successful, returns the expiration time of your access as a Unix timestamp.
 
 While the wallet is locked, the only accessible RPC API commands are `get-height`, `properties`, `transactions`, and `unlock-wallet`.
 

@@ -14,7 +14,7 @@ $ echo hello | factom-cli addchain -f -n moe -n larry \
  EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwexample
 ```
 
-The f flag, used with the addchain, addentry, buyec, composechain, composeentry, sendfct, sendtx, and signtx subcommands, tells factom-cli to continue on with processing without waiting for acknowledgment of the success of the subcommand to be generated. This can be useful for scripts where you can execute a long string of subcommands in a fraction of the time it would take if you had to wait for an acknowledgment of each command individually.
+The f flag, used with the `addchain`, `addentry`, `buyec`, `composechain`, `composeentry`, `sendfct`, `sendtx`, and `signtx` subcommands, tells factom-cli to continue on with processing without waiting for acknowledgment of the success of the subcommand to be generated. This can be useful for scripts where you can execute a long string of subcommands in a fraction of the time it would take if you had to wait for an acknowledgment of each command individually.
 
 ###-q
 
@@ -23,8 +23,8 @@ $ echo goodbye | factom-cli addentry -q -n moe -n larry -e curly \
  EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwexample
 ```
 
-The q flag specifies "quiet" execution of the addchain, addentry, addtxecoutput, addtxfee, 
-addtxinput, addtxoutput, buyec, newtx, sendfct, sendtx, signtx, and subtxfee subcommands. This means that no output will be returned back to the user. This again can be useful for scripts where there is no need for feedback from factom-cli.
+The q flag specifies "quiet" execution of the `addchain`, `addentry`, `addtxecoutput`, `addtxfee`, 
+`addtxinput`, `addtxoutput`, `buyec`, `newtx`, `sendfct`, `sendtx`, `signtx`, and `subtxfee` subcommands. This means that no output will be returned back to the user. This again can be useful for scripts where there is no need for feedback from factom-cli.
 
 ###-e -x
 
@@ -33,7 +33,7 @@ $ factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] \
 [-e EXTID1 -e EXTID2 -x HEXEXTID ...] [-CET] ECADDRESS <STDIN>
 ```
 
-The addentry subcommands support the -e and -x flags for adding external ids to the Entries they create. Multiple -e and -x flags may be used, and -e and -x may be used in combination. -e string will encode the string as binary and set it as the next external id. -x hexstring will decode the hexstring into binary and set it as the next external id.
+The `addentry` subcommands support the `-e` and `-x` flags for adding external ids to the Entries they create. Multiple `-e` and `-x` flags may be used, and -e and -x may be used in combination. `-e` string will encode the string as binary and set it as the next external id. `-x` hexstring will decode the hexstring into binary and set it as the next external id.
 
 ###-n -h
 
@@ -41,7 +41,7 @@ The addentry subcommands support the -e and -x flags for adding external ids to 
 $ factom-cli get chainhead -n test -h 3031
 ```
 
-The get firstentry, get chainhead, and get allentries subcommands support the -n and -h flags for using Chain Names as an alternative for providing a ChainID. The Chain Name is the combination of External IDs on the first Entry in the Chain.
+The `get firstentry`, `get chainhead`, and `get allentries` subcommands support the `-n` and `-h` flags for using Chain Names as an alternative for providing a ChainID. The Chain Name is the combination of External IDs on the first Entry in the Chain.
 
 ###-r
 
@@ -58,7 +58,7 @@ $ echo hello | factom-cli addchain -n moe -n larry -C \
  EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwexample
 ```
 
-The C flag, used with the addchain subcommand, limits the subcommand output to a single field, the ChainID with no headers. This means that a variable can be assigned to the value of the executed command directly.
+The C flag, used with the `addchain` subcommand, limits the subcommand output to a single field, the ChainID with no headers. This means that a variable can be assigned to the value of the executed command directly.
 
 ###-E
 
@@ -67,7 +67,7 @@ $ echo goodbye | factom-cli addentry -n moe -n larry -e curly -E \
  EC2DKSYyRcNWf7RS963VFYgMExoHRYLHVeCfQ9PGPmNzwexample
 ```
 
-The E flag, used with the addchain and addentry subcommands, limits the subcommand output to a single field, the Entry Hash with no headers. This means that a variable can be assigned to the value of the executed command directly.
+The E flag, used with the `addchain` and `addentry` subcommands, limits the subcommand output to a single field, the Entry Hash with no headers. This means that a variable can be assigned to the value of the executed command directly.
 
 ###-T
 
@@ -75,7 +75,7 @@ The E flag, used with the addchain and addentry subcommands, limits the subcomma
 $ factom-cli get pendingtransactions -T
 ```
 
-The T flag, used with the addchain, addentry, buyec, get pendingtransactions, listtxs address, listtxs subcommands, limits the subcommand output to a single field, the Entry Hash with no headers. This means that a variable can be assigned to the value of the executed command directly.
+The T flag, used with the `addchain`, `addentry`, `buyec`, `get pendingtransactions`, `listtxs address`, `listtxs` subcommands, limits the subcommand output to a single field, the Entry Hash with no headers. This means that a variable can be assigned to the value of the executed command directly.
 
 ## Commands
 
@@ -408,7 +408,7 @@ List transactions from the wallet or the Factoid Chain
 ```shell
 factom-cli listtxs address ECADDRESS|FCTADDRESS
 ```
-List transaction from the Factoid Chain with a specific address. This command will only list confirmed transactions.
+List the transaction from the Factoid Chain with a specific address. This command will only list confirmed transactions.
 
 ###listtxs [all]
 
@@ -534,4 +534,4 @@ Subtract the transaction fee from an output of a transaction in the wallet
 ```shell
  factom-cli unlockwallet [-v] "passphrase" <seconds-to-unlock>
 ```
-Unlock the wallet for some number of seconds; must be an encrypted wallet. -v verbose. (Note: it is reccommended that you run the command with a leading space to prevent writing the password to the commandline history.)
+Unlock the wallet for some number of seconds; must be an encrypted wallet. -v verbose. (Note: it is recommended that you run the command with a leading space to prevent writing the password to the command line history.)
