@@ -1764,13 +1764,13 @@ The amount of data returned by this is so large, I couldn't get you a sample out
 
 ```json
 {
-    "jsonrpc": "2.0",
-    "id": 0,
-    "method": "unlock-wallet",
-    "params":{  
-        "passphrase":"opensesame",
-        "timeout":"18000000"
-    }
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "unlock-wallet",
+  "params": {
+    "passphrase": "opensesame",
+    "timeout": "18000000"
+  }
 }
 ```
 
