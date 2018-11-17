@@ -532,7 +532,7 @@ Ensure all data given in the `entry` fields are encoded in hex. This includes th
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute",   "params": {"receiver-chainid": "string","destination-chainid": "string","attributes": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signerchainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute",   "params": {"receiver-chainid": "string","destination-chainid": "string","attributes": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -546,7 +546,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
     "destination-chainid": "string",
     "attributes": "string",
     "signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
-    "signerchainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+    "signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
     "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
     "force": "false"
   }
@@ -593,8 +593,8 @@ The Chain ID of the destination. Dream big.
 `attributes`
 The attribute you are attesting to.
 
-`signerchainid`
-The `signerchainid` leads to the Identity Chain of the signing party. 
+`signer-chainid`
+The `signer-chainid` leads to the Identity Chain of the signing party. 
 
 `signerkey`
 The `signerkey` should be the secret key of the lowest level key from the signer's Identity
@@ -607,7 +607,7 @@ The response you receive is similar to the [compose-entry](#compose-entry) respo
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute-endorsement", "params": {"destination-chainid": "string","entry-hash": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signerchainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute-endorsement", "params": {"destination-chainid": "string","entry-hash": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -620,7 +620,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
     "destination-chainid": "string",
     "entry-hash": "string",
     "signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
-    "signerchainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+    "signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
     "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
     "force": "false"
   }
@@ -664,8 +664,8 @@ This is the ID of the identity chain in question.
 `entry-hash`
 Sure, you need that too.
 
-`signerchainid`
-The `signerchainid` leads to the Identity Chain of the signing party. 
+`signer-chainid`
+The `signer-chainid` leads to the Identity Chain of the signing party. 
 
 `signerkey`
 The `signerkey` should be the secret key of the lowest level key from the signer's Identity
@@ -1139,12 +1139,12 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-addres
 
 Import Factoid and/or Entry Credit address secret keys into the wallet. If the wallet is encrypted, it must be unlocked prior to using this command.
 
-## import-identity-key
+## import-identity-keys
 
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identity-key", "params":{"keys":[{"secret":"idsec2rWrfNTD1x9HPPesA3fz8dmMNZdjmSBULHx8VTXE1J4D9icmAK"},{"secret":"idsec1iuqCFoiEfSZ1rU2FNpa7oFY3Kc29hHxP1R2PDyacJQEA8iShB"}]}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identity-keys", "params":{"keys":[{"secret":"idsec2rWrfNTD1x9HPPesA3fz8dmMNZdjmSBULHx8VTXE1J4D9icmAK"},{"secret":"idsec1iuqCFoiEfSZ1rU2FNpa7oFY3Kc29hHxP1R2PDyacJQEA8iShB"}]}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1152,7 +1152,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identi
 {
   "jsonrpc": "2.0",
   "id": 0,
-  "method": "import-identity-key",
+  "method": "import-identity-keys",
   "params": {
     "keys": [
       {
@@ -1505,7 +1505,7 @@ Lists all the current working transactions in the wallet. These are transactions
 
 ## transactions (Retrieving)
 
-This command allows you to retreive transactions made by this wallet. Since the transactions are public, this can be done even if a wallet is currently locked. There are a few ways to search for a transaction...
+This command allows you to retrieve transactions made by this wallet. Since the transactions are public, this can be done even if a wallet is currently locked. There are a few ways to search for a transaction...
 
 ### Using a Range
 
@@ -1767,15 +1767,15 @@ The amount of data returned by this is so large, I couldn't get you a sample out
     "jsonrpc": "2.0",
     "id": 0,
     "method": "unlock-wallet",
-	"params":{  
-		"passphrase":"opensesame",
-		"timeout":"18000000"
-	}
+    "params":{  
+        "passphrase":"opensesame",
+        "timeout":"18000000"
+    }
 }
 ```
 
 ```shell
-curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet"},	"params":{"passphrase":"opensesame", "timeout":"18000000"}' \
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet"},    "params":{"passphrase":"opensesame", "timeout":"18000000"}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1793,7 +1793,13 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet
 ```
 
 Unlocks this wallet for the amount of time specified in seconds by `timeout`. The maximum amount of time a wallet can be unlocked for is 2<sup>30</sup> seconds (Roughly 34 Years... Give or take a decade).
-This command will only work on wallets that are encrypted. If succesful, returns the expiration time of your access as a Unix timestamp.
+This command will only work on wallets that are encrypted. If successful, returns the expiration time of your access as a Unix timestamp.
+
+While the wallet is locked, the only accessible RPC API commands are `get-height`, `properties`, `transactions`, and `unlock-wallet`.
+
+<aside class="notice"><br>
+To see how to create a shiny new encrypted wallet, check the <a href="#creating-an-encrypted-wallet">securtity guide</a>.
+</aside> 
 
 ## wallet-backup
 
@@ -1896,70 +1902,6 @@ The *wallet-balances* API is used to query the acknowledged and saved balances f
 
 * `"fctaccountbalances"` are the total of all factoid account balances returned in factoshis. 
 * `"ecaccountbalances"` are the total of all entry credit account balances returned in entry credits.  
-
-
-## unlock-wallet
-
-> Example Request
-
-```shell
-curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet", "params":{"passphrase":"example","timeout":300}}' -H 'content-type:text/plain;' http://localhost:8089/v2
-```
-
-```json
-{
-    "jsonrpc": "2.0",
-    "id": 0,
-    "method": "unlock-wallet",
-    "params": {
-        "passphrase": "example",
-        "timeout": 600
-    }
-}
-```
-
-> Example Response
-
-```json-doc
-{
-    "jsonrpc": "2.0",
-    "id": 0,
-    "result": {
-        "success": true,
-        "unlockeduntil": 1445444940
-    }
-}
-```
-
-The *unlock-wallet* API call is used to decrypt and unlock an encrypted wallet database for a limited period of time.
-
-It takes two parameters:
-- `passphrase` - the passphrase to read the wallet
-- `timeout` - number of seconds to keep the wallet unlocked for. This is limited to at most 1073741824 (2^30) seconds and any value greater than 1073741824 seconds will be set to 1073741824 seconds.
-
-While the wallet is locked, the only accessible RPC API commands are `get-height`, `properties`, `transactions`, and `unlock-wallet`.
-
-<!-- TODO: move these next instructions elsewhere and then link to it from here -->
-
-To create a new encrypted wallet, run ` factom-walletd -encrypted -passphrase="example"`.  Alternatively, to bootstrap an encrypted wallet with a custom mnemonic seed, run ` factom-walletd -encrypted -passphrase="example" -m="yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow yellow"`.  The wallet can only be created if there is no existing wallet at the default paths already (i.e., there is not file at "~/.factom/wallet/factom_wallet.db" or "~/.factom/wallet/factom_wallet_encrypted.db")
-
-Note: it is highly reccommended that you run the command with a leading space to prevent writing the password to the commandline history. 
-
-If an unencrypted wallet already exists , it will give the error message:
-```
-Encrypted Wallet option was selected, however an unencrypted wallet already exists.
-Remove or rename the wallet file at '/home/sam/.factom/wallet/factom_wallet.db' to launch factom-walletd with encryption. (Back it up before deleting!)
-```
-
-After the wallet has been created, it is automatically locked and can only be unlocked over the factom-walletd `unlock-wallet` RPC call or via the ` factom-cli unlockwallet "example" 300` (note the leading space again).
-
-The passphrase is *only* given the first time that you run the encrypted wallet. The reason for this behavior is to minimize the number of times that the wallet passphrase is written on the command line of the machine that holds the encrypted database. After you've created the encrypted wallet with the first run, all subsequent runs (so long as you use the same database file) will be done with just `factom-walletd -encrypted` followed by the same methods of unlocking stated previously.
-
-To test that the configuration worked, use factom-cli:
-- before unlocking, running `factom-cli backupwallet` will return `Wallet is locked`
-- unlock and decrypt the wallet for 300 seconds (5 minutes) ` factom-cli walletpassphrase "example" 300`
-- running `factom-cli newecaddress` should return a newly generated address and calling `factom-cli backupwallet` will work as well (so long as the commands are issued within the above unlock period)
-- after the 5 minutes is up, running `factom-cli backupwallet` again will result in another `Wallet is locked`
 
 
 ## *Errors*
