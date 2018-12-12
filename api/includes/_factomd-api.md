@@ -505,6 +505,94 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 Retrieve a directory block given only its height.
 
+## diagnostics
+
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "diagnostics"}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "diagnostics"
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "name": "FNode0",
+    "id": "38bab1455b7bd7e5efd15c53c777c79d0c988e9210f1da49a99d95b3a6417be9",
+    "publickey": "cc1985cdfae4e32b5a454dfda8ce5e1361558482684f3367649c3ad852c8e31a",
+    "role": "Leader",
+    "leaderheight": 5,
+    "currentminute": 2,
+    "currentminuteduration": 5236113777,
+    "previousminuteduration": 802943416,
+    "balancehash": "90167ce2f5978248957a12b61213b31c77ab05191cfc668478cce01d399d33bd",
+    "tempbalancehash": "bd9a8cccffbd283a2fc7e1f2b7b26923d6bdb41df691cce6b95fe3487c1458a1",
+    "lastblockfromdbstate": false,
+    "syncing": {
+      "status": "Syncing EOMs",
+      "received": 2,
+      "expected": 3,
+      "missing": [
+        "38bab1455b7bd7e5efd15c53c777c79d0c988e9210f1da49a99d95b3a6417be9"
+      ]
+    },
+    "authset": {
+      "leaders": [
+        {
+          "id": "38bab1455b7bd7e5efd15c53c777c79d0c988e9210f1da49a99d95b3a6417be9",
+          "vm": 2,
+          "listheight": 3,
+          "listlength": 4,
+          "nextnil": 0
+        },
+        {
+          "id": "8888881570f89283f3a516b6e5ed240f43f5ad7cb05132378c4a006abe7c2b93",
+          "vm": 0,
+          "listheight": 3,
+          "listlength": 4,
+          "nextnil": 0
+        },
+        {
+          "id": "8888888da6ed14ec63e623cab6917c66b954b361d530770b3f5f5188f87f1738",
+          "vm": 1,
+          "listheight": 3,
+          "listlength": 3,
+          "nextnil": 0
+        }
+      ],
+      "audits": [
+        {
+          "id": "888888aeaac80d825ac9675cf3a6591916883bd9947e16ab752d39164d80a608",
+          "online": true
+        },
+        {
+          "id": "888888f0b7e308974afc34b2c7f703f25ed2699cb05f818e84e8745644896c55",
+          "online": true
+        }
+      ]
+    },
+    "elections": {
+      "inprogress": false
+    }
+  }
+}
+```
+
+Retrieve basic system information along with a description of the node's current perception of the network. This includes the node's role, the current leader block height, block minute, syncing status, authority set, currently running elections, and more.
+
 ## directory-block
 
 > Example Request
