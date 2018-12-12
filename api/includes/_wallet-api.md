@@ -532,7 +532,7 @@ Ensure all data given in the `entry` fields are encoded in hex. This includes th
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute",   "params": {"receiver-chainid": "string","destination-chainid": "string","attributes": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute", "params": {"receiver-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae", "destination-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae", "attributes": [{"key":"email","value":"hello@factom.com"}], "signerkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh", "signer-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae", "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4", "force": false}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -542,13 +542,13 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
   "id": 0,
   "method": "compose-identity-attribute",
   "params": {
-    "receiver-chainid": "string",
-    "destination-chainid": "string",
-    "attributes": "string",
-    "signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
-    "signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
-    "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
-    "force": "false"
+	"receiver-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+	"destination-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+	"attributes": [{"key":"email","value":"hello@factom.com"}],
+	"signerkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh",
+	"signer-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+    "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4",
+    "force": false
   }
 }
 ```
@@ -564,7 +564,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
       "jsonrpc": "2.0",
       "id": 2947,
       "params": {
-        "message": "00015a9177f43d5df6e0e2761359d30a8275058e299fcc0381534545f55cf43e41983f5d4c9456abc6ea48b1287d0e5f2cf64798647221842e46b37e920cfaea62723c15195c320a9c707c2dfe35d43a21255c51012dae80cefbb14cf6571b6e195f5365bac7d30b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29e84f101bcf1d3a8ca45ad5c1a0ab3cf8ab935a2ad4f75914a0fb08e267facd9540cefe6833f3ea0295c3c2035bcd42a94e26477f096474b05e67538a34945a09"
+        "message": "000166a2a21adec1891faa2cf5551dd93134639a77b000d598ab86c18efcd2d436119bfbb1ae4b0168abdd047316bdae088db51bf446fdeafd4b61792fb4d4d167d09f38a5ad3d14cfd19ff00159e7cbd56e3e309610f0c3664366fe32ded21da3e0489dce4ee4134e9fa82c579b71b353c53d8868f7b6949b92aa81e4ab5dceeed8e2f14c5b4500"
       },
       "method": "commit-entry"
     },
@@ -572,7 +572,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
       "jsonrpc": "2.0",
       "id": 2948,
       "params": {
-        "entry": "22927282de49c4f6d19e9b2a9fa9b70a7edf96df3430b336553c1dca21ed8d0b"
+        "entry": "003b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae011200114964656e7469747941747472696275746500403362363964616265323263303134616639613962633964666137393137636534363032613033353739353937646466313834643864653536373032353132616500405391eb6024c14e5e0678dcac53f977f83811b471966d28d381314f7d46b72f8eba34cabd37051b7e26b46fdd3726c318d3800d874fd371da487f85e3921ede0100376964707562326377344e53344a5a6f775854776847656f327454474e766e6a63356e3251764842555264765646434b5244754c456e42680040336236396461626532326330313461663961396263396466613739313763653436303261303335373935393764646631383464386465353637303235313261655b7b226b6579223a22656d61696c222c2276616c7565223a2268656c6c6f40666163746f6d2e636f6d227d5d"
       },
       "method": "reveal-entry"
     }
@@ -580,24 +580,19 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
 }
 ```
 
-You can use this method help you replace one of the keys of an identity. This will need to be done if you feel that the key is compromised or have been in use for too long. Replacing a key is done by adding a structured entry on to the identity's Factom chain. The `compose-identity-key-replacement` method will return the API calls needed to create that entry.  If the wallet is encrypted, it must be unlocked prior to using this command.
+This request allows one identity to state an attribute about another identity and publish that entry to any existing chain. An attribute is a set of generic key:value pairs that can be assigned to an identity, and is flexible enough to accommodate many different use-cases. In the example request, an identity is giving itself an attribute describing its current email address, and writing that entry to its own identity chain.  Each attribute must be in the format of `{"key":KEY, "value":VALUE}` where KEY and VALUE can be of any valid JSON type. Each attribute you wish to assign must be put into an array, even if it is just a single key/value pair. For example: `[{"key":"worksAt", "value":"Factom Inc."}, {"key":"isNice", "value":true}]` would be a valid attributes array to use as a parameter. If the wallet is encrypted, it must be unlocked prior to using this command.
 
 The entry will be constructed based on the information you included in the request. 
 
-`receiver-chainid`
-This is the Chain ID for the identity receiving the endorsement.
+- `receiver-chainid` - the Chain ID for the identity being assigned the attribute
 
-`destination-chainid`
-The Chain ID of the destination. Dream big.
+- `destination-chainid` - the Chain ID where the attribute entry will be written. Could be any existing chain, dream big.
 
-`attributes`
-The attribute you are attesting to.
+- `attributes` - the array of attributes that you are assigning to the receiver
 
-`signer-chainid`
-The `signer-chainid` leads to the Identity Chain of the signing party. 
+- `signerkey` - the public identity key being used to sign the entry. Must be stored in the wallet already and should be a currently valid key for the signer identity.
 
-`signerkey`
-The `signerkey` should be the secret key of the lowest level key from the signer's Identity
+- `signer-chainid` - the Identity Chain of the signing party (who is giving the attribute)
 
 The response you receive is similar to the [compose-entry](#compose-entry) response. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) API calls. To be safe, wait a few seconds after calling commit.
 
@@ -656,19 +651,17 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
 
 This method helps you endorse an attribute that has already been registered on the Factom blockchain. To do this, you'll need to create a structured entry on to the Identity chain. The `compose-identity-attribute-endorsement` method will return the API calls needed to create that entry. If the wallet is encrypted, it must be unlocked prior to using this command.
 
-The entry will be constructed based on the information you included in the request. 
+An "endorsement" is a statement that one identity agrees with / recognizes / co-signs an attribute that has been given to another identity. In the example request, we created an endorsement entry that points to the email attribute entry we gave in the previous section. Depending on the application context this could mean different things. One such use-case would be to reconfirm that the attribute is still valid, and that email address is still correct at present. Just like attributes, endorsements are very generic so that they can be used in a variety of ways.
 
-`destination-chainid`
-This is the ID of the identity chain in question.
+The entry will be constructed based on the information you included in the request:
 
-`entry-hash`
-Sure, you need that too.
+- `destination-chainid` - the Chain ID where the attribute entry will be written. Could be any existing chain, dream big.
 
-`signer-chainid`
-The `signer-chainid` leads to the Identity Chain of the signing party. 
+- `entry-hash` - the entry hash of the attribute that will be endorsed
 
-`signerkey`
-The `signerkey` should be the secret key of the lowest level key from the signer's Identity
+- `signerkey` - the public identity key being used to sign the entry. Must be stored in the wallet already and should be a currently valid key for the signer identity.
+
+- `signer-chainid` - the Identity Chain of the signing party (who is endorsing the attribute located at `entry-hash`) 
 
 The response you receive is similar to the [compose-entry](#compose-entry) response. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) API calls. To be safe, wait a few seconds after calling commit.
 
@@ -677,7 +670,7 @@ The response you receive is similar to the [compose-entry](#compose-entry) respo
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-chain", "params": {"name":["Factom","Test","Identity"],"pubkeys": ["E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54","BDA798F34A9FF3F103380436D540BD5FCCFD6D00BA1CDDA0F6A27D3A58E471B3","ECA4BD2B2E4026F75D26AE8B96E321845CB0C691BD205F933E07DCA80B7DC86C"],"ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-chain", "params": {"name":["Factom","Test","Identity"], "pubkeys": ["idpub2k8zGYQUfekxehyUKeqPw6QPiJ5hkV3bbc9JBgL7GNrEiqMpQX","idpub3fXRj21gXveTk6RKYrpJniWV2pAanQktekEt62yhJUQXyPdvwL","idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w"], "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4", "force": false}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -689,16 +682,16 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
   "params": {
     "name": [
       "Factom",
-      "Inc"
+      "Test",
+      "Identity"
     ],
     "pubkeys": [
-      "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
-      "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54",
-      "BDA798F34A9FF3F103380436D540BD5FCCFD6D00BA1CDDA0F6A27D3A58E471B3",
-      "ECA4BD2B2E4026F75D26AE8B96E321845CB0C691BD205F933E07DCA80B7DC86C"
+      "idpub2k8zGYQUfekxehyUKeqPw6QPiJ5hkV3bbc9JBgL7GNrEiqMpQX",
+      "idpub3fXRj21gXveTk6RKYrpJniWV2pAanQktekEt62yhJUQXyPdvwL",
+      "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w"
     ],
-    "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
-    "force": "false"
+    "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4",
+    "force": false
   }
 }
 ```
@@ -714,7 +707,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
       "jsonrpc": "2.0",
       "id": 2944,
       "params": {
-        "message": "00015a9177f43d5df6e0e2761359d30a8275058e299fcc0381534545f55cf43e41983f5d4c9456abc6ea48b1287d0e5f2cf64798647221842e46b37e920cfaea62723c15195c320a9c707c2dfe35d43a21255c51012dae80cefbb14cf6571b6e195f5365bac7d30b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29e84f101bcf1d3a8ca45ad5c1a0ab3cf8ab935a2ad4f75914a0fb08e267facd9540cefe6833f3ea0295c3c2035bcd42a94e26477f096474b05e67538a34945a09"
+        "message": "000166a25437f43d649a2896dcf342bf9a5cdf5ca7bfa4d54a06bc2c803dbb71934dbddf6004615594d0f413466a329f9d6b59e258e88c29b0612994a9fecac84d3102b74be780d309c8638ae88899a0c3971324797095ce712add73088d4d971ce4c1684646b80b68abdd047316bdae088db51bf446fdeafd4b61792fb4d4d167d09f38a5ad3d14a9b76caa1f4e769fccd8724fb5955f6dbe3f0e6a5600ae9e7ca01839be2dd998e88b1009708d34c68f6bc69f43405b877dacf0bed4553b692368e3efb10c6f07"
       },
       "method": "commit-chain"
     },
@@ -722,7 +715,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
       "jsonrpc": "2.0",
       "id": 2945,
       "params": {
-        "entry": "22927282de49c4f6d19e9b2a9fa9b70a7edf96df3430b336553c1dca21ed8d0b"
+        "entry": "003b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae00180006466163746f6d00045465737400084964656e746974797b226964656e746974792d76657273696f6e223a312c226b657973223a5b226964707562326b387a4759515566656b78656879554b65715077365150694a35686b5633626263394a42674c37474e724569714d705158222c226964707562336658526a323167587665546b36524b5972704a6e695756327041616e516b74656b4574363279684a55515879506476774c222c226964707562324755315063617832506962483868485a673538664b5269534a4b5157516b57596b706d74375648316a4358426771703977225d7d"
       },
       "method": "reveal-chain"
     }
@@ -732,12 +725,14 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
 
 The `compose-identity-chain` method will return the appropriate API calls to create an identity chain in factom. The chain will be constructed based on the name and public keys that you send in the request. The response you receive is similar to the [compose-chain](#compose-chain) response. You must first call the [commit-chain](#commit-chain), then the [reveal-chain](#reveal-chain) API calls. To be safe, wait a few seconds after calling commit. If the wallet is encrypted, it must be unlocked prior to using this command.
 
+The chain to be created will contain the identity name as the ExtIDs of the first entry (a.k.a. the Chain Name) and also a json object in the Content field signifying the identity version and intial valid keys. This first set of keys are listed in order of decreasing priority. The first key is a "master" key of sorts that should be kept as securely as possible and used infrequently — it is the only key that can transfer complete ownership of an identity. The last key in the array is the lowest priority, meaning that it can be kept in less secure locations and used more frequently. A higher priority key can always just replace a lower priority key that was compromised or simply lost. For more information on key replacements, see the [compose-identity-key-replacement](#compose-identity-key-replacement) section.
+
 ## compose-identity-key-replacement
 
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-key-replacement", "params": {"chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","oldkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","newkey": "86E30A28F45D91A205185576854A31620D8D705945ACB83BC0EDFA325228B9FD","signerkey": "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-key-replacement", "params": {"chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae", "oldkey": "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w", "newkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh", "signerkey": "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w", "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4","force": false}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -747,12 +742,12 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
   "id": 0,
   "method": "compose-identity-key-replacement",
   "params": {
-    "chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
-    "oldkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
-    "newkey": "86E30A28F45D91A205185576854A31620D8D705945ACB83BC0EDFA325228B9FD",
-    "signerkey": "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54",
-    "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
-    "force": "false"
+    "chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+    "oldkey": "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w",
+    "newkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh",
+    "signerkey": "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w",
+    "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4",
+    "force": false
   }
 }
 ```
@@ -768,7 +763,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
       "jsonrpc": "2.0",
       "id": 2947,
       "params": {
-        "message": "00015a9177f43d5df6e0e2761359d30a8275058e299fcc0381534545f55cf43e41983f5d4c9456abc6ea48b1287d0e5f2cf64798647221842e46b37e920cfaea62723c15195c320a9c707c2dfe35d43a21255c51012dae80cefbb14cf6571b6e195f5365bac7d30b3b6a27bcceb6a42d62a3a8d02a6f0d73653215771de243a63ac048a18b59da29e84f101bcf1d3a8ca45ad5c1a0ab3cf8ab935a2ad4f75914a0fb08e267facd9540cefe6833f3ea0295c3c2035bcd42a94e26477f096474b05e67538a34945a09"
+        "message": "000166a287a1188512f61e16dd9c90200cf2e2da58cb94b091a8a3cc52dc605fe6a95ec079ada20168abdd047316bdae088db51bf446fdeafd4b61792fb4d4d167d09f38a5ad3d14f796fd9e35bc3cff5f9b15b64fe48ad45532a3c490d07815f150c281478c87e85d8f3e8f8d926fe53eb15b706f85b1fef4f8e595ad83f43d0bf906ab237e1b06"
       },
       "method": "commit-entry"
     },
@@ -776,7 +771,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
       "jsonrpc": "2.0",
       "id": 2948,
       "params": {
-        "entry": "22927282de49c4f6d19e9b2a9fa9b70a7edf96df3430b336553c1dca21ed8d0b"
+        "entry": "003b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae00f9000a5265706c6163654b657900376964707562324755315063617832506962483868485a673538664b5269534a4b5157516b57596b706d74375648316a435842677170397700376964707562326377344e53344a5a6f775854776847656f327454474e766e6a63356e3251764842555264765646434b5244754c456e426800409fe26bf14754a65a1cb19ce97edae87b3639589188073c639b465df44f919a17595e25f5d346b208d056b89805c34c18680b46f2d40c2e43dc20abe14afe1e0300376964707562324755315063617832506962483868485a673538664b5269534a4b5157516b57596b706d74375648316a4358426771703977"
       },
       "method": "reveal-entry"
     }
@@ -784,23 +779,17 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
 }
 ```
 
-You can use this method help you replace one of the keys of an identity. This will need to be done if you feel that the key is compromised or have been in use for too long. Replacing a key is done by adding a structured entry onto the identity's Factom chain. The `compose-identity-key-replacement` method will return the API calls needed to create that entry. If the wallet is encrypted, it must be unlocked prior to using this command.
+Replacing one of an identity's keys is done by adding a structured entry onto the identity's chain. This will need to be done if you feel that a key was compromised or has been in use for too long. The `compose-identity-key-replacement` method will return the API calls needed to create the replacement entry. The response you receive is similar to the [compose-entry](#compose-entry) response. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) API calls. To be safe, wait a few seconds after calling commit. If the wallet is encrypted, it must be unlocked prior to using this command.
 
 The entry will be constructed based on the information you included in the request. 
 
-`chain_id`
-This is the ID of the identity chain in question.
+- `chainid` - the ChainID of the identity chain in question
 
-`oldkey`
-The `oldkey` is the private key for the level to be replaced.
+- `oldkey` - the public identity key for the level to be replaced
 
-`newkey`
-The `newkey` is the key that will be replacing it. 
+- `newkey` - the public identity key that will be replacing `oldkey`
 
-`signerkey`
-The `signerkey` is a private key that must be from the level directly above the `oldkey` in the Identity Chain.
-
-The response you receive is similar to the [compose-entry](#compose-entry) response. You must first call the [commit-entry](#commit-entry), then the [reveal-entry](#reveal-entry) API calls. To be safe, wait a few seconds after calling commit.
+- `signerkey` - the public identity key that will sign the entry and authorize the replacement. This key must be stored in the wallet already and must be of the same or higher priority than the `oldkey` in the context of the given Identity Chain. 
 
 ## compose-transaction
 
@@ -1052,7 +1041,7 @@ Given an identity public key as input, this command will respond with the corres
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys-at-height", "params": {"chainid":"2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",    "height": "121393"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys-at-height", "params": {"chainid":"3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",	"height": 163419}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1062,8 +1051,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys
   "id": 0,
   "method": "identity-keys-at-height",
   "params": {
-    "chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
-    "height": "121393"
+	"chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+	"height": 163419
   }
 }
 ```
@@ -1075,19 +1064,22 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys
   "jsonrpc": "2.0",
   "id": 0,
   "result": {
-    "chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
-    "height": "121393",
+    "chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+    "height": 163419,
     "keys": [
-      "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
-      "916782D56AC554826534746D37635A3739E17738D114EF4FF98FAAC610817D54",
-      "BDA798F34A9FF3F103380436D540BD5FCCFD6D00BA1CDDA0F6A27D3A58E471B3",
-      "ECA4BD2B2E4026F75D26AE8B96E321845CB0C691BD205F933E07DCA80B7DC86C"
+      "idpub2k8zGYQUfekxehyUKeqPw6QPiJ5hkV3bbc9JBgL7GNrEiqMpQX",
+      "idpub3fXRj21gXveTk6RKYrpJniWV2pAanQktekEt62yhJUQXyPdvwL",
+      "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w"
     ]
   }
 }
 ```
 
-This command will return the valid public keys for an identity at a given point in time. This is useful for validating old data. Time is indicated by the block height of the Factom blockchain at the desired time. This will return a set of four public keys. If the wallet is encrypted, it must be unlocked prior to using this command.
+This command will return an identity's set of public keys (in order of decreasing priority) that were valid at a specific block height. This is useful for validating entries containing identity signatures (e.g. on identity attributes and endorsements), allowing you to tell if a given signature was created with a key that was valid at the time that the entry was published. Time is measured in directory blocks.
+
+As an example, lets say the identity at chain-id 3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae signs an entry using their level-3 key idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w, and publishes it to the blockchain at height 163420 and then replaces that key one block later at height 163421. Even though the key is no longer valid at the highest block height, we can tell that it was valid at the time that the signature was created, so we can still trust that the entry is authentic. However, if someone then published another entry signed with the key that was just replaced, we will be able to tell that the signer key is no longer valid and that the entry shouldn't be trusted.
+
+If the wallet is encrypted, it must be unlocked prior to using this command.
 
 ## import-addresses
 
