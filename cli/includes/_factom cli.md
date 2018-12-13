@@ -257,8 +257,23 @@ Get the latest completed directory block
 ### get heights
 
 ```shell
-factom-cli get heights
+$ factom-cli get heights [-DLBE]
+DirectoryBlockHeight: 10000
+LeaderHeight: 10001
+EntryBlockHeight: 10000
+EntryHeight: 10000
+
 ```
+
+Optional output flags will display only specific information used for scripting
+- **-D** display only the DirectoryBlock height
+
+- **-L** display only the Leader height
+
+- **-B** display only the EntryBlock height
+
+- **-E** display ontly the Entry height
+
 Get the current heights of various blocks in factomd
 
 ### identity
