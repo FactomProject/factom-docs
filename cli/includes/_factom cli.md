@@ -263,6 +263,9 @@ LeaderHeight: 10001
 EntryBlockHeight: 10000
 EntryHeight: 10000
 
+$ factom-cli get heights -D
+10000
+
 ```
 Get the current heights of various blocks in factomd
 
