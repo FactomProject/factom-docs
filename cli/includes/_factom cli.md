@@ -264,6 +264,7 @@ EntryBlockHeight: 10000
 EntryHeight: 10000
 
 ```
+Get the current heights of various blocks in factomd
 
 Optional output flags will display only specific information used for scripting
 **-D** display only the DirectoryBlock height
@@ -272,9 +273,7 @@ Optional output flags will display only specific information used for scripting
 
 **-B** display only the EntryBlock height
 
-**-E** display ontly the Entry height
-
-Get the current heights of various blocks in factomd
+**-E** display only the Entry height
 
 ### identity
 
