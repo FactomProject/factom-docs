@@ -13,6 +13,51 @@ They can be invoked as:
  An example of a request and a response are given in the right panel for each of the RPC Methods.
 
 
+## active-identity-keys
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "active-identity-keys", "params": {"chainid":"3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",	"height": 163419}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "active-identity-keys",
+  "params": {
+	"chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+	"height": 163419
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+    "height": 163419,
+    "keys": [
+      "idpub2k8zGYQUfekxehyUKeqPw6QPiJ5hkV3bbc9JBgL7GNrEiqMpQX",
+      "idpub3fXRj21gXveTk6RKYrpJniWV2pAanQktekEt62yhJUQXyPdvwL",
+      "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w"
+    ]
+  }
+}
+```
+
+This command will return an identity's set of public keys (in order of decreasing priority) that were active at a specific block, or at the most recent height if the `"height"` parameter is not included. This is useful for validating entries containing identity signatures (e.g. on identity attributes and endorsements), allowing you to tell if a given signature was created with a key that was valid at the time that the entry was published. Time is measured in directory blocks.
+
+As an example, lets say the identity at chain-id 3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae signs an entry using their level-3 key idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w, and publishes it to the blockchain at height 163420 and then replaces that key one block later at height 163421. Even though the key is no longer valid at the highest block height, we can tell that it was valid at the time that the signature was created, so we can still trust that the entry is authentic. However, if someone then published another entry signed with the key that was just replaced, we will be able to tell that the signer key is no longer valid and that the entry shouldn't be trusted.
+
+If the wallet is encrypted, it must be unlocked prior to using this command.
+
 ## add-ec-output
 
 > Example Request
@@ -1035,51 +1080,6 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-key"
 ```
 
 Given an identity public key as input, this command will respond with the corresponding public/private key pair from the wallet. If the desired identity key isn't currently stored in the wallet, an error is returned to indicate this. If the wallet is encrypted, it must be unlocked prior to using this command.
-
-## identity-keys-at-height
-
-> Example Request
-
-```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys-at-height", "params": {"chainid":"3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",	"height": 163419}}' \
--H 'content-type:text/plain;' http://localhost:8089/v2
-```
-
-```json
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "method": "identity-keys-at-height",
-  "params": {
-	"chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
-	"height": 163419
-  }
-}
-```
-
-> Example Response
-
-```json-doc
-{
-  "jsonrpc": "2.0",
-  "id": 0,
-  "result": {
-    "chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
-    "height": 163419,
-    "keys": [
-      "idpub2k8zGYQUfekxehyUKeqPw6QPiJ5hkV3bbc9JBgL7GNrEiqMpQX",
-      "idpub3fXRj21gXveTk6RKYrpJniWV2pAanQktekEt62yhJUQXyPdvwL",
-      "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w"
-    ]
-  }
-}
-```
-
-This command will return an identity's set of public keys (in order of decreasing priority) that were valid at a specific block height. This is useful for validating entries containing identity signatures (e.g. on identity attributes and endorsements), allowing you to tell if a given signature was created with a key that was valid at the time that the entry was published. Time is measured in directory blocks.
-
-As an example, lets say the identity at chain-id 3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae signs an entry using their level-3 key idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w, and publishes it to the blockchain at height 163420 and then replaces that key one block later at height 163421. Even though the key is no longer valid at the highest block height, we can tell that it was valid at the time that the signature was created, so we can still trust that the entry is authentic. However, if someone then published another entry signed with the key that was just replaced, we will be able to tell that the signer key is no longer valid and that the entry shouldn't be trusted.
-
-If the wallet is encrypted, it must be unlocked prior to using this command.
 
 ## import-addresses
 
