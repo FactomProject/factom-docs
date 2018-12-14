@@ -548,11 +548,11 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
   "id": 0,
   "method": "compose-identity-attribute",
   "params": {
-	"receiver-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
-	"destination-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
-	"attributes": [{"key":"email","value":"hello@factom.com"}],
-	"signerkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh",
-	"signer-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+    "receiver-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+    "destination-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+    "attributes": [{"key":"email","value":"hello@factom.com"}],
+    "signerkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh",
+    "signer-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
     "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4",
     "force": false
   }
@@ -586,7 +586,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
 }
 ```
 
-This request allows one identity to state an attribute about another identity and publish that entry to any existing chain. An attribute is a set of generic key:value pairs that can be assigned to an identity, and is flexible enough to accommodate many different use-cases. In the example request, an identity is giving itself an attribute describing its current email address, and writing that entry to its own identity chain.  Each attribute must be in the format of `{"key":KEY, "value":VALUE}` where KEY and VALUE can be of any valid JSON type. Each attribute you wish to assign must be put into an array, even if it is just a single key/value pair. For example: `[{"key":"worksAt", "value":"Factom Inc."}, {"key":"isNice", "value":true}]` would be a valid attributes array to use as a parameter. If the wallet is encrypted, it must be unlocked prior to using this command.
+This request allows one identity to state an attribute about another identity and publish that entry to any existing chain. An attribute is a set of generic key:value pairs that can be assigned to an identity and is flexible enough to accommodate many different use-cases. In the example request, an identity is giving itself an attribute describing its current email address, and writing that entry to its own identity chain.  Each attribute must be in the format of `{"key":KEY, "value":VALUE}` where KEY and VALUE can be of any valid JSON type. Each attribute you wish to assign must be put into an array, even if it is just a single key/value pair. For example: `[{"key":"worksAt", "value":"Factom Inc."}, {"key":"isNice", "value":true}]` would be a valid attributes array to use as a parameter. If the wallet is encrypted, it must be unlocked prior to using this command.
 
 The entry will be constructed based on the information you included in the request. 
 
@@ -662,7 +662,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
 
 This method helps you endorse an attribute that has already been registered on the Factom blockchain. To do this, you'll need to create a structured entry on to the Identity chain. The `compose-identity-attribute-endorsement` method will return the API calls needed to create that entry. If the wallet is encrypted, it must be unlocked prior to using this command.
 
-An "endorsement" is a statement that one identity agrees with / recognizes / co-signs an attribute that has been given to another identity. In the example request, we created an endorsement entry that points to the email attribute entry we gave in the previous section. Depending on the application context this could mean different things. One such use-case would be to reconfirm that the attribute is still valid, and that email address is still correct at present. Just like attributes, endorsements are very generic so that they can be used in a variety of ways.
+An "endorsement" is a statement that one identity agrees with, recognizes, or co-signs an attribute that has been given to another identity. In the example request, we created an endorsement entry that points to the email attribute entry we gave in the previous section. Depending on the application context this could mean different things. One such use-case would be to reconfirm that the attribute is still valid and that email address is still correct at present. Just like attributes, endorsements are very generic so that they can be used in a variety of ways.
 
 The entry will be constructed based on the information you included in the request:
 
@@ -739,7 +739,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
 
 The `compose-identity-chain` method will return the appropriate API calls to create an identity chain in factom. The chain will be constructed based on the name and public keys that you send in the request. The response you receive is similar to the [compose-chain](#compose-chain) response. You must first call the [commit-chain](#commit-chain), then the [reveal-chain](#reveal-chain) API calls. To be safe, wait a few seconds after calling commit. If the wallet is encrypted, it must be unlocked prior to using this command.
 
-The chain to be created will contain the identity name as the ExtIDs of the first entry (a.k.a. the Chain Name) and also a json object in the Content field signifying the identity version and intial valid keys. This first set of keys are listed in order of decreasing priority. The first key is a "master" key of sorts that should be kept as securely as possible and used infrequently — it is the only key that can transfer complete ownership of an identity. The last key in the array is the lowest priority, meaning that it can be kept in less secure locations and used more frequently. A higher priority key can always just replace a lower priority key that was compromised or simply lost. For more information on key replacements, see the [compose-identity-key-replacement](#compose-identity-key-replacement) section.
+The chain to be created will contain the identity name as the ExtIDs of the first entry (a.k.a. the Chain Name) and also a JSON object in the Content field signifying the identity version and initial valid keys. This first set of keys are listed in order of decreasing priority. The first key is a "master" key of sorts that should be kept as securely as possible and used infrequently — it is the only key that can transfer complete ownership of an identity. The last key in the array is the lowest priority, meaning that it can be kept in less secure locations and used more frequently. A higher priority key can always just replace a lower priority key that was compromised or simply lost. For more information on key replacements, see the [compose-identity-key-replacement](#compose-identity-key-replacement) section.
 
 ## compose-identity-key-replacement
 
@@ -1061,7 +1061,7 @@ Given an identity public key as input, this command will respond with the corres
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys-at-height", "params": {"chainid":"3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",	"height": 163419}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys-at-height", "params": {"chainid":"3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",    "height": 163419}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1071,8 +1071,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys
   "id": 0,
   "method": "identity-keys-at-height",
   "params": {
-	"chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
-	"height": 163419
+    "chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+    "height": 163419
   }
 }
 ```
@@ -1097,7 +1097,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-keys
 
 This command will return an identity's set of public keys (in order of decreasing priority) that were valid at a specific block height. This is useful for validating entries containing identity signatures (e.g. on identity attributes and endorsements), allowing you to tell if a given signature was created with a key that was valid at the time that the entry was published. Time is measured in directory blocks.
 
-As an example, lets say the identity at chain-id 3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae signs an entry using their level-3 key idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w, and publishes it to the blockchain at height 163420 and then replaces that key one block later at height 163421. Even though the key is no longer valid at the highest block height, we can tell that it was valid at the time that the signature was created, so we can still trust that the entry is authentic. However, if someone then published another entry signed with the key that was just replaced, we will be able to tell that the signer key is no longer valid and that the entry shouldn't be trusted.
+As an example, let's say the identity at chain-id 3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae signs an entry using their level-3 key idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w, and publishes it to the blockchain at height 163420 and then replaces that key one block later at height 163421. Even though the key is no longer valid at the highest block height, we can tell that it was valid at the time that the signature was created, so we can still trust that the entry is authentic. However, if someone then published another entry signed with the key that was just replaced, we will be able to tell that the signer key is no longer valid and that the entry shouldn't be trusted.
 
 If the wallet is encrypted, it must be unlocked prior to using this command.
 
