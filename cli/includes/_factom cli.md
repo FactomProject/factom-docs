@@ -283,7 +283,7 @@ Optional output flags will display only specific information used for scripting
 ```shell
 factom-cli identity addchain|addkeyreplacement|addattribute| \
 addattributeendorsement|composechain|composekeyreplacement| \
-composeattribute|composeattributeendorsement|getkeysatheight
+composeattribute|composeattributeendorsement|getactivekeys|getactivekeysatheight
 ```
 Used with subcommands to create/manage Factom Identity Chains, their currently valid keys, attributes, and attribute endorsements
 
@@ -371,12 +371,19 @@ factom-cli identity composeattributeendorsement [-f] \
 
 Compose API calls to create a new Endorsement Entry for the Identity Attribute at the given entry hash. Uses the Entry Credits from the specified address.
 
-### identity getkeysatheight
+### identity getactivekeys
 ```shell
-factom-cli identity getkeysatheight [-c CHAINID | -n NAME1 -n NAME2 ... -n NAMEN] HEIGHT
+factom-cli identity getactivekeys [-c CHAINID | -n NAME1 -n NAME2 ... -n NAMEN]
 ```
 
-Gets the set of identity public keys that were valid for the given identity chain at the specified height.
+Gets the set of identity public keys that are active for the given identity chain at the highest known block height.
+
+### identity getactivekeysatheight
+```shell
+factom-cli identity getactivekeysatheight [-c CHAINID | -n NAME1 -n NAME2 ... -n NAMEN] HEIGHT
+```
+
+Gets the set of identity public keys that were active for the given identity chain at the specified block height.
 
 ### importaddress
 
