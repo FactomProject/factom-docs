@@ -532,7 +532,13 @@ Ensure all data given in the `entry` fields are encoded in hex. This includes th
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute", "params": {"receiver-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae", "destination-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae", "attributes": [{"key":"email","value":"hello@factom.com"}], "signerkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh", "signer-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae", "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4", "force": false}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute",
+"params": {"receiver-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+"destination-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+"attributes": [{"key":"email","value":"hello@factom.com"}],
+"signerkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh",
+"signer-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+"ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4", "force": false}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -602,7 +608,12 @@ The response you receive is similar to the [compose-entry](#compose-entry) respo
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute-endorsement", "params": {"destination-chainid": "string","entry-hash": "string","signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C","signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C","ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80","force": "false"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-attribute-endorsement",
+"params": {"destination-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+"entry-hash": "c07f1d89bb6c43e7e3166b9e53672110ff8077c367758fbe4265561c8b91e675",
+"signerkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh",
+"signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
+"ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4","force": "false"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -612,11 +623,11 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-ident
   "id": 0,
   "method": "compose-identity-attribute-endorsement",
   "params": {
-    "destination-chainid": "string",
-    "entry-hash": "string",
-    "signerkey": "E53DE57E2F3AA5244237B2E490DBAB9E7864E506137AE87DFB47247A5FEFAB9C",
+    "destination-chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+    "entry-hash": "c07f1d89bb6c43e7e3166b9e53672110ff8077c367758fbe4265561c8b91e675",
+    "signerkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh",
     "signer-chainid": "2321663B3B8A09CB4E701B84DEE49ABCE3C9D3EFDE867A9875E536D5ECEB653C",
-    "ecpub": "564B030BB8FD5C22D1305EFB616F94043C66BC82C06ACD1B84F6AB5021A93A80",
+    "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4",
     "force": "false"
   }
 }
@@ -670,7 +681,10 @@ The response you receive is similar to the [compose-entry](#compose-entry) respo
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-chain", "params": {"name":["Factom","Test","Identity"], "pubkeys": ["idpub2k8zGYQUfekxehyUKeqPw6QPiJ5hkV3bbc9JBgL7GNrEiqMpQX","idpub3fXRj21gXveTk6RKYrpJniWV2pAanQktekEt62yhJUQXyPdvwL","idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w"], "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4", "force": false}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-chain", 
+"params": {"name":["Factom","Test","Identity"], "pubkeys": ["idpub2k8zGYQUfekxehyUKeqPw6QPiJ5hkV3bbc9JBgL7GNrEiqMpQX",
+"idpub3fXRj21gXveTk6RKYrpJniWV2pAanQktekEt62yhJUQXyPdvwL","idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w"],
+"ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4", "force": false}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -732,7 +746,12 @@ The chain to be created will contain the identity name as the ExtIDs of the firs
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-key-replacement", "params": {"chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae", "oldkey": "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w", "newkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh", "signerkey": "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w", "ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4","force": false}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "compose-identity-key-replacement",
+"params": {"chainid": "3b69dabe22c014af9a9bc9dfa7917ce4602a03579597ddf184d8de56702512ae",
+"oldkey": "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w",
+"newkey": "idpub2cw4NS4JZowXTwhGeo2tTGNvnjc5n2QvHBURdvVFCKRDuLEnBh",
+"signerkey": "idpub2GU1Pcax2PibH8hHZg58fKRiSJKQWQkWYkpmt7VH1jCXBgqp9w",
+"ecpub": "EC2ZFTmTv5Fs7UyKZzxY8km4jF635VkhR5KKBMzNP4BK4fPKaVw4","force": false}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1006,7 +1025,8 @@ Get the current hight of blocks that have been cached by the wallet while syncin
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-key", "params":{"public":"idpub1y3Z1viJE3zTHDPYDgypJehEGY5BfZaHDkoSUeRvxdkH2SWWVr"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "identity-key",
+"params":{"public":"idpub1y3Z1viJE3zTHDPYDgypJehEGY5BfZaHDkoSUeRvxdkH2SWWVr"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1136,7 +1156,9 @@ Import Factoid and/or Entry Credit address secret keys into the wallet. If the w
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identity-keys", "params":{"keys":[{"secret":"idsec2rWrfNTD1x9HPPesA3fz8dmMNZdjmSBULHx8VTXE1J4D9icmAK"},{"secret":"idsec1iuqCFoiEfSZ1rU2FNpa7oFY3Kc29hHxP1R2PDyacJQEA8iShB"}]}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "import-identity-keys",
+"params":{"keys":[{"secret":"idsec2rWrfNTD1x9HPPesA3fz8dmMNZdjmSBULHx8VTXE1J4D9icmAK"},
+{"secret":"idsec1iuqCFoiEfSZ1rU2FNpa7oFY3Kc29hHxP1R2PDyacJQEA8iShB"}]}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1299,7 +1321,8 @@ Retrieve current properties of factom-walletd, including the wallet and wallet A
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-identity-key", "params":{"public": "idpub26PEBWuumVp19yUSpfGJ2HPrTrU7hgw5empU7FPiTHdCKoy5Ao"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-identity-key",
+"params":{"public": "idpub26PEBWuumVp19yUSpfGJ2HPrTrU7hgw5empU7FPiTHdCKoy5Ao"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
