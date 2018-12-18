@@ -1316,6 +1316,41 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "properties"}'
 
 Retrieve current properties of factom-walletd, including the wallet and wallet API versions. You can check the properties of a wallet even if it's currently locked.
 
+
+## remove-address
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-address", "params":{"address": "EC3geo9QBmA1UGiwDApHHxoNQu5Xkc9rdBsk1XqPJP4ycDUGpooX"}}' \
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "remove-address",
+  "params": {
+    "address": "EC3geo9QBmA1UGiwDApHHxoNQu5Xkc9rdBsk1XqPJP4ycDUGpooX"
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "result": {
+      "success": "true"
+    }
+}
+```
+
+**Be careful using this function! Ensure that you have backups of important keys before removing them.** Given a factoid or entry-credit address, this command deletes the corresponding key pair from the wallet. Once executed, the user will no longer be able to retrieve the private key or make transactions with the address from this wallet. If the wallet is encrypted, it must be unlocked prior to using this command.
+
 ## remove-identity-key
 
 > Example Request
@@ -1349,7 +1384,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-identi
 }
 ```
 
-Given an identity public key, this command deletes the corresponding identity key pair from the wallet. Once executed, the user will no longer be able to retrieve that key pair or sign attributes/endorsements with the key pair from this wallet. If the wallet is encrypted, it must be unlocked prior to using this command.
+**Be careful using this function! Ensure that you have backups of important keys before removing them.** Given an identity public key, this command deletes the corresponding identity key pair from the wallet. Once executed, the user will no longer be able to retrieve that key pair or sign attributes/endorsements with the key pair from this wallet. If the wallet is encrypted, it must be unlocked prior to using this command.
 
 ## sign-transaction
 
