@@ -1322,7 +1322,8 @@ Retrieve current properties of factom-walletd, including the wallet and wallet A
 > Example Request
 
 ```shell
-curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-address", "params":{"address": "EC3geo9QBmA1UGiwDApHHxoNQu5Xkc9rdBsk1XqPJP4ycDUGpooX"}}' \
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-address",
+"params":{"address": "EC3geo9QBmA1UGiwDApHHxoNQu5Xkc9rdBsk1XqPJP4ycDUGpooX"}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
