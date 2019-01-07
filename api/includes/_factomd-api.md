@@ -535,6 +535,7 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "diagnostics"}
     "publickey": "cc1985cdfae4e32b5a454dfda8ce5e1361558482684f3367649c3ad852c8e31a",
     "role": "Leader",
     "leaderheight": 5,
+    "currentheight": 6,
     "currentminute": 2,
     "currentminuteduration": 5236113777,
     "previousminuteduration": 802943416,
@@ -597,7 +598,8 @@ Retrieve basic system information along with a description of the node's current
   * `id` - the node's identity chain ID
   * `publickey` - the current public key for the node
   * `role` - whether the node is a `"Follower"`, `"Leader"`, or `"Audit"`
-  * `leaderheight` - the block that this node thinks the leaders are currently building
+  * `leaderheight` - the highest known block that the network leaders have completed
+  * `currentheight` - the block that this node is currently processing (if fully synced, this is the block currently being built)
   * `currentminute` - the minute that this node is processing now
   * `currentminuteduration` - nanoseconds that the node has been on this minute
   * `previousminuteduration` - nanoseconds that the node spent on the previous minute
