@@ -537,8 +537,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "diagnostics"}
     "leaderheight": 5,
     "currentheight": 6,
     "currentminute": 2,
-    "currentminuteduration": 5236113777,
-    "previousminuteduration": 802943416,
+    "currentminuteduration": 3.227096189,
+    "previousminuteduration": 52.961842236,
     "balancehash": "90167ce2f5978248957a12b61213b31c77ab05191cfc668478cce01d399d33bd",
     "tempbalancehash": "bd9a8cccffbd283a2fc7e1f2b7b26923d6bdb41df691cce6b95fe3487c1458a1",
     "lastblockfromdbstate": false,
@@ -601,8 +601,8 @@ Retrieve basic system information along with a description of the node's current
   * `leaderheight` - the highest known block that the network leaders have completed
   * `currentheight` - the block that this node is currently processing (if fully synced, this is the block currently being built)
   * `currentminute` - the minute that this node is processing now
-  * `currentminuteduration` - nanoseconds that the node has been on this minute
-  * `previousminuteduration` - nanoseconds that the node spent on the previous minute
+  * `currentminuteduration` - seconds that the node has been on this minute
+  * `previousminuteduration` - seconds that the node spent on the previous minute
   * `balancehash` - the node's understanding of the blockchain's permanent balance hash (updated each block)
   * `tempbalancehash` - the node's understanding of the blockchain's temporary balance hash (updated each minute)
   * `lastblockfromdbstate` - whether the highest saved block was created from DBState messages (i.e. true if created by receiving whole blocks, false if built by following minutes)
