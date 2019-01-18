@@ -616,9 +616,9 @@ Retrieve basic system information along with a description of the node's current
 * For each `leader` node in the `authset`:
   * `id` - the server's identity chain ID
   * `vm` - the network VM that the server is assigned to for the current block minute
-  * `listheight` - the current VM's process list height <!-- TODO: add clarification on what height actually is -->
-  * `listlength` - the current VM's process list length
-  * `nextnil` - 
+  * `listheight` - the height of messages that have been processed by this VM
+  * `listlength` - the number of acknowledged messages (processed or not) for this VM's process list
+  * `nextnil` - the index of the highest processed message within a VM's list of acknowledged messages
 
 * For each `audit` node in the `authset`:
   * `id` - the server's identity chain ID
