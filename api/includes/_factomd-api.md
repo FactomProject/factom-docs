@@ -594,7 +594,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "diagnostics"}
 
 Retrieve basic system information along with a description of the node's current perception of the network. This includes the node's role, the current leader block height, block minute, syncing status, authority set, currently running elections, and more.
 
-* General system information
+**General system information**
+
   * `id` - the node's identity chain ID
   * `publickey` - the current public key for the node
   * `role` - whether the node is a `"Follower"`, `"Leader"`, or `"Audit"`
@@ -607,24 +608,34 @@ Retrieve basic system information along with a description of the node's current
   * `tempbalancehash` - the node's understanding of the blockchain's temporary balance hash (updated each minute)
   * `lastblockfromdbstate` - whether the highest saved block was created from DBState messages (i.e. true if created by receiving whole blocks, false if built by following minutes)
 
-* `syncing` - describes whether this node is syncing, and if so, what messages it is looking for
+**`syncing`**
+
+This object describes whether this node is syncing, and if so, what messages it is looking for**
+
   * `status` - possible results are `"Processing"`, `"Syncing DBSigs"`, or `"Syncing EOMs"`
   * `received` - the number of DBSigs or EOMs that have been processed so far (omitted if processing)
   * `expected` - the number of DBSigs or EOMs that are expected (omitted if processing)
   * `missing` - a list of leader identities that we are missing DBSigs or EOMs from (omitted if processing)
 
-* For each `leader` node in the `authset`:
+**`authset`**
+
+This contains two arrays. The first contains information about each Leader node.
+
   * `id` - the server's identity chain ID
   * `vm` - the network VM that the server is assigned to for the current block minute
   * `listheight` - the height of messages that have been processed by this VM
   * `listlength` - the number of acknowledged messages (processed or not) for this VM's process list
   * `nextnil` - the index of the highest processed message within a VM's list of acknowledged messages
 
-* For each `audit` node in the `authset`:
+The second cotains information about each Audit node.
+
   * `id` - the server's identity chain ID
   * `online` - the node's "liveness" (i.e. whether or not we received a heartbeat from them for the previous minute)
 
-* `elections` - this node's understanding of what elections are happening on the network (likely to be inaccurate if this is the node being elected out)
+**`elections`**
+
+Describes this node's understanding of what elections are happening on the network (likely to be inaccurate if this is the node being elected out)**
+
   * `inprogress` - whether or not an election is ongoing
   * `vmindex` - the VM being elected for (omitted if `inprogress` is `false`)
   * `fedindex` - index of the Federated server that the election is for (omitted if `inprogress` is `false`)
