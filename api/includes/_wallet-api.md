@@ -1820,13 +1820,13 @@ The amount of data returned by this is so large, I couldn't get you a sample out
   "method": "unlock-wallet",
   "params": {
     "passphrase": "opensesame",
-    "timeout": "18000000"
+    "timeout": 300
   }
 }
 ```
 
 ```shell
-curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet"},    "params":{"passphrase":"opensesame", "timeout":"18000000"}' \
+curl -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet", "params":{"passphrase": "opensesame", "timeout": 300}}' \
 -H 'content-type:text/plain;' http://localhost:8089/v2
 ```
 
@@ -1838,7 +1838,7 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "unlock-wallet
     "id": 0,
     "result": {
         "success": true,
-        "unlockeduntil": "1542062049"
+        "unlockeduntil": 1542062049
     }
 }
 ```
