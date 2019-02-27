@@ -505,6 +505,143 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 Retrieve a directory block given only its height.
 
+## diagnostics
+
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "diagnostics"}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "diagnostics"
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "name": "FNode0",
+    "id": "38bab1455b7bd7e5efd15c53c777c79d0c988e9210f1da49a99d95b3a6417be9",
+    "publickey": "cc1985cdfae4e32b5a454dfda8ce5e1361558482684f3367649c3ad852c8e31a",
+    "role": "Leader",
+    "leaderheight": 5,
+    "currentheight": 6,
+    "currentminute": 2,
+    "currentminuteduration": 3.227096189,
+    "previousminuteduration": 52.961842236,
+    "balancehash": "90167ce2f5978248957a12b61213b31c77ab05191cfc668478cce01d399d33bd",
+    "tempbalancehash": "bd9a8cccffbd283a2fc7e1f2b7b26923d6bdb41df691cce6b95fe3487c1458a1",
+    "lastblockfromdbstate": false,
+    "syncing": {
+      "status": "Syncing EOMs",
+      "received": 2,
+      "expected": 3,
+      "missing": [
+        "38bab1455b7bd7e5efd15c53c777c79d0c988e9210f1da49a99d95b3a6417be9"
+      ]
+    },
+    "authset": {
+      "leaders": [
+        {
+          "id": "38bab1455b7bd7e5efd15c53c777c79d0c988e9210f1da49a99d95b3a6417be9",
+          "vm": 2,
+          "listheight": 3,
+          "listlength": 4,
+          "nextnil": 0
+        },
+        {
+          "id": "8888881570f89283f3a516b6e5ed240f43f5ad7cb05132378c4a006abe7c2b93",
+          "vm": 0,
+          "listheight": 3,
+          "listlength": 4,
+          "nextnil": 0
+        },
+        {
+          "id": "8888888da6ed14ec63e623cab6917c66b954b361d530770b3f5f5188f87f1738",
+          "vm": 1,
+          "listheight": 3,
+          "listlength": 3,
+          "nextnil": 0
+        }
+      ],
+      "audits": [
+        {
+          "id": "888888aeaac80d825ac9675cf3a6591916883bd9947e16ab752d39164d80a608",
+          "online": true
+        },
+        {
+          "id": "888888f0b7e308974afc34b2c7f703f25ed2699cb05f818e84e8745644896c55",
+          "online": true
+        }
+      ]
+    },
+    "elections": {
+      "inprogress": false
+    }
+  }
+}
+```
+
+Retrieve basic system information along with a description of the node's current perception of the network. This includes the node's role, the current leader block height, block minute, syncing status, authority set, currently running elections, and more.
+
+**General system information**
+
+  * `id` - the node's identity chain ID
+  * `publickey` - the current public key for the node
+  * `role` - whether the node is a `"Follower"`, `"Leader"`, or `"Audit"`
+  * `leaderheight` - the highest known block that the network leaders have completed
+  * `currentheight` - the block that this node is currently processing (if fully synced, this is the block currently being built)
+  * `currentminute` - the minute that this node is processing now
+  * `currentminuteduration` - seconds that the node has been on this minute
+  * `previousminuteduration` - seconds that the node spent on the previous minute
+  * `balancehash` - the node's understanding of the blockchain's permanent balance hash (updated each block)
+  * `tempbalancehash` - the node's understanding of the blockchain's temporary balance hash (updated each minute)
+  * `lastblockfromdbstate` - whether the highest saved block was created from DBState messages (i.e. true if created by receiving whole blocks, false if built by following minutes)
+
+**`syncing`**
+
+This object describes whether this node is syncing, and if so, what messages it is looking for**
+
+  * `status` - possible results are `"Processing"`, `"Syncing DBSigs"`, or `"Syncing EOMs"`
+  * `received` - the number of DBSigs or EOMs that have been processed so far (omitted if processing)
+  * `expected` - the number of DBSigs or EOMs that are expected (omitted if processing)
+  * `missing` - a list of leader identities that we are missing DBSigs or EOMs from (omitted if processing)
+
+**`authset`**
+
+This contains two arrays. The first contains information about each Leader node.
+
+  * `id` - the server's identity chain ID
+  * `vm` - the network VM that the server is assigned to for the current block minute
+  * `listheight` - the height of messages that have been processed by this VM
+  * `listlength` - the number of acknowledged messages (processed or not) for this VM's process list
+  * `nextnil` - the index of the highest processed message within a VM's list of acknowledged messages
+
+The second cotains information about each Audit node.
+
+  * `id` - the server's identity chain ID
+  * `online` - the node's "liveness" (i.e. whether or not we received a heartbeat from them for the previous minute)
+
+**`elections`**
+
+Describes this node's understanding of what elections are happening on the network (likely to be inaccurate if this is the node being elected out)**
+
+  * `inprogress` - whether or not an election is ongoing
+  * `vmindex` - the VM being elected for (omitted if `inprogress` is `false`)
+  * `fedindex` - index of the Federated server that the election is for (omitted if `inprogress` is `false`)
+  * `fedid` - identity chain ID of the Federated server that the election is for (omitted if `inprogress` is `false`)
+  * `round` - the current round of elections (omitted if `inprogress` is `false`)
+
 ## directory-block
 
 > Example Request
