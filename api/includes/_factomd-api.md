@@ -254,6 +254,113 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
 
 Retrieve a specified admin block given its merkle root key.
 
+## anchors
+
+> Example Request
+
+```shell
+curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
+"anchors", "params":{"hash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"}}' \
+-H 'content-type:text/plain;' http://localhost:8088/v2
+```
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "method": "anchors",
+  "params": {
+    "hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+  }
+}
+```
+
+> Example Response
+
+```json-doc
+{
+  "jsonrpc": "2.0",
+  "id": 0,
+  "result": {
+    "directoryblockheight": 15000,
+    "directoryblockkeymr": "4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b",
+    "bitcoin": {
+      "transactionhash": "469a96c847cf8bf1f325b6eec850f46488ed671930d62b54ed186a8031477a7d",
+      "blockhash": "000000000000000001edf3adf719dfc1263661d2c4b0ed779d004a2cbb7cca32"
+    },
+    "ethereum": {
+      "recordheight": 198414,
+      "dbheightmax": 15999,
+      "dbheightmin": 15000,
+      "windowmr": "176f7c77d8dab56114a91d9358904d3f196ab21156ff6436d58ede5f29870064",
+      "merklebranch": [
+        {
+          "left": "4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b",
+          "right": "7436590c8fd3da7c8483661e90505a6fb8e451849f57b67b5092c763660fd53b",
+          "top": "a3e3ca79b1ba9a2fbbbe33c2b679b229d18a060bf0be83544271b58c0c09cdd5"
+        },
+        {
+          "left": "a3e3ca79b1ba9a2fbbbe33c2b679b229d18a060bf0be83544271b58c0c09cdd5",
+          "right": "33a2abb0122ecb5b9f9ce18ba9cd780851194af6ca67b99af64f2bd2fab6f27a",
+          "top": "5b01cf5df015e5bd29a23934e798b742578883073f9a53fb7f0a9d2002327a25"
+        },
+        {
+          "left": "5b01cf5df015e5bd29a23934e798b742578883073f9a53fb7f0a9d2002327a25",
+          "right": "ddb9e93c513232f00c6bb33eea14b1b8bd42eb043c7a792c599b3d66b5b701e2",
+          "top": "aa9bdaad231d75c15bdf57fc62c537de582e2f748a6a664e1ec92f382a58d01d"
+        },
+        {
+          "left": "aa9bdaad231d75c15bdf57fc62c537de582e2f748a6a664e1ec92f382a58d01d",
+          "right": "25ccfbe0ca27464f86f39e15ad2c624a79079c1940a809be0b0a28b8b0568fcf",
+          "top": "4b814b0e1f2d40bd838cc4e08ec9a230da88bce4afcd15f66509de8ec06acfd2"
+        },
+        {
+          "left": "4b814b0e1f2d40bd838cc4e08ec9a230da88bce4afcd15f66509de8ec06acfd2",
+          "right": "fd5c8fb1c61d74b69b430e0f0e2bb2b883c54c454019e85560907a884b406098",
+          "top": "c8b829741b9cb62e49ad7ca3aec54354c586056ed5757f2b082ff2668fc9ca22"
+        },
+        {
+          "left": "c8b829741b9cb62e49ad7ca3aec54354c586056ed5757f2b082ff2668fc9ca22",
+          "right": "e9e8846779499ffe587cbc48ef443b87a502016a6ec201ff2b506a2f46516d33",
+          "top": "cd44707c9cebc0ee340491667c080ae928480b92bfb586f3484dddfefc50353a"
+        },
+        {
+          "left": "cd44707c9cebc0ee340491667c080ae928480b92bfb586f3484dddfefc50353a",
+          "right": "f9c02242da1d80583c3d2ef3020ea6d873e15559392c8f93bed0878de3a2f278",
+          "top": "c1ec2c7575441df3c4604de3b7aaea68163a16b9961a63ae44f96704d9b57af5"
+        },
+        {
+          "left": "c1ec2c7575441df3c4604de3b7aaea68163a16b9961a63ae44f96704d9b57af5",
+          "right": "e8438b94d668df0ea112547594118a89a4e94790592eddf3b7ea6bf3fad03185",
+          "top": "85faff4490b07f9c6448abb3dea97669cc5ad70f8c7a0fb5062925f1212baeb6"
+        },
+        {
+          "left": "85faff4490b07f9c6448abb3dea97669cc5ad70f8c7a0fb5062925f1212baeb6",
+          "right": "577463a13f9377d3504829400a731acb391a2bbcc92fc9624ba6c98d22c362df",
+          "top": "3104ed92e9923b2aba8dfb22d8002519e56fdd0393509abf9d39d042f867ff0e"
+        },
+        {
+          "left": "3104ed92e9923b2aba8dfb22d8002519e56fdd0393509abf9d39d042f867ff0e",
+          "right": "065f71177302dfd18165e5cebac448e6aed482f1c5ec0d3942f841d29fcaa6b7",
+          "top": "176f7c77d8dab56114a91d9358904d3f196ab21156ff6436d58ede5f29870064"
+        }
+      ],
+      "contractaddress": "0xfac701d9554a008e48b6307fb90457ba3959e8a8",
+      "txid": "0xb2b98f54c9f70f52799502346ef18995e4d61871c5545c8094f6447a834e1662",
+      "blockhash": "0x6357d44a054865a651d495edeaa6b6aa24f0c1fd032608b6f883d451df8f6247",
+      "txindex": 108
+    }
+  }
+}
+
+```
+
+Retrieve information about the directory block anchors that have been confirmed on Bitcoin and Ethereum. 
+
+Parameter options:
+- `"height"` - the directory block height (integer) to request anchors for
+- `"hash"` - the object's hash (hex string) to request anchors for (e.g. entry hash, entry block keymr, factoid block keymr, admin block lookup hash, entry credit block header hash, or directory block keymr)
+
 ## chain-head
 
 > Example Request
@@ -1852,7 +1959,7 @@ Retrieve an entry or transaction in raw format, the data is a hex encoded string
 
 ```shell
 curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": 
-"receipt", "params":{"hash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"}}' \
+"receipt", "params":{"hash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2", "includerawentry": true}}' \
 -H 'content-type:text/plain;' http://localhost:8088/v2
 ```
 
@@ -1862,7 +1969,8 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
   "id": 0,
   "method": "receipt",
   "params": {
-    "hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+    "hash": "0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2",
+    "includerawentry": true
   }
 }
 ```
@@ -1876,7 +1984,9 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
    "result":{  
       "receipt":{  
          "entry":{  
-            "entryhash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2"
+            "entryhash":"0ae2ab2cf543eed52a13a5a405bded712444cc8f8b6724a00602e1c8550a4ec2",
+            "raw": "000caff62ea5b5aa015c706add7b2463a5be07e1f0537617f553558090f23c7f5600420040e57283e4618f13b18c2be8d14926999331ef4ab905639a82d748634201cd85ae1c22b6186a72eee3f4ae12b8f6fa9c73a8a98b5eae238ed6133424bcef062f0e7b224150494d6574686f64223a2268747470733a2f2f706f6c6f6e6965782e636f6d2f7075626c69633f636f6d6d616e643d72657475726e4f72646572426f6f6b5c753030323663757272656e6379506169723d4254435f4e58545c753030323664657074683d34222c2252657475726e44617461223a227b5c2261736b735c223a5b5b5c22302e30303030313334315c222c343437342e37323033353739345d2c5b5c22302e30303030313334325c222c363038302e39363930373133355d2c5b5c22302e30303030313334355c222c31343831342e38353833353730375d2c5b5c22302e30303030313337385c222c38303030305d5d2c5c22626964735c223a5b5b5c22302e30303030313332375c222c363032382e303333313537355d2c5b5c22302e30303030313332365c222c3236302e34333839313430335d2c5b5c22302e30303030313332355c222c3130393931352e30363731363938315d2c5b5c22302e30303030313332335c222c31323030305d5d2c5c22697346726f7a656e5c223a5c22305c227d222c2254696d657374616d70223a313435303134373830317d",
+            "timestamp":1450147980, 
          },
          "merklebranch":[  
             {  
@@ -1922,14 +2032,13 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method":
          ],
          "entryblockkeymr":"041c3fed14469a3d0f1a022e3d5321583065e691edb9223605c86766ff881883",
          "directoryblockkeymr":"4358041d6773351dd0a42a8d16778c6544b1196a03c6c41645340cd076a29b6b",
-         "bitcointransactionhash":"469a96c847cf8bf1f325b6eec850f46488ed671930d62b54ed186a8031477a7d",
-         "bitcoinblockhash":"000000000000000001edf3adf719dfc1263661d2c4b0ed779d004a2cbb7cca32"
+         "directoryblockheight":15000
       }
    }
 }
 ```
 
-Retrieve a receipt providing cryptographically verifiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
+Retrieve a receipt providing cryptographically verifiable proof that information was recorded in the factom blockchain. An optional boolean parameter `"includerawentry"` can be used to request that raw entry data be returned at `receipt.entry.raw` in the JSON result. 
 
 ## reveal-chain
 
