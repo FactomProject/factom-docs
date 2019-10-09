@@ -1387,6 +1387,45 @@ curl -X POST --data-binary '{"jsonrpc": "2.0", "id": 0, "method": "remove-identi
 
 **Be careful using this function! Ensure that you have backups of important keys before removing them.** Given an identity public key, this command deletes the corresponding identity key pair from the wallet. Once executed, the user will no longer be able to retrieve that key pair or sign attributes/endorsements with the key pair from this wallet. If the wallet is encrypted, it must be unlocked prior to using this command.
 
+## sign-data
+
+> Example Request
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "method": "sign-data",
+    "params": {
+        "signer":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q",
+        "data":"ZmFjdG9tIGlzIGdyZWF0"
+    }
+}
+```
+
+```shell
+curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"sign-data",
+"params":{"signer":"FA2jK2HcLnRdS94dEcU27rF3meoJfpUcZPSinpb7AwQvPRY6RL1Q", "data":"ZmFjdG9tIGlzIGdyZWF0"}}' \ 
+-H 'content-type:text/plain;' http://localhost:8089/v2
+```
+
+> Example Response
+
+```json-doc
+{
+    "jsonrpc": "2.0",
+    "id": 0,
+    "result": {
+        "pubkey":"cYte3SkUrMLkZ38zbBoyc25em94TZj5kE4lPV+wnLig=",
+        "signature":"dZIiCv/qinP+3iOuis48wwU56jNXDLNe7ZJ0zx2nQbHEr0IAkhQeQPgWPT54w0EvJ6cWKUGrU/3XH/2udswXDA=="
+    }
+}
+```
+
+Sign arbitrary data using a secret key stored in the wallet using ed25519 signatures. `signer` can be a human readable FA Address, EC Address, or Identity Key. `data` is a base64-encoded string. Returns both the public key component and the signature as base64-encoded strings. Wallet must be unlocked prior to using this command.
+
+**Note:** For signing large amounts of data it may be advisable to sign a hash of the data rather than the data itself.
+
 ## sign-transaction
 
 > Example Request
