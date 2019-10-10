@@ -1422,7 +1422,7 @@ curl  -X GET --data-binary '{"jsonrpc": "2.0", "id": 0, "method":"sign-data",
 }
 ```
 
-Sign arbitrary data using a secret key stored in the wallet using ed25519 signatures. `signer` can be a human readable FA Address, EC Address, or Identity Key. `data` is a base64-encoded string. Returns both the public key component and the signature as base64-encoded strings. Wallet must be unlocked prior to using this command.
+Sign arbitrary data using a secret key stored in the wallet using ed25519 signatures. `signer` can be a human readable Factoid Address (FA), Entry Credit Address (EC), or Identity Key (idpub). `data` is a base64-encoded string. Returns both the public key component and the signature as base64-encoded strings. Wallet must be unlocked prior to using this command.
 
 **Note:** For signing large amounts of data it may be advisable to sign a hash of the data rather than the data itself.
 
