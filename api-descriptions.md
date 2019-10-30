@@ -1,11 +1,11 @@
 
 ## Factom Overview
 
-Before you use the API calls, here is a quick refresher on how Factom is designed. Please get familiar with the elements of Factom and how they interact. 
+Before you use the API calls, here is a quick refresher on how Factom is designed. Please get familiar with the elements of Factom and how they interact.
 
-Each block in the Factom blockchain has data for multiple chains of entries.  
+Each block in the Factom blockchain has data for multiple chains of entries.
 
-A chain is a section of entries that are related at the application level. 
+A chain is a section of entries that are related at the application level.
 
 A directory block is an index of all of the chains and entries that appear in this given block in the factom blockchain.
 The header has useful information such as the key of the previous block, the blocks sequence number (eg height) and a timestamp for the blocks creation. In its header you can get the keymr of the previous block, and trace the blockchain back to the genesis block.
@@ -22,16 +22,16 @@ Each entry consists of a chain ID to which it belongs, a variable length content
 
 ### directory-block
 
-Retrieve the full directory block for a block using its key. 
+Retrieve the full directory block for a block using its key.
 
 <br>Parameters: "keymr" is the merkle root of the block and is globally unique to this block.
 <br>Request:  Simply includes "keymr"
-<br>Response: The response will have two elements, a header and an entry block list. 
+<br>Response: The response will have two elements, a header and an entry block list.
 
 
 ### directory-block-head
 
-Returns the keymr of the latest directory block. 
+Returns the keymr of the latest directory block.
 
 <br>Parameters:  none
 <br>Request:
@@ -39,7 +39,7 @@ Returns the keymr of the latest directory block.
 
 ### heights
 
-Returns various heights that allows you to view the state of the blockchain. 
+Returns various heights that allows you to view the state of the blockchain.
 
 <br>Parameters: none
 <br>Request:
@@ -69,13 +69,18 @@ Retrieve an entry or transaction in raw format, as an string encoded binary blob
 
 Retrieve a directory block given only its height.
 
+## replay-from-height
+<br>Parameters: startheight endheight
+<br>Request:
+<br>Response:
+
 ### ablock-by-height
 <br>Parameters: height
 <br>Request:
 <br>Response:
 
 Retrieve administrative blocks for any given height.
-The admin block contains data related to the identities within the factom system and the decisions the system makes as it builds the block chain. 
+The admin block contains data related to the identities within the factom system and the decisions the system makes as it builds the block chain.
 
 ### ecblock-by-height
 
@@ -86,7 +91,7 @@ Retrieve the entry credit block for any given height. These blocks contain entry
 <br>Response:
 
 
-### fblock-by-height 
+### fblock-by-height
 
 Retrieve the factoid block for any given height. These blocks contain factoid transaction information.
 
@@ -95,7 +100,7 @@ Retrieve the factoid block for any given height. These blocks contain factoid tr
 <br>Response:
 
 
-### receipt 
+### receipt
 
 Retrieve a reciept providing cryptographially verfiable proof that information was recorded in the factom blockchain and that this was subsequently anchored in the bitcoin blockchain.
 
@@ -104,9 +109,9 @@ Retrieve a reciept providing cryptographially verfiable proof that information w
 <br>Response:
 
 
-### entry-block 
+### entry-block
 
-Retrieve a specified entry block given its merkle root key. 
+Retrieve a specified entry block given its merkle root key.
 
 <br>Parameters: keymr
 <br>Request:
@@ -115,7 +120,7 @@ Retrieve a specified entry block given its merkle root key.
 
 ### entry
 
-Retrieve a specified entry using its Entry Hash.  
+Retrieve a specified entry using its Entry Hash.
 
 <br>Parameters: keymr
 <br>Request:
