@@ -79,13 +79,6 @@ The T flag, used with the `addchain`, `addentry`, `buyec`, `get pendingtransacti
 
 ## Commands
 
-### status
-
-```shell
-factom-cli status TxID|FullTx
-```
-Returns information about a factoid transaction, or an entry / entry credit transaction
-
 ### addchain
 
 ```shell
@@ -94,7 +87,16 @@ ECADDRESS <STDIN>
 ```
 
 Create a new Factom Chain. Read data for the First Entry from stdin. Use the Entry Credits from the specified address.
+ 
+Optional output flags will display only specific information used for scripting
+ 
+ **-C**	display only the ChainID
+ 
+ **-E**	display only the Entry Hash
 
+ **-T**	display only the Transaction ID
+
+ 
 ### addentry
 
 ```shell
@@ -103,33 +105,41 @@ factom-cli addentry [-fq] [-n NAME1 -h HEXNAME2 ...|-c CHAINID] \
 ```
 Create a new Factom Entry. Read data for the Entry from stdin. Use the Entry Credits from the specified address.
 
+Optional output flags will display only specific information used for scripting
+ 
+ **-C**	display only the ChainID
+ 
+ **-E**	display only the Entry Hash
+
+ **-T**	display only the Transaction ID
+
 ### addtxecoutput
 
 ```shell
-factom-cli addtxecoutput [-r] TXNAME ADDRESS AMOUNT
+factom-cli addtxecoutput [-rq] TXNAME ADDRESS AMOUNT
 ```
-Add an Entry Credit output to a transaction in the wallet
+Add an Entry Credit output to a transaction in the wallet. `-r` Netki DNS resolve. `-q` quiet.
 
 ### addtxfee
 
 ```shell
-factom-cli addtxfee TXNAME ADDRESS
+factom-cli addtxfee [-q] TXNAME ADDRESS
 ```
-Add the transaction fee to an input of a transaction in the wallet
+Add the transaction fee to an input of a transaction in the wallet. `-q` quiet.
 
 ### addtxinput
 
 ```shell
-factom-cli addtxinput TXNAME ADDRESS AMOUNT
+factom-cli addtxinput [-q] TXNAME ADDRESS AMOUNT
 ```
-Add a Factoid input to a transaction in the wallet
+Add a Factoid input to a transaction in the wallet. `-q` quiet.
 
 ### addtxoutput
 
 ```shell
-factom-cli addtxoutput [-r] TXNAME ADDRESS AMOUNT
+factom-cli addtxoutput [-rq] TXNAME ADDRESS AMOUNT
 ```
-Add a Factoid output to a transaction in the wallet
+Add a Factoid output to a transaction in the wallet. `-r` Netki DNS resolve. `-q` quiet.
 
 ### backupwallet
 
@@ -145,13 +155,29 @@ factom-cli balance [-r] ADDRESS
 ```
 If this is an EC Address, returns the number of Entry Credits. If this is a Factoid Address, returns the Factoid balance.
 
+### balancetotals
+
+```shell
+factom-cli balancetotals [-FS -FA -ES -EA]
+```
+This is the total number of Factoids and Entry Credits in the wallet
+
+Optional output flags will display only specific information used for scripting
+
+**-EA**	Display only the ackEC value
+
+**-ES** Display only the savedEC value
+
+**-FA** Display only the ackFCT value
+
+**-FS** Display only the savedFCT value
+
 ### buyec
 
 ```shell
-factom-cli buyec FCTADDRESS ECADDRESS ECAMOUNT
+factom-cli buyec [-fqrT] FCTADDRESS ECADDRESS ECAMOUNT
 ```
-balance
-Buy entry credits
+Buy ECAMOUNT number of entry credits. -f force. -q quiet. `-r` Netki DNS resolve. `-T` TxID.
 
 ### composechain
 
@@ -283,10 +309,35 @@ List the identity key pairs (public and private) stored in the wallet
 ### get
 
 ```shell
-factom-cli get allentries|chainhead|dblock|eblock|entry|firstentry| \
-head|heights
+factom-cli get allentries|authorities|chainhead|currentminute|ablock|dblock|eblock|ecblock|fblock|
+entry|firstentry|head|heights|pendingentries|pendingtransactions|raw|tps|walletheight
+
 ```
 Get data about Factom Chains, Entries, and Blocks
+
+### get abheight 
+```shell
+factom-cli get abheight HEIGHT -r (to suppress Raw Data)
+```
+Get Admin Block by height
+
+### get ablock
+```shell 
+factom-cli get ablock [-RDBPL] HEIGHT|KEYMR
+```
+Get an Admin Block from factom by its Key Merkel Root or by its Height
+
+Optional output flags will display only specific information used for scripting
+
+**-B**	display only the Backreference Hash
+
+**-D**	display only the Directory Block height
+
+**-L**	display only the Lookup Hash
+
+**-P**	display only the Previous Backreference Hash
+
+**-R**	display the hex encoding of the raw Directory Block
 
 ### get allentries
 
@@ -354,12 +405,44 @@ Optional output flags will display only specific information used for scripting
 
 **-R** display only the Round timeout
 
+### get dbheight
+```shell 
+factom-cli get dbheight HEIGHT -r (to suppress Raw Data)
+```
+Get Directory Block by height
+
 ### get dblock
 
 ```shell
-factom-cli get dblock KEYMR
+factom-cli get dblock [-RHKAVNBPFTDC] HEIGHT|KEYMR
 ```
-Get dblock contents by Merkle root
+Get a Directory Block from factom by its Key Merkel Root or by its Height
+
+Optional output flags will display only specific information used for scripting
+
+**-A**	display only the Directory Block Header Hash
+
+**-B**	display only the Directory Block Body Merkel Root
+
+**-C**	display only the Directory Block Count
+
+**-D**	display only the Directory Block Height
+
+**-F**	display only the Previous Directory Block Full Hash
+
+**-H**	display only the Directory Block Hash
+
+**-K**	display only the Directory Block Key Merkel Root
+
+**-N**	display only the Network ID
+
+**-P**	display only the Previous Directory Block Key Merkel Root
+
+**-R**	display the hex encoding of the raw Directory Block
+
+**-T**	display only the Directory Block Timestamp
+
+**-V**	display only the Directory Block Header Version
 
 ### get eblock
 
@@ -367,6 +450,12 @@ Get dblock contents by Merkle root
 factom-cli get eblock KEYMR
 ```
 Get eblock by Merkle root
+
+### get echeight
+```shell 
+factom-cli get echeight HEIGHT -r (to suppress Raw Data)
+```
+Get Entry Credit Block by height
 
 ### get ecblock
 
@@ -376,6 +465,7 @@ factom-cli get ecblock [-RBPLDAHF] HEIGHT|KEYMR
 Get ecblock by Key Merkle root or by height
 
 Optional output flags will display only specific information used for scripting
+
 **-A**	display only the Head Expansion Area
 
 **-B**	display only the Body Hash
@@ -395,43 +485,49 @@ Optional output flags will display only specific information used for scripting
 ### get entry
 
 ```shell
-factom-cli get entry HASH
+factom-cli get entry [-RC] HASH
 ```
-Get entry by hash
+Get Entry by Hash. -R raw entry. -C ChainID
+
+### get fbheight
+```shell 
+factom-cli get fbheight HEIGHT -r (to suppress Raw Data)
+```
+Get Factoid Block by height
+
+### get fblock
+```shell 
+factom-cli get fblock [-RBPLED] KEYMR|HEIGHT
+```
+Get a Factoid Block by its Key Merkle Root or Height
+Optional output flags will display only specific information used for scripting
+
+**-B**	display only the Body Merkel Root
+
+**-D**	display only the Directory Block Height
+
+**-E**	display only the Exchange Rate
+
+**-L**	display only the Previous Ledger Key Merkel Root
+
+**-P**	display only the Previous Key Merkel Root
+
+**-R**	display the hex encoding of the raw Factoid Block
 
 ### get firstentry
 
 ```shell
-factom-cli get firstentry [-n NAME1 -N HEXNAME2 ...] CHAINID
+factom-cli get firstentry [-n NAME1 -N HEXNAME2 ...] CHAINID [-REC]
 ```
-Get the first entry from a chain
+Get the first Entry in a Chain. -R RawEntry. -E EntryHash. -C ChainID
 
 ### get head
 
 ```shell
-factom-cli get head
-DBHash: 943d4169470615ef716b834e10d2c0a7e0d4cf00d9403acfb2d0122f60ea74b9
-KeyMR: 24e89d020cd1ba06c8a91fead8dd82b82d3f36200100a941bf4e6d4a03aa64b4
-HeaderHash: 
-SequenceNumber: 8616
-Version: 0
-NetworkID: 4203931044
-BodyMR: c43a06e86ef1f930002bcccc560772b8b3e7e2220c30cba89796077898dd463f
-PrevKeyMR: de0cc04ee97937f7bba5804d2f226e6f74e9146228e3d96b459ba05bc21ed439
-PrevFullHash: fdafc5edb40442375b8df1526979174f7a6b07dc16195948cdb38cebcd4e2548
-Timestamp: 26210607
-DBHeight: 8616
-BlockCount: 3
-DBEntries {
-	ChainID: 000000000000000000000000000000000000000000000000000000000000000a
-	KeyMR: 53689c0b83a04323f41f8e85fa0cf00d40bfe49b6cbc2f7d4054348d8b8c505d
-	ChainID: 000000000000000000000000000000000000000000000000000000000000000c
-	KeyMR: 4e01b029d733c4ae85285b7b2d9463c1dde066616bf3776c91935d1384793cf4
-	ChainID: 000000000000000000000000000000000000000000000000000000000000000f
-	KeyMR: 243fb2798067d1ee91e1f34f311cba01c9d70d2de6dfba42b13210ccf6865f36
-}
+factom-cli get head [-RHKAVNBPFTDC]
 ```
 Get the latest completed directory block
+
 Optional output flags will display only specific information used for scripting
 
 **-A**	display only the Directory Block Header Hash
@@ -469,7 +565,6 @@ EntryHeight: 10000
 
 $ factom-cli get heights -D
 10000
-
 ```
 Get the current heights of various blocks in factomd
 
@@ -481,6 +576,43 @@ Optional output flags will display only specific information used for scripting
 **-B** display only the EntryBlock height
 
 **-E** display only the Entry height
+
+### get pendingentries
+
+```shell
+factom-cli get pendingentries [-E]
+```
+Get all pending entries, which may not yet be written to blockchain. -E EntryHash.
+
+### get pendingtransactions
+```shell
+factom-cli get pendingtransactions [-T]
+```
+Get all pending factoid transacitons, which may not yet be written to blockchain. -T TxID.
+
+### get raw
+```shell
+factom-cli get raw HASH
+```
+Returns a raw hex representation of a block, transaction, entry, or commit
+
+### get tps
+```shell
+factom-cli get tps [-IT]
+```
+Get the current instant and total average rate of Transactions Per Second.
+
+Optional output flags will display only specific information used for scripting
+
+**-I**	display only the instant TPS rate
+
+**-T**	display only the total averaged TPS rate
+
+### get walletheight
+```shell
+factom-cli get walletheight
+```
+Get the number of factoid blocks factom-walletd has cached
 
 ### identity
 
@@ -634,28 +766,35 @@ List transactions from the wallet or the Factoid Chain
 ### listtxs address
 
 ```shell
-factom-cli listtxs address ECADDRESS|FCTADDRESS
+factom-cli listtxs address [-T] ECADDRESS|FCTADDRESS
 ```
-List the transaction from the Factoid Chain with a specific address. This command will only list confirmed transactions.
+List the transaction from the Factoid Chain with a specific address. This command will only list confirmed transactions.`-T` TxID.
 
 ### listtxs [all]
 
 ```shell
-factom-cli listtxs [all]
+factom-cli listtxs [all] [-T]
 ```
-List all transactions from the Factoid Chain. This command will only list confirmed transactions.
+List all transactions from the Factoid Chain. This command will only list confirmed transactions.`-T` TxID.
 
 ### listtxs id
 
 ```shell
-factom-cli listtxs id TXID
+factom-cli listtxs id [-T] TXID
 ```
-List transaction from the Factoid Chain. This command will only list confirmed transactions.
+List transaction from the Factoid Chain. This command will only list confirmed transactions.`-T` TxID.
+
+### listtxs name
+
+```shell
+factom-cli listtxs name [-T] TXID
+```
+Show a current working transaction in the wallet. `-T` TxID.
 
 ### listtxs range
 
 ```shell
-factom-cli listtxs range START END
+factom-cli listtxs range [-T] START END
 ```
 List the transactions from the Factoid Chain within the specified range. This command will only list confirmed transactions.
 
@@ -690,16 +829,28 @@ Generates a new identity key in the wallet
 ### newtx
 
 ```shell
-factom-cli newtx TXNAME
+factom-cli newtx [-q] TXNAME
 ```
 Create a new transaction in the wallet
 
 ### properties
 
 ```shell
-factom-cli properties
+factom-cli properties [-CFAWL]
 ```
 Get version information about facotmd and the factom wallet
+
+Optional output flags will display only specific information used for scripting
+
+**-A**	display only the factomd API version
+
+**-C**	display only the CLI version
+
+**-F**	display only the factomd version
+
+**-L**	display only the wallet API version
+
+**-W**	display only the factom-wallet version
 
 ### receipt
 
@@ -707,6 +858,13 @@ Get version information about facotmd and the factom wallet
 factom-cli receipt ENTRYHASH
 ```
 Returns a Receipt for a given Entry
+
+### replaydbstates
+
+```shell
+factom-cli replaydbstates STARTHEIGHT ENDHEIGHT
+```
+Emit DBStateMsgs over the LiveFeed API between two specifed block heights
 
 ### rmaddress
 
@@ -732,23 +890,40 @@ Remove a transaction in the wallet
 ### sendfct
 
 ```shell
-factom-cli sendfct FROMADDRESS TOADDRESS AMOUNT
+factom-cli sendfct [-fqrT] FROMADDRESS TOADDRESS AMOUNT
 ```
-Send Factoids between 2 addresses
+Send Factoids between 2 addresses. `-f` force. `-q` quiet. `-r` Netki DNs resolve. `-T` TxID. 
 
 ### sendtx
 
 ```shell
-factom-cli sendtx TXNAME
+factom-cli sendtx [-fqT] TXNAME
 ```
-Send a Transaction to Factom
+Send a Transaction to Factom. `-f` force. `-q` quiet. `-T` TxID.
 
 ### signtx
 
 ```shell
-factom-cli signtx TXNAME
+factom-cli signtx [-fqT] TXNAME
 ```
-Sign a transaction in the wallet
+Sign a transaction in the wallet. `-f` force. `-q` quiet. `-T` TxID.
+
+### status
+
+```shell
+factom-cli status [-TSUD] TxID|FullTx
+```
+Returns information about a factoid transaction, or an entry / entry credit transaction
+
+Optional output flags will display only specific information used for scripting
+
+**-D**	display the time of the transaction
+
+**-S**	display the transaction status only
+
+**-T**	display the transaction id only
+
+**-U**	display the unix time of the transaction
 
 ### subtxfee
 
