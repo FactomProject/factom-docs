@@ -176,6 +176,89 @@ $ factom-cli composetx TXNAME
 ```
 Compose a wallet transaction into a JSON RPC object
 
+### diagnostics
+```shell
+$ factom-cli diagnostics [server|network|sync|election|authset]
+```
+Get diagnostic information about the Factom network
+
+### diagnostics authset
+```shell
+$ factom-cli diagnostics authset
+```
+Get diagnostic information about the Factom authorized servers
+
+### diagnostics election
+```shell
+$ factom-cli diagnostics election {-PVFIR]
+```
+Get diagnostic information about the Factom network election process
+
+Optional output flags will display only specific information used for scripting
+
+**-F**	display only the Federated Index
+
+**-I**	display only the Federated ID
+
+**-P**	display only the progress status
+
+**-R**	display only the current round
+
+**-V**	display only the VM Index
+
+### diagnostics network
+```shell
+$ factom-cli diagnostics network [-LMDPHTB]
+```
+Get diagnostic information about the Factom network
+
+Optional output flags will display only specific information used for scripting
+
+**-B**	display only the last block from the DBState
+
+**-D**	display only the current minute duration
+
+**-H**	display only the balance hash
+
+**-L**	display only the Leader height
+
+**-M**	display only the current minute
+
+**-P**	display only the previous minute duration
+
+**-T**	display only the temporary balance hash
+
+
+### diagnostics server
+```shell
+$ factom-cli diagnostics server [-NIKR]
+```
+Get diagnostic information about the Factom API server
+
+Optional output flags will display only specific information used for scripting
+
+**-I**	display only the ID of the API server
+
+**-K**	display only the public key of the API server
+
+**-N**	display only the name of the API server
+
+**-R**	display only the role of the API server
+
+### diagnostics sync
+```shell
+$ factom-cli diagnostics sync [-SRE]
+```
+Get diagnostic information about the network syncing
+
+Optional output flags will display only specific information used for scripting
+
+**-E**	display only the expected status
+
+**-R**	display only the received status
+
+**-S**	display only the syncing status
+
 ### ecrate
 
 ```shell
@@ -211,6 +294,13 @@ Get data about Factom Chains, Entries, and Blocks
 factom-cli get allentries [-n NAME1 -N HEXNAME2 ...] CHAINID
 ```
 Get all of the Entries in a Chain
+
+### get authorities
+
+```shell
+factom-cli get authorities
+```
+Get information about the authority servers on the Factom network
 
 ### get chainhead
 
@@ -283,7 +373,7 @@ Get eblock by Merkle root
 ```shell
 factom-cli get ecblock [-RBPLDAHF] HEIGHT|KEYMR
 ```
-Get ecblock by Merkle root or by height
+Get ecblock by Key Merkle root or by height
 
 Optional output flags will display only specific information used for scripting
 **-A**	display only the Head Expansion Area
