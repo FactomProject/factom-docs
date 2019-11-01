@@ -278,6 +278,30 @@ factom-cli get eblock KEYMR
 ```
 Get eblock by Merkle root
 
+### get ecblock
+
+```shell
+factom-cli get ecblock [-RBPLDAHF] HEIGHT|KEYMR
+```
+Get ecblock by Merkle root or by height
+
+Optional output flags will display only specific information used for scripting
+**-A**	display only the Head Expansion Area
+
+**-B**	display only the Body Hash
+
+**-D**	display only the Directory Block Height
+
+**-F**	display only the Full Hash
+
+**-H**	display only the Header Hash
+
+**-L**	display only the Previous Full Hash
+
+**-P**	display only the Previous Header Hash
+
+**-R**	display the hex encoding of the raw Entry Credit Block
+
 ### get entry
 
 ```shell
@@ -296,8 +320,53 @@ Get the first entry from a chain
 
 ```shell
 factom-cli get head
+DBHash: 943d4169470615ef716b834e10d2c0a7e0d4cf00d9403acfb2d0122f60ea74b9
+KeyMR: 24e89d020cd1ba06c8a91fead8dd82b82d3f36200100a941bf4e6d4a03aa64b4
+HeaderHash: 
+SequenceNumber: 8616
+Version: 0
+NetworkID: 4203931044
+BodyMR: c43a06e86ef1f930002bcccc560772b8b3e7e2220c30cba89796077898dd463f
+PrevKeyMR: de0cc04ee97937f7bba5804d2f226e6f74e9146228e3d96b459ba05bc21ed439
+PrevFullHash: fdafc5edb40442375b8df1526979174f7a6b07dc16195948cdb38cebcd4e2548
+Timestamp: 26210607
+DBHeight: 8616
+BlockCount: 3
+DBEntries {
+	ChainID: 000000000000000000000000000000000000000000000000000000000000000a
+	KeyMR: 53689c0b83a04323f41f8e85fa0cf00d40bfe49b6cbc2f7d4054348d8b8c505d
+	ChainID: 000000000000000000000000000000000000000000000000000000000000000c
+	KeyMR: 4e01b029d733c4ae85285b7b2d9463c1dde066616bf3776c91935d1384793cf4
+	ChainID: 000000000000000000000000000000000000000000000000000000000000000f
+	KeyMR: 243fb2798067d1ee91e1f34f311cba01c9d70d2de6dfba42b13210ccf6865f36
+}
 ```
 Get the latest completed directory block
+Optional output flags will display only specific information used for scripting
+
+**-A**	display only the Directory Block Header Hash
+
+**-B**	display only the Directory Block Body Merkel Root
+
+**-C**	display only the Directory Block Count
+
+**-D**	display only the Directory Block Height
+
+**-F**	display only the Previous Directory Block Full Hash
+
+**-H**	display only the Directory Block Hash
+
+**-K**	display only the Directory Block Key Merkel Root
+
+**-N**	display only the Network ID
+
+**-P**	display only the Previous Directory Block Key Merkel Root
+
+**-R**	display the hex encoding of the raw Directory Block
+
+**-T**	display only the Directory Block Timestamp
+
+**-V**	display only the Directory Block Header Version
 
 ### get heights
 
