@@ -219,6 +219,51 @@ factom-cli get chainhead [-n NAME1 -N HEXNAME2 ...] CHAINID
 ```
 Get ebhead by chainid
 
+### get currentminute
+
+```shell
+$ factom-cli get currentminute [-BDFLMNRSTX]
+LeaderHeight: 8596
+DirectoryBlockHeight: 8596
+Minute: 9
+CurrentBlockStartTime: 1572635328110996891
+CurrentMinuteStartTime: 1572635382109911982
+CurrentTime: 1572635387202893194
+DirectoryBlockInSeconds: 60
+StallDetected: false
+FaultTimeout: 30
+RoundTimeout: 30
+
+$ factom-cli get currentminute -L
+8596
+
+$ factom-cli get currentminute -M
+9
+```
+Get information about the current minute and other properties of the factom network.
+
+Optional output flags will display only specific information used for scripting
+
+**-L** display only the Leader height
+
+**-D** display only the DirectoryBlock height
+
+**-M** display only the Current minute
+
+**-B** display only the Block start time
+
+**-N** display only the Minute start time
+
+**-T** display only the Current time
+
+**-S** display only the Directorty Block in seconds
+
+**-X** display only the Stall Detected value
+
+**-F** display only the Fault timeout
+
+**-R** display only the Round timeout
+
 ### get dblock
 
 ```shell
